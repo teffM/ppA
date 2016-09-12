@@ -1,5 +1,5 @@
 package ppA.entity;
-// Generated 11-sep-2016 18:18:24 by Hibernate Tools 4.3.1
+// Generated 11-sep-2016 20:14:47 by Hibernate Tools 4.3.1
 
 
 

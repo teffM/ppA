@@ -3,16 +3,22 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 11-sep-2016 20:14:48 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="ppA.entity.Usuarios" table="usuarios" schema="dbo" catalog="pampaDB" optimistic-lock="version">
+    <class name="ppA.entity.Opciones" table="opciones" schema="dbo" catalog="pampaDB" optimistic-lock="version">
         <id name="id" type="int">
             <column name="id" />
             <generator class="assigned" />
         </id>
-        <property name="usuario" type="string">
-            <column name="usuario" length="20" not-null="true" />
+        <property name="opcion" type="string">
+            <column name="opcion" length="20" not-null="true" />
         </property>
-        <property name="contra" type="string">
-            <column name="contra" length="20" not-null="true" />
+        <property name="orden" type="big_decimal">
+            <column name="orden" precision="2" not-null="true" />
+        </property>
+        <property name="padre" type="java.lang.Integer">
+            <column name="padre" />
+        </property>
+        <property name="accion" type="string">
+            <column name="accion" length="20" not-null="true" />
         </property>
         <property name="descripcion" type="string">
             <column name="descripcion" length="50" not-null="true" />

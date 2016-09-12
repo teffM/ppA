@@ -15,5 +15,8 @@
     <body>
         <h1>Bienvenido <s:property value="usuario"/></h1>
         <h2>La clave ingresada fué <s:property value="clave"/></h2>
+        <br />
+        pequeño ejemplo de lista con hibernate
+        
     </body>
 </html>
