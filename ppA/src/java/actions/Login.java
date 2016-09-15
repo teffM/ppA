@@ -40,11 +40,9 @@ public class Login extends ActionSupport {
 
     @Override
     public String execute() throws Exception {
-//        if (getUsuario().equals("user") && getClave().equals("123456")) {
         Session session = null;
         try {
             SessionFactory factory = new Configuration().configure().buildSessionFactory();
-            Usuarios u = new Usuarios();
             session = factory.openSession();
             session.beginTransaction();
             List ul = session.createQuery("FROM Usuarios").list();
@@ -58,7 +56,5 @@ public class Login extends ActionSupport {
             session.close();
         }
         return SUCCESS;
-//        }
-//        return INPUT;
     }
 }

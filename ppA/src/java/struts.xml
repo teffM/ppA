@@ -5,9 +5,9 @@
     <constant name="struts.enable.DynamicMethodInvocation" value="false" />
     <constant name="struts.devMode" value="false" />
     
-    <package name="default" extends="struts-default">
+    <package name="default" extends="tiles-default">
         <action name="Login" class="actions.Login">
-            <result>/bienvenido.jsp</result>
+            <result name="success" type="tiles">success</result>
             <result name="input">/index.jsp</result>
         </action>
     </package>
