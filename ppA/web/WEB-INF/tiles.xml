@@ -3,7 +3,13 @@
 "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
  "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 <tiles-definitions>
-    <definition name="success" template="/WEB-INF/pages/layout.jsp">
-        <put-attribute name="body" value="/bienvenido.jsp"/>
+    <definition name="default" template="/WEB-INF/pages/commons/layout.jsp">
+        <put-attribute name="body" value="/WEB-INF/pages/commons/login.jsp"/>
+    </definition>
+    <definition name="index" extends="default">
+        <put-attribute name="body" value="/WEB-INF/pages/commons/login.jsp" />
+    </definition>
+    <definition name="success" extends="default">
+        <put-attribute name="body" value="/WEB-INF/pages/commons/bienvenido.jsp" />
     </definition>
 </tiles-definitions>

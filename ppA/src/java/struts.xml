@@ -4,12 +4,15 @@
 <struts>
     <constant name="struts.enable.DynamicMethodInvocation" value="false" />
     <constant name="struts.devMode" value="true" />
-	<constant name="struts.i18n.encoding" value="UTF-8" />
+    <constant name="struts.i18n.encoding" value="UTF-8" />
     
     <package name="default" extends="tiles-default, struts-default">
+        <action name="index">
+            <result type="tiles">index</result>
+        </action>
         <action name="Login" class="actions.LoginAction">
             <result name="success" type="tiles">success</result>
-            <result name="input">/index.jsp</result>
+            <result name="input" type="tiles">/index.jsp</result>
         </action>
     </package>
 </struts>

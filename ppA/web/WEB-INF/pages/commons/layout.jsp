@@ -4,11 +4,11 @@
 <%@taglib uri="/struts-tags" prefix="s"%>
 <html lang="es">
     <head>
-        <title>hello</title>
+        <title></title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--boostrap-->
-        <link href="./r/boostrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="./r/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <script src="./r/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
         <!--jQuery-->
         <script src="./r/js/jquery-3.1.0.min.js" type="text/javascript"></script>
@@ -19,19 +19,30 @@
         <script src="./r/js/functions.js" type="text/javascript"></script>
     </head>
     <body>
+        <nav class="navbar navbar-inverse">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/ppA/index">WebSiteName</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">Page 1</a></li>
+                <li><a href="#">Page 2</a></li>
+                <li><a href="#">Page 3</a></li>
+            </ul>
+        </nav>
         <div class="container">
-            <h2>It is header tile</h2>
+            It is header tile
         </div>
         <div class="container">
             <tiles:insertAttribute name="body" />
         </div>
-        <div class="container">
-            <h2 onclick="msg('success', 'success');">It is footer tile</h2>
+        <div class="container" onclick="msg('success', 'success');">
+            It is footer tile
         </div>
         <script type="text/javascript">
             $(document).ready(function () {
-            <s:if test="%{#errorMsg != null && #errorMsg != ''}">
-                msg("error", "<s:property value="errorMsg" />");
+            <s:if test="%{errorMsg != null && errorMsg != ''}">
+                msg("error", "<s:property escape="false" value="errorMsg" />");
             </s:if>
             });
         </script>

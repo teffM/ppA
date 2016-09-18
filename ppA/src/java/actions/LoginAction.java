@@ -2,12 +2,6 @@ package actions;
 
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 import com.opensymphony.xwork2.validator.annotations.StringLengthFieldValidator;
-import java.util.Iterator;
-import java.util.List;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-import ppA.entity.Usuarios;
 
 /**
  *
@@ -39,21 +33,21 @@ public class LoginAction extends BaseAction {
 
     @Override
     public String execute() throws Exception {
-        Session session = null;
-        try {
-            SessionFactory factory = new Configuration().configure().buildSessionFactory();
-            session = factory.openSession();
-            session.beginTransaction();
-            List ul = session.createQuery("FROM Usuarios").list();
-            for (Iterator i = ul.iterator(); i.hasNext();) {
-                Usuarios ui = (Usuarios) i.next();
-                System.out.println("Certificate: " + ui.getUsuario());
-            }
-        } catch (Exception e) {
-            e(e);
-        } finally {
-            session.close();
-        }
+//        Session session = null;
+//        try {
+//            SessionFactory factory = new Configuration().configure().buildSessionFactory();
+//            session = factory.openSession();
+//            session.beginTransaction();
+//            List ul = session.createQuery("FROM Usudsarios").list();
+//            for (Iterator i = ul.iterator(); i.hasNext();) {
+//                Usuarios ui = (Usuarios) i.next();
+//                System.out.println("Certificate: " + ui.getUsuario());
+//            }
+//        } catch (Exception e) {
+//            e(e);
+//        } finally {
+//            session.close();
+//        }
         return SUCCESS;
     }
 }
