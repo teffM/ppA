@@ -3,16 +3,27 @@
 "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
     <constant name="struts.enable.DynamicMethodInvocation" value="false" />
-    <constant name="struts.devMode" value="true" />
+    <constant name="struts.devMode" value="false" />
     <constant name="struts.i18n.encoding" value="UTF-8" />
     
-    <package name="default" extends="tiles-default, struts-default">
+    <package name="default" namespace="/" extends="tiles-default, struts-default">
+        <interceptors>
+            <interceptor name="sessionInterceptor" class="interceptor.SessionInterceptor" />
+        </interceptors>
+        
+        <global-results>
+            <result name="error" type="tiles">error</result>
+        </global-results>
+        
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="error" />
+        </global-exception-mappings>
+        
         <action name="index">
             <result type="tiles">index</result>
         </action>
         <action name="Login" class="actions.LoginAction">
             <result name="success" type="tiles">success</result>
-            <result name="input" type="tiles">/index.jsp</result>
         </action>
     </package>
 </struts>

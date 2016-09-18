@@ -6,6 +6,9 @@
     <definition name="default" template="/WEB-INF/pages/commons/layout.jsp">
         <put-attribute name="body" value="/WEB-INF/pages/commons/login.jsp"/>
     </definition>
+    <definition name="error" extends="default">
+        <put-attribute name="body" value="/WEB-INF/pages/commons/error.jsp" />
+    </definition>
     <definition name="index" extends="default">
         <put-attribute name="body" value="/WEB-INF/pages/commons/login.jsp" />
     </definition>

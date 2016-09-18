@@ -30,13 +30,13 @@
                 <li><a href="#">Page 3</a></li>
             </ul>
         </nav>
-        <div class="container">
+        <div class="page-header">
             It is header tile
         </div>
         <div class="container">
             <tiles:insertAttribute name="body" />
         </div>
-        <div class="container" onclick="msg('success', 'success');">
+        <div class="navbar-fixed-bottom" onclick="msg('success', 'success');">
             It is footer tile
         </div>
         <script type="text/javascript">
