@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
+<%@taglib uri="/struts-tags" prefix="s"%>
 <html lang="es">
     <head>
         <title>hello</title>
@@ -27,5 +28,12 @@
         <div class="container">
             <h2 onclick="msg('success', 'success');">It is footer tile</h2>
         </div>
+        <script type="text/javascript">
+            $(document).ready(function () {
+            <s:if test="%{#errorMsg != null && #errorMsg != ''}">
+                msg("error", "<s:property value="errorMsg" />");
+            </s:if>
+            });
+        </script>
     </body>
 </html>

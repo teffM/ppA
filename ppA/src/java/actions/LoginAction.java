@@ -1,6 +1,5 @@
 package actions;
 
-import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 import com.opensymphony.xwork2.validator.annotations.StringLengthFieldValidator;
 import java.util.Iterator;
@@ -14,7 +13,7 @@ import ppA.entity.Usuarios;
  *
  * @author Java
  */
-public class Login extends ActionSupport {
+public class LoginAction extends BaseAction {
 
     private String usuario;
     private String clave;
@@ -51,7 +50,7 @@ public class Login extends ActionSupport {
                 System.out.println("Certificate: " + ui.getUsuario());
             }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            e(e);
         } finally {
             session.close();
         }
