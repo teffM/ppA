@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 11-sep-2016 20:14:48 by Hibernate Tools 4.3.1 -->
+<!-- Generated 18-sep-2016 22:35:42 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="ppA.entity.Opciones" table="opciones" schema="dbo" catalog="pampaDB" optimistic-lock="version">
         <id name="id" type="int">
@@ -12,7 +12,7 @@
             <column name="opcion" length="20" not-null="true" />
         </property>
         <property name="orden" type="big_decimal">
-            <column name="orden" precision="2" not-null="true" />
+            <column name="orden" precision="5" />
         </property>
         <property name="padre" type="java.lang.Integer">
             <column name="padre" />

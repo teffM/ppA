@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18-sep-2016 22:35:42 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ppA.entity.Reservaciones" table="reservaciones" schema="dbo" catalog="pampaDB" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="foreign">
+                <param name="property">sucursales</param>
+            </generator>
+        </id>
+        <one-to-one name="sucursales" class="ppA.entity.Sucursales" constrained="true"></one-to-one>
+        <property name="nombres" type="string">
+            <column name="nombres" length="60" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="25" not-null="true" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="telefono" length="15" not-null="true" />
+        </property>
+        <property name="fechaReservaciones" type="timestamp">
+            <column name="fechaReservaciones" length="23" not-null="true" />
+        </property>
+        <property name="personas" type="int">
+            <column name="personas" not-null="true" />
+        </property>
+        <property name="sucursal" type="int">
+            <column name="sucursal" not-null="true" />
+        </property>
+        <property name="comentarios" type="string">
+            <column name="comentarios" length="500" not-null="true" />
+        </property>
+        <property name="fechaCreacion" type="timestamp">
+            <column name="fechaCreacion" length="23" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18-sep-2016 22:35:42 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ppA.entity.Roles" table="roles" schema="dbo" catalog="pampaDB" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="rol" type="string">
+            <column name="rol" length="25" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="100" not-null="true" />
+        </property>
+        <set name="usuarioses" table="usuarios" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idRol" not-null="true" />
+            </key>
+            <one-to-many class="ppA.entity.Usuarios" />
+        </set>
+    </class>
+</hibernate-mapping>

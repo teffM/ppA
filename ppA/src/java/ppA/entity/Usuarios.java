@@ -1,5 +1,5 @@
 package ppA.entity;
-// Generated 11-sep-2016 20:14:47 by Hibernate Tools 4.3.1
+// Generated 18-sep-2016 22:35:39 by Hibernate Tools 4.3.1
 
 
 
@@ -10,18 +10,18 @@ public class Usuarios  implements java.io.Serializable {
 
 
      private int id;
+     private Roles roles;
      private String usuario;
      private String contra;
-     private String descripcion;
 
     public Usuarios() {
     }
 
-    public Usuarios(int id, String usuario, String contra, String descripcion) {
+    public Usuarios(int id, Roles roles, String usuario, String contra) {
        this.id = id;
+       this.roles = roles;
        this.usuario = usuario;
        this.contra = contra;
-       this.descripcion = descripcion;
     }
    
     public int getId() {
@@ -30,6 +30,13 @@ public class Usuarios  implements java.io.Serializable {
     
     public void setId(int id) {
         this.id = id;
+    }
+    public Roles getRoles() {
+        return this.roles;
+    }
+    
+    public void setRoles(Roles roles) {
+        this.roles = roles;
     }
     public String getUsuario() {
         return this.usuario;
@@ -44,13 +51,6 @@ public class Usuarios  implements java.io.Serializable {
     
     public void setContra(String contra) {
         this.contra = contra;
-    }
-    public String getDescripcion() {
-        return this.descripcion;
-    }
-    
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
     }
 
 

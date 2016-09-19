@@ -1,5 +1,5 @@
 package ppA.entity;
-// Generated 11-sep-2016 20:14:47 by Hibernate Tools 4.3.1
+// Generated 18-sep-2016 22:35:39 by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;
@@ -21,10 +21,9 @@ public class Opciones  implements java.io.Serializable {
     }
 
 	
-    public Opciones(int id, String opcion, BigDecimal orden, String accion, String descripcion) {
+    public Opciones(int id, String opcion, String accion, String descripcion) {
         this.id = id;
         this.opcion = opcion;
-        this.orden = orden;
         this.accion = accion;
         this.descripcion = descripcion;
     }
