@@ -41,9 +41,11 @@
         </div>
         <script type="text/javascript">
             $(document).ready(function () {
+                if ($('#toast-container').length == 0) {
             <s:if test="%{errorMsg != null && errorMsg != ''}">
-                msg("error", "<s:property escape="false" value="errorMsg" />");
+                    msg("error", "<s:property escape="false" value="errorMsg" />");
             </s:if>
+                }
             });
         </script>
     </body>

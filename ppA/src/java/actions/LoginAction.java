@@ -52,7 +52,7 @@ public class LoginAction extends BaseAction {
 	} catch (Exception e) {
 	    return e(e);
 	} finally {
-//	    session.close();
+	    session.close();
 	}
 	return SUCCESS;
     }

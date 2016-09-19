@@ -8,15 +8,30 @@
     
     <package name="default" namespace="/" extends="tiles-default, struts-default">
         <interceptors>
-            <interceptor name="sessionInterceptor" class="interceptor.SessionInterceptor" />
+            <interceptor name="sessionInterceptor" class="interceptors.SessionInterceptor" />
+            
+            <interceptor-stack name="defaultSessionInterceptor">
+                <interceptor-ref name="exception"/>
+                <interceptor-ref name="debugging"/>
+                <interceptor-ref name="servletConfig"/>
+                <interceptor-ref name="params"/>
+                <interceptor-ref name="i18n"/>
+                <interceptor-ref name="prepare"/>
+                <interceptor-ref name="sessionInterceptor" />
+                <interceptor-ref name="defaultStack" />
+
+            </interceptor-stack>
         </interceptors>
+        
+        <default-interceptor-ref name="defaultSessionInterceptor" />
         
         <global-results>
             <result name="error" type="tiles">error</result>
+            <result name="errorSession" type="tiles">index</result>
         </global-results>
         
         <global-exception-mappings>
-            <exception-mapping exception="java.lang.Exception" result="error" />
+            <exception-mapping exception="java.lang.Exception" result="error"></exception-mapping>
         </global-exception-mappings>
         
         <action name="index">
