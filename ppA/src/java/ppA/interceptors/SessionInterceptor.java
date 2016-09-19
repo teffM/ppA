@@ -1,4 +1,4 @@
-package interceptors;
+package ppA.interceptors;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;

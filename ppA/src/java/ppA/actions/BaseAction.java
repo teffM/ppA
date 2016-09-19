@@ -1,4 +1,4 @@
-package actions;
+package ppA.actions;
 
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.Map;

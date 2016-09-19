@@ -1,4 +1,4 @@
-package actions;
+package ppA.actions;
 
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 import com.opensymphony.xwork2.validator.annotations.StringLengthFieldValidator;

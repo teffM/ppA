@@ -6,7 +6,7 @@
     <class name="ppA.entity.Usuarios" table="usuarios" schema="dbo" catalog="pampaDB" optimistic-lock="version">
         <id name="id" type="int">
             <column name="id" />
-            <generator class="assigned" />
+            <generator class="native" />
         </id>
         <many-to-one name="roles" class="ppA.entity.Roles" fetch="select">
             <column name="idRol" not-null="true" />

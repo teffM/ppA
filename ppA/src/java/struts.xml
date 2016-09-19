@@ -8,7 +8,7 @@
     
     <package name="default" namespace="/" extends="tiles-default, struts-default">
         <interceptors>
-            <interceptor name="sessionInterceptor" class="interceptors.SessionInterceptor" />
+            <interceptor name="sessionInterceptor" class="ppA.interceptors.SessionInterceptor" />
             
             <interceptor-stack name="defaultSessionInterceptor">
                 <interceptor-ref name="exception"/>
@@ -19,7 +19,6 @@
                 <interceptor-ref name="prepare"/>
                 <interceptor-ref name="sessionInterceptor" />
                 <interceptor-ref name="defaultStack" />
-
             </interceptor-stack>
         </interceptors>
         
