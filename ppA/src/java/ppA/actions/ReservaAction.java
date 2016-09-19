@@ -19,17 +19,20 @@ public class ReservaAction extends BaseAction {
 
     private Reservaciones r;
     private List<Reservaciones> listReservas;
+    private List<Sucursales> listSucursales;
 
     public ReservaAction() {
-	this.listReservas = new ArrayList<Reservaciones>();
+	setListReservas(new ArrayList<Reservaciones>());
+	setListSucursales(new ArrayList<Sucursales>());
     }
 
     @Override
     public String execute() throws Exception {
-	return getList();
+	listSucursales();
+	return list();
     }
 
-    private String getList() {
+    private String list() {
 	Session session = null;
 	try {
 	    SessionFactory factory = new Configuration().configure().buildSessionFactory();
@@ -48,6 +51,24 @@ public class ReservaAction extends BaseAction {
 	return SUCCESS;
     }
 
+    private void listSucursales() {
+	Session session = null;
+	try {
+	    SessionFactory factory = new Configuration().configure().buildSessionFactory();
+	    session = factory.openSession();
+	    session.beginTransaction();
+	    List l = session.createQuery("FROM Sucursales").list();
+	    Iterator i = l.iterator();
+	    while (i.hasNext()) {
+		getListSucursales().add((Sucursales) i.next());
+	    }
+	} catch (Exception e) {
+	    e(e);
+	} finally {
+	    session.close();
+	}
+    }
+
     public String agregar() throws Exception {
 	Session session = null;
 	try {
@@ -55,15 +76,12 @@ public class ReservaAction extends BaseAction {
 	    session = factory.openSession();
 	    Transaction transaction = session.beginTransaction();
 
-	    Sucursales s = new Sucursales();
-	    s.setId(1);
 	    getR().setComentarios("default");
 	    getR().setEmail("default");
 	    getR().setFechaCreacion(new Date());
 	    getR().setFechaReservaciones(new Date());
 	    getR().setPersonas(5);
 	    getR().setTelefono("default");
-	    getR().setSucursales(s);
 
 	    session.save(getR());
 
@@ -73,7 +91,7 @@ public class ReservaAction extends BaseAction {
 	} finally {
 	    session.close();
 	}
-	return getList();
+	return list();
     }
 
     /**
@@ -102,5 +120,19 @@ public class ReservaAction extends BaseAction {
      */
     public void setR(Reservaciones r) {
 	this.r = r;
+    }
+
+    /**
+     * @return the listSucursales
+     */
+    public List<Sucursales> getListSucursales() {
+	return listSucursales;
+    }
+
+    /**
+     * @param listSucursales the listSucursales to set
+     */
+    public void setListSucursales(List<Sucursales> listSucursales) {
+	this.listSucursales = listSucursales;
     }
 }

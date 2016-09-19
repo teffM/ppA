@@ -36,10 +36,10 @@
         <action name="index">
             <result type="tiles">index</result>
         </action>
-        <action name="Reserva" class="actions.ReservaAction">
+        <action name="Reserva" class="ppA.actions.ReservaAction">
             <result name="success" type="tiles">reserva</result>
         </action>
-        <action name="Login" class="actions.LoginAction">
+        <action name="Login" class="ppA.actions.LoginAction">
             <result name="success" type="tiles">success</result>
         </action>
     </package>

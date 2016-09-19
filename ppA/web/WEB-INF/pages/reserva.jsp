@@ -8,8 +8,8 @@
 <div id="nuevaReservacion">
     <s:form action="Reserva">
         <s:textfield name="r.nombres" label="Nombre: " />
-        <s:select name="r.idSucursal" headerKey="-1"
-                    headerValue="--- Seleccione una sucursal ---" list="{'apple','banana','grape','pear'}" />
+        <s:select name="r.sucursales.id" listKey="id" listValue="sucursal" headerKey="-1"
+                    headerValue="--- Seleccione una sucursal ---" list="listSucursales" />
         <s:submit method="agregar" cssClass="btn-info" value="Guardar" />
     </s:form>
 </div>
