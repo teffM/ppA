@@ -1,5 +1,5 @@
 package ppA.entity;
-// Generated 18-sep-2016 22:35:39 by Hibernate Tools 4.3.1
+// Generated 18-sep-2016 22:47:40 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -17,21 +17,20 @@ public class Reservaciones  implements java.io.Serializable {
      private String telefono;
      private Date fechaReservaciones;
      private int personas;
-     private int sucursal;
      private String comentarios;
      private Date fechaCreacion;
 
     public Reservaciones() {
     }
 
-    public Reservaciones(Sucursales sucursales, String nombres, String email, String telefono, Date fechaReservaciones, int personas, int sucursal, String comentarios, Date fechaCreacion) {
+    public Reservaciones(int id, Sucursales sucursales, String nombres, String email, String telefono, Date fechaReservaciones, int personas, String comentarios, Date fechaCreacion) {
+       this.id = id;
        this.sucursales = sucursales;
        this.nombres = nombres;
        this.email = email;
        this.telefono = telefono;
        this.fechaReservaciones = fechaReservaciones;
        this.personas = personas;
-       this.sucursal = sucursal;
        this.comentarios = comentarios;
        this.fechaCreacion = fechaCreacion;
     }
@@ -84,13 +83,6 @@ public class Reservaciones  implements java.io.Serializable {
     
     public void setPersonas(int personas) {
         this.personas = personas;
-    }
-    public int getSucursal() {
-        return this.sucursal;
-    }
-    
-    public void setSucursal(int sucursal) {
-        this.sucursal = sucursal;
     }
     public String getComentarios() {
         return this.comentarios;

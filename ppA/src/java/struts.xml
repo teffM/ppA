@@ -37,6 +37,9 @@
         <action name="index">
             <result type="tiles">index</result>
         </action>
+        <action name="reserva">
+            <result type="tiles">reserva</result>
+        </action>
         <action name="Login" class="actions.LoginAction">
             <result name="success" type="tiles">success</result>
         </action>
