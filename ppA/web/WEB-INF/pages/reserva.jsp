@@ -1,4 +1,5 @@
-<%@taglib uri="/struts-tags" prefix="s"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<h1>Bienvenido <s:property value="usuario"/></h1>
-<h2>La clave ingresada fué <s:property value="clave"/></h2>
+<c:forEach var="l" items="${listReservas}">
+    <c:out value="${l.nombres}"/> <br/>
+</c:forEach>
