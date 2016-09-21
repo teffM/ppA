@@ -7,27 +7,29 @@
         <title></title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--jQuery-->
+        <script src="./r/js/jquery.com_jquery-2.1.1.min.js" type="text/javascript"></script>
+        <!--<script src="./r/js/jquery-3.1.0.min.js" type="text/javascript"></script>-->
         <!--boostrap-->
         <link href="./r/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <script src="./r/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <!--jQuery-->
-        <script src="./r/js/jquery-3.1.0.min.js" type="text/javascript"></script>
+        <link href="./r/bootstrap/css/bootstrap-datetimepicker.css" rel="stylesheet" type="text/css"/>
         <!--toaster-->
         <link href="./r/toastr/css/toastr.css" rel="stylesheet" type="text/css"/>
-        <script src="./r/toastr/js/toastr.js" type="text/javascript"></script>
         <!--customs-->
+        <link href="./r/css/style.css" rel="stylesheet" type="text/css"/>
         <script src="./r/js/functions.js" type="text/javascript"></script>
     </head>
     <body>
         <nav class="navbar navbar-inverse">
             <div class="navbar-header">
-                <a class="navbar-brand" href="./index">WebSiteName</a>
+                <a class="navbar-brand" href="./index">Restaurante La Pampa</a>
             </div>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="./Reserva">RESERVA</a></li>
-                <li><a href="#">Page 1</a></li>
-                <li><a href="#">Page 2</a></li>
-                <li><a href="#">Page 3</a></li>
+                <li><a href="#">INICIO</a></li>
+                <li class="active"><a href="./Reserva"> NUEVA RESERVACION</a></li>
+                <li><a href="#">LISTADO EMPLEADOS</a></li>
+                <li><a href="#">LISTADO DE RESERVAS</a></li>
+                <li><a href="#">REPORTES</a></li>
             </ul>
         </nav>
         <div class="page-header">
@@ -36,9 +38,32 @@
         <div class="container">
             <tiles:insertAttribute name="body" />
         </div>
+        <!--modal confirm delete-->
         <div class="navbar-fixed-bottom" onclick="msg('success', 'success');">
             It is footer tile
+        </div><div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        Advertencia!
+                    </div>
+                    <div class="modal-body">
+                        Seguro de eliminar el registro?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-danger btn-ok">Delete</a>
+                    </div>
+                </div>
+            </div>
         </div>
+        <!--boostrap--> 
+        <script src="./r/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="./r/bootstrap/js/moment-with-locales.js" type="text/javascript"></script>
+        <script src="./r/bootstrap/js/bootstrap-datetimepicker.js" type="text/javascript"></script>
+        <script src="./r/bootstrap/js/validator.min.js" type="text/javascript"></script>
+        <!--toastr-->
+        <script src="./r/toastr/js/toastr.js" type="text/javascript"></script> 
         <script type="text/javascript">
             $(document).ready(function () {
                 if ($('#toast-container').length == 0) {
@@ -46,6 +71,9 @@
                     msg("error", "<s:property escape="false" value="errorMsg" />");
             </s:if>
                 }
+            });
+            $('#confirm-delete').on('show.bs.modal', function (e) {
+                $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
             });
         </script>
     </body>

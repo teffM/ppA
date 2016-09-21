@@ -3,6 +3,10 @@ package ppA.actions;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 
 /**
  *
@@ -10,25 +14,26 @@ import org.apache.struts2.interceptor.SessionAware;
  */
 public class BaseAction extends ActionSupport implements SessionAware {
 
+    private int id;
     private String errorMsg;
     private Map<String, Object> session;
+    private Session db;
+    private Transaction transaction;
 
     public BaseAction() {
-//	Session session = null;
-//	try {
-//	    SessionFactory factory = new Configuration().configure().buildSessionFactory();
-//	    session = factory.openSession();
-//	    session.beginTransaction();
-//	    List ul = session.createQuery("FROM Opciones").list();
-//	    for (Iterator i = ul.iterator(); i.hasNext();) {
-//		Opciones ui = (Opciones) i.next();
-//		System.out.println("Certificate: " + ui.getOpcion());
-//	    }
-//	} catch (Exception e) {
-//	    e(e);
-//	} finally {
-//	    session.close();
-//	}
+	try {
+	    SessionFactory factory = null;
+	    if (db == null) {
+		factory = new Configuration().configure().buildSessionFactory();
+		db = factory.openSession();
+	    }
+	    if (!db.isOpen()) {
+		transaction = db.beginTransaction();
+	    }
+	} catch (Exception e) {
+	    e(e);
+	} finally {
+	}
     }
 
     protected String e(final Exception e) {
@@ -78,5 +83,47 @@ public class BaseAction extends ActionSupport implements SessionAware {
     @Override
     public void setSession(Map<String, Object> map) {
 	this.session = map;
+    }
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+	return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+	this.id = id;
+    }
+
+    /**
+     * @return the db
+     */
+    public Session getDb() {
+	return db;
+    }
+
+    /**
+     * @param db the db to set
+     */
+    public void setDb(Session db) {
+	this.db = db;
+    }
+
+    /**
+     * @return the transaction
+     */
+    public Transaction getTransaction() {
+	return transaction;
+    }
+
+    /**
+     * @param transaction the transaction to set
+     */
+    public void setTransaction(Transaction transaction) {
+	this.transaction = transaction;
     }
 }

@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 import ppA.entity.Reservaciones;
 import ppA.entity.Sucursales;
 
@@ -28,68 +24,59 @@ public class ReservaAction extends BaseAction {
 
     @Override
     public String execute() throws Exception {
-	listSucursales();
 	return list();
     }
 
     private String list() {
-	Session session = null;
 	try {
-	    SessionFactory factory = new Configuration().configure().buildSessionFactory();
-	    session = factory.openSession();
-	    session.beginTransaction();
-	    List l = session.createQuery("FROM Reservaciones").list();
-	    Iterator i = l.iterator();
+	    Iterator i = getDb().createQuery("FROM Reservaciones").list().iterator();
 	    while (i.hasNext()) {
 		getListReservas().add((Reservaciones) i.next());
 	    }
 	} catch (Exception e) {
 	    return e(e);
 	} finally {
-	    session.close();
+	    listSucursales();
+	    setR(new Reservaciones());
 	}
 	return SUCCESS;
     }
 
     private void listSucursales() {
-	Session session = null;
 	try {
-	    SessionFactory factory = new Configuration().configure().buildSessionFactory();
-	    session = factory.openSession();
-	    session.beginTransaction();
-	    List l = session.createQuery("FROM Sucursales").list();
-	    Iterator i = l.iterator();
+	    Iterator i = getDb().createQuery("FROM Sucursales").list().iterator();
 	    while (i.hasNext()) {
 		getListSucursales().add((Sucursales) i.next());
 	    }
 	} catch (Exception e) {
 	    e(e);
-	} finally {
-	    session.close();
 	}
     }
 
-    public String agregar() throws Exception {
-	Session session = null;
+    public String guardar() throws Exception {
 	try {
-	    SessionFactory factory = new Configuration().configure().buildSessionFactory();
-	    session = factory.openSession();
-	    Transaction transaction = session.beginTransaction();
-
-	    getR().setComentarios("default");
-	    getR().setEmail("default");
-	    getR().setFechaCreacion(new Date());
 	    getR().setFechaReservaciones(new Date());
-	    getR().setPersonas(5);
-	    getR().setTelefono("default");
+	    getR().setFechaCreacion(new Date());
 
-	    session.save(getR());
+	    setTransaction(getDb().beginTransaction());
+	    getDb().save(getR());
 
-	    transaction.commit();
+	    getTransaction().commit();
 	} catch (Exception e) {
 	    return e(e);
-	} finally {
-	    session.close();
+	}
+	return list();
+    }
+
+    public String eliminar() throws Exception {
+	try {
+	    setTransaction(getDb().beginTransaction());
+
+	    getDb().delete((Reservaciones) getDb().load(Reservaciones.class, getId()));
+
+	    getTransaction().commit();
+	} catch (Exception e) {
+	    return e(e);
 	}
 	return list();
     }
