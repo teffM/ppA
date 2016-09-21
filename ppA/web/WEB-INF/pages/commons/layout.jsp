@@ -15,6 +15,7 @@
         <link href="./r/bootstrap/css/bootstrap-datetimepicker.css" rel="stylesheet" type="text/css"/>
         <!--toaster-->
         <link href="./r/toastr/css/toastr.css" rel="stylesheet" type="text/css"/>
+        <script src="./r/toastr/js/toastr.js" type="text/javascript"></script> 
         <!--customs-->
         <link href="./r/css/style.css" rel="stylesheet" type="text/css"/>
         <script src="./r/js/functions.js" type="text/javascript"></script>
@@ -39,7 +40,7 @@
             <tiles:insertAttribute name="body" />
         </div>
         <!--modal confirm delete-->
-        <div class="navbar-fixed-bottom" onclick="msg('success', 'success');">
+        <div class="navbar-fixed-bottom">
             It is footer tile
         </div><div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog">
             <div class="modal-dialog">
@@ -62,11 +63,12 @@
         <script src="./r/bootstrap/js/moment-with-locales.js" type="text/javascript"></script>
         <script src="./r/bootstrap/js/bootstrap-datetimepicker.js" type="text/javascript"></script>
         <script src="./r/bootstrap/js/validator.min.js" type="text/javascript"></script>
-        <!--toastr-->
-        <script src="./r/toastr/js/toastr.js" type="text/javascript"></script> 
         <script type="text/javascript">
             $(document).ready(function () {
                 if ($('#toast-container').length == 0) {
+            <s:if test="%{msg != null && msg != ''}">
+                    msg("success", "<s:property escape="false" value="msg" />");
+            </s:if>
             <s:if test="%{errorMsg != null && errorMsg != ''}">
                     msg("error", "<s:property escape="false" value="errorMsg" />");
             </s:if>

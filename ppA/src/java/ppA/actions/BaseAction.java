@@ -15,6 +15,7 @@ import org.hibernate.cfg.Configuration;
 public class BaseAction extends ActionSupport implements SessionAware {
 
     private int id;
+    private String msg;
     private String errorMsg;
     private Map<String, Object> session;
     private Session db;
@@ -125,5 +126,19 @@ public class BaseAction extends ActionSupport implements SessionAware {
      */
     public void setTransaction(Transaction transaction) {
 	this.transaction = transaction;
+    }
+
+    /**
+     * @return the msg
+     */
+    public String getMsg() {
+	return msg;
+    }
+
+    /**
+     * @param msg the msg to set
+     */
+    public void setMsg(String msg) {
+	this.msg = msg;
     }
 }

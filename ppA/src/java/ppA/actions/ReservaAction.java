@@ -59,9 +59,13 @@ public class ReservaAction extends BaseAction {
 	    getR().setFechaCreacion(new Date());
 
 	    setTransaction(getDb().beginTransaction());
-	    getDb().save(getR());
-
+	    if (getR().getId() == 0) {
+		getDb().save(getR());
+	    } else {
+		getDb().update(getR());
+	    }
 	    getTransaction().commit();
+	    setMsg("Guardado exitosamente!");
 	} catch (Exception e) {
 	    return e(e);
 	}
@@ -75,6 +79,7 @@ public class ReservaAction extends BaseAction {
 	    getDb().delete((Reservaciones) getDb().load(Reservaciones.class, getId()));
 
 	    getTransaction().commit();
+	    setMsg("Eliminado exitosamente!");
 	} catch (Exception e) {
 	    return e(e);
 	}
