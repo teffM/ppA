@@ -12,8 +12,11 @@
     <definition name="index" extends="default">
         <put-attribute name="body" value="/WEB-INF/pages/commons/login.jsp" />
     </definition>
-    <definition name="reserva" extends="default">
-        <put-attribute name="body" value="/WEB-INF/pages/reserva.jsp" />
+    <definition name="reservas" extends="default">
+        <put-attribute name="body" value="/WEB-INF/pages/reservas.jsp" />
+    </definition>
+    <definition name="usuarios" extends="default">
+        <put-attribute name="body" value="/WEB-INF/pages/usuarios.jsp" />
     </definition>
     <definition name="success" extends="default">
         <put-attribute name="body" value="/WEB-INF/pages/commons/bienvenido.jsp" />

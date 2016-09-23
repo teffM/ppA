@@ -2,7 +2,6 @@ package ppA.actions;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 import ppA.entity.Reservaciones;
 import ppA.entity.Sucursales;
@@ -18,8 +17,8 @@ public class ReservaAction extends BaseAction {
     private List<Sucursales> listSucursales;
 
     public ReservaAction() {
-	setListReservas(new ArrayList<Reservaciones>());
-	setListSucursales(new ArrayList<Sucursales>());
+	setListReservas(new ArrayList<>());
+	setListSucursales(new ArrayList<>());
     }
 
     @Override
@@ -29,28 +28,14 @@ public class ReservaAction extends BaseAction {
 
     private String list() {
 	try {
-	    Iterator i = getDb().createQuery("FROM Reservaciones").list().iterator();
-	    while (i.hasNext()) {
-		getListReservas().add((Reservaciones) i.next());
-	    }
+	    setListReservas(getList(Reservaciones.class));
+	    setListSucursales(getList(Sucursales.class));
 	} catch (Exception e) {
 	    return e(e);
 	} finally {
-	    listSucursales();
 	    setR(new Reservaciones());
 	}
 	return SUCCESS;
-    }
-
-    private void listSucursales() {
-	try {
-	    Iterator i = getDb().createQuery("FROM Sucursales").list().iterator();
-	    while (i.hasNext()) {
-		getListSucursales().add((Sucursales) i.next());
-	    }
-	} catch (Exception e) {
-	    e(e);
-	}
     }
 
     public String guardar() throws Exception {
@@ -58,14 +43,8 @@ public class ReservaAction extends BaseAction {
 	    getR().setFechaReservaciones(new Date());
 	    getR().setFechaCreacion(new Date());
 
-	    setTransaction(getDb().beginTransaction());
-	    if (getR().getId() == 0) {
-		getDb().save(getR());
-	    } else {
-		getDb().update(getR());
-	    }
-	    getTransaction().commit();
-	    setMsg("Guardado exitosamente!");
+	    save(getR());
+	    setMsg(getText("msg.guardadoExito"));
 	} catch (Exception e) {
 	    return e(e);
 	}
@@ -74,12 +53,8 @@ public class ReservaAction extends BaseAction {
 
     public String eliminar() throws Exception {
 	try {
-	    setTransaction(getDb().beginTransaction());
-
-	    getDb().delete((Reservaciones) getDb().load(Reservaciones.class, getId()));
-
-	    getTransaction().commit();
-	    setMsg("Eliminado exitosamente!");
+	    delete((Reservaciones) getDb().load(Reservaciones.class, getId()));
+	    setMsg(getText("msg.eliminadoExito"));
 	} catch (Exception e) {
 	    return e(e);
 	}
@@ -96,7 +71,7 @@ public class ReservaAction extends BaseAction {
     /**
      * @param listReservas the listReservas to set
      */
-    public void setListReservas(List<Reservaciones> listReservas) {
+    private void setListReservas(List<Reservaciones> listReservas) {
 	this.listReservas = listReservas;
     }
 
@@ -124,7 +99,7 @@ public class ReservaAction extends BaseAction {
     /**
      * @param listSucursales the listSucursales to set
      */
-    public void setListSucursales(List<Sucursales> listSucursales) {
+    private void setListSucursales(List<Sucursales> listSucursales) {
 	this.listSucursales = listSucursales;
     }
 }

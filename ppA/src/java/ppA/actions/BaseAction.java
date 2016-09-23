@@ -1,12 +1,13 @@
 package ppA.actions;
 
 import com.opensymphony.xwork2.ActionSupport;
+import java.util.List;
 import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import ppA.entity.*;
 
 /**
  *
@@ -23,13 +24,11 @@ public class BaseAction extends ActionSupport implements SessionAware {
 
     public BaseAction() {
 	try {
-	    SessionFactory factory = null;
-	    if (db == null) {
-		factory = new Configuration().configure().buildSessionFactory();
-		db = factory.openSession();
+	    if (getDb() == null) {
+		setDb(new Configuration().configure().buildSessionFactory().openSession());
 	    }
-	    if (!db.isOpen()) {
-		transaction = db.beginTransaction();
+	    if (!getDb().isOpen()) {
+		setTransaction(getDb().beginTransaction());
 	    }
 	} catch (Exception e) {
 	    e(e);
@@ -37,7 +36,55 @@ public class BaseAction extends ActionSupport implements SessionAware {
 	}
     }
 
-    protected String e(final Exception e) {
+    protected int save(Object o) {
+	try {
+	    setTransaction(getDb().beginTransaction());
+	    if (getId(o) == 0) {
+		getDb().save(o);
+	    } else {
+		getDb().update(o);
+	    }
+	    getTransaction().commit();
+	} catch (Exception e) {
+	    e(e);
+	}
+	return 0;
+    }
+
+    protected void delete(Object o) {
+	try {
+	    setTransaction(getDb().beginTransaction());
+	    getDb().delete(o);
+	    getTransaction().commit();
+	} catch (Exception e) {
+	    e(e);
+	}
+    }
+
+    protected List getList(Class c) {
+	return getDb().createCriteria(c).list();
+    }
+
+    private int getId(Object o) {
+	if (o instanceof Opciones) {
+	    return ((Opciones) o).getId();
+	}
+	if (o instanceof Reservaciones) {
+	    return ((Reservaciones) o).getId();
+	}
+	if (o instanceof Roles) {
+	    return ((Roles) o).getId();
+	}
+	if (o instanceof Sucursales) {
+	    return ((Sucursales) o).getId();
+	}
+	if (o instanceof Usuarios) {
+	    return ((Usuarios) o).getId();
+	}
+	return 0;
+    }
+
+    protected final String e(final Exception e) {
 	if (e != null) {
 	    System.err.print(e.getMessage());
 	    addActionError(e.getMessage());
@@ -103,14 +150,14 @@ public class BaseAction extends ActionSupport implements SessionAware {
     /**
      * @return the db
      */
-    public Session getDb() {
+    protected Session getDb() {
 	return db;
     }
 
     /**
      * @param db the db to set
      */
-    public void setDb(Session db) {
+    private void setDb(Session db) {
 	this.db = db;
     }
 
@@ -124,7 +171,7 @@ public class BaseAction extends ActionSupport implements SessionAware {
     /**
      * @param transaction the transaction to set
      */
-    public void setTransaction(Transaction transaction) {
+    private void setTransaction(Transaction transaction) {
 	this.transaction = transaction;
     }
 

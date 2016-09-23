@@ -5,6 +5,7 @@
     <constant name="struts.enable.DynamicMethodInvocation" value="true" />
     <constant name="struts.devMode" value="false" />
     <constant name="struts.i18n.encoding" value="UTF-8" />
+    <constant name="struts.custom.i18n.resources" value="global" />
     
     <package name="default" namespace="/" extends="tiles-default, struts-default">
         <interceptors>
@@ -37,7 +38,10 @@
             <result type="tiles">index</result>
         </action>
         <action name="Reserva" class="ppA.actions.ReservaAction">
-            <result name="success" type="tiles">reserva</result>
+            <result name="success" type="tiles">reservas</result>
+        </action>
+        <action name="Usuario" class="ppA.actions.UsuarioAction">
+            <result name="success" type="tiles">usuarios</result>
         </action>
         <action name="Login" class="ppA.actions.LoginAction">
             <result name="success" type="tiles">success</result>

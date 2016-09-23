@@ -26,10 +26,8 @@
                 <a class="navbar-brand" href="./index">Restaurante La Pampa</a>
             </div>
             <ul class="nav navbar-nav">
-                <li><a href="#">INICIO</a></li>
                 <li class="active"><a href="./Reserva"> NUEVA RESERVACION</a></li>
-                <li><a href="#">LISTADO EMPLEADOS</a></li>
-                <li><a href="#">LISTADO DE RESERVAS</a></li>
+                <li><a href="./Usuario">USUARIOS</a></li>
                 <li><a href="#">REPORTES</a></li>
             </ul>
         </nav>
