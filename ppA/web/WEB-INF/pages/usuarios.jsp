@@ -3,7 +3,7 @@
 
 <a id="nuevoUsuario" href="#" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
     <span class="glyphicon glyphicon-plus-sign"></span>
-    <b> Nueva Reservación</b>
+    <b> Nuevo Usuario</b>
 </a>
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
@@ -29,9 +29,9 @@
 <div id="container">
     <table class="table table-bordered table-hover">
         <tr>
-            <th>usuario</th>
-            <th>contra</th>
-            <th>eliminar?</th>
+            <th>Usuario</th>
+            <th>Contra</th>
+            <th>Eliminar?</th>
         </tr>
         <c:forEach var="l" items="${listUsuarios}">
             <tr obj="${l.id}, ${l.usuario}, ${l.contra}">

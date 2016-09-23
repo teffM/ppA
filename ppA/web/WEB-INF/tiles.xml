@@ -18,6 +18,9 @@
     <definition name="usuarios" extends="default">
         <put-attribute name="body" value="/WEB-INF/pages/usuarios.jsp" />
     </definition>
+    <definition name="sucursales" extends="default">
+        <put-attribute name="body" value="/WEB-INF/pages/sucursales.jsp" />
+    </definition>
     <definition name="success" extends="default">
         <put-attribute name="body" value="/WEB-INF/pages/commons/bienvenido.jsp" />
     </definition>

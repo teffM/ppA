@@ -33,13 +33,13 @@
 <div id="container">
     <table class="table table-bordered table-hover">
         <tr>
-            <th>nombres</th>
-            <th>fechaReservaciones</th>
-            <th>email</th>
-            <th>telefono</th>
-            <th>personas</th>
-            <th>comentarios</th>
-            <th>eliminar?</th>
+            <th>Nombres</th>
+            <th>Fecha Reservaciones</th>
+            <th>Email</th>
+            <th>Telefono</th>
+            <th>Personas</th>
+            <th>Comentarios</th>
+            <th>Eliminar?</th>
         </tr>
         <c:forEach var="l" items="${listReservas}">
             <tr obj="${l.id}, ${l.nombres}, ${l.email},

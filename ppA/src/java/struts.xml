@@ -43,6 +43,9 @@
         <action name="Usuario" class="ppA.actions.UsuarioAction">
             <result name="success" type="tiles">usuarios</result>
         </action>
+        <action name="Sucursal" class="ppA.actions.SucursalAction">
+            <result name="success" type="tiles">sucursales</result>
+        </action>
         <action name="Login" class="ppA.actions.LoginAction">
             <result name="success" type="tiles">success</result>
         </action>
