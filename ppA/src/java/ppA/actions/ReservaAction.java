@@ -1,7 +1,6 @@
 package ppA.actions;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import ppA.entity.Reservaciones;
 import ppA.entity.Sucursales;
@@ -40,9 +39,6 @@ public class ReservaAction extends BaseAction {
 
     public String guardar() throws Exception {
 	try {
-	    getR().setFechaReservaciones(new Date());
-	    getR().setFechaCreacion(new Date());
-
 	    save(getR());
 	    setMsg(getText("msg.guardadoExito"));
 	} catch (Exception e) {

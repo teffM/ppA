@@ -5,6 +5,8 @@
     <span class="glyphicon glyphicon-plus-sign"></span>
     <b> Nueva Sucursal</b>
 </a>
+    <br></br>
+    <br></br>
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -18,7 +20,7 @@
                         <s:textfield name="s.direccion" label="Direccion" cssClass="form-control" />
                         <s:textfield name="s.telefono" label="Telefono" cssClass="form-control" />
 
-                        <s:submit method="guardar" cssClass="btn-info disabled" value="Guardar" key="btn.guardar" />
+                        <s:submit method="guardar" cssClass="btn-info disabled" key="btn.guardar" />
                     </s:form>
                 </fieldset>
             </div>

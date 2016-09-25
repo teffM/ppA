@@ -45,10 +45,11 @@ public class BaseAction extends ActionSupport implements SessionAware {
 		getDb().update(o);
 	    }
 	    getTransaction().commit();
+	    getDb().refresh(o);
 	} catch (Exception e) {
 	    e(e);
 	}
-	return 0;
+	return getId(o);
     }
 
     protected void delete(Object o) {

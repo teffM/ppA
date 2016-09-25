@@ -1,5 +1,6 @@
 <%@taglib uri="/struts-tags" prefix="s"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <a id="nuevaReserva" href="#" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
     <span class="glyphicon glyphicon-plus-sign"></span>
@@ -16,7 +17,9 @@
                         <s:textfield name="r.nombres" label="Nombres" cssClass="form-control" required="true" />
                         <s:textfield name="r.email" label="Email" cssClass="form-control" type="email" />
                         <s:textfield name="r.telefono" label="Telefono" cssClass="form-control" type="number" />
-                        <%--<s:textfield name="r.fechaReservaciones" label="Fecha de la reservaciòn" type="date" cssClass="form-control" />--%>
+                        <s:date name="r.fechaReservaciones" id="createdDateId" />
+                        <s:textfield name="r.fechaReservaciones" label="Fecha de la reservación"
+                                     value="%{createdDateId}" cssClass="form-control" />
                         <s:textfield name="r.personas" label="Personas" type="number" cssClass="form-control" />
                         <s:select name="r.sucursales.id" listKey="id" listValue="sucursal" headerKey="-1" required=""
                                   headerValue="--- Seleccione una sucursal ---" list="listSucursales" label="Sucursal" />
@@ -31,33 +34,42 @@
 </div>
 
 <div id="container">
-    <table class="table table-bordered table-hover">
-        <tr>
-            <th>Nombres</th>
-            <th>Fecha Reservaciones</th>
-            <th>Email</th>
-            <th>Telefono</th>
-            <th>Personas</th>
-            <th>Comentarios</th>
-            <th>Eliminar?</th>
-        </tr>
-        <c:forEach var="l" items="${listReservas}">
-            <tr obj="${l.id}, ${l.nombres}, ${l.email},
-                ${l.telefono}, ${l.personas}, ${l.comentarios}">
-                <td><c:out value="${l.nombres}"/></td>
-                <td><c:out value="${l.fechaReservaciones}"/></td>
-                <td><c:out value="${l.email}"/></td>
-                <td><c:out value="${l.telefono}"/></td>
-                <td><c:out value="${l.personas}"/></td>
-                <td><c:out value="${l.comentarios}"/></td>
-                <td>
-                    <button class="btn btn-default btn-xs" data-href="./Reserva!eliminar?id=${l.id}"
-                            data-toggle="modal" data-target="#confirm-delete">
-                        <span class="glyphicon glyphicon-trash" />
-                    </button>
-                </td>
+    <table id="dataTable" class="table table-striped table-bordered table-hover dt-responsive nowrap">
+        <thead>
+            <tr>
+                <th>Nombres</th>
+                <th>Email</th>
+                <th>Telefono</th>
+                <th>Fecha Reservaciones</th>
+                <th>Personas</th>
+                <th>Sucursal</th>
+                <th>Comentarios</th>
+                <th>Eliminar?</th>
             </tr>
-        </c:forEach>
+        </thead>
+        <tbody>
+            <c:forEach var="l" items="${listReservas}">
+                <fmt:formatDate value="${l.fechaReservaciones}" var="formatDate" 
+                                pattern="MM/dd/yyyy hh:mm a" />
+                <tr obj="${l.id}, ${l.nombres}, ${l.email},
+                    ${l.telefono}, ${formatDate}, ${l.personas},
+                    ${l.sucursales.id}, ${l.comentarios}">
+                    <td><c:out value="${l.nombres}"/></td>
+                    <td><c:out value="${l.email}"/></td>
+                    <td><c:out value="${l.telefono}"/></td>
+                    <td><c:out value="${formatDate}"/></td>
+                    <td><c:out value="${l.personas}"/></td>
+                    <td><c:out value="${l.sucursales.sucursal}"/></td>
+                    <td><c:out value="${l.comentarios}"/></td>
+                    <td>
+                        <button class="btn btn-default btn-xs" data-href="./Reserva!eliminar?id=${l.id}"
+                                data-toggle="modal" data-target="#confirm-delete">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+                    </td>
+                </tr>
+            </c:forEach>
+        </tbody>
     </table>
 </div>
 
@@ -76,9 +88,10 @@
         $("#Reserva_r_nombres").val($.trim(l[1]));
         $("#Reserva_r_email").val($.trim(l[2]));
         $("#Reserva_r_telefono").val($.trim(l[3]));
-        $("#Reserva_r_personas").val($.trim(l[4]));
-        $("#Reserva_r_sucursales_id").val(1);
-        $("#Reserva_r_comentarios").val($.trim(l[5]));
+        $("#Reserva_r_fechaReservaciones").val($.trim(l[4]));
+        $("#Reserva_r_personas").val($.trim(l[5]));
+        $("#Reserva_r_sucursales_id").val($.trim(l[6]));
+        $("#Reserva_r_comentarios").val($.trim(l[7]));
         $('#myModal').modal({
             show: 'false'
         });

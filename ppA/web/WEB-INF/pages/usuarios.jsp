@@ -5,6 +5,9 @@
     <span class="glyphicon glyphicon-plus-sign"></span>
     <b> Nuevo Usuario</b>
 </a>
+
+    <br></br>
+    <br></br>
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -14,7 +17,8 @@
                     <s:form action="Usuario">
                         <s:hidden name="nu.id" />
                         <s:textfield name="nu.usuario" label="Usuario" cssClass="form-control" required="true" />
-                        <s:textfield name="nu.contra" label="Contraseña" cssClass="form-control" />
+                        <s:password name="nu.contra" label="Contraseña" cssClass="form-control" />
+                        <s:password name="nu.contra" label="Confirmar Contraseña" cssClass="form-control" />
                         <s:select name="nu.roles.id" listKey="id" listValue="rol" headerKey="-1" required=""
                                   headerValue="--- Seleccione un rol ---" list="listRoles" label="Roles" />
 
@@ -30,13 +34,15 @@
     <table class="table table-bordered table-hover">
         <tr>
             <th>Usuario</th>
-            <th>Contra</th>
+            <th>Contraseña</th>
+            <th>Rol</th>
             <th>Eliminar?</th>
         </tr>
         <c:forEach var="l" items="${listUsuarios}">
             <tr obj="${l.id}, ${l.usuario}, ${l.contra}">
                 <td><c:out value="${l.usuario}"/></td>
                 <td><c:out value="${l.contra}"/></td>
+                <td><c:out value="${l.roles.rol}"/></td>
                 
                 <td>
                     <button class="btn btn-default btn-xs" data-href="./Usuario!eliminar?id=${l.id}"
