@@ -129,6 +129,13 @@ public class BaseAction extends ActionSupport implements SessionAware {
 	this.errorMsg = errorMsg;
     }
 
+    /**
+     * @return the session
+     */
+    public Map<String, Object> getSession() {
+	return session;
+    }
+
     @Override
     public void setSession(Map<String, Object> map) {
 	this.session = map;

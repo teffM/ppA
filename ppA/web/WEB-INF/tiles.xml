@@ -21,7 +21,4 @@
     <definition name="sucursales" extends="default">
         <put-attribute name="body" value="/WEB-INF/pages/sucursales.jsp" />
     </definition>
-    <definition name="success" extends="default">
-        <put-attribute name="body" value="/WEB-INF/pages/commons/bienvenido.jsp" />
-    </definition>
 </tiles-definitions>

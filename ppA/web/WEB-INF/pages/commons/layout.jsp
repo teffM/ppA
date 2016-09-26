@@ -8,8 +8,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--jQuery-->
-        <script src="./r/js/jquery.com_jquery-2.1.1.min.js" type="text/javascript"></script>
-        <!--<script src="./r/js/jquery-3.1.0.min.js" type="text/javascript"></script>-->
+        <script src="./r/js/jquery-2.1.1.min.js" type="text/javascript"></script>
         <!--boostrap-->
         <link href="./r/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="./r/bootstrap/css/bootstrap-datetimepicker.css" rel="stylesheet" type="text/css"/>
@@ -30,25 +29,26 @@
             </div>
             <ul class="nav navbar-nav">
                 <li class="inactive"><a href="./Reserva">RESERVACIONES</a></li>
-                <li class="dropdown">
-                <li class="dropdown">
-                    <a data-toggle="dropdown">
-                        ADMINISTRACIÓN<span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="./Usuario">USUARIOS</a></li>
-                        <li><a href="./Sucursal">SUCURSALES</a></li>
-                        <li><a href="#">REPORTES</a></li>
-                    </ul>
-                </li>
+                    <s:if test="%{#session.userRol != null && #session.userRol == 'administrador'}">
+                    <li class="dropdown">
+                        <a data-toggle="dropdown">
+                            ADMINISTRACIÓN<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="./Usuario">USUARIOS</a></li>
+                            <li><a href="./Sucursal">SUCURSALES</a></li>
+                            <li><a href="#">REPORTES</a></li>
+                        </ul>
+                    </li>
+                </s:if>
             </ul>
         </nav>
         <div class="container">
             <tiles:insertAttribute name="body" />
         </div>
         <!--modal confirm delete-->
-        <div class="navbar-fixed-bottom">
-            It is footer tile
+        <div class="media-middle">
+            © Copyright Restaurantes La Pampa, 2016 Derechos reservados / All Rights Reserved 
         </div><div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -79,6 +79,8 @@
         <script src="./r/bootstrap/js/pdfmake.min.js" type="text/javascript"></script>
         <script src="./r/bootstrap/js/vfs_fonts.js" type="text/javascript"></script>
         <script src="./r/bootstrap/js/buttons.html5.min.js" type="text/javascript"></script>
+        <!--jQuery-->
+        <script src="./r/js/jquery.validate.min.js" type="text/javascript"></script>
         <script type="text/javascript">
             $(document).ready(function () {
                 if ($('#toast-container').length == 0) {
@@ -90,29 +92,28 @@
             </s:if>
                 }
                 $('#dataTable').DataTable({
-                    dom: 'Bfrtip',
+                    dom: 'lBfrtip',
                     buttons: ['copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5'],
                     "pagingType": "full_numbers",
                     language: {
-                        processing: "Traitement en cours...",
-                        search: "Rechercher&nbsp;:",
-                        lengthMenu: "Afficher _MENU_ &eacute;l&eacute;ments",
-                        info: "Affichage de l'&eacute;lement _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
-                        infoEmpty: "Affichage de l'&eacute;lement 0 &agrave; 0 sur 0 &eacute;l&eacute;ments",
-                        infoFiltered: "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
-                        infoPostFix: "",
-                        loadingRecords: "Chargement en cours...",
-                        zeroRecords: "Aucun &eacute;l&eacute;ment &agrave; afficher",
-                        emptyTable: "Aucune donnée disponible dans le tableau",
+                        processing: "<s:text name="dt.sProcessing" />",
+                        search: "<s:text name="dt.sSearch" />",
+                        lengthMenu: "<s:text name="dt.sLengthMenu" />",
+                        info: "<s:text name="dt.sInfo" />",
+                        infoEmpty: "<s:text name="dt.sInfoEmpty" />",
+                        infoFiltered: "<s:text name="dt.sInfoFiltered" />",
+                        loadingRecords: "<s:text name="dt.sLoandingRecords" />",
+                        zeroRecords: "<s:text name="dt.sZeroRecords" />",
+                        emptyTable: "<s:text name="dt.sEmptyTable" />",
                         paginate: {
-                            first: "Premier",
-                            previous: "Pr&eacute;c&eacute;dent",
+                            first: "<s:text name="dt.sFirst" />",
+                            previous: "<s:text name="dt.sPrevious" />",
                             next: "<s:text name="dt.sNext" />",
-                            last: "Dernier"
+                            last: "<s:text name="dt.sLast" />"
                         },
                         aria: {
-                            sortAscending: ": activer pour trier la colonne par ordre croissant",
-                            sortDescending: ": activer pour trier la colonne par ordre décroissant"
+                            sortAscending: "<s:text name="dt.sSortAscending" />",
+                            sortDescending: "<s:text name="dt.sSortDescending" />"
                         }
                     }
                 });

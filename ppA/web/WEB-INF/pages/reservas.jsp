@@ -4,47 +4,46 @@
 
 <a id="nuevaReserva" href="#" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
     <span class="glyphicon glyphicon-plus-sign"></span>
-    <b> Nueva Reservación</b>
+    <b><s:text name="r.legend" /></b>
 </a>
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
                 <fieldset>
-                    <legend>Registro de nueva reservación</legend>
+                    <legend><s:text name="r.legend" /></legend>
                     <s:form action="Reserva">
                         <s:hidden name="r.id" />
-                        <s:textfield name="r.nombres" label="Nombres" cssClass="form-control" required="true" />
-                        <s:textfield name="r.email" label="Email" cssClass="form-control" type="email" />
-                        <s:textfield name="r.telefono" label="Telefono" cssClass="form-control" type="number" />
+                        <s:textfield name="r.nombres" key="r.nombres" cssClass="form-control required" />
+                        <s:textfield name="r.email" key="r.correo" cssClass="form-control" type="email" />
+                        <s:textfield name="r.telefono" key="r.telefono" cssClass="form-control" type="number" />
                         <s:date name="r.fechaReservaciones" id="createdDateId" />
-                        <s:textfield name="r.fechaReservaciones" label="Fecha de la reservación"
-                                     value="%{createdDateId}" cssClass="form-control" />
-                        <s:textfield name="r.personas" label="Personas" type="number" cssClass="form-control" />
-                        <s:select name="r.sucursales.id" listKey="id" listValue="sucursal" headerKey="-1" required=""
-                                  headerValue="--- Seleccione una sucursal ---" list="listSucursales" label="Sucursal" />
-                        <s:textarea name="r.comentarios" label="Comentarios" />
+                        <s:textfield name="r.fechaReservaciones" key="r.fecha"
+                                     value="%{createdDateId}" cssClass="form-control required" />
+                        <s:textfield name="r.personas" key="r.persona" type="number" cssClass="form-control required" />
+                        <s:select name="r.sucursales.id" listKey="id" listValue="sucursal" headerKey="-1" cssClass="required"
+                                  headerValue="%{getText('lbl.seleccione')}" list="listSucursales" key="r.sucursal" />
+                        <s:textarea name="r.comentarios" key="r.comentario" />
 
-                        <s:submit method="guardar" cssClass="btn-info disabled" value="Guardar" />
+                        <s:submit method="guardar" cssClass="btn-info disabled" key="btn.guardar" />
                     </s:form>
                 </fieldset>
             </div>
         </div>
     </div>
 </div>
-
 <div id="container">
     <table id="dataTable" class="table table-striped table-bordered table-hover dt-responsive nowrap">
         <thead>
             <tr>
-                <th>Nombres</th>
-                <th>Email</th>
-                <th>Telefono</th>
-                <th>Fecha Reservaciones</th>
-                <th>Personas</th>
-                <th>Sucursal</th>
-                <th>Comentarios</th>
-                <th>Eliminar?</th>
+                <th><s:text name="r.nombres" /></th>
+                <th><s:text name="r.correo" /></th>
+                <th><s:text name="r.telefono" /></th>
+                <th><s:text name="r.fecha" /></th>
+                <th><s:text name="r.persona" /></th>
+                <th><s:text name="r.sucursal" /></th>
+                <th><s:text name="r.comentario" /></th>
+                <th><s:text name="q.eliminar" /></th>
             </tr>
         </thead>
         <tbody>
@@ -79,10 +78,11 @@
     });
     $('#nuevaReserva').on('click', function () {
         $("#Reserva_r_id").val(0);
-        $("form")[0].reset();
+        resetForm($('#Reserva'));
         $("#Reserva_r_nombres").focus();
     });
     $("tr").dblclick(function () {
+        resetForm($('#Reserva'));
         var l = $(this).attr("obj").split(",");
         $("#Reserva_r_id").val($.trim(l[0]));
         $("#Reserva_r_nombres").val($.trim(l[1]));

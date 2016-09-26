@@ -47,7 +47,8 @@
             <result name="success" type="tiles">sucursales</result>
         </action>
         <action name="Login" class="ppA.actions.LoginAction">
-            <result name="success" type="tiles">success</result>
+            <result name="success" type="redirectAction">Reserva</result>
+            <result name="error" type="tiles">index</result>
         </action>
     </package>
 </struts>
