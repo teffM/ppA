@@ -1,5 +1,5 @@
 package ppA.entity;
-// Generated 18-sep-2016 22:47:40 by Hibernate Tools 4.3.1
+// Generated 26-sep-2016 23:24:42 by Hibernate Tools 4.3.1
 
 import java.util.Date;
 
@@ -10,26 +10,25 @@ public class Reservaciones implements java.io.Serializable {
 
     private int id;
     private Sucursales sucursales;
-    private String nombres;
-    private String email;
+    private String nombre;
+    private String correo;
     private String telefono;
     private Date fechaReservaciones;
-    private int personas;
+    private int numPersonas;
     private String comentarios;
     private Date fechaCreacion;
 
     public Reservaciones() {
-	setSucursales(new Sucursales());
     }
 
-    public Reservaciones(int id, Sucursales sucursales, String nombres, String email, String telefono, Date fechaReservaciones, int personas, String comentarios, Date fechaCreacion) {
+    public Reservaciones(int id, Sucursales sucursales, String nombre, String correo, String telefono, Date fechaReservaciones, int numPersonas, String comentarios, Date fechaCreacion) {
 	this.id = id;
 	this.sucursales = sucursales;
-	this.nombres = nombres;
-	this.email = email;
+	this.nombre = nombre;
+	this.correo = correo;
 	this.telefono = telefono;
 	this.fechaReservaciones = fechaReservaciones;
-	this.personas = personas;
+	this.numPersonas = numPersonas;
 	this.comentarios = comentarios;
 	this.fechaCreacion = fechaCreacion;
     }
@@ -50,20 +49,20 @@ public class Reservaciones implements java.io.Serializable {
 	this.sucursales = sucursales;
     }
 
-    public String getNombres() {
-	return this.nombres;
+    public String getNombre() {
+	return this.nombre;
     }
 
-    public void setNombres(String nombres) {
-	this.nombres = nombres;
+    public void setNombre(String nombre) {
+	this.nombre = nombre;
     }
 
-    public String getEmail() {
-	return this.email;
+    public String getCorreo() {
+	return this.correo;
     }
 
-    public void setEmail(String email) {
-	this.email = email;
+    public void setCorreo(String correo) {
+	this.correo = correo;
     }
 
     public String getTelefono() {
@@ -82,12 +81,12 @@ public class Reservaciones implements java.io.Serializable {
 	this.fechaReservaciones = fechaReservaciones;
     }
 
-    public int getPersonas() {
-	return this.personas;
+    public int getNumPersonas() {
+	return this.numPersonas;
     }
 
-    public void setPersonas(int personas) {
-	this.personas = personas;
+    public void setNumPersonas(int numPersonas) {
+	this.numPersonas = numPersonas;
     }
 
     public String getComentarios() {

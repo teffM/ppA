@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 18-sep-2016 22:47:41 by Hibernate Tools 4.3.1 -->
+<!-- Generated 26-sep-2016 23:24:42 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="ppA.entity.Sucursales" table="sucursales" schema="dbo" catalog="pampaDB" optimistic-lock="version">
+    <class name="ppA.entity.Sucursales" table="sucursales" schema="dbo" dynamic-insert="true"
+           dynamic-update="true" catalog="DB_A106F2_teffff" optimistic-lock="version">
         <id name="id" type="int">
             <column name="id" />
             <generator class="native" />

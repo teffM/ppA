@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 18-sep-2016 22:47:41 by Hibernate Tools 4.3.1 -->
+<!-- Generated 26-sep-2016 23:24:42 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="ppA.entity.Reservaciones" table="reservaciones" schema="dbo" catalog="pampaDB" optimistic-lock="version">
+    <class name="ppA.entity.Reservaciones" table="reservaciones" schema="dbo" catalog="DB_A106F2_teffff" optimistic-lock="version">
         <id name="id" type="int">
             <column name="id" />
             <generator class="native" />
@@ -11,11 +11,11 @@
         <many-to-one name="sucursales" class="ppA.entity.Sucursales" fetch="select">
             <column name="idSucursal" not-null="true" />
         </many-to-one>
-        <property name="nombres" type="string">
-            <column name="nombres" length="60" not-null="true" />
+        <property name="nombre" type="string">
+            <column name="nombre" length="60" not-null="true" />
         </property>
-        <property name="email" type="string">
-            <column name="email" length="25" not-null="true" />
+        <property name="correo" type="string">
+            <column name="correo" length="25" not-null="true" />
         </property>
         <property name="telefono" type="string">
             <column name="telefono" length="15" not-null="true" />
@@ -23,8 +23,8 @@
         <property name="fechaReservaciones" type="timestamp">
             <column name="fechaReservaciones" length="23" not-null="true" />
         </property>
-        <property name="personas" type="int">
-            <column name="personas" not-null="true" />
+        <property name="numPersonas" type="int">
+            <column name="numPersonas" not-null="true" />
         </property>
         <property name="comentarios" type="string">
             <column name="comentarios" length="500" not-null="true" />

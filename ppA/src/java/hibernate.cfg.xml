@@ -3,12 +3,9 @@
 <hibernate-configuration>
   <session-factory>
     <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
-    <property name="hibernate.connection.url">jdbc:sqlserver://pampaDB.mssql.somee.com;databaseName=pampaDB</property>
-    <property name="hibernate.connection.username">tefM_SQLLogin_1</property>
-    <property name="hibernate.connection.password">5z5nbq6d4j</property>
-    <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
-    <property name="hibernate.show_sql">true</property>
-    <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
+    <property name="hibernate.connection.url">jdbc:sqlserver://sql5025.myasp.net;databaseName=DB_A106F2_teffff</property>
+    <property name="hibernate.connection.username">DB_A106F2_teffff_admin</property>
+    <property name="hibernate.connection.password">pampa123</property>
     <mapping resource="ppA/entity/Sucursales.hbm.xml"/>
     <mapping resource="ppA/entity/Roles.hbm.xml"/>
     <mapping resource="ppA/entity/Usuarios.hbm.xml"/>

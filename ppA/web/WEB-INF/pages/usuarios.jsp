@@ -17,8 +17,8 @@
                     <s:form action="Usuario">
                         <s:hidden name="nu.id" />
                         <s:textfield name="nu.usuario" label="Usuario" cssClass="form-control" required="true" />
-                        <s:password name="nu.contra" label="Contraseña" cssClass="form-control" />
-                        <s:password name="nu.contra" label="Confirmar Contraseña" cssClass="form-control" />
+                        <s:password name="nu.clave" label="Contraseña" cssClass="form-control" />
+                        <s:password name="nu.clave" label="Confirmar Contraseña" cssClass="form-control" />
                         <s:select name="nu.roles.id" listKey="id" listValue="rol" headerKey="-1" required=""
                                   headerValue="--- Seleccione un rol ---" list="listRoles" label="Roles" />
 
@@ -39,9 +39,9 @@
             <th>Eliminar?</th>
         </tr>
         <c:forEach var="l" items="${listUsuarios}">
-            <tr obj="${l.id}, ${l.usuario}, ${l.contra}">
+            <tr obj="${l.id}, ${l.usuario}, ${l.clave}">
                 <td><c:out value="${l.usuario}"/></td>
-                <td><c:out value="${l.contra}"/></td>
+                <td>?????</td>
                 <td><c:out value="${l.roles.rol}"/></td>
                 
                 <td>
@@ -65,7 +65,7 @@
         var l = $(this).attr("obj").split(",");
         $("#Usuario_nu_id").val($.trim(l[0]));
         $("#Usuario_nu_usuario").val($.trim(l[1]));
-        $("#Usuario_nu_contra").val($.trim(l[2]));
+        $("#Usuario_nu_clave").val($.trim(l[2]));
         $("#Usuario_nu_roles_id").val(1);
         $('#myModal').modal({
             show: 'false'
