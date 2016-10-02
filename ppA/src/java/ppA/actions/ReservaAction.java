@@ -2,6 +2,7 @@ package ppA.actions;
 
 import java.util.ArrayList;
 import java.util.List;
+import ppA.entity.Estados;
 import ppA.entity.Reservaciones;
 import ppA.entity.Sucursales;
 
@@ -14,6 +15,7 @@ public class ReservaAction extends BaseAction {
     private Reservaciones r;
     private List<Reservaciones> listReservas;
     private List<Sucursales> listSucursales;
+    private List<Sucursales> listEstados;
 
     public ReservaAction() {
 	setListReservas(new ArrayList<>());
@@ -29,6 +31,7 @@ public class ReservaAction extends BaseAction {
 	try {
 	    setListReservas(getList(Reservaciones.class));
 	    setListSucursales(getList(Sucursales.class));
+	    setListEstados(getList(Estados.class));
 	} catch (Exception e) {
 	    return e(e);
 	} finally {
@@ -97,5 +100,19 @@ public class ReservaAction extends BaseAction {
      */
     private void setListSucursales(List<Sucursales> listSucursales) {
 	this.listSucursales = listSucursales;
+    }
+
+    /**
+     * @return the listEstados
+     */
+    public List<Sucursales> getListEstados() {
+	return listEstados;
+    }
+
+    /**
+     * @param listEstados the listEstados to set
+     */
+    public void setListEstados(List<Sucursales> listEstados) {
+	this.listEstados = listEstados;
     }
 }

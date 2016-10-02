@@ -6,10 +6,11 @@
     <property name="hibernate.connection.url">jdbc:sqlserver://sql5025.myasp.net;databaseName=DB_A106F2_teffff</property>
     <property name="hibernate.connection.username">DB_A106F2_teffff_admin</property>
     <property name="hibernate.connection.password">pampa123</property>
+    <mapping resource="ppA/entity/Reservaciones.hbm.xml"/>
+    <mapping resource="ppA/entity/Estados.hbm.xml"/>
+    <mapping resource="ppA/entity/Opciones.hbm.xml"/>
     <mapping resource="ppA/entity/Sucursales.hbm.xml"/>
     <mapping resource="ppA/entity/Roles.hbm.xml"/>
     <mapping resource="ppA/entity/Usuarios.hbm.xml"/>
-    <mapping resource="ppA/entity/Reservaciones.hbm.xml"/>
-    <mapping resource="ppA/entity/Opciones.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

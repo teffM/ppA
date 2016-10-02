@@ -1,5 +1,5 @@
 package ppA.entity;
-// Generated 26-sep-2016 23:24:42 by Hibernate Tools 4.3.1
+// Generated 02-oct-2016 10:52:33 by Hibernate Tools 4.3.1
 
 import java.util.Date;
 
@@ -9,6 +9,7 @@ import java.util.Date;
 public class Reservaciones implements java.io.Serializable {
 
     private int id;
+    private Estados estados;
     private Sucursales sucursales;
     private String nombre;
     private String correo;
@@ -21,8 +22,9 @@ public class Reservaciones implements java.io.Serializable {
     public Reservaciones() {
     }
 
-    public Reservaciones(int id, Sucursales sucursales, String nombre, String correo, String telefono, Date fechaReservaciones, int numPersonas, String comentarios, Date fechaCreacion) {
+    public Reservaciones(int id, Estados estados, Sucursales sucursales, String nombre, String correo, String telefono, Date fechaReservaciones, int numPersonas, String comentarios, Date fechaCreacion) {
 	this.id = id;
+	this.estados = estados;
 	this.sucursales = sucursales;
 	this.nombre = nombre;
 	this.correo = correo;
@@ -39,6 +41,14 @@ public class Reservaciones implements java.io.Serializable {
 
     public void setId(int id) {
 	this.id = id;
+    }
+
+    public Estados getEstados() {
+	return this.estados;
+    }
+
+    public void setEstados(Estados estados) {
+	this.estados = estados;
     }
 
     public Sucursales getSucursales() {

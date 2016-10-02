@@ -1,5 +1,5 @@
 package ppA.entity;
-// Generated 26-sep-2016 23:24:42 by Hibernate Tools 4.3.1
+// Generated 02-oct-2016 10:52:33 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -15,6 +15,7 @@ public class Roles  implements java.io.Serializable {
      private String rol;
      private String descripcion;
      private Set usuarioses = new HashSet(0);
+     private Set usuarioses_1 = new HashSet(0);
 
     public Roles() {
     }
@@ -25,11 +26,12 @@ public class Roles  implements java.io.Serializable {
         this.rol = rol;
         this.descripcion = descripcion;
     }
-    public Roles(int id, String rol, String descripcion, Set usuarioses) {
+    public Roles(int id, String rol, String descripcion, Set usuarioses, Set usuarioses_1) {
        this.id = id;
        this.rol = rol;
        this.descripcion = descripcion;
        this.usuarioses = usuarioses;
+       this.usuarioses_1 = usuarioses_1;
     }
    
     public int getId() {
@@ -59,6 +61,13 @@ public class Roles  implements java.io.Serializable {
     
     public void setUsuarioses(Set usuarioses) {
         this.usuarioses = usuarioses;
+    }
+    public Set getUsuarioses_1() {
+        return this.usuarioses_1;
+    }
+    
+    public void setUsuarioses_1(Set usuarioses_1) {
+        this.usuarioses_1 = usuarioses_1;
     }
 
 

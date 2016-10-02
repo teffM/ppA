@@ -3,32 +3,26 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 02-oct-2016 10:52:35 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="ppA.entity.Sucursales" table="sucursales" schema="dbo" catalog="DB_A106F2_teffff" optimistic-lock="version">
+    <class name="ppA.entity.Estados" table="estados" schema="dbo" catalog="DB_A106F2_teffff" optimistic-lock="version">
         <id name="id" type="int">
             <column name="id" />
             <generator class="native" />
         </id>
-        <property name="sucursal" type="string">
-            <column name="sucursal" length="100" not-null="true" />
+        <property name="estado" type="string">
+            <column name="estado" length="20" not-null="true" />
         </property>
-        <property name="nacional" type="int">
-            <column name="nacional" not-null="true" />
-        </property>
-        <property name="direccion" type="string">
-            <column name="direccion" length="100" not-null="true" />
-        </property>
-        <property name="telefono" type="string">
-            <column name="telefono" length="15" not-null="true" />
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="50" not-null="true" />
         </property>
         <set name="reservacioneses" table="reservaciones" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="idSucursal" not-null="true" />
+                <column name="idEstado" not-null="true" />
             </key>
             <one-to-many class="ppA.entity.Reservaciones" />
         </set>
         <set name="reservacioneses_1" table="reservaciones" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="idSucursal" not-null="true" />
+                <column name="idEstado" not-null="true" />
             </key>
             <one-to-many class="ppA.entity.Reservaciones" />
         </set>
