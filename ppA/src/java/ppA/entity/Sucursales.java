@@ -1,5 +1,5 @@
 package ppA.entity;
-// Generated 02-oct-2016 10:52:33 by Hibernate Tools 4.3.1
+// Generated 02-oct-2016 11:51:55 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;

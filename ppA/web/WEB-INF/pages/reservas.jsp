@@ -66,7 +66,7 @@
                     <td><c:out value="${fechaCreacion}"/></td>
                     <td><c:out value="${l.numPersonas}"/></td>
                     <td><c:out value="${l.sucursales.sucursal}"/></td>
-                    <td style="background-color: lightgreen;"><c:out value="${l.estados.estado}"/></td>
+                    <td style="background-color: <c:out value="${l.estados.color}"/>;"><c:out value="${l.estados.estado}"/></td>
                     <td><c:out value="${l.comentarios}"/></td>
                     <td>
                         <button class="btn btn-default btn-xs" data-href="./Reserva!eliminar?id=${l.id}"
