@@ -6,7 +6,7 @@
     <class name="ppA.entity.Estados" table="estados" schema="dbo" catalog="DB_A106F2_teffff" optimistic-lock="version">
         <id name="id" type="int">
             <column name="id" />
-            <generator class="assigned" />
+            <generator class="native" />
         </id>
         <property name="estado" type="string">
             <column name="estado" length="20" not-null="true" />

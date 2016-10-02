@@ -6,7 +6,7 @@
     <class name="ppA.entity.Reservaciones" table="reservaciones" schema="dbo" catalog="DB_A106F2_teffff" optimistic-lock="version">
         <id name="id" type="int">
             <column name="id" />
-            <generator class="assigned" />
+            <generator class="native" />
         </id>
         <many-to-one name="estados" class="ppA.entity.Estados" fetch="select">
             <column name="idEstado" not-null="true" />
