@@ -6,6 +6,8 @@ create database pampaDB
 go
 USE pampaDB
 GO
+Set Language 'EspaÃ±ol'
+GO
 
 CREATE TABLE [opciones](
 	[id] [int] primary key IDENTITY(1,1) NOT NULL,
@@ -52,7 +54,7 @@ CREATE TABLE [dbo].[usuarios](
 GO
 INSERT into [opciones] ([opcion], [orden], [padre], [accion], [descripcion]) VALUES (N'Inicio', CAST(0.00 AS Decimal(5, 2)), NULL, N'./index', N'index de la aplicacion')
 GO
-INSERT [dbo].[opciones] ([opcion], [orden], [padre], [accion], [descripcion]) VALUES (N'Cerrar<br />sesión', CAST(999.00 AS Decimal(5, 2)), NULL, N'./logOut', N'cerrar la sesion de la aplicacion')
+INSERT [dbo].[opciones] ([opcion], [orden], [padre], [accion], [descripcion]) VALUES (N'Cerrar<br />sesiï¿½n', CAST(999.00 AS Decimal(5, 2)), NULL, N'./logOut', N'cerrar la sesion de la aplicacion')
 GO
 INSERT [dbo].[reservaciones] ([nombre], [correo], [telefono], [fechaReservaciones], [numPersonas], [idSucursal], [comentarios], [fechaCreacion]) VALUES (N'tefy', N'tefy@tefy.tefy', N'7555555555', CAST(N'2016-06-10 11:06:00.000' AS DateTime), 2, 1, N'sd', CAST(N'2016-09-24 22:15:09.890' AS DateTime))
 GO                                                                                                                                                          

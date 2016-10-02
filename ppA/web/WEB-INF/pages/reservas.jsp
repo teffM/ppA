@@ -17,9 +17,9 @@
                         <s:textfield name="r.nombre" key="r.nombres" cssClass="form-control required" />
                         <s:textfield name="r.correo" key="r.correo" cssClass="form-control" type="email" />
                         <s:textfield name="r.telefono" key="r.telefono" cssClass="form-control" type="number" />
-                        <s:date name="r.fechaReservaciones" id="createdDateId" />
+                        <s:date name="r.fechaReservaciones" id="createdDateId" format="dd/MM/yyyy hh:mm a" />
                         <s:textfield name="r.fechaReservaciones" key="r.fecha"
-                                     value="%{createdDateId}" cssClass="form-control required" />
+                                     value="%{createdDateId}" cssClass="form-control dateTime required" />
                         <s:textfield name="r.numPersonas" key="r.persona" type="number" cssClass="form-control required" />
                         <s:select name="r.sucursales.id" listKey="id" listValue="sucursal" headerKey="-1" cssClass="required"
                                   headerValue="%{getText('lbl.seleccione')}" list="listSucursales" key="r.sucursal" />
@@ -49,14 +49,14 @@
         <tbody>
             <c:forEach var="l" items="${listReservas}">
                 <fmt:formatDate value="${l.fechaReservaciones}" var="formatDate" 
-                                pattern="MM/dd/yyyy hh:mm a" />
+                                pattern="dd/MM/yyyy hh:mm a" />
                 <tr obj="${l.id}, ${l.nombre}, ${l.correo},
                     ${l.telefono}, ${formatDate}, ${l.numPersonas},
                     ${l.sucursales.id}, ${l.comentarios}">
                     <td><c:out value="${l.nombre}"/></td>
                     <td><c:out value="${l.correo}"/></td>
                     <td><c:out value="${l.telefono}"/></td>
-                    <td><c:out value="${formatDate}"/></td>
+                    <td><c:out value="${formatDate}"  /></td>
                     <td><c:out value="${l.numPersonas}"/></td>
                     <td><c:out value="${l.sucursales.sucursal}"/></td>
                     <td><c:out value="${l.comentarios}"/></td>
@@ -73,9 +73,6 @@
 </div>
 
 <script type="text/javascript">
-    $(function () {
-        $("#Reserva_r_fechaReservaciones").datetimepicker();
-    });
     $('#nuevaReserva').on('click', function () {
         $("#Reserva_r_id").val(0);
         resetForm($('#Reserva'));
