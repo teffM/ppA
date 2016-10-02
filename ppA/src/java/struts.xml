@@ -40,6 +40,9 @@
         <action name="Reserva" class="ppA.actions.ReservaAction">
             <result name="success" type="tiles">reservas</result>
         </action>
+        <action name="Estado" class="ppA.actions.EstadoAction">
+            <result name="success" type="tiles">estados</result>
+        </action>
         <action name="Usuario" class="ppA.actions.UsuarioAction">
             <result name="success" type="tiles">usuarios</result>
         </action>

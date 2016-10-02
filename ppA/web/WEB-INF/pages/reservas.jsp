@@ -4,7 +4,7 @@
 
 <a id="nuevaReserva" href="#" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
     <span class="glyphicon glyphicon-plus-sign"></span>
-    <b><s:text name="r.legend" /></b>
+    <b><s:text name="r.btnNuevo" /></b>
 </a>
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">

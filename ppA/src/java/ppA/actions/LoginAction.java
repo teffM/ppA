@@ -29,6 +29,15 @@ public class LoginAction extends BaseAction {
 	return ERROR;
     }
 
+    public String cerrarSesion() throws Exception {
+	try {
+	    getSession().clear();
+	} catch (Exception e) {
+	    return e(e);
+	}
+	return "index";
+    }
+
     public String getClave() {
 	return clave;
     }

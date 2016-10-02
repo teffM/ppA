@@ -1,6 +1,5 @@
 package ppA.actions;
 
-import java.util.ArrayList;
 import java.util.List;
 import ppA.entity.Estados;
 import ppA.entity.Reservaciones;
@@ -16,11 +15,6 @@ public class ReservaAction extends BaseAction {
     private List<Reservaciones> listReservas;
     private List<Sucursales> listSucursales;
     private List<Sucursales> listEstados;
-
-    public ReservaAction() {
-	setListReservas(new ArrayList<>());
-	setListSucursales(new ArrayList<>());
-    }
 
     @Override
     public String execute() throws Exception {

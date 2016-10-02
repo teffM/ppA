@@ -14,6 +14,7 @@
         <link href="./r/bootstrap/css/bootstrap-datetimepicker.css" rel="stylesheet" type="text/css"/>
         <link href="./r/bootstrap/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="./r/bootstrap/css/responsive.bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="./r/bootstrap/css/bootstrap-colorpicker.min.css" rel="stylesheet" type="text/css"/>
         <link href="./r/bootstrap/css/buttons.dataTables.min.css" rel="stylesheet" type="text/css"/>
         <!--toaster-->
         <link href="./r/toastr/css/toastr.css" rel="stylesheet" type="text/css"/>
@@ -23,7 +24,7 @@
         <script src="./r/js/functions.js" type="text/javascript"></script>
     </head>
     <body>
-        <nav class="navbar navbar-inverse">
+        <nav class="navbar navbar-inverse  twoRow">
             <div class="navbar-header">
                 <a class="navbar-brand" href="./index">Restaurante La Pampa</a>
             </div>
@@ -37,10 +38,16 @@
                         <ul class="dropdown-menu">
                             <li><a href="./Usuario">USUARIOS</a></li>
                             <li><a href="./Sucursal">SUCURSALES</a></li>
+                            <li><a href="./Estado">ESTADOS</a></li>
                             <li><a href="#">REPORTES</a></li>
                         </ul>
                     </li>
                 </s:if>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="inactive">
+                    <a href="./Login!cerrarSesion">CERRAR SESIÓN </a>
+                </li>
             </ul>
         </nav>
         <div class="container">
@@ -69,6 +76,7 @@
         <script src="./r/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="./r/bootstrap/js/moment-with-locales.js" type="text/javascript"></script>
         <script src="./r/bootstrap/js/bootstrap-datetimepicker.js" type="text/javascript"></script>
+        <script src="./r/bootstrap/js/bootstrap-colorpicker.min.js" type="text/javascript"></script>
         <script src="./r/bootstrap/js/validator.min.js" type="text/javascript"></script>
         <script src="./r/bootstrap/js/jquery.dataTables.min.js" type="text/javascript"></script>
         <script src="./r/bootstrap/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
@@ -118,6 +126,7 @@
                     }
                 });
                 $(".dateTime").datetimepicker({locale: 'es'});
+                $(".colorpicker").colorpicker({format: "hex"});
             });
             $('#confirm-delete').on('show.bs.modal', function (e) {
                 $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));

@@ -73,6 +73,9 @@ public class BaseAction extends ActionSupport implements SessionAware {
 	if (o instanceof Reservaciones) {
 	    return ((Reservaciones) o).getId();
 	}
+	if (o instanceof Estados) {
+	    return ((Estados) o).getId();
+	}
 	if (o instanceof Roles) {
 	    return ((Roles) o).getId();
 	}
