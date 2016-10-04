@@ -17,8 +17,8 @@
                         <s:hidden name="s.id" />
                         <s:textfield name="s.sucursal" label="Sucursal" cssClass="form-control" required="true" />
                         <s:textfield name="s.nacional" label="Nacional" cssClass="form-control" />
-                        <s:textfield name="s.direccion" label="Direccion" cssClass="form-control" />
-                        <s:textfield name="s.telefono" label="Telefono" cssClass="form-control" />
+                        <s:textfield name="s.direccion" label="Direccion" cssClass="form-control" required="true" />
+                        <s:textfield name="s.telefono" label="Telefono" cssClass="form-control" required="true" />
 
                         <s:submit method="guardar" cssClass="btn-info disabled" key="btn.guardar" />
                     </s:form>

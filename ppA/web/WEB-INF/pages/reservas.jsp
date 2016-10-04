@@ -14,20 +14,20 @@
                     <legend><s:text name="r.legend" /></legend>
                     <s:form action="Reserva">
                         <s:hidden name="r.id" />
-                        <s:textfield name="r.nombre" key="r.nombres" cssClass="form-control required" />
-                        <s:textfield name="r.correo" key="r.correo" cssClass="form-control" type="email" />
-                        <s:textfield name="r.telefono" key="r.telefono" cssClass="form-control" type="number" />
+                        <s:textfield name="r.nombre" key="r.nombres" cssClass="form-control required" required="true" />
+                        <s:textfield name="r.correo" key="r.correo" type="email" cssClass="form-control required" required="true" />
+                        <s:textfield name="r.telefono" key="r.telefono" cssClass="form-control required" required="true" type="number" />
                         <s:date name="r.fechaReservaciones" id="createdDateId" format="dd/MM/yyyy hh:mm a" />
                         <s:textfield name="r.fechaReservaciones" key="r.fechaReserva"
-                                     value="%{createdDateId}" cssClass="form-control dateTime required" />
-                        <s:textfield name="r.numPersonas" key="r.persona" type="number" cssClass="form-control required" />
-                        <s:select name="r.sucursales.id" listKey="id" listValue="sucursal" headerKey="-1" cssClass="required"
-                                  headerValue="%{getText('lbl.seleccione')}" list="listSucursales" key="r.sucursal" />
-                        <s:select name="r.estados.id" listKey="id" listValue="estado" headerKey="-1" cssClass="required"
-                                  headerValue="%{getText('lbl.seleccione')}" list="listEstados" key="r.estado" />
+                                     value="%{createdDateId}" cssClass="form-control dateTime required" required="true" />
+                        <s:textfield name="r.numPersonas" key="r.persona" type="number" cssClass="form-control required" required="true" />
+                        <s:select name="r.sucursales.id" listKey="id" listValue="sucursal" headerKey="" cssClass="required"
+                                  headerValue="%{getText('lbl.seleccione')}" list="listSucursales" key="r.sucursal" required="true" />
+                        <s:select name="r.estados.id" listKey="id" listValue="estado" headerKey="" cssClass="required"
+                                  headerValue="%{getText('lbl.seleccione')}" list="listEstados" key="r.estado" required="true"/>
                         <s:textarea name="r.comentarios" key="r.comentario" />
 
-                        <s:submit method="guardar" cssClass="btn-info disabled" key="btn.guardar" />
+                        <s:submit method="guardar" cssClass="btn-info disabled submit" ondblclick="" key="btn.guardar" />
                     </s:form>
                 </fieldset>
             </div>
@@ -42,10 +42,10 @@
                 <th><s:text name="r.correo" /></th>
                 <th><s:text name="r.telefono" /></th>
                 <th><s:text name="r.fechaReserva" /></th>
+                <th><s:text name="r.estado" /></th>
                 <th><s:text name="r.fechaCreacion" /></th>
                 <th><s:text name="r.persona" /></th>
                 <th><s:text name="r.sucursal" /></th>
-                <th><s:text name="r.estado" /></th>
                 <th><s:text name="r.comentario" /></th>
                 <th><s:text name="q.eliminar" /></th>
             </tr>
@@ -63,10 +63,10 @@
                     <td><c:out value="${l.correo}"/></td>
                     <td><c:out value="${l.telefono}"/></td>
                     <td><c:out value="${fechaReserva}"/></td>
+                    <td style="background-color: <c:out value="${l.estados.color}"/>;"><c:out value="${l.estados.estado}"/></td>
                     <td><c:out value="${fechaCreacion}"/></td>
                     <td><c:out value="${l.numPersonas}"/></td>
                     <td><c:out value="${l.sucursales.sucursal}"/></td>
-                    <td style="background-color: <c:out value="${l.estados.color}"/>;"><c:out value="${l.estados.estado}"/></td>
                     <td><c:out value="${l.comentarios}"/></td>
                     <td>
                         <button class="btn btn-default btn-xs" data-href="./Reserva!eliminar?id=${l.id}"
@@ -103,4 +103,7 @@
             show: 'false'
         });
     });
+    $("#Reserva_r_correo").attr("type", "email");
+    $("#Reserva_r_telefono").attr("type", "phone");
+    $("#Reserva_r_numPersonas").attr("type", "positiveNumber");
 </script>

@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 02-oct-2016 11:51:57 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="ppA.entity.Reservaciones" table="reservaciones" schema="dbo" catalog="DB_A106F2_teffff" optimistic-lock="version">
+    <class name="ppA.entity.Reservaciones" table="reservaciones" schema="dbo" optimistic-lock="version">
         <id name="id" type="int">
             <column name="id" />
             <generator class="native" />

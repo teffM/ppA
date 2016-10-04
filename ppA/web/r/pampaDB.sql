@@ -55,7 +55,8 @@ GO
 CREATE TABLE [dbo].[estados](
 	[id] [int] primary key IDENTITY(1,1) NOT NULL,
 	[estado] [varchar](20) NOT NULL DEFAULT (''),
-	[descripcion] [varchar](50) NOT NULL DEFAULT ('')
+	[descripcion] [varchar](50) NOT NULL DEFAULT (''),
+	[color] [varchar](20) NOT NULL DEFAULT ('')
 )
 GO
 

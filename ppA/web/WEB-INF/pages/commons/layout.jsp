@@ -39,16 +39,17 @@
                             <li><a href="./Usuario">USUARIOS</a></li>
                             <li><a href="./Sucursal">SUCURSALES</a></li>
                             <li><a href="./Estado">ESTADOS</a></li>
-                            <li><a href="#">REPORTES</a></li>
                         </ul>
                     </li>
                 </s:if>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="inactive">
-                    <a href="./Login!cerrarSesion">CERRAR SESIÓN </a>
-                </li>
-            </ul>
+            <s:if test="%{#session.userRol != null && #session.userRol != null}">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="inactive">
+                        <a href="./Login!cerrarSesion">CERRAR SESIÓN</a>
+                    </li>
+                </ul>
+            </s:if>
         </nav>
         <div class="container">
             <tiles:insertAttribute name="body" />
@@ -77,7 +78,6 @@
         <script src="./r/bootstrap/js/moment-with-locales.js" type="text/javascript"></script>
         <script src="./r/bootstrap/js/bootstrap-datetimepicker.js" type="text/javascript"></script>
         <script src="./r/bootstrap/js/bootstrap-colorpicker.min.js" type="text/javascript"></script>
-        <script src="./r/bootstrap/js/validator.min.js" type="text/javascript"></script>
         <script src="./r/bootstrap/js/jquery.dataTables.min.js" type="text/javascript"></script>
         <script src="./r/bootstrap/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
         <script src="./r/bootstrap/js/dataTables.responsive.min.js" type="text/javascript"></script>
@@ -89,6 +89,7 @@
         <script src="./r/bootstrap/js/buttons.html5.min.js" type="text/javascript"></script>
         <!--jQuery-->
         <script src="./r/js/jquery.validate.min.js" type="text/javascript"></script>
+        <script src="./r/js/messages_es.js" type="text/javascript"></script>
         <script type="text/javascript">
             $(document).ready(function () {
                 if ($('#toast-container').length == 0) {
@@ -131,6 +132,13 @@
             $('#confirm-delete').on('show.bs.modal', function (e) {
                 $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
             });
+            $.validator.addMethod("phone", function (value, element) {
+                return this.optional(element) || /^[2|6|7][0-9]{7}$/.test(value);
+            }, 'Por favor, especifique un número de teléfono válido');
+            $.validator.addMethod('positiveNumber',
+                    function (value) {
+                        return Number(value) > 0;
+                    }, 'Ingrese un número mayor que cero');
         </script>
     </body>
 </html>

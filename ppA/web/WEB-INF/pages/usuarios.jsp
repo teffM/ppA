@@ -16,9 +16,9 @@
                     <legend><s:text name="usuario.nuevoUsuario" /></legend>
                     <s:form action="Usuario">
                         <s:hidden name="nu.id" />
-                        <s:textfield name="nu.usuario" label="Usuario" cssClass="form-control" required="true" />
-                        <s:password name="nu.clave" label="Contraseña" cssClass="form-control" />
-                        <s:password name="nu.clave" label="Confirmar Contraseña" cssClass="form-control" />
+                        <s:textfield name="nu.usuario" label="Usuario" cssClass="form-control required" required="true" />
+                        <s:password name="nu.clave" label="Contraseña" cssClass="form-control required" required="true" />
+                        <s:password name="nu.clave" label="Confirmar Contraseña" cssClass="form-control required" required="true" />
                         <s:select name="nu.roles.id" listKey="id" listValue="rol" headerKey="-1" required=""
                                   headerValue="--- Seleccione un rol ---" list="listRoles" label="Roles" />
 
