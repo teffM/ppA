@@ -14,12 +14,13 @@
                     <legend><s:text name="r.legend" /></legend>
                     <s:form action="Reserva">
                         <s:hidden name="r.id" />
-                        <s:textfield name="r.nombre" key="r.nombres" cssClass="form-control required" required="true" />
-                        <s:textfield name="r.correo" key="r.correo" type="email" cssClass="form-control required" required="true" />
-                        <s:textfield name="r.telefono" key="r.telefono" cssClass="form-control required" required="true" type="number" />
+                        <s:select name="r.clientes.id" listKey="id" listValue="nombre" headerKey="" cssClass="required"
+                                  headerValue="%{getText('lbl.seleccione')}" list="listClientes" key="r.cliente" required="true" />
+                        <s:select name="r.menus.id" listKey="id" listValue="menu" headerKey="" cssClass="required"
+                                  headerValue="%{getText('lbl.seleccione')}" list="listMenus" key="r.menu" required="true" />
                         <s:date name="r.fechaReservaciones" id="createdDateId" format="dd/MM/yyyy hh:mm a" />
                         <s:textfield name="r.fechaReservaciones" key="r.fechaReserva"
-                                     value="%{createdDateId}" cssClass="form-control dateTime required" required="true" />
+                                     value="%{createdDateId}" cssClass="form-control dateTimeMinNow required" required="true" />
                         <s:textfield name="r.numPersonas" key="r.persona" type="number" cssClass="form-control required" required="true" />
                         <s:select name="r.sucursales.id" listKey="id" listValue="sucursal" headerKey="" cssClass="required"
                                   headerValue="%{getText('lbl.seleccione')}" list="listSucursales" key="r.sucursal" required="true" />
@@ -38,9 +39,8 @@
     <table id="dataTable" class="table table-striped table-bordered table-hover dt-responsive nowrap">
         <thead>
             <tr>
-                <th><s:text name="r.nombres" /></th>
-                <th><s:text name="r.correo" /></th>
-                <th><s:text name="r.telefono" /></th>
+                <th><s:text name="r.cliente" /></th>
+                <th><s:text name="r.menu" /></th>
                 <th><s:text name="r.fechaReserva" /></th>
                 <th><s:text name="r.estado" /></th>
                 <th><s:text name="r.fechaCreacion" /></th>
@@ -56,12 +56,11 @@
                                 pattern="dd/MM/yyyy hh:mm a" />
                 <fmt:formatDate value="${l.fechaCreacion}" var="fechaCreacion"
                                 pattern="dd/MM/yyyy hh:mm a" />
-                <tr obj="${l.id}, ${l.nombre}, ${l.correo}, ${l.telefono},
+                <tr obj="${l.id}, ${l.clientes.id}, ${l.menus.id},
                     ${fechaReserva}, ${fechaCreacion}, ${l.numPersonas},
                     ${l.sucursales.id}, ${l.estados.id}, ${l.comentarios}">
-                    <td><c:out value="${l.nombre}"/></td>
-                    <td><c:out value="${l.correo}"/></td>
-                    <td><c:out value="${l.telefono}"/></td>
+                    <td><c:out value="${l.clientes.nombre}"/></td>
+                    <td><c:out value="${l.menus.menu}"/></td>
                     <td><c:out value="${fechaReserva}"/></td>
                     <td style="background-color: <c:out value="${l.estados.color}"/>;"><c:out value="${l.estados.estado}"/></td>
                     <td><c:out value="${fechaCreacion}"/></td>
@@ -86,19 +85,18 @@
         resetForm($('#Reserva'));
         $("#Reserva_r_nombres").focus();
     });
-    $("tr").dblclick(function () {
+    $("#dataTable > tbody > tr").dblclick(function () {
         resetForm($('#Reserva'));
         var l = $(this).attr("obj").split(",");
         $("#Reserva_r_id").val($.trim(l[0]));
-        $("#Reserva_r_nombre").val($.trim(l[1]));
-        $("#Reserva_r_correo").val($.trim(l[2]));
-        $("#Reserva_r_telefono").val($.trim(l[3]));
-        $("#Reserva_r_fechaReservaciones").val($.trim(l[4]));
-        $("#Reserva_r_fechaCreacion").val($.trim(l[5]));
-        $("#Reserva_r_numPersonas").val($.trim(l[6]));
-        $("#Reserva_r_sucursales_id").val($.trim(l[7]));
-        $("#Reserva_r_estados_id").val($.trim(l[8]));
-        $("#Reserva_r_comentarios").val($.trim(l[9]));
+        $("#Reserva_r_clientes_id").val($.trim(l[1]));
+        $("#Reserva_r_menus_id").val($.trim(l[2]));
+        $("#Reserva_r_fechaReservaciones").val($.trim(l[3]));
+        $("#Reserva_r_fechaCreacion").val($.trim(l[4]));
+        $("#Reserva_r_numPersonas").val($.trim(l[5]));
+        $("#Reserva_r_sucursales_id").val($.trim(l[6]));
+        $("#Reserva_r_estados_id").val($.trim(l[7]));
+        $("#Reserva_r_comentarios").val($.trim(l[8]));
         $('#myModal').modal({
             show: 'false'
         });

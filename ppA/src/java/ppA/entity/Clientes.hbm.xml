@@ -3,26 +3,32 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 05-oct-2016 22:16:52 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="ppA.entity.Sucursales" table="sucursales" schema="dbo" optimistic-lock="version">
+    <class name="ppA.entity.Clientes" table="clientes" schema="dbo" optimistic-lock="version">
         <id name="id" type="int">
             <column name="id" />
             <generator class="native" />
         </id>
-        <property name="sucursal" type="string">
-            <column name="sucursal" length="100" not-null="true" />
+        <property name="nombre" type="string">
+            <column name="nombre" length="25" not-null="true" />
         </property>
-        <property name="nacional" type="int">
-            <column name="nacional" not-null="true" />
-        </property>
-        <property name="direccion" type="string">
-            <column name="direccion" length="100" not-null="true" />
+        <property name="apellido" type="string">
+            <column name="apellido" length="25" not-null="true" />
         </property>
         <property name="telefono" type="string">
             <column name="telefono" length="15" not-null="true" />
         </property>
+        <property name="correo" type="string">
+            <column name="correo" length="25" not-null="true" />
+        </property>
+        <property name="dui" type="string">
+            <column name="dui" length="10" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="100" not-null="true" />
+        </property>
         <set name="reservacioneses" table="reservaciones" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="idSucursal" not-null="true" />
+                <column name="idCliente" not-null="true" />
             </key>
             <one-to-many class="ppA.entity.Reservaciones" />
         </set>

@@ -29,8 +29,8 @@
                 <a class="navbar-brand" href="./index">Restaurante La Pampa</a>
             </div>
             <ul class="nav navbar-nav">
-                <li class="inactive"><a href="./Reserva">RESERVACIONES</a></li>
-                    <s:if test="%{#session.userRol != null && #session.userRol == 'administrador'}">
+                <s:if test="%{#session.userRol != null && #session.userRol == 'administrador'}">
+                    <li class="inactive"><a href="./Reserva">RESERVACIONES</a></li>
                     <li class="dropdown">
                         <a data-toggle="dropdown">
                             ADMINISTRACIÓN<span class="caret"></span>
@@ -127,6 +127,8 @@
                     }
                 });
                 $(".dateTime").datetimepicker({locale: 'es'});
+                $(".dateTimeMinNow").datetimepicker({locale: 'es', minDate: moment()});
+                $(".dateTimeMaxNow").datetimepicker({locale: 'es', maxDate: moment()});
                 $(".colorpicker").colorpicker({format: "hex"});
             });
             $('#confirm-delete').on('show.bs.modal', function (e) {

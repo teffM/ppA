@@ -18,6 +18,7 @@ public class LoginAction extends BaseAction {
 	    for (Iterator i = getList(Usuarios.class).iterator(); i.hasNext();) {
 		Usuarios u = (Usuarios) i.next();
 		if (getUsuario().equals(u.getUsuario()) && getClave().equals(u.getClave())) {
+		    getSession().put("userId", u.getId());
 		    getSession().put("userName", u.getUsuario());
 		    getSession().put("userRol", u.getRoles().getRol());
 		    return SUCCESS;

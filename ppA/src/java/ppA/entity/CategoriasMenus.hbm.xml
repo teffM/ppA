@@ -3,22 +3,22 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 05-oct-2016 22:16:52 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="ppA.entity.Roles" table="roles" schema="dbo" optimistic-lock="version">
+    <class name="ppA.entity.CategoriasMenus" table="categoriasMenus" schema="dbo" optimistic-lock="version">
         <id name="id" type="int">
             <column name="id" />
             <generator class="native" />
         </id>
-        <property name="rol" type="string">
-            <column name="rol" length="25" not-null="true" />
+        <property name="categoriaMenu" type="string">
+            <column name="categoriaMenu" length="25" not-null="true" />
         </property>
         <property name="descripcion" type="string">
             <column name="descripcion" length="100" not-null="true" />
         </property>
-        <set name="usuarioses" table="usuarios" inverse="true" lazy="true" fetch="select">
+        <set name="menuses" table="menus" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="idRol" not-null="true" />
+                <column name="idCategoriaMenu" not-null="true" />
             </key>
-            <one-to-many class="ppA.entity.Usuarios" />
+            <one-to-many class="ppA.entity.Menus" />
         </set>
     </class>
 </hibernate-mapping>

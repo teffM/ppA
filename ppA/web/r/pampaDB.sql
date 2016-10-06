@@ -18,13 +18,37 @@ CREATE TABLE [opciones](
 	[descripcion] [varchar](50) NOT NULL DEFAULT ('')
 )
 GO
+CREATE TABLE [dbo].[clientes](
+	[id] [int] primary key IDENTITY(1,1) NOT NULL,
+	[nombre] [varchar](25) NOT NULL DEFAULT (''),
+	[apellido] [varchar](25) NOT NULL DEFAULT (''),
+	[telefono] [varchar](15) NOT NULL DEFAULT (''),
+        [correo] [varchar](25) NOT NULL DEFAULT (''),
+        dui varchar(10) not null default '',
+        descripcion varchar(100) not null default ''
+)
+GO
+create table categoriasMenus(
+	[id] [int] primary key IDENTITY(1,1) NOT NULL,
+        categoriaMenu varchar(25) not null default '',
+        descripcion varchar(100) not null default ''
+)
+GO
+CREATE TABLE [dbo].[menus](
+	[id] [int] primary key IDENTITY(1,1) NOT NULL,
+        idCategoriaMenu int not null,
+	[menu] [varchar](50) NOT NULL DEFAULT (''),
+	[precio] [decimal](8,2) NULL DEFAULT ((0)),
+	[descripcion] [varchar](100) NOT NULL DEFAULT ('')
+)
+GO
 CREATE TABLE [dbo].[reservaciones](
 	[id] [int] primary key IDENTITY(1,1) NOT NULL,
 	[idSucursal] [int] NOT NULL,
 	[idEstado] [int] NOT NULL,
-	[nombre] [varchar](60) NOT NULL DEFAULT (''),
-	[correo] [varchar](25) NOT NULL DEFAULT (''),
-	[telefono] [varchar](15) NOT NULL DEFAULT (''),
+        idCliente int not null,
+        idUsuario int not null,
+        idMenu int,
 	[fechaReservaciones] [datetime] NOT NULL DEFAULT (CURRENT_TIMESTAMP),
 	[numPersonas] [int] NOT NULL DEFAULT ((0)),
 	[comentarios] [varchar](500) NOT NULL DEFAULT (''),
@@ -75,6 +99,18 @@ INSERT [dbo].[sucursales] ([sucursal], [nacional], [direccion], [telefono]) VALU
 INSERT [dbo].[sucursales] ([sucursal], [nacional], [direccion], [telefono]) VALUES (N'constitucion', 2, N'cvfvf', N'2555454455');
 INSERT [dbo].[sucursales] ([sucursal], [nacional], [direccion], [telefono]) VALUES (N'constitucion', 503, N'cvfvf', N'598595959');
 
+INSERT [dbo].[categoriasMenus] ([categoriaMenu]) VALUES (N'Mariscos');
+INSERT [dbo].[categoriasMenus] ([categoriaMenu]) VALUES (N'Carnes');
+
+INSERT [dbo].[menus] (idCategoriaMenu, [menu]) VALUES (1, N'Camarones');
+INSERT [dbo].[menus] (idCategoriaMenu, [menu]) VALUES (2, N'Res');
+
+INSERT [dbo].[clientes] (nombre, apellido, telefono, correo, dui) VALUES (N'Cristobal', N'Colon', N'22589963', N'cPampa@pampa.com', N'04987456');
+
 ALTER TABLE [dbo].[reservaciones] ADD FOREIGN KEY([idSucursal]) REFERENCES [dbo].[sucursales] ([id]);
 ALTER TABLE [dbo].[reservaciones] ADD FOREIGN KEY([idEstado]) REFERENCES [dbo].[estados] ([id]);
+ALTER TABLE [dbo].[reservaciones] ADD FOREIGN KEY([idUsuario]) REFERENCES [dbo].[usuarios] ([id]);
+ALTER TABLE [dbo].[reservaciones] ADD FOREIGN KEY([idCliente]) REFERENCES [dbo].[clientes] ([id]);
+ALTER TABLE [dbo].[reservaciones] ADD FOREIGN KEY([idMenu]) REFERENCES [dbo].[menus] ([id]);
 ALTER TABLE [dbo].[usuarios] ADD FOREIGN KEY([idRol]) REFERENCES [dbo].[roles] ([id]);
+ALTER TABLE [dbo].[menus] ADD FOREIGN KEY([idCategoriaMenu]) REFERENCES [dbo].[categoriasMenus] ([id]);

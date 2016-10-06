@@ -1,5 +1,5 @@
 package ppA.entity;
-// Generated 02-oct-2016 11:51:55 by Hibernate Tools 4.3.1
+// Generated 05-oct-2016 22:16:49 by Hibernate Tools 4.3.1
 
 import java.util.Date;
 
@@ -9,11 +9,11 @@ import java.util.Date;
 public class Reservaciones implements java.io.Serializable {
 
     private int id;
+    private Clientes clientes;
     private Estados estados;
+    private Menus menus;
     private Sucursales sucursales;
-    private String nombre;
-    private String correo;
-    private String telefono;
+    private Usuarios usuarios;
     private Date fechaReservaciones;
     private int numPersonas;
     private String comentarios;
@@ -22,13 +22,25 @@ public class Reservaciones implements java.io.Serializable {
     public Reservaciones() {
     }
 
-    public Reservaciones(int id, Estados estados, Sucursales sucursales, String nombre, String correo, String telefono, Date fechaReservaciones, int numPersonas, String comentarios, Date fechaCreacion) {
+    public Reservaciones(int id, Clientes clientes, Estados estados, Sucursales sucursales, Usuarios usuarios, Date fechaReservaciones, int numPersonas, String comentarios, Date fechaCreacion) {
 	this.id = id;
+	this.clientes = clientes;
 	this.estados = estados;
 	this.sucursales = sucursales;
-	this.nombre = nombre;
-	this.correo = correo;
-	this.telefono = telefono;
+	this.usuarios = usuarios;
+	this.fechaReservaciones = fechaReservaciones;
+	this.numPersonas = numPersonas;
+	this.comentarios = comentarios;
+	this.fechaCreacion = fechaCreacion;
+    }
+
+    public Reservaciones(int id, Clientes clientes, Estados estados, Menus menus, Sucursales sucursales, Usuarios usuarios, Date fechaReservaciones, int numPersonas, String comentarios, Date fechaCreacion) {
+	this.id = id;
+	this.clientes = clientes;
+	this.estados = estados;
+	this.menus = menus;
+	this.sucursales = sucursales;
+	this.usuarios = usuarios;
 	this.fechaReservaciones = fechaReservaciones;
 	this.numPersonas = numPersonas;
 	this.comentarios = comentarios;
@@ -43,12 +55,28 @@ public class Reservaciones implements java.io.Serializable {
 	this.id = id;
     }
 
+    public Clientes getClientes() {
+	return this.clientes;
+    }
+
+    public void setClientes(Clientes clientes) {
+	this.clientes = clientes;
+    }
+
     public Estados getEstados() {
 	return this.estados;
     }
 
     public void setEstados(Estados estados) {
 	this.estados = estados;
+    }
+
+    public Menus getMenus() {
+	return this.menus;
+    }
+
+    public void setMenus(Menus menus) {
+	this.menus = menus;
     }
 
     public Sucursales getSucursales() {
@@ -59,28 +87,12 @@ public class Reservaciones implements java.io.Serializable {
 	this.sucursales = sucursales;
     }
 
-    public String getNombre() {
-	return this.nombre;
+    public Usuarios getUsuarios() {
+	return this.usuarios;
     }
 
-    public void setNombre(String nombre) {
-	this.nombre = nombre;
-    }
-
-    public String getCorreo() {
-	return this.correo;
-    }
-
-    public void setCorreo(String correo) {
-	this.correo = correo;
-    }
-
-    public String getTelefono() {
-	return this.telefono;
-    }
-
-    public void setTelefono(String telefono) {
-	this.telefono = telefono;
+    public void setUsuarios(Usuarios usuarios) {
+	this.usuarios = usuarios;
     }
 
     public Date getFechaReservaciones() {

@@ -1,28 +1,28 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 02-oct-2016 11:51:57 by Hibernate Tools 4.3.1 -->
+<!-- Generated 05-oct-2016 22:16:52 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="ppA.entity.Reservaciones" table="reservaciones" schema="dbo" optimistic-lock="version">
         <id name="id" type="int">
             <column name="id" />
             <generator class="native" />
         </id>
+        <many-to-one name="clientes" class="ppA.entity.Clientes" fetch="select">
+            <column name="idCliente" not-null="true" />
+        </many-to-one>
         <many-to-one name="estados" class="ppA.entity.Estados" fetch="select">
             <column name="idEstado" not-null="true" />
+        </many-to-one>
+        <many-to-one name="menus" class="ppA.entity.Menus" fetch="select">
+            <column name="idMenu" />
         </many-to-one>
         <many-to-one name="sucursales" class="ppA.entity.Sucursales" fetch="select">
             <column name="idSucursal" not-null="true" />
         </many-to-one>
-        <property name="nombre" type="string">
-            <column name="nombre" length="60" not-null="true" />
-        </property>
-        <property name="correo" type="string">
-            <column name="correo" length="25" not-null="true" />
-        </property>
-        <property name="telefono" type="string">
-            <column name="telefono" length="15" not-null="true" />
-        </property>
+        <many-to-one name="usuarios" class="ppA.entity.Usuarios" fetch="select">
+            <column name="idUsuario" not-null="true" />
+        </many-to-one>
         <property name="fechaReservaciones" type="timestamp">
             <column name="fechaReservaciones" length="23" not-null="true" />
         </property>

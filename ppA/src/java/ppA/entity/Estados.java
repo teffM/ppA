@@ -1,5 +1,5 @@
 package ppA.entity;
-// Generated 02-oct-2016 11:51:55 by Hibernate Tools 4.3.1
+// Generated 05-oct-2016 22:16:49 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -16,7 +16,6 @@ public class Estados  implements java.io.Serializable {
      private String descripcion;
      private String color;
      private Set reservacioneses = new HashSet(0);
-     private Set reservacioneses_1 = new HashSet(0);
 
     public Estados() {
     }
@@ -28,13 +27,12 @@ public class Estados  implements java.io.Serializable {
         this.descripcion = descripcion;
         this.color = color;
     }
-    public Estados(int id, String estado, String descripcion, String color, Set reservacioneses, Set reservacioneses_1) {
+    public Estados(int id, String estado, String descripcion, String color, Set reservacioneses) {
        this.id = id;
        this.estado = estado;
        this.descripcion = descripcion;
        this.color = color;
        this.reservacioneses = reservacioneses;
-       this.reservacioneses_1 = reservacioneses_1;
     }
    
     public int getId() {
@@ -71,13 +69,6 @@ public class Estados  implements java.io.Serializable {
     
     public void setReservacioneses(Set reservacioneses) {
         this.reservacioneses = reservacioneses;
-    }
-    public Set getReservacioneses_1() {
-        return this.reservacioneses_1;
-    }
-    
-    public void setReservacioneses_1(Set reservacioneses_1) {
-        this.reservacioneses_1 = reservacioneses_1;
     }
 
 
