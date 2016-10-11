@@ -32,7 +32,6 @@ public class BaseAction extends ActionSupport implements SessionAware {
 	    }
 	} catch (Exception e) {
 	    e(e);
-	} finally {
 	}
     }
 
@@ -67,14 +66,29 @@ public class BaseAction extends ActionSupport implements SessionAware {
     }
 
     private int getId(Object o) {
+	if (o instanceof Abonos) {
+	    return ((Abonos) o).getId();
+	}
+	if (o instanceof CategoriasMenus) {
+	    return ((CategoriasMenus) o).getId();
+	}
+	if (o instanceof Clientes) {
+	    return ((Clientes) o).getId();
+	}
+	if (o instanceof DetallesMenus) {
+	    return ((DetallesMenus) o).getId();
+	}
+	if (o instanceof Estados) {
+	    return ((Estados) o).getId();
+	}
+	if (o instanceof Menus) {
+	    return ((Menus) o).getId();
+	}
 	if (o instanceof Opciones) {
 	    return ((Opciones) o).getId();
 	}
 	if (o instanceof Reservaciones) {
 	    return ((Reservaciones) o).getId();
-	}
-	if (o instanceof Estados) {
-	    return ((Estados) o).getId();
 	}
 	if (o instanceof Roles) {
 	    return ((Roles) o).getId();

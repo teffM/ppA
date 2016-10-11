@@ -3,7 +3,6 @@ package ppA.actions;
 import java.util.List;
 import ppA.entity.Clientes;
 import ppA.entity.Estados;
-import ppA.entity.Menus;
 import ppA.entity.Reservaciones;
 import ppA.entity.Sucursales;
 import ppA.entity.Usuarios;
@@ -19,7 +18,6 @@ public class ReservaAction extends BaseAction {
     private List<Sucursales> listSucursales;
     private List<Sucursales> listEstados;
     private List<Clientes> listClientes;
-    private List<Menus> listMenus;
 
     @Override
     public String execute() throws Exception {
@@ -32,7 +30,6 @@ public class ReservaAction extends BaseAction {
 	    setListSucursales(getList(Sucursales.class));
 	    setListEstados(getList(Estados.class));
 	    setListClientes(getList(Clientes.class));
-	    setListMenus(getList(Menus.class));
 	} catch (Exception e) {
 	    return e(e);
 	} finally {
@@ -131,19 +128,5 @@ public class ReservaAction extends BaseAction {
      */
     public void setListClientes(List<Clientes> listClientes) {
 	this.listClientes = listClientes;
-    }
-
-    /**
-     * @return the listMenus
-     */
-    public List<Menus> getListMenus() {
-	return listMenus;
-    }
-
-    /**
-     * @param listMenus the listMenus to set
-     */
-    public void setListMenus(List<Menus> listMenus) {
-	this.listMenus = listMenus;
     }
 }

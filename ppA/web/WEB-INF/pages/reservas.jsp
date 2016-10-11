@@ -16,10 +16,10 @@
                         <s:hidden name="r.id" />
                         <s:select name="r.clientes.id" listKey="id" listValue="nombre" headerKey="" cssClass="required"
                                   headerValue="%{getText('lbl.seleccione')}" list="listClientes" key="r.cliente" required="true" />
-                        <s:select name="r.menus.id" listKey="id" listValue="menu" headerKey="" cssClass="required"
-                                  headerValue="%{getText('lbl.seleccione')}" list="listMenus" key="r.menu" required="true" />
-                        <s:date name="r.fechaReservaciones" id="createdDateId" format="dd/MM/yyyy hh:mm a" />
-                        <s:textfield name="r.fechaReservaciones" key="r.fechaReserva"
+                        <%--<s:select name="r.menus.id" listKey="id" listValue="menu" headerKey="" cssClass="required"--%>
+                                  <!--headerValue="%{getText('lbl.seleccione')}" list="listMenus" key="r.menu" required="true" />-->
+                        <s:date name="r.fechaReservacion" id="createdDateId" format="dd/MM/yyyy hh:mm a" />
+                        <s:textfield name="r.fechaReservacion" key="r.fechaReserva"
                                      value="%{createdDateId}" cssClass="form-control dateTimeMinNow required" required="true" />
                         <s:textfield name="r.numPersonas" key="r.persona" type="number" cssClass="form-control required" required="true" />
                         <s:select name="r.sucursales.id" listKey="id" listValue="sucursal" headerKey="" cssClass="required"
@@ -40,33 +40,34 @@
         <thead>
             <tr>
                 <th><s:text name="r.cliente" /></th>
-                <th><s:text name="r.menu" /></th>
+                <!--<th><s:text name="r.menu" /></th>-->
                 <th><s:text name="r.fechaReserva" /></th>
                 <th><s:text name="r.estado" /></th>
                 <th><s:text name="r.fechaCreacion" /></th>
                 <th><s:text name="r.persona" /></th>
                 <th><s:text name="r.sucursal" /></th>
                 <th><s:text name="r.comentario" /></th>
+                <th>Usuario</th>
                 <th><s:text name="q.eliminar" /></th>
             </tr>
         </thead>
         <tbody>
             <c:forEach var="l" items="${listReservas}">
-                <fmt:formatDate value="${l.fechaReservaciones}" var="fechaReserva"
+                <fmt:formatDate value="${l.fechaReservacion}" var="fechaReserva"
                                 pattern="dd/MM/yyyy hh:mm a" />
                 <fmt:formatDate value="${l.fechaCreacion}" var="fechaCreacion"
                                 pattern="dd/MM/yyyy hh:mm a" />
-                <tr obj="${l.id}, ${l.clientes.id}, ${l.menus.id},
+                <tr obj="${l.id}, ${l.clientes.id},
                     ${fechaReserva}, ${fechaCreacion}, ${l.numPersonas},
                     ${l.sucursales.id}, ${l.estados.id}, ${l.comentarios}">
                     <td><c:out value="${l.clientes.nombre}"/></td>
-                    <td><c:out value="${l.menus.menu}"/></td>
                     <td><c:out value="${fechaReserva}"/></td>
                     <td style="background-color: <c:out value="${l.estados.color}"/>;"><c:out value="${l.estados.estado}"/></td>
                     <td><c:out value="${fechaCreacion}"/></td>
                     <td><c:out value="${l.numPersonas}"/></td>
                     <td><c:out value="${l.sucursales.sucursal}"/></td>
                     <td><c:out value="${l.comentarios}"/></td>
+                    <td><c:out value="${l.usuarios.usuario}"/></td>
                     <td>
                         <button class="btn btn-default btn-xs" data-href="./Reserva!eliminar?id=${l.id}"
                                 data-toggle="modal" data-target="#confirm-delete">
@@ -90,13 +91,12 @@
         var l = $(this).attr("obj").split(",");
         $("#Reserva_r_id").val($.trim(l[0]));
         $("#Reserva_r_clientes_id").val($.trim(l[1]));
-        $("#Reserva_r_menus_id").val($.trim(l[2]));
-        $("#Reserva_r_fechaReservaciones").val($.trim(l[3]));
-        $("#Reserva_r_fechaCreacion").val($.trim(l[4]));
-        $("#Reserva_r_numPersonas").val($.trim(l[5]));
-        $("#Reserva_r_sucursales_id").val($.trim(l[6]));
-        $("#Reserva_r_estados_id").val($.trim(l[7]));
-        $("#Reserva_r_comentarios").val($.trim(l[8]));
+        $("#Reserva_r_fechaReservacion").val($.trim(l[2]));
+        $("#Reserva_r_fechaCreacion").val($.trim(l[3]));
+        $("#Reserva_r_numPersonas").val($.trim(l[4]));
+        $("#Reserva_r_sucursales_id").val($.trim(l[5]));
+        $("#Reserva_r_estados_id").val($.trim(l[6]));
+        $("#Reserva_r_comentarios").val($.trim(l[7]));
         $('#myModal').modal({
             show: 'false'
         });

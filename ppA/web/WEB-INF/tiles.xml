@@ -24,4 +24,7 @@
     <definition name="sucursales" extends="default">
         <put-attribute name="body" value="/WEB-INF/pages/sucursales.jsp" />
     </definition>
+    <definition name="clientes" extends="default">
+        <put-attribute name="body" value="/WEB-INF/pages/clientes.jsp" />
+    </definition>
 </tiles-definitions>

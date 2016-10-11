@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 05-oct-2016 22:16:52 by Hibernate Tools 4.3.1 -->
+<!-- Generated 09-oct-2016 21:14:55 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="ppA.entity.Reservaciones" table="reservaciones" schema="dbo" optimistic-lock="version">
         <id name="id" type="int">
@@ -14,17 +14,14 @@
         <many-to-one name="estados" class="ppA.entity.Estados" fetch="select">
             <column name="idEstado" not-null="true" />
         </many-to-one>
-        <many-to-one name="menus" class="ppA.entity.Menus" fetch="select">
-            <column name="idMenu" />
-        </many-to-one>
         <many-to-one name="sucursales" class="ppA.entity.Sucursales" fetch="select">
             <column name="idSucursal" not-null="true" />
         </many-to-one>
         <many-to-one name="usuarios" class="ppA.entity.Usuarios" fetch="select">
             <column name="idUsuario" not-null="true" />
         </many-to-one>
-        <property name="fechaReservaciones" type="timestamp">
-            <column name="fechaReservaciones" length="23" not-null="true" />
+        <property name="fechaReservacion" type="timestamp">
+            <column name="fechaReservacion" length="23" not-null="true" />
         </property>
         <property name="numPersonas" type="int">
             <column name="numPersonas" not-null="true" />
@@ -35,5 +32,17 @@
         <property name="fechaCreacion" type="timestamp">
             <column name="fechaCreacion" length="23" not-null="true" />
         </property>
+        <set name="abonoses" table="abonos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idReservacion" not-null="true" />
+            </key>
+            <one-to-many class="ppA.entity.Abonos" />
+        </set>
+        <set name="detallesMenuses" table="detallesMenus" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idReservacion" not-null="true" />
+            </key>
+            <one-to-many class="ppA.entity.DetallesMenus" />
+        </set>
     </class>
 </hibernate-mapping>

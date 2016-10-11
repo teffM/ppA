@@ -24,7 +24,9 @@ CREATE TABLE [dbo].[clientes](
 	[apellido] [varchar](25) NOT NULL DEFAULT (''),
 	[telefono] [varchar](15) NOT NULL DEFAULT (''),
         [correo] [varchar](25) NOT NULL DEFAULT (''),
-        dui varchar(10) not null default '',
+	[DUI] [varchar](10) NOT NULL DEFAULT '',
+	[NIT] [varchar](17) NOT NULL DEFAULT '',
+	[comprobanteIva] [varchar](100) NOT NULL DEFAULT '',
         descripcion varchar(100) not null default ''
 )
 GO
@@ -48,8 +50,7 @@ CREATE TABLE [dbo].[reservaciones](
 	[idEstado] [int] NOT NULL,
         idCliente int not null,
         idUsuario int not null,
-        idMenu int,
-	[fechaReservaciones] [datetime] NOT NULL DEFAULT (CURRENT_TIMESTAMP),
+	[fechaReservacion] [datetime] NOT NULL DEFAULT (CURRENT_TIMESTAMP),
 	[numPersonas] [int] NOT NULL DEFAULT ((0)),
 	[comentarios] [varchar](500) NOT NULL DEFAULT (''),
 	[fechaCreacion] [datetime] NOT NULL DEFAULT (CURRENT_TIMESTAMP)
@@ -83,6 +84,24 @@ CREATE TABLE [dbo].[estados](
 	[color] [varchar](20) NOT NULL DEFAULT ('')
 )
 GO
+CREATE TABLE [dbo].[abonos](
+	[id] [int] primary key IDENTITY(1,1) NOT NULL,
+	[idReservacion] [int] NOT NULL,
+	[idCliente] [int] NOT NULL,
+	[abono] decimal(8,2) NOT NULL DEFAULT 0,
+	[fechaAbono] [datetime] NOT NULL DEFAULT (CURRENT_TIMESTAMP),
+	[idUsuario] [int] NOT NULL
+)
+GO
+CREATE TABLE [dbo].[detallesMenus](
+	[id] [int] primary key IDENTITY(1,1) NOT NULL,
+	[idReservacion] [int] NOT NULL,
+	[idMenu] [int] NOT NULL,
+        cantidad int NOT NULL DEFAULT 0,
+	[comentarios] [varchar](200) NOT NULL DEFAULT '',
+	[precio] [float] NOT NULL DEFAULT 0
+)
+GO
 
 INSERT [opciones] ([opcion], [orden], [padre], [accion], [descripcion]) VALUES (N'Inicio', CAST(0.00 AS Decimal(5, 2)), NULL, N'./index', N'index de la aplicacion')
 INSERT [dbo].[opciones] ([opcion], [orden], [padre], [accion], [descripcion]) VALUES (N'Cerrar<br />sesi�n', CAST(999.00 AS Decimal(5, 2)), NULL, N'./logOut', N'cerrar la sesion de la aplicacion');
@@ -111,6 +130,13 @@ ALTER TABLE [dbo].[reservaciones] ADD FOREIGN KEY([idSucursal]) REFERENCES [dbo]
 ALTER TABLE [dbo].[reservaciones] ADD FOREIGN KEY([idEstado]) REFERENCES [dbo].[estados] ([id]);
 ALTER TABLE [dbo].[reservaciones] ADD FOREIGN KEY([idUsuario]) REFERENCES [dbo].[usuarios] ([id]);
 ALTER TABLE [dbo].[reservaciones] ADD FOREIGN KEY([idCliente]) REFERENCES [dbo].[clientes] ([id]);
-ALTER TABLE [dbo].[reservaciones] ADD FOREIGN KEY([idMenu]) REFERENCES [dbo].[menus] ([id]);
+
 ALTER TABLE [dbo].[usuarios] ADD FOREIGN KEY([idRol]) REFERENCES [dbo].[roles] ([id]);
+
 ALTER TABLE [dbo].[menus] ADD FOREIGN KEY([idCategoriaMenu]) REFERENCES [dbo].[categoriasMenus] ([id]);
+
+ALTER TABLE [dbo].[abonos] ADD FOREIGN KEY([idReservacion]) REFERENCES [dbo].[reservaciones] ([id]);
+ALTER TABLE [dbo].[abonos] ADD FOREIGN KEY([idCliente]) REFERENCES [dbo].[clientes] ([id]);
+
+ALTER TABLE [dbo].[detallesMenus] ADD FOREIGN KEY([idReservacion]) REFERENCES [dbo].[reservaciones] ([id]);
+ALTER TABLE [dbo].[detallesMenus] ADD FOREIGN KEY([idMenu]) REFERENCES [dbo].[menus] ([id]);

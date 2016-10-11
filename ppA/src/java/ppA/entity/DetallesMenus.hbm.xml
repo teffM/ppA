@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 09-oct-2016 21:14:55 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ppA.entity.DetallesMenus" table="detallesMenus" schema="dbo" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="native" />
+        </id>
+        <many-to-one name="menus" class="ppA.entity.Menus" fetch="select">
+            <column name="idMenu" not-null="true" />
+        </many-to-one>
+        <many-to-one name="reservaciones" class="ppA.entity.Reservaciones" fetch="select">
+            <column name="idReservacion" not-null="true" />
+        </many-to-one>
+        <property name="cantidad" type="int">
+            <column name="cantidad" not-null="true" />
+        </property>
+        <property name="comentarios" type="string">
+            <column name="comentarios" length="200" not-null="true" />
+        </property>
+        <property name="precio" type="double">
+            <column name="precio" precision="53" scale="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

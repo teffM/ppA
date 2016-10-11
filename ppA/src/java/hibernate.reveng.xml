@@ -3,13 +3,15 @@
 <hibernate-reverse-engineering>
     <!--<schema-selection match-catalog="DB_A106F2_teffff" match-schema="dbo"/>-->
     <schema-selection match-catalog="pampaDB" match-schema="dbo"/>
-    <table-filter match-name="reservaciones"/>
-    <table-filter match-name="roles"/>
-    <table-filter match-name="opciones"/>
-    <table-filter match-name="clientes"/>
-    <table-filter match-name="categoriasMenus"/>
-    <table-filter match-name="estados"/>
+    <table-filter match-name="abonos"/>
     <table-filter match-name="usuarios"/>
+    <table-filter match-name="estados"/>
+    <table-filter match-name="roles"/>
+    <table-filter match-name="reservaciones"/>
+    <table-filter match-name="detallesMenus"/>
     <table-filter match-name="sucursales"/>
+    <table-filter match-name="opciones"/>
+    <table-filter match-name="categoriasMenus"/>
     <table-filter match-name="menus"/>
+    <table-filter match-name="clientes"/>
 </hibernate-reverse-engineering>

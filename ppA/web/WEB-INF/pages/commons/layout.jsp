@@ -2,7 +2,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <%@taglib uri="/struts-tags" prefix="s"%>
-<html lang="es">
+<html lang="es" class="body">
     <head>
         <title></title>
         <meta charset="utf-8">
@@ -18,46 +18,59 @@
         <link href="./r/bootstrap/css/buttons.dataTables.min.css" rel="stylesheet" type="text/css"/>
         <!--toaster-->
         <link href="./r/toastr/css/toastr.css" rel="stylesheet" type="text/css"/>
-        <script src="./r/toastr/js/toastr.js" type="text/javascript"></script> 
+        <script src="./r/toastr/js/toastr.js" type="text/javascript"></script>
         <!--customs-->
         <link href="./r/css/style.css" rel="stylesheet" type="text/css"/>
         <script src="./r/js/functions.js" type="text/javascript"></script>
     </head>
     <body>
-        <nav class="navbar navbar-inverse  twoRow">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="./index">Restaurante La Pampa</a>
-            </div>
-            <ul class="nav navbar-nav">
-                <s:if test="%{#session.userRol != null && #session.userRol == 'administrador'}">
-                    <li class="inactive"><a href="./Reserva">RESERVACIONES</a></li>
-                    <li class="dropdown">
-                        <a data-toggle="dropdown">
-                            ADMINISTRACIÓN<span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="./Usuario">USUARIOS</a></li>
-                            <li><a href="./Sucursal">SUCURSALES</a></li>
-                            <li><a href="./Estado">ESTADOS</a></li>
+        <div id="particles-js"></div>
+        <nav class="navbar navbar-inverse twoRow" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="./index">Restaurante La Pampa</a>
+                </div>
+                <div class="collapse navbar-collapse" id="collapse">
+                    <ul class="nav navbar-nav">
+                        <s:if test="%{#session.userRol != null && #session.userRol == 'administrador'}">
+                            <li class="inactive"><a href="./Reserva">RESERVACIONES</a></li>
+                            <li class="inactive"><a href="./Cliente">CLIENTES</a></li>
+                            <li class="dropdown">
+                                <a data-toggle="dropdown">
+                                    ADMINISTRACIÓN<span class="caret"></span>
+                                </a>
+                                <ul class="navbar-inverse dropdown-menu">
+                                    <li><a href="./Usuario">USUARIOS</a></li>
+                                    <li><a href="./Sucursal">SUCURSALES</a></li>
+                                    <li><a href="./Estado">ESTADOS</a></li>
+                                </ul>
+                            </li>
+                        </s:if>
+                    </ul>
+                    <s:if test="%{#session.userRol != null && #session.userRol != null}">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="inactive">
+                                <a href="./Login!cerrarSesion">CERRAR SESIÓN</a>
+                            </li>
                         </ul>
-                    </li>
-                </s:if>
-            </ul>
-            <s:if test="%{#session.userRol != null && #session.userRol != null}">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="inactive">
-                        <a href="./Login!cerrarSesion">CERRAR SESIÓN</a>
-                    </li>
-                </ul>
-            </s:if>
+                    </s:if>
+                </div>
+            </div>
         </nav>
-        <div class="container">
+        <div class="container myContainer twoContainer">
             <tiles:insertAttribute name="body" />
         </div>
         <!--modal confirm delete-->
-        <div class="media-middle">
-            © Copyright Restaurantes La Pampa, 2016 Derechos reservados / All Rights Reserved 
-        </div><div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog">
+        <div class="navbar-inverse footer navbar-fixed-bottom">
+            © Copyright Restaurantes La Pampa, 2016 Derechos reservados / All Rights Reserved
+        </div>
+        <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -79,17 +92,24 @@
         <script src="./r/bootstrap/js/bootstrap-datetimepicker.js" type="text/javascript"></script>
         <script src="./r/bootstrap/js/bootstrap-colorpicker.min.js" type="text/javascript"></script>
         <script src="./r/bootstrap/js/jquery.dataTables.min.js" type="text/javascript"></script>
+        <script src="./r/bootstrap/js/dataTables.select.min.js" type="text/javascript"></script>
         <script src="./r/bootstrap/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
         <script src="./r/bootstrap/js/dataTables.responsive.min.js" type="text/javascript"></script>
         <script src="./r/bootstrap/js/responsive.bootstrap.min.js" type="text/javascript"></script>
         <script src="./r/bootstrap/js/dataTables.buttons.min.js" type="text/javascript"></script>
+        <script src="./r/bootstrap/js/buttons.print.min.js" type="text/javascript"></script>
         <script src="./r/bootstrap/js/jszip.min.js" type="text/javascript"></script>
         <script src="./r/bootstrap/js/pdfmake.min.js" type="text/javascript"></script>
         <script src="./r/bootstrap/js/vfs_fonts.js" type="text/javascript"></script>
         <script src="./r/bootstrap/js/buttons.html5.min.js" type="text/javascript"></script>
+        <script src="./r/bootstrap/js/buttons.colVis.min.js" type="text/javascript"></script>
         <!--jQuery-->
         <script src="./r/js/jquery.validate.min.js" type="text/javascript"></script>
         <script src="./r/js/messages_es.js" type="text/javascript"></script>
+        <script src="./r/js/jquery.maskedinput.min.js" type="text/javascript"></script>
+        <!--particles-->
+        <script src="./r/js/particles.min.js" type="text/javascript"></script>
+        <script src="./r/js/particles-conf.js" type="text/javascript"></script>
         <script type="text/javascript">
             $(document).ready(function () {
                 if ($('#toast-container').length == 0) {
@@ -102,7 +122,18 @@
                 }
                 $('#dataTable').DataTable({
                     dom: 'lBfrtip',
-                    buttons: ['copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5'],
+                    buttons: [
+                        {extend: 'colvis', text: '<s:text name="btn.colVis" />'},
+                        {extend: 'copyHtml5', text: '<s:text name="btn.copy" />',
+                            exportOptions: {columns: ':visible'}},
+                        {extend: 'copyHtml5', text: '<s:text name="btn.copySelected" />',
+                            exportOptions: {columns: ':visible', modifier: {selected: true}}},
+                        'excelHtml5', 'csvHtml5', 'pdfHtml5',
+                        {extend: 'print', text: '<s:text name="btn.print" />',
+                            exportOptions: {columns: ':visible'}},
+                        {extend: 'print', text: '<s:text name="btn.printSelected" />',
+                            exportOptions: {columns: ':visible', modifier: {selected: true}}}],
+                    select: true,
                     "pagingType": "full_numbers",
                     language: {
                         processing: "<s:text name="dt.sProcessing" />",
@@ -123,6 +154,20 @@
                         aria: {
                             sortAscending: "<s:text name="dt.sSortAscending" />",
                             sortDescending: "<s:text name="dt.sSortDescending" />"
+                        },
+                        buttons: {
+                            copyTitle: "<s:text name="dt.copyTitle" />",
+                            copySuccess: {
+                                _: "<s:text name="dt.copyFiles" />",
+                                1: "<s:text name="dt.copyOneFile" />"
+                            }
+                        },
+                        select: {
+                            rows: {
+                                _: "<s:text name="dt.selectFile" />",
+                                0: "<s:text name="dt.selectClickFile" />",
+                                1: "<s:text name="dt.selectOneFile" />"
+                            }
                         }
                     }
                 });
@@ -130,17 +175,21 @@
                 $(".dateTimeMinNow").datetimepicker({locale: 'es', minDate: moment()});
                 $(".dateTimeMaxNow").datetimepicker({locale: 'es', maxDate: moment()});
                 $(".colorpicker").colorpicker({format: "hex"});
+
+                $("input[mask]").each(function () {
+                    $(this).mask($(this).attr("mask"));
+                });
             });
             $('#confirm-delete').on('show.bs.modal', function (e) {
                 $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
             });
             $.validator.addMethod("phone", function (value, element) {
                 return this.optional(element) || /^[2|6|7][0-9]{7}$/.test(value);
-            }, 'Por favor, especifique un número de teléfono válido');
+            }, '<s:text name="err.phone" />');
             $.validator.addMethod('positiveNumber',
                     function (value) {
                         return Number(value) > 0;
-                    }, 'Ingrese un número mayor que cero');
+                    }, '<s:text name="err.mayorCero" />');
         </script>
     </body>
 </html>

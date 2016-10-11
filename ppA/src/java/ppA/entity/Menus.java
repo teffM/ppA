@@ -1,5 +1,5 @@
 package ppA.entity;
-// Generated 05-oct-2016 22:16:49 by Hibernate Tools 4.3.1
+// Generated 09-oct-2016 21:14:52 by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;
@@ -17,7 +17,7 @@ public class Menus  implements java.io.Serializable {
      private String menu;
      private BigDecimal precio;
      private String descripcion;
-     private Set reservacioneses = new HashSet(0);
+     private Set detallesMenuses = new HashSet(0);
 
     public Menus() {
     }
@@ -29,13 +29,13 @@ public class Menus  implements java.io.Serializable {
         this.menu = menu;
         this.descripcion = descripcion;
     }
-    public Menus(int id, CategoriasMenus categoriasMenus, String menu, BigDecimal precio, String descripcion, Set reservacioneses) {
+    public Menus(int id, CategoriasMenus categoriasMenus, String menu, BigDecimal precio, String descripcion, Set detallesMenuses) {
        this.id = id;
        this.categoriasMenus = categoriasMenus;
        this.menu = menu;
        this.precio = precio;
        this.descripcion = descripcion;
-       this.reservacioneses = reservacioneses;
+       this.detallesMenuses = detallesMenuses;
     }
    
     public int getId() {
@@ -73,12 +73,12 @@ public class Menus  implements java.io.Serializable {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    public Set getReservacioneses() {
-        return this.reservacioneses;
+    public Set getDetallesMenuses() {
+        return this.detallesMenuses;
     }
     
-    public void setReservacioneses(Set reservacioneses) {
-        this.reservacioneses = reservacioneses;
+    public void setDetallesMenuses(Set detallesMenuses) {
+        this.detallesMenuses = detallesMenuses;
     }
 
 

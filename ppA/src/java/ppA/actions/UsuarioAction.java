@@ -1,7 +1,6 @@
 package ppA.actions;
 
 import static com.opensymphony.xwork2.Action.SUCCESS;
-import java.util.ArrayList;
 import java.util.List;
 import ppA.entity.Roles;
 import ppA.entity.Usuarios;
@@ -11,11 +10,6 @@ public class UsuarioAction extends BaseAction {
     private Usuarios nu;
     private List<Usuarios> listUsuarios;
     private List<Roles> listRoles;
-
-    public UsuarioAction() {
-	setListUsuarios(new ArrayList<>());
-	setListRoles(new ArrayList<>());
-    }
 
     @Override
     public String execute() throws Exception {

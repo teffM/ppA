@@ -10,11 +10,13 @@
         <property name="hibernate.connection.url">jdbc:sqlserver://localhost;databaseName=pampaDB</property>
         <property name="hibernate.connection.username">sa</property>
         <property name="hibernate.connection.password">123</property>-->
+        <mapping resource="ppA/entity/Abonos.hbm.xml"/>
         <mapping resource="ppA/entity/CategoriasMenus.hbm.xml"/>
         <mapping resource="ppA/entity/Reservaciones.hbm.xml"/>
-        <mapping resource="ppA/entity/Estados.hbm.xml"/>
         <mapping resource="ppA/entity/Menus.hbm.xml"/>
         <mapping resource="ppA/entity/Opciones.hbm.xml"/>
+        <mapping resource="ppA/entity/DetallesMenus.hbm.xml"/>
+        <mapping resource="ppA/entity/Estados.hbm.xml"/>
         <mapping resource="ppA/entity/Sucursales.hbm.xml"/>
         <mapping resource="ppA/entity/Roles.hbm.xml"/>
         <mapping resource="ppA/entity/Clientes.hbm.xml"/>

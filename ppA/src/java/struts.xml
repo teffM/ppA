@@ -49,6 +49,9 @@
         <action name="Sucursal" class="ppA.actions.SucursalAction">
             <result name="success" type="tiles">sucursales</result>
         </action>
+        <action name="Cliente" class="ppA.actions.ClienteAction">
+            <result name="success" type="tiles">clientes</result>
+        </action>
         <action name="Login" class="ppA.actions.LoginAction">
             <result name="success" type="redirectAction">Reserva</result>
             <result name="error" type="tiles">index</result>

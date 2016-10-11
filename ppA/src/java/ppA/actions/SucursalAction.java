@@ -1,7 +1,6 @@
 package ppA.actions;
 
 import static com.opensymphony.xwork2.Action.SUCCESS;
-import java.util.ArrayList;
 import java.util.List;
 import ppA.entity.Sucursales;
 
@@ -9,10 +8,6 @@ public class SucursalAction extends BaseAction {
 
     private Sucursales s;
     private List<Sucursales> listSucursales;
-
-    public SucursalAction() {
-	setListSucursales(new ArrayList<>());
-    }
 
     @Override
     public String execute() throws Exception {

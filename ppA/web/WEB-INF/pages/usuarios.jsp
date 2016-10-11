@@ -3,26 +3,23 @@
 
 <a id="nuevoUsuario" href="#" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
     <span class="glyphicon glyphicon-plus-sign"></span>
-    <b> Nuevo Usuario</b>
+   <b><s:text name="nu.btnNuevo" /></b>
 </a>
-
-    <br></br>
-    <br></br>
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
                 <fieldset>
-                    <legend><s:text name="usuario.nuevoUsuario" /></legend>
+                    <legend><s:text name="nu.legend" /></legend>
                     <s:form action="Usuario">
                         <s:hidden name="nu.id" />
                         <s:textfield name="nu.usuario" label="Usuario" cssClass="form-control required" required="true" />
                         <s:password name="nu.clave" label="Contraseña" cssClass="form-control required" required="true" />
-                        <s:password name="nu.clave" label="Confirmar Contraseña" cssClass="form-control required" required="true" />
-                        <s:select name="nu.roles.id" listKey="id" listValue="rol" headerKey="-1" required=""
-                                  headerValue="--- Seleccione un rol ---" list="listRoles" label="Roles" />
+                        <%--<s:password name="nu.clave" label="Confirmar Contraseña" cssClass="form-control required" required="true" />--%>
+                        <s:select name="nu.roles.id" listKey="id" listValue="rol" headerKey="" cssClass="required"
+                                  headerValue="%{getText('lbl.seleccione')}" list="listRoles" key="nu.roles" required="true"/>
 
-                        <s:submit method="guardar" cssClass="btn-info disabled" value="Guardar" key="btn.guardar" />
+                        <s:submit method="guardar" cssClass="btn-info disabled submit" value="Guardar" key="btn.guardar" />
                     </s:form>
                 </fieldset>
             </div>
@@ -31,13 +28,16 @@
 </div>
 
 <div id="container">
-    <table class="table table-bordered table-hover">
+    <table id="dataTable" class="table table-striped table-bordered table-hover dt-responsive nowrap">
+        <thead>
         <tr>
-            <th>Usuario</th>
-            <th>Contraseña</th>
-            <th>Rol</th>
-            <th>Eliminar?</th>
+            <th><s:text name="nu.usuario" /></th>
+            <th><s:text name="nu.clave" /></th>
+            <th><s:text name="nu.roles" /></th>
+            <th><s:text name="q.eliminar" /></th>
         </tr>
+        </thead>
+        <tbody>
         <c:forEach var="l" items="${listUsuarios}">
             <tr obj="${l.id}, ${l.usuario}, ${l.clave}">
                 <td><c:out value="${l.usuario}"/></td>
@@ -52,16 +52,18 @@
                 </td>
             </tr>
         </c:forEach>
+        </tbody>
     </table>
 </div>
 
 <script type="text/javascript">
-    $('#nuevaReserva').on('click', function () {
+    $('#nuevoUsuario').on('click', function () {
         $("#Usuario_nu_id").val(0);
-        $("form")[0].reset();
+        resetForm($('#Usuario'));
         $("#Usuario_nu_usuarios").focus();
     });
-    $("tr").dblclick(function () {
+     $("#dataTable > tbody > tr").dblclick(function () {
+        resetForm($('#Usuario'));
         var l = $(this).attr("obj").split(",");
         $("#Usuario_nu_id").val($.trim(l[0]));
         $("#Usuario_nu_usuario").val($.trim(l[1]));

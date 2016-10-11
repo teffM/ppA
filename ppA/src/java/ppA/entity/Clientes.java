@@ -1,5 +1,5 @@
 package ppA.entity;
-// Generated 05-oct-2016 22:16:49 by Hibernate Tools 4.3.1
+// Generated 09-oct-2016 21:14:52 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -17,30 +17,38 @@ public class Clientes  implements java.io.Serializable {
      private String telefono;
      private String correo;
      private String dui;
+     private String nit;
+     private String comprobanteIva;
      private String descripcion;
+     private Set abonoses = new HashSet(0);
      private Set reservacioneses = new HashSet(0);
 
     public Clientes() {
     }
 
 	
-    public Clientes(int id, String nombre, String apellido, String telefono, String correo, String dui, String descripcion) {
+    public Clientes(int id, String nombre, String apellido, String telefono, String correo, String dui, String nit, String comprobanteIva, String descripcion) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono = telefono;
         this.correo = correo;
         this.dui = dui;
+        this.nit = nit;
+        this.comprobanteIva = comprobanteIva;
         this.descripcion = descripcion;
     }
-    public Clientes(int id, String nombre, String apellido, String telefono, String correo, String dui, String descripcion, Set reservacioneses) {
+    public Clientes(int id, String nombre, String apellido, String telefono, String correo, String dui, String nit, String comprobanteIva, String descripcion, Set abonoses, Set reservacioneses) {
        this.id = id;
        this.nombre = nombre;
        this.apellido = apellido;
        this.telefono = telefono;
        this.correo = correo;
        this.dui = dui;
+       this.nit = nit;
+       this.comprobanteIva = comprobanteIva;
        this.descripcion = descripcion;
+       this.abonoses = abonoses;
        this.reservacioneses = reservacioneses;
     }
    
@@ -86,12 +94,33 @@ public class Clientes  implements java.io.Serializable {
     public void setDui(String dui) {
         this.dui = dui;
     }
+    public String getNit() {
+        return this.nit;
+    }
+    
+    public void setNit(String nit) {
+        this.nit = nit;
+    }
+    public String getComprobanteIva() {
+        return this.comprobanteIva;
+    }
+    
+    public void setComprobanteIva(String comprobanteIva) {
+        this.comprobanteIva = comprobanteIva;
+    }
     public String getDescripcion() {
         return this.descripcion;
     }
     
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+    public Set getAbonoses() {
+        return this.abonoses;
+    }
+    
+    public void setAbonoses(Set abonoses) {
+        this.abonoses = abonoses;
     }
     public Set getReservacioneses() {
         return this.reservacioneses;
