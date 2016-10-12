@@ -1,5 +1,5 @@
 package ppA.entity;
-// Generated 09-oct-2016 21:14:52 by Hibernate Tools 4.3.1
+// Generated 11-oct-2016 21:57:08 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -12,20 +12,20 @@ public class Abonos implements java.io.Serializable {
     private int id;
     private Clientes clientes;
     private Reservaciones reservaciones;
+    private Usuarios usuarios;
     private BigDecimal abono;
     private Date fechaAbono;
-    private int idUsuario;
 
     public Abonos() {
     }
 
-    public Abonos(int id, Clientes clientes, Reservaciones reservaciones, BigDecimal abono, Date fechaAbono, int idUsuario) {
+    public Abonos(int id, Clientes clientes, Reservaciones reservaciones, Usuarios usuarios, BigDecimal abono, Date fechaAbono) {
 	this.id = id;
 	this.clientes = clientes;
 	this.reservaciones = reservaciones;
+	this.usuarios = usuarios;
 	this.abono = abono;
 	this.fechaAbono = fechaAbono;
-	this.idUsuario = idUsuario;
     }
 
     public int getId() {
@@ -52,6 +52,14 @@ public class Abonos implements java.io.Serializable {
 	this.reservaciones = reservaciones;
     }
 
+    public Usuarios getUsuarios() {
+	return this.usuarios;
+    }
+
+    public void setUsuarios(Usuarios usuarios) {
+	this.usuarios = usuarios;
+    }
+
     public BigDecimal getAbono() {
 	return this.abono;
     }
@@ -66,14 +74,6 @@ public class Abonos implements java.io.Serializable {
 
     public void setFechaAbono(Date fechaAbono) {
 	this.fechaAbono = fechaAbono;
-    }
-
-    public int getIdUsuario() {
-	return this.idUsuario;
-    }
-
-    public void setIdUsuario(int idUsuario) {
-	this.idUsuario = idUsuario;
     }
 
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 09-oct-2016 21:14:55 by Hibernate Tools 4.3.1 -->
+<!-- Generated 11-oct-2016 21:57:13 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="ppA.entity.Abonos" table="abonos" schema="dbo" optimistic-lock="version">
         <id name="id" type="int">
@@ -14,14 +14,14 @@
         <many-to-one name="reservaciones" class="ppA.entity.Reservaciones" fetch="select">
             <column name="idReservacion" not-null="true" />
         </many-to-one>
+        <many-to-one name="usuarios" class="ppA.entity.Usuarios" fetch="select">
+            <column name="idUsuario" not-null="true" />
+        </many-to-one>
         <property name="abono" type="big_decimal">
             <column name="abono" precision="8" not-null="true" />
         </property>
         <property name="fechaAbono" type="timestamp">
             <column name="fechaAbono" length="23" not-null="true" />
-        </property>
-        <property name="idUsuario" type="int">
-            <column name="idUsuario" not-null="true" />
         </property>
     </class>
 </hibernate-mapping>

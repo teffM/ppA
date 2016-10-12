@@ -29,31 +29,31 @@
 <div id="container">
     <table id="dataTable" class="table table-striped table-bordered table-hover dt-responsive nowrap">
         <thead>
-        <tr>
-            <th><s:text name="s.sucursal" /></th>
-            <th><s:text name="s.nacional" /></th>
-            <th><s:text name="s.direccion" /></th>
-            <th><s:text name="s.telefono" /></th>
-            <th><s:text name="q.eliminar" /></th>
-        </tr>
+            <tr>
+                <th><s:text name="s.sucursal" /></th>
+                <th><s:text name="s.nacional" /></th>
+                <th><s:text name="s.direccion" /></th>
+                <th><s:text name="s.telefono" /></th>
+                <th><s:text name="q.eliminar" /></th>
+            </tr>
         </thead>
         <tbody>
-        <c:forEach var="l" items="${listSucursales}">
-            <tr obj="${l.id}, ${l.sucursal}, ${l.nacional}, ${l.direccion}, ${l.telefono}">
-                <td><c:out value="${l.sucursal}"/></td>
-                <td><c:out value="${l.nacional}"/></td>
-                <td><c:out value="${l.direccion}"/></td>
-                <td><c:out value="${l.telefono}"/></td>
-                
-                <td>
-                    <button class="btn btn-default btn-xs" data-href="./Sucursal!eliminar?id=${l.id}"
-                            data-toggle="modal" data-target="#confirm-delete">
-                        <span class="glyphicon glyphicon-trash" />
-                    </button>
-                </td>
-            </tr>
-        </c:forEach>
-            </tbody>
+            <c:forEach var="l" items="${listSucursales}">
+                <tr obj="${l.id}, ${l.sucursal}, ${l.nacional}, ${l.direccion}, ${l.telefono}">
+                    <td><c:out value="${l.sucursal}"/></td>
+                    <td><c:out value="${l.nacional}"/></td>
+                    <td><c:out value="${l.direccion}"/></td>
+                    <td><c:out value="${l.telefono}"/></td>
+
+                    <td>
+                        <button class="btn btn-default btn-xs" data-href="./Sucursal!eliminar?id=${l.id}"
+                                data-toggle="modal" data-target="#confirm-delete">
+                            <span class="glyphicon glyphicon-trash" />
+                        </button>
+                    </td>
+                </tr>
+            </c:forEach>
+        </tbody>
     </table>
 </div>
 

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 09-oct-2016 21:14:55 by Hibernate Tools 4.3.1 -->
+<!-- Generated 11-oct-2016 21:57:13 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="ppA.entity.Clientes" table="clientes" schema="dbo" optimistic-lock="version">
         <id name="id" type="int">
@@ -21,10 +21,10 @@
             <column name="correo" length="25" not-null="true" />
         </property>
         <property name="dui" type="string">
-            <column name="DUI" length="10" not-null="true" />
+            <column name="dui" length="10" not-null="true" />
         </property>
         <property name="nit" type="string">
-            <column name="NIT" length="17" not-null="true" />
+            <column name="nit" length="17" not-null="true" />
         </property>
         <property name="comprobanteIva" type="string">
             <column name="comprobanteIva" length="100" not-null="true" />
@@ -43,6 +43,18 @@
                 <column name="idCliente" not-null="true" />
             </key>
             <one-to-many class="ppA.entity.Reservaciones" />
+        </set>
+        <set name="reservacioneses_1" table="reservaciones" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idCliente" not-null="true" />
+            </key>
+            <one-to-many class="ppA.entity.Reservaciones" />
+        </set>
+        <set name="abonoses_1" table="abonos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idCliente" not-null="true" />
+            </key>
+            <one-to-many class="ppA.entity.Abonos" />
         </set>
     </class>
 </hibernate-mapping>

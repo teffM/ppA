@@ -46,6 +46,7 @@
                                     ADMINISTRACIÓN<span class="caret"></span>
                                 </a>
                                 <ul class="navbar-inverse dropdown-menu">
+                                    <li><a href="./Abono">ABONOS</a></li>
                                     <li><a href="./Usuario">USUARIOS</a></li>
                                     <li><a href="./Sucursal">SUCURSALES</a></li>
                                     <li><a href="./Estado">ESTADOS</a></li>

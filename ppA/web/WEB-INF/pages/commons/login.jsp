@@ -8,7 +8,7 @@
     </s:form>
 </center>
 <script>
-    $(document).ready(function(){
-       $(".myContainer").css("background-color", "transparent");
+    $(document).ready(function () {
+        $(".myContainer").css("background-color", "transparent");
     });
 </script>

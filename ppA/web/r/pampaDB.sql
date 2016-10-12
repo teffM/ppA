@@ -24,8 +24,8 @@ CREATE TABLE [dbo].[clientes](
 	[apellido] [varchar](25) NOT NULL DEFAULT (''),
 	[telefono] [varchar](15) NOT NULL DEFAULT (''),
         [correo] [varchar](25) NOT NULL DEFAULT (''),
-	[DUI] [varchar](10) NOT NULL DEFAULT '',
-	[NIT] [varchar](17) NOT NULL DEFAULT '',
+	[dui] [varchar](10) NOT NULL DEFAULT '',
+	[nit] [varchar](17) NOT NULL DEFAULT '',
 	[comprobanteIva] [varchar](100) NOT NULL DEFAULT '',
         descripcion varchar(100) not null default ''
 )
@@ -72,6 +72,8 @@ CREATE TABLE [dbo].[sucursales](
 GO
 CREATE TABLE [dbo].[usuarios](
 	[id] [int] primary key IDENTITY(1,1) NOT NULL,
+        nombre varchar (25) not null default (''),
+        apellido varchar (25) not null default (''),
 	[idRol] [int] NOT NULL,
 	[usuario] [varchar](25) NOT NULL DEFAULT (''),
 	[clave] [varchar](25) NOT NULL DEFAULT ('')
@@ -88,9 +90,9 @@ CREATE TABLE [dbo].[abonos](
 	[id] [int] primary key IDENTITY(1,1) NOT NULL,
 	[idReservacion] [int] NOT NULL,
 	[idCliente] [int] NOT NULL,
+	[idUsuario] [int] NOT NULL,
 	[abono] decimal(8,2) NOT NULL DEFAULT 0,
-	[fechaAbono] [datetime] NOT NULL DEFAULT (CURRENT_TIMESTAMP),
-	[idUsuario] [int] NOT NULL
+	[fechaAbono] [datetime] NOT NULL DEFAULT (CURRENT_TIMESTAMP)
 )
 GO
 CREATE TABLE [dbo].[detallesMenus](
@@ -137,6 +139,7 @@ ALTER TABLE [dbo].[menus] ADD FOREIGN KEY([idCategoriaMenu]) REFERENCES [dbo].[c
 
 ALTER TABLE [dbo].[abonos] ADD FOREIGN KEY([idReservacion]) REFERENCES [dbo].[reservaciones] ([id]);
 ALTER TABLE [dbo].[abonos] ADD FOREIGN KEY([idCliente]) REFERENCES [dbo].[clientes] ([id]);
+ALTER TABLE [dbo].[abonos] ADD FOREIGN KEY([idUsuario]) REFERENCES [dbo].[usuarios] ([id]);
 
 ALTER TABLE [dbo].[detallesMenus] ADD FOREIGN KEY([idReservacion]) REFERENCES [dbo].[reservaciones] ([id]);
 ALTER TABLE [dbo].[detallesMenus] ADD FOREIGN KEY([idMenu]) REFERENCES [dbo].[menus] ([id]);

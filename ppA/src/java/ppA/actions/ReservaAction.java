@@ -16,7 +16,7 @@ public class ReservaAction extends BaseAction {
     private Reservaciones r;
     private List<Reservaciones> listReservas;
     private List<Sucursales> listSucursales;
-    private List<Sucursales> listEstados;
+    private List<Estados> listEstados;
     private List<Clientes> listClientes;
 
     @Override
@@ -103,20 +103,6 @@ public class ReservaAction extends BaseAction {
     }
 
     /**
-     * @return the listEstados
-     */
-    public List<Sucursales> getListEstados() {
-	return listEstados;
-    }
-
-    /**
-     * @param listEstados the listEstados to set
-     */
-    public void setListEstados(List<Sucursales> listEstados) {
-	this.listEstados = listEstados;
-    }
-
-    /**
      * @return the listClientes
      */
     public List<Clientes> getListClientes() {
@@ -128,5 +114,19 @@ public class ReservaAction extends BaseAction {
      */
     public void setListClientes(List<Clientes> listClientes) {
 	this.listClientes = listClientes;
+    }
+
+    /**
+     * @return the listEstados
+     */
+    public List<Estados> getListEstados() {
+	return listEstados;
+    }
+
+    /**
+     * @param listEstados the listEstados to set
+     */
+    public void setListEstados(List<Estados> listEstados) {
+	this.listEstados = listEstados;
     }
 }

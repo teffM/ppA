@@ -27,4 +27,7 @@
     <definition name="clientes" extends="default">
         <put-attribute name="body" value="/WEB-INF/pages/clientes.jsp" />
     </definition>
+    <definition name="abonos" extends="default">
+        <put-attribute name="body" value="/WEB-INF/pages/abonos.jsp" />
+    </definition>
 </tiles-definitions>

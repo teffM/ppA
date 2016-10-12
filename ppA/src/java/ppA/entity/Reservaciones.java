@@ -1,5 +1,5 @@
 package ppA.entity;
-// Generated 09-oct-2016 21:14:52 by Hibernate Tools 4.3.1
+// Generated 11-oct-2016 21:57:08 by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -20,7 +20,9 @@ public class Reservaciones implements java.io.Serializable {
     private String comentarios;
     private Date fechaCreacion;
     private Set abonoses = new HashSet(0);
+    private Set abonoses_1 = new HashSet(0);
     private Set detallesMenuses = new HashSet(0);
+    private Set detallesMenuses_1 = new HashSet(0);
 
     public Reservaciones() {
     }
@@ -37,7 +39,7 @@ public class Reservaciones implements java.io.Serializable {
 	this.fechaCreacion = fechaCreacion;
     }
 
-    public Reservaciones(int id, Clientes clientes, Estados estados, Sucursales sucursales, Usuarios usuarios, Date fechaReservacion, int numPersonas, String comentarios, Date fechaCreacion, Set abonoses, Set detallesMenuses) {
+    public Reservaciones(int id, Clientes clientes, Estados estados, Sucursales sucursales, Usuarios usuarios, Date fechaReservacion, int numPersonas, String comentarios, Date fechaCreacion, Set abonoses, Set abonoses_1, Set detallesMenuses, Set detallesMenuses_1) {
 	this.id = id;
 	this.clientes = clientes;
 	this.estados = estados;
@@ -48,7 +50,9 @@ public class Reservaciones implements java.io.Serializable {
 	this.comentarios = comentarios;
 	this.fechaCreacion = fechaCreacion;
 	this.abonoses = abonoses;
+	this.abonoses_1 = abonoses_1;
 	this.detallesMenuses = detallesMenuses;
+	this.detallesMenuses_1 = detallesMenuses_1;
     }
 
     public int getId() {
@@ -131,12 +135,28 @@ public class Reservaciones implements java.io.Serializable {
 	this.abonoses = abonoses;
     }
 
+    public Set getAbonoses_1() {
+	return this.abonoses_1;
+    }
+
+    public void setAbonoses_1(Set abonoses_1) {
+	this.abonoses_1 = abonoses_1;
+    }
+
     public Set getDetallesMenuses() {
 	return this.detallesMenuses;
     }
 
     public void setDetallesMenuses(Set detallesMenuses) {
 	this.detallesMenuses = detallesMenuses;
+    }
+
+    public Set getDetallesMenuses_1() {
+	return this.detallesMenuses_1;
+    }
+
+    public void setDetallesMenuses_1(Set detallesMenuses_1) {
+	this.detallesMenuses_1 = detallesMenuses_1;
     }
 
 }

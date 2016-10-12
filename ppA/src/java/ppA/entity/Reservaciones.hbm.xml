@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 09-oct-2016 21:14:55 by Hibernate Tools 4.3.1 -->
+<!-- Generated 11-oct-2016 21:57:13 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="ppA.entity.Reservaciones" table="reservaciones" schema="dbo" optimistic-lock="version">
         <id name="id" type="int">
@@ -38,7 +38,19 @@
             </key>
             <one-to-many class="ppA.entity.Abonos" />
         </set>
+        <set name="abonoses_1" table="abonos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idReservacion" not-null="true" />
+            </key>
+            <one-to-many class="ppA.entity.Abonos" />
+        </set>
         <set name="detallesMenuses" table="detallesMenus" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idReservacion" not-null="true" />
+            </key>
+            <one-to-many class="ppA.entity.DetallesMenus" />
+        </set>
+        <set name="detallesMenuses_1" table="detallesMenus" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idReservacion" not-null="true" />
             </key>

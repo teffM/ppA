@@ -17,8 +17,8 @@
                         <s:textfield name="c.apellido" lkey="c.apellido" cssClass="form-control required" required="true" />
                         <s:textfield name="c.telefono" key="c.telefono" cssClass="form-control required" placeholder="00000000" required="true" type="number" />
                         <s:textfield name="c.correo" key="c.correo" cssClass="form-control required" placeholder="user@domain.com" required="true" type="email" />
-                        <s:textfield name="c.dui" key="c.dui" cssClass="form-control required" required="true" placeholder="00000000-0" mask="99999999-9" />
-                        <s:textfield name="c.nit" key="c.nit" cssClass="form-control" placeholder="0000-000000-000-0" mask="9999-99999-999-9" />
+                        <s:textfield name="c.dui" key="c.DUI" cssClass="form-control required" required="true" placeholder="00000000-0" mask="99999999-9" />
+                        <s:textfield name="c.nit" key="c.NIT" cssClass="form-control" placeholder="0000-000000-000-0" mask="9999-99999-999-9" />
                         <s:textfield name="c.comprobanteIva" key="c.comprobanteIva" cssClass="form-control" />
                         <s:textfield name="c.descripcion" key="c.descripcion" cssClass="form-control required" required="true" />
                         <s:submit method="guardar" cssClass="btn-info disabled submit" value="Guardar" key="btn.guardar" />
@@ -37,19 +37,23 @@
                 <th><s:text name="c.apellido" /></th>
                 <th><s:text name="c.telefono" /></th>
                 <th><s:text name="c.correo" /></th>
-                <th><s:text name="c.dui" /></th>
+                <th><s:text name="c.DUI" /></th>
+                <th><s:text name="c.NIT" /></th>
+                <th><s:text name="c.comprobanteIva" /></th>
                 <th><s:text name="c.descripcion" /></th>
                 <th><s:text name="q.eliminar" /></th>
             </tr>
         </thead> 
         <tbody>
             <c:forEach var="l" items="${listClientes}">
-                <tr obj="${l.id}, ${l.nombre}, ${l.apellido}, ${l.telefono}, ${l.correo}, ${l.dui}, ${l.descripcion}">
+                <tr obj="${l.id}, ${l.nombre}, ${l.apellido}, ${l.telefono}, ${l.correo}, ${l.dui}, ${l.nit}, ${l.comprobanteIva}, ${l.descripcion}">
                     <td><c:out value="${l.nombre}"/></td>
                     <td><c:out value="${l.apellido}"/></td>
                     <td><c:out value="${l.telefono}"/></td>
                     <td><c:out value="${l.correo}"/></td>
                     <td><c:out value="${l.dui}"/></td>
+                    <td><c:out value="${l.nit}"/></td>
+                    <td><c:out value="${l.comprobanteIva}"/></td>
                     <td><c:out value="${l.descripcion}"/></td>
                     <td>
                         <button class="btn btn-default btn-xs" data-href="./Cliente!eliminar?id=${l.id}"
@@ -78,7 +82,9 @@
         $("#Cliente_c_telefono").val($.trim(l[3]));
         $("#Cliente_c_correo").val($.trim(l[4]));
         $("#Cliente_c_dui").val($.trim(l[5]));
-        $("#Cliente_c_descripcion").val($.trim(l[6]));
+        $("#Cliente_c_nit").val($.trim(l[6]));
+        $("#Cliente_c_comprobanteIva").val($.trim(l[7]));
+        $("#Cliente_c_descripcion").val($.trim(l[8]));
         $('#myModal').modal({
             show: 'false'
         });

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 09-oct-2016 21:14:55 by Hibernate Tools 4.3.1 -->
+<!-- Generated 11-oct-2016 21:57:13 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="ppA.entity.Usuarios" table="usuarios" schema="dbo" optimistic-lock="version">
         <id name="id" type="int">
@@ -11,6 +11,12 @@
         <many-to-one name="roles" class="ppA.entity.Roles" fetch="select">
             <column name="idRol" not-null="true" />
         </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" length="25" not-null="true" />
+        </property>
+        <property name="apellido" type="string">
+            <column name="apellido" length="25" not-null="true" />
+        </property>
         <property name="usuario" type="string">
             <column name="usuario" length="25" not-null="true" />
         </property>
@@ -18,6 +24,24 @@
             <column name="clave" length="25" not-null="true" />
         </property>
         <set name="reservacioneses" table="reservaciones" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idUsuario" not-null="true" />
+            </key>
+            <one-to-many class="ppA.entity.Reservaciones" />
+        </set>
+        <set name="abonoses" table="abonos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idUsuario" not-null="true" />
+            </key>
+            <one-to-many class="ppA.entity.Abonos" />
+        </set>
+        <set name="abonoses_1" table="abonos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idUsuario" not-null="true" />
+            </key>
+            <one-to-many class="ppA.entity.Abonos" />
+        </set>
+        <set name="reservacioneses_1" table="reservaciones" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idUsuario" not-null="true" />
             </key>

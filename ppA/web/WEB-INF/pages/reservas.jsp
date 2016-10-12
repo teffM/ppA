@@ -17,7 +17,7 @@
                         <s:select name="r.clientes.id" listKey="id" listValue="nombre" headerKey="" cssClass="required"
                                   headerValue="%{getText('lbl.seleccione')}" list="listClientes" key="r.cliente" required="true" />
                         <%--<s:select name="r.menus.id" listKey="id" listValue="menu" headerKey="" cssClass="required"--%>
-                                  <!--headerValue="%{getText('lbl.seleccione')}" list="listMenus" key="r.menu" required="true" />-->
+                        <!--headerValue="%{getText('lbl.seleccione')}" list="listMenus" key="r.menu" required="true" />-->
                         <s:date name="r.fechaReservacion" id="createdDateId" format="dd/MM/yyyy hh:mm a" />
                         <s:textfield name="r.fechaReservacion" key="r.fechaReserva"
                                      value="%{createdDateId}" cssClass="form-control dateTimeMinNow required" required="true" />
