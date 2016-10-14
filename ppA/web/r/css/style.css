@@ -93,3 +93,6 @@ body {
 .selected {
     background-color: #acbad4 !important;
 }
+.modal, .modal-content, .modal-body, .modal-dialog {
+    z-index: 30001;
+}

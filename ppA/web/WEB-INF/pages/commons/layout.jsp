@@ -20,6 +20,7 @@
         <link href="./r/toastr/css/toastr.css" rel="stylesheet" type="text/css"/>
         <script src="./r/toastr/js/toastr.js" type="text/javascript"></script>
         <!--customs-->
+        <link href="./r/css/loading.css" rel="stylesheet" type="text/css"/>
         <link href="./r/css/style.css" rel="stylesheet" type="text/css"/>
         <script src="./r/js/functions.js" type="text/javascript"></script>
     </head>
@@ -54,8 +55,8 @@
                                     <li><a href="./Rol">ROLES</a></li>
                                     <li><a href="./Sucursal">SUCURSALES</a></li>
                                     <li><a href="./Usuario">USUARIOS</a></li>
-                                    
-                                    
+
+
                                 </ul>
                             </li>
                         </s:if>
@@ -70,6 +71,17 @@
                 </div>
             </div>
         </nav>
+        <s:if test="%{#session.userRol == null}">
+            <div id="loader-wrapper">
+                <div id="loader">
+                    <header class="entry-header">
+                        <h1 class="entry-title">Cargando...</h1>
+                    </header>
+                </div>
+                <div class="loader-section section-left"></div>
+                <div class="loader-section section-right"></div>
+            </div>
+        </s:if>
         <div class="container myContainer twoContainer">
             <tiles:insertAttribute name="body" />
         </div>
@@ -119,6 +131,13 @@
         <script src="./r/js/particles-conf.js" type="text/javascript"></script>
         <script type="text/javascript">
             $(document).ready(function () {
+                $("form").submit(function () {
+                    $('body').removeClass()('loaded');
+                });
+                $("a").click(function () {
+                    $('body').removeClass()('loaded');
+                });
+                $('body').addClass('loaded');
                 if ($('#toast-container').length == 0) {
             <s:if test="%{msg != null && msg != ''}">
                     msg("success", "<s:property escape="false" value="msg" />");

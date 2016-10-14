@@ -11,37 +11,37 @@ GO
 
 CREATE TABLE [opciones](
 	[id] [int] primary key IDENTITY(1,1) NOT NULL,
-	[opcion] [varchar](20) NOT NULL DEFAULT (''),
+	[opcion] [nvarchar](20) NOT NULL DEFAULT (''),
 	[orden] [decimal](5, 2) NULL DEFAULT ((0)),
 	[padre] [int] NULL,
-	[accion] [varchar](20) NOT NULL DEFAULT (''),
-	[descripcion] [varchar](50) NOT NULL DEFAULT ('')
+	[accion] [nvarchar](20) NOT NULL DEFAULT (''),
+	[descripcion] [nvarchar](50) NOT NULL DEFAULT ('')
 )
 GO
 CREATE TABLE [dbo].[clientes](
 	[id] [int] primary key IDENTITY(1,1) NOT NULL,
-	[nombre] [varchar](25) NOT NULL DEFAULT (''),
-	[apellido] [varchar](25) NOT NULL DEFAULT (''),
-	[telefono] [varchar](15) NOT NULL DEFAULT (''),
-        [correo] [varchar](25) NOT NULL DEFAULT (''),
-	[dui] [varchar](10) NOT NULL DEFAULT '',
-	[nit] [varchar](17) NOT NULL DEFAULT '',
-	[comprobanteIva] [varchar](100) NOT NULL DEFAULT '',
-        descripcion varchar(100) not null default ''
+	[nombre] [nvarchar](25) NOT NULL DEFAULT (''),
+	[apellido] [nvarchar](25) NOT NULL DEFAULT (''),
+	[telefono] [nvarchar](15) NOT NULL DEFAULT (''),
+        [correo] [nvarchar](25) NOT NULL DEFAULT (''),
+	[dui] [nvarchar](10) NOT NULL DEFAULT '',
+	[nit] [nvarchar](17) NOT NULL DEFAULT '',
+	[comprobanteIva] [nvarchar](100) NOT NULL DEFAULT '',
+        descripcion nvarchar(100) not null default ''
 )
 GO
 create table categoriasMenus(
 	[id] [int] primary key IDENTITY(1,1) NOT NULL,
-        categoriaMenu varchar(25) not null default '',
-        descripcion varchar(100) not null default ''
+        categoriaMenu nvarchar(25) not null default '',
+        descripcion nvarchar(100) not null default ''
 )
 GO
 CREATE TABLE [dbo].[menus](
 	[id] [int] primary key IDENTITY(1,1) NOT NULL,
         idCategoriaMenu int not null,
-	[menu] [varchar](50) NOT NULL DEFAULT (''),
+	[menu] [nvarchar](50) NOT NULL DEFAULT (''),
 	[precio] [decimal](8,2) NULL DEFAULT ((0)),
-	[descripcion] [varchar](100) NOT NULL DEFAULT ('')
+	[descripcion] [nvarchar](100) NOT NULL DEFAULT ('')
 )
 GO
 CREATE TABLE [dbo].[reservaciones](
@@ -52,38 +52,38 @@ CREATE TABLE [dbo].[reservaciones](
         idUsuario int not null,
 	[fechaReservacion] [datetime] NOT NULL DEFAULT (CURRENT_TIMESTAMP),
 	[numPersonas] [int] NOT NULL DEFAULT ((0)),
-	[comentarios] [varchar](500) NOT NULL DEFAULT (''),
+	[comentarios] [nvarchar](500) NOT NULL DEFAULT (''),
 	[fechaCreacion] [datetime] NOT NULL DEFAULT (CURRENT_TIMESTAMP)
 )
 GO
 CREATE TABLE [dbo].[roles](
 	[id] [int] primary key IDENTITY(1,1) NOT NULL,
-	[rol] [varchar](25) NOT NULL DEFAULT (''),
-	[descripcion] [varchar](100) NOT NULL DEFAULT ('')
+	[rol] [nvarchar](25) NOT NULL DEFAULT (''),
+	[descripcion] [nvarchar](100) NOT NULL DEFAULT ('')
 )
 GO
 CREATE TABLE [dbo].[sucursales](
 	[id] [int] primary key IDENTITY(1,1) NOT NULL,
-	[sucursal] [varchar](100) NOT NULL DEFAULT (''),
+	[sucursal] [nvarchar](100) NOT NULL DEFAULT (''),
 	[nacional] [int] NOT NULL DEFAULT ((1)),
-	[direccion] [varchar](100) NOT NULL DEFAULT (''),
-	[telefono] [varchar](15) NOT NULL DEFAULT ('')
+	[direccion] [nvarchar](100) NOT NULL DEFAULT (''),
+	[telefono] [nvarchar](15) NOT NULL DEFAULT ('')
 )
 GO
 CREATE TABLE [dbo].[usuarios](
 	[id] [int] primary key IDENTITY(1,1) NOT NULL,
-        nombre varchar (25) not null default (''),
-        apellido varchar (25) not null default (''),
+        nombre nvarchar (25) not null default (''),
+        apellido nvarchar (25) not null default (''),
 	[idRol] [int] NOT NULL,
-	[usuario] [varchar](25) NOT NULL DEFAULT (''),
-	[clave] [varchar](25) NOT NULL DEFAULT ('')
+	[usuario] [nvarchar](25) NOT NULL DEFAULT (''),
+	[clave] [nvarchar](25) NOT NULL DEFAULT ('')
 )
 GO
 CREATE TABLE [dbo].[estados](
 	[id] [int] primary key IDENTITY(1,1) NOT NULL,
-	[estado] [varchar](20) NOT NULL DEFAULT (''),
-	[descripcion] [varchar](50) NOT NULL DEFAULT (''),
-	[color] [varchar](20) NOT NULL DEFAULT ('')
+	[estado] [nvarchar](20) NOT NULL DEFAULT (''),
+	[descripcion] [nvarchar](50) NOT NULL DEFAULT (''),
+	[color] [nvarchar](20) NOT NULL DEFAULT ('')
 )
 GO
 CREATE TABLE [dbo].[abonos](
@@ -100,7 +100,7 @@ CREATE TABLE [dbo].[detallesMenus](
 	[idReservacion] [int] NOT NULL,
 	[idMenu] [int] NOT NULL,
         cantidad int NOT NULL DEFAULT 0,
-	[comentarios] [varchar](200) NOT NULL DEFAULT '',
+	[comentarios] [nvarchar](200) NOT NULL DEFAULT '',
 	[precio] [float] NOT NULL DEFAULT 0
 )
 GO

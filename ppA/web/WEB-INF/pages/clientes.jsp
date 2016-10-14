@@ -37,8 +37,8 @@
                 <th><s:text name="c.apellido" /></th>
                 <th><s:text name="c.telefono" /></th>
                 <th><s:text name="c.correo" /></th>
-                <th><s:text name="c.DUI" /></th>
-                <th><s:text name="c.NIT" /></th>
+                <th><s:text name="c.dui" /></th>
+                <th><s:text name="c.nit" /></th>
                 <th><s:text name="c.comprobanteIva" /></th>
                 <th><s:text name="c.descripcion" /></th>
                 <th><s:text name="q.eliminar" /></th>

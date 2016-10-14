@@ -17,7 +17,7 @@
                         <s:textfield name="nu.apellido" key="nu.apellido" cssClass="form-control required" required="true" />
                         <s:textfield name="nu.usuario" key="nu.usuario" cssClass="form-control required" required="true" />
                         <s:password name="nu.clave" key="nu.clave" cssClass="form-control required" required="true" />
-                        <%--<s:password name="nu.clave" label="Confirmar Contraseña" cssClass="form-control required" required="true" />--%>
+                        <%--<s:password name="nu.clave" label="Confirmar ContraseÃ±a" cssClass="form-control required" required="true" />--%>
                         <s:select name="nu.roles.id" listKey="id" listValue="rol" headerKey="" cssClass="required"
                                   headerValue="%{getText('lbl.seleccione')}" list="listRoles" key="nu.roles" required="true"/>
 

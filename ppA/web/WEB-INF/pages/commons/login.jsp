@@ -1,6 +1,6 @@
 <%@taglib uri="/struts-tags" prefix="s"%>
 <center class="bgLogin">
-    <b>Ingrese usuario y contraseña</b>
+    <b>Ingrese usuario y contraseÃ±a</b>
     <s:form action="Login">
         <s:textfield name="usuario" label="Usuario"/>
         <s:password name="clave" label="Clave"/>
