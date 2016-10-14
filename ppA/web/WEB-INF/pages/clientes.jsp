@@ -17,10 +17,10 @@
                         <s:textfield name="c.apellido" lkey="c.apellido" cssClass="form-control required" required="true" />
                         <s:textfield name="c.telefono" key="c.telefono" cssClass="form-control required" placeholder="00000000" required="true" type="number" />
                         <s:textfield name="c.correo" key="c.correo" cssClass="form-control required" placeholder="user@domain.com" required="true" type="email" />
-                        <s:textfield name="c.dui" key="c.DUI" cssClass="form-control required" required="true" placeholder="00000000-0" mask="99999999-9" />
-                        <s:textfield name="c.nit" key="c.NIT" cssClass="form-control" placeholder="0000-000000-000-0" mask="9999-99999-999-9" />
+                        <s:textfield name="c.dui" key="c.dui" cssClass="form-control required" required="true" placeholder="00000000-0" mask="99999999-9" />
+                        <s:textfield name="c.nit" key="c.nit" cssClass="form-control" placeholder="0000-000000-000-0" mask="9999-99999-999-9" />
                         <s:textfield name="c.comprobanteIva" key="c.comprobanteIva" cssClass="form-control" />
-                        <%--<s:textfield name="c.descripcion" key="c.descripcion" cssClass="form-control required" required="true" />--%>
+                        <s:hidden name="c.descripcion" />
                         <s:submit method="guardar" cssClass="btn-info disabled submit" value="Guardar" key="btn.guardar" />
                     </s:form>
                 </fieldset>

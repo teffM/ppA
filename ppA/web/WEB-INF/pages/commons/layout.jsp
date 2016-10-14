@@ -131,13 +131,6 @@
         <script src="./r/js/particles-conf.js" type="text/javascript"></script>
         <script type="text/javascript">
             $(document).ready(function () {
-                $("form").submit(function () {
-                    $('body').removeClass()('loaded');
-                });
-                $("a").click(function () {
-                    $('body').removeClass()('loaded');
-                });
-                $('body').addClass('loaded');
                 if ($('#toast-container').length == 0) {
             <s:if test="%{msg != null && msg != ''}">
                     msg("success", "<s:property escape="false" value="msg" />");
@@ -210,6 +203,13 @@
                 $("input[mask]").each(function () {
                     $(this).mask($(this).attr("mask"));
                 });
+                $("form").submit(function () {
+                    $('body').removeClass('loaded');
+                });
+                $("a").click(function () {
+                    $('body').removeClass('loaded');
+                });
+                $('body').addClass('loaded');
             });
             $('#confirm-delete').on('show.bs.modal', function (e) {
                 $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));

@@ -96,3 +96,6 @@ body {
 .modal, .modal-content, .modal-body, .modal-dialog {
     z-index: 30001;
 }
+.colorpicker, .colorpicker * {
+    z-index: 50001;
+}
