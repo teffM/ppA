@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <%@taglib uri="/struts-tags" prefix="s"%>
 <html lang="es" class="body">
@@ -47,9 +47,11 @@
                                 </a>
                                 <ul class="navbar-inverse dropdown-menu">
                                     <li><a href="./Abono">ABONOS</a></li>
-                                    <li><a href="./CategoriaMenu">CATEGORIAS_MENU</a></li>
+                                    <li><a href="./CategoriaMenu">CATEGORIAS DE MENU</a></li>
+                                    <li><a href="./DetalleMenu">DETALLE DE MENU</a></li>
                                     <li><a href="./Estado">ESTADOS</a></li>
                                     <li><a href="./Menu">MENUS</a></li>
+                                    <li><a href="./Rol">ROLES</a></li>
                                     <li><a href="./Sucursal">SUCURSALES</a></li>
                                     <li><a href="./Usuario">USUARIOS</a></li>
                                     
