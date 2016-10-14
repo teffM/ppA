@@ -40,6 +40,9 @@
         <action name="Reserva" class="ppA.actions.ReservaAction">
             <result name="success" type="tiles">reservas</result>
         </action>
+        <action name="Menu" class="ppA.actions.MenuAction">
+            <result name="success" type="tiles">menus</result>
+        </action>
         <action name="Estado" class="ppA.actions.EstadoAction">
             <result name="success" type="tiles">estados</result>
         </action>
@@ -51,6 +54,9 @@
         </action>
         <action name="Cliente" class="ppA.actions.ClienteAction">
             <result name="success" type="tiles">clientes</result>
+        </action>
+        <action name="CategoriaMenu" class="ppA.actions.CategoriaMenuAction">
+            <result name="success" type="tiles">categoriasMenus</result>
         </action>
         <action name="Abono" class="ppA.actions.AbonoAction">
             <result name="success" type="tiles">abonos</result>

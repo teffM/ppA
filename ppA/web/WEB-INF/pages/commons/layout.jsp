@@ -47,9 +47,13 @@
                                 </a>
                                 <ul class="navbar-inverse dropdown-menu">
                                     <li><a href="./Abono">ABONOS</a></li>
-                                    <li><a href="./Usuario">USUARIOS</a></li>
-                                    <li><a href="./Sucursal">SUCURSALES</a></li>
+                                    <li><a href="./CategoriaMenu">CATEGORIAS_MENU</a></li>
                                     <li><a href="./Estado">ESTADOS</a></li>
+                                    <li><a href="./Menu">MENUS</a></li>
+                                    <li><a href="./Sucursal">SUCURSALES</a></li>
+                                    <li><a href="./Usuario">USUARIOS</a></li>
+                                    
+                                    
                                 </ul>
                             </li>
                         </s:if>
@@ -129,7 +133,12 @@
                             exportOptions: {columns: ':visible'}},
                         {extend: 'copyHtml5', text: '<s:text name="btn.copySelected" />',
                             exportOptions: {columns: ':visible', modifier: {selected: true}}},
-                        'excelHtml5', 'csvHtml5', 'pdfHtml5',
+                        {extend: 'excelHtml5', text: 'EXCEL',
+                            exportOptions: {columns: ':visible'}},
+                        {extend: 'csvHtml5', text: 'CSV',
+                            exportOptions: {columns: ':visible'}},
+                        {extend: 'pdfHtml5', text: 'PDF',
+                            exportOptions: {columns: ':visible'}},
                         {extend: 'print', text: '<s:text name="btn.print" />',
                             exportOptions: {columns: ':visible'}},
                         {extend: 'print', text: '<s:text name="btn.printSelected" />',
