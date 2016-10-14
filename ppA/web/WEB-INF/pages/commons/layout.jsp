@@ -39,26 +39,26 @@
                 </div>
                 <div class="collapse navbar-collapse" id="collapse">
                     <ul class="nav navbar-nav">
-                        <s:if test="%{#session.userRol != null && #session.userRol == 'administrador'}">
+                        <s:if test="%{#session.userRol != null}">
                             <li class="inactive"><a href="./Reserva">RESERVACIONES</a></li>
                             <li class="inactive"><a href="./Cliente">CLIENTES</a></li>
-                            <li class="dropdown">
-                                <a data-toggle="dropdown">
-                                    ADMINISTRACIÓN<span class="caret"></span>
-                                </a>
-                                <ul class="navbar-inverse dropdown-menu">
-                                    <li><a href="./Abono">ABONOS</a></li>
-                                    <li><a href="./CategoriaMenu">CATEGORIAS DE MENU</a></li>
-                                    <li><a href="./DetalleMenu">DETALLE DE MENU</a></li>
-                                    <li><a href="./Estado">ESTADOS</a></li>
-                                    <li><a href="./Menu">MENUS</a></li>
-                                    <li><a href="./Rol">ROLES</a></li>
-                                    <li><a href="./Sucursal">SUCURSALES</a></li>
-                                    <li><a href="./Usuario">USUARIOS</a></li>
-
-
-                                </ul>
-                            </li>
+                                <s:if test="%{#session.userRol == 'administrador'}">
+                                <li class="dropdown">
+                                    <a data-toggle="dropdown">
+                                        ADMINISTRACIÓN<span class="caret"></span>
+                                    </a>
+                                    <ul class="navbar-inverse dropdown-menu">
+                                        <li><a href="./Abono">ABONOS</a></li>
+                                        <li><a href="./CategoriaMenu">CATEGORIAS DE MENU</a></li>
+                                        <li><a href="./DetalleMenu">DETALLE DE MENU</a></li>
+                                        <li><a href="./Estado">ESTADOS</a></li>
+                                        <li><a href="./Menu">MENUS</a></li>
+                                        <li><a href="./Rol">ROLES</a></li>
+                                        <li><a href="./Sucursal">SUCURSALES</a></li>
+                                        <li><a href="./Usuario">USUARIOS</a></li>
+                                    </ul>
+                                </li>
+                            </s:if>
                         </s:if>
                     </ul>
                     <s:if test="%{#session.userRol != null && #session.userRol != null}">
