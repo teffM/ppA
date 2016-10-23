@@ -6,6 +6,7 @@
     <span class="glyphicon glyphicon-plus-sign"></span>
     <b><s:text name="r.btnNuevo" /></b>
 </a>
+<br/><br/>
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -35,6 +36,7 @@
         </div>
     </div>
 </div>
+                    
 <div id="container">
     <table id="dataTable" class="table table-striped table-bordered table-hover dt-responsive nowrap">
         <thead>
@@ -48,6 +50,7 @@
                 <th><s:text name="r.sucursal" /></th>
                 <th><s:text name="r.comentario" /></th>
                 <th>Usuario</th>
+                <th><s:text name="q.modificar" /></th>
                 <th><s:text name="q.eliminar" /></th>
             </tr>
         </thead>
@@ -68,6 +71,13 @@
                     <td><c:out value="${l.sucursales.sucursal}"/></td>
                     <td><c:out value="${l.comentarios}"/></td>
                     <td><c:out value="${l.usuarios.usuario}"/></td>
+                    
+                    <td>
+                        <a id="modificarReserva" href="#" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
+                            
+                            <b><s:text name="r.btnmodificar" /></b>
+                        </a>
+                    </td>
                     <td>
                         <button class="btn btn-default btn-xs" data-href="./Reserva!eliminar?id=${l.id}"
                                 data-toggle="modal" data-target="#confirm-delete">
@@ -86,7 +96,7 @@
         resetForm($('#Reserva'));
         $("#Reserva_r_nombres").focus();
     });
-    $("#dataTable > tbody > tr").dblclick(function () {
+    $("#dataTable > tbody > tr > #modificarReserva").dblclick(function () {
         resetForm($('#Reserva'));
         var l = $(this).attr("obj").split(",");
         $("#Reserva_r_id").val($.trim(l[0]));
