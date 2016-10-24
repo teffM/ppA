@@ -15,26 +15,30 @@ import javax.servlet.ServletResponse;
 
 public class CharacterEncodingFilter implements Filter {
 
-    @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-	    throws IOException, ServletException {
-	request.setCharacterEncoding("UTF-8");
-	response.setContentType("text/html; charset=UTF-8");
-	response.setCharacterEncoding("UTF-8");
-	chain.doFilter(request, response);
-	request.setCharacterEncoding("UTF-8");
-	response.setContentType("text/html; charset=UTF-8");
-	response.setCharacterEncoding("UTF-8");
+    private String encoding;
+
+    public void init(FilterConfig config) throws ServletException {
+        encoding = config.getInitParameter("requestEncoding");
+        if (encoding == null) {
+            encoding = "UTF-8";
+        }
     }
 
-    @Override
-    public void init(FilterConfig fc) throws ServletException {
-	throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain next)
+            throws IOException, ServletException {
+        // Respect the client-specified character encoding
+        // (see HTTP specification section 3.4.1)
+        if (null == request.getCharacterEncoding()) {
+            request.setCharacterEncoding(encoding);
+        }
+
+        // Set the default response content type and encoding
+        response.setContentType("text/html; charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");
+
+        next.doFilter(request, response);
     }
 
-    @Override
     public void destroy() {
-	throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
 }

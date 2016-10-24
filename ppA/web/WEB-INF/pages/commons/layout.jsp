@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <%@taglib uri="/struts-tags" prefix="s"%>
@@ -70,21 +70,86 @@
                             <li class="inactive">
                                 <a href="./Login!cerrarSesion">CERRAR SESIÓN</a>
                             </li>
-                        </ul>
+                        </s:if>
                     </s:if>
+                </ul>
+                <s:if test="%{#session.userRol != null && #session.userRol != null}">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="inactive">
+                            <a href="./Login!cerrarSesion">CERRAR SESIÓN</a>
+                        </li>
+                    </ul>
+                </s:if>
+            </div>
+        </div>
+    </nav>
+    <s:if test="%{#session.userRol == null}">
+        <div id="loader-wrapper">
+            <div id="loader">
+                <header class="entry-header">
+                    <h1 class="entry-title">Cargando...</h1>
+                </header>
+            </div>
+            <div class="loader-section section-left"></div>
+            <div class="loader-section section-right"></div>
+        </div>
+    </s:if>
+    <div class="container myContainer twoContainer">
+        <tiles:insertAttribute name="body" />
+    </div>
+    <!--modal confirm delete-->
+    <div class="navbar-inverse footer navbar-fixed-bottom">
+        © Copyright Restaurantes La Pampa, 2016 Derechos reservados / All Rights Reserved
+    </div>
+    <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    Advertencia!
+                </div>
+                <div class="modal-body">
+                    Seguro de eliminar el registro?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-danger btn-ok">Delete</a>
                 </div>
             </div>
-        </nav>
-        <s:if test="%{#session.userRol == null}">
-            <div id="loader-wrapper">
-                <div id="loader">
-                    <header class="entry-header">
-                        <h1 class="entry-title">Cargando...</h1>
-                    </header>
-                </div>
-                <div class="loader-section section-left"></div>
-                <div class="loader-section section-right"></div>
-            </div>
+        </div>
+    </div>
+    <!--boostrap--> 
+    <script src="./r/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="./r/bootstrap/js/moment-with-locales.js" type="text/javascript"></script>
+    <script src="./r/bootstrap/js/bootstrap-datetimepicker.js" type="text/javascript"></script>
+    <script src="./r/bootstrap/js/bootstrap-colorpicker.min.js" type="text/javascript"></script>
+    <script src="./r/bootstrap/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="./r/bootstrap/js/dataTables.select.min.js" type="text/javascript"></script>
+    <script src="./r/bootstrap/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
+    <script src="./r/bootstrap/js/dataTables.responsive.min.js" type="text/javascript"></script>
+    <script src="./r/bootstrap/js/responsive.bootstrap.min.js" type="text/javascript"></script>
+    <script src="./r/bootstrap/js/dataTables.buttons.min.js" type="text/javascript"></script>
+    <script src="./r/bootstrap/js/buttons.print.min.js" type="text/javascript"></script>
+    <script src="./r/bootstrap/js/jszip.min.js" type="text/javascript"></script>
+    <script src="./r/bootstrap/js/pdfmake.min.js" type="text/javascript"></script>
+    <script src="./r/bootstrap/js/vfs_fonts.js" type="text/javascript"></script>
+    <script src="./r/bootstrap/js/buttons.html5.min.js" type="text/javascript"></script>
+    <script src="./r/bootstrap/js/buttons.colVis.min.js" type="text/javascript"></script>
+    <script src="./r/bootstrap/js/select2.full.min.js" type="text/javascript"></script>
+    <!--jQuery-->
+    <script src="./r/js/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="./r/js/messages_es.js" type="text/javascript"></script>
+    <script src="./r/js/jquery.maskedinput.min.js" type="text/javascript"></script>
+    <!--particles-->
+    <script src="./r/js/particles.min.js" type="text/javascript"></script>
+    <script src="./r/js/particles-conf.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".select2").select2({
+                theme: "bootstrap"
+            });
+            if ($('#toast-container').length == 0) {
+        <s:if test="%{msg != null && msg != ''}">
+                msg("success", "<s:property escape="false" value="msg" />");
         </s:if>
         <div class="container myContainer twoContainer">
             <tiles:insertAttribute name="body" />
@@ -202,39 +267,44 @@
                             }
                         }
                     }
-                });
-                $(".dateTime").datetimepicker({locale: 'es'});
-                $(".dateTimeMinNow").datetimepicker({locale: 'es', minDate: moment()});
-                $(".dateTimeMaxNow").datetimepicker({locale: 'es', maxDate: moment()});
-                $(".colorpicker").colorpicker({format: "hex"});
+                }
+            });
+            $(".dateTime").datetimepicker({locale: 'es'});
+            $(".dateTimeMinNow").datetimepicker({locale: 'es', minDate: moment()});
+            $(".dateTimeMaxNow").datetimepicker({locale: 'es', maxDate: moment()});
+            $(".colorpicker").colorpicker({format: "hex"});
 
-                $("input[mask]").each(function () {
-                    $(this).mask($(this).attr("mask"));
-                });
-                $("form").submit(function () {
-                    $('body').removeClass('loaded');
-                });
-                $("a").click(function () {
-                    $('body').removeClass('loaded');
-                });
-                $('body').addClass('loaded');
+            $("input[mask]").each(function () {
+                $(this).mask($(this).attr("mask"));
             });
-            function resetForm(f) {
-                f[0].reset();
-                var v = f.validate({lang: 'es'});
-                v.resetForm();
-                $(".select2").val('').trigger('change');
-            }
-            $('#confirm-delete').on('show.bs.modal', function (e) {
-                $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+            $("form").submit(function () {
+                $('body').removeClass('loaded');
             });
-            $.validator.addMethod("phone", function (value, element) {
-                return this.optional(element) || /^[2|6|7][0-9]{7}$/.test(value);
-            }, '<s:text name="err.phone" />');
-            $.validator.addMethod('positiveNumber',
-                    function (value) {
-                        return Number(value) > 0;
-                    }, '<s:text name="err.mayorCero" />');
-        </script>
-    </body>
+            $("a").click(function () {
+                $('body').removeClass('loaded');
+            });
+            $('body').addClass('loaded');
+        });
+        function resetForm(f) {
+            f[0].reset();
+            var v = f.validate({lang: 'es'});
+            v.resetForm();
+            $(".select2").val('').trigger('change');
+        }
+        $('#confirm-delete').on('show.bs.modal', function (e) {
+            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+        });
+
+        $.validator.methods.email = function (value, element) {
+            return this.optional(element) || /[a-z]+@[a-z]+\.[a-z]+/.test(value);
+        };
+        $.validator.addMethod("phone", function (value, element) {
+            return this.optional(element) || /^[2|6|7][0-9]{7}$/.test(value);
+        }, '<s:text name="err.phone" />');
+        $.validator.addMethod('positiveNumber',
+                function (value) {
+                    return Number(value) > 0;
+                }, '<s:text name="err.mayorCero" />');
+    </script>
+</body>
 </html>
