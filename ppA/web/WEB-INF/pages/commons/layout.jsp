@@ -5,8 +5,7 @@
 <html lang="es" class="body">
     <head>
         <title>La Pampa Argentina</title>
-        <link rel="shortcut icon" type="image/x-icon" href="./r/images/favicon.ico" />
-        <meta charset="utf-8">
+
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--jQuery-->
         <script src="./r/js/jquery-2.1.1.min.js" type="text/javascript"></script>
@@ -44,6 +43,8 @@
                     <ul class="nav navbar-nav">
                         <s:if test="%{#session.userRol != null}">
                             <li class="inactive"><a href="./Reserva">RESERVACIONES</a></li>
+                            <li><a href="./DetalleMenu">DETALLE DE MENÚ</a></li>
+                            <li><a href="./Abono">ABONOS</a></li>
                             <li class="inactive"><a href="./Cliente">CLIENTES</a></li>
                                 <s:if test="%{#session.userRol == 'administrador'}">
                                 <li class="dropdown">
@@ -51,14 +52,14 @@
                                         ADMINISTRACIÓN<span class="caret"></span>
                                     </a>
                                     <ul class="navbar-inverse dropdown-menu">
-                                        <li><a href="./Abono">ABONOS</a></li>
-                                        <li><a href="./CategoriaMenu">CATEGORIAS DE MENU</a></li>
-                                        <li><a href="./DetalleMenu">DETALLE DE MENU</a></li>
-                                        <li><a href="./Estado">ESTADOS</a></li>
-                                        <li><a href="./Menu">MENUS</a></li>
-                                        <li><a href="./Rol">ROLES</a></li>
-                                        <li><a href="./Sucursal">SUCURSALES</a></li>
                                         <li><a href="./Usuario">USUARIOS</a></li>
+                                        <li><a href="./Sucursal">SUCURSALES</a></li>
+                                        <li><a href="./Menu">PLATILLOS</a></li>
+                                        <li><a href="./CategoriaMenu">CATEGORIAS DE PLATILLOS</a></li>
+                                        <!--
+                                        <li><a href="./Estado">ESTADOS</a></li>
+                                        <li><a href="./Rol">ROLES</a></li>
+                                        -->
                                     </ul>
                                 </li>
                             </s:if>
@@ -96,14 +97,14 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        Advertencia!
+                        !Advertencia!
                     </div>
                     <div class="modal-body">
-                        Seguro de eliminar el registro?
+                        ¿Eliminar el registro?
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-danger btn-ok">Delete</a>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        <a class="btn btn-danger btn-ok">Eliminar</a>
                     </div>
                 </div>
             </div>
