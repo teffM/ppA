@@ -5,8 +5,7 @@
 <html lang="es" class="body">
     <head>
         <title>La Pampa Argentina</title>
-        <link rel="shortcut icon" type="image/x-icon" href="./r/images/favicon.ico" />
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--jQuery-->
         <script src="./r/js/jquery-2.1.1.min.js" type="text/javascript"></script>
@@ -29,37 +28,47 @@
     </head>
     <body>
         <div id="particles-js"></div>
-    <nav class="navbar navbar-inverse twoRow" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="./index">Restaurante La Pampa</a>
-            </div>
-            <div class="collapse navbar-collapse" id="collapse">
-                <ul class="nav navbar-nav">
-                    <s:if test="%{#session.userRol != null}">
-                        <li class="inactive"><a href="./Reserva">RESERVACIONES</a></li>
-                        <li class="inactive"><a href="./Cliente">CLIENTES</a></li>
-                            <s:if test="%{#session.userRol == 'administrador'}">
-                            <li class="dropdown">
-                                <a data-toggle="dropdown">
-                                    ADMINISTRACIÓN<span class="caret"></span>
-                                </a>
-                                <ul class="navbar-inverse dropdown-menu">
-                                    <li><a href="./Abono">ABONOS</a></li>
-                                    <li><a href="./CategoriaMenu">CATEGORIAS DE MENU</a></li>
-                                    <li><a href="./DetalleMenu">DETALLE DE MENU</a></li>
-                                    <li><a href="./Estado">ESTADOS</a></li>
-                                    <li><a href="./Menu">MENUS</a></li>
-                                    <li><a href="./Rol">ROLES</a></li>
-                                    <li><a href="./Sucursal">SUCURSALES</a></li>
-                                    <li><a href="./Usuario">USUARIOS</a></li>
-                                </ul>
+        <nav class="navbar navbar-inverse twoRow" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="./index">Restaurante La Pampa</a>
+                </div>
+                <div class="collapse navbar-collapse" id="collapse">
+                    <ul class="nav navbar-nav">
+                        <s:if test="%{#session.userRol != null}">
+                            <li class="inactive"><a href="./Reserva">RESERVACIONES</a></li>
+                            <li><a href="./DetalleMenu">DETALLE DE MENÚ</a></li>
+                            <li><a href="./Abono">ABONOS</a></li>
+                            <li class="inactive"><a href="./Cliente">CLIENTES</a></li>
+                                <s:if test="%{#session.userRol == 'administrador'}">
+                                <li class="dropdown">
+                                    <a data-toggle="dropdown">
+                                        ADMINISTRACIÓN<span class="caret"></span>
+                                    </a>
+                                    <ul class="navbar-inverse dropdown-menu">
+                                        <li><a href="./Usuario">USUARIOS</a></li>
+                                        <li><a href="./Sucursal">SUCURSALES</a></li>
+                                        <li><a href="./Menu">PLATILLOS</a></li>
+                                        <li><a href="./CategoriaMenu">CATEGORIAS DE PLATILLOS</a></li>
+                                        <!--
+                                        <li><a href="./Estado">ESTADOS</a></li>
+                                        <li><a href="./Rol">ROLES</a></li>
+                                        -->
+                                    </ul>
+                                </li>
+                            </s:if>
+                        </s:if>
+                    </ul>
+                    <s:if test="%{#session.userRol != null && #session.userRol != null}">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="inactive">
+                                <a href="./Login!cerrarSesion">CERRAR SESIÓN</a>
                             </li>
                         </s:if>
                     </s:if>
@@ -142,62 +151,120 @@
         <s:if test="%{msg != null && msg != ''}">
                 msg("success", "<s:property escape="false" value="msg" />");
         </s:if>
-        <s:if test="%{errorMsg != null && errorMsg != ''}">
-                msg("error", "<s:property escape="false" value="errorMsg" />");
-        </s:if>
-            }
-            $('#dataTable').DataTable({
-                dom: 'lBfrtip',
-                buttons: [
-                    {extend: 'colvis', text: '<s:text name="btn.colVis" />'},
-                    {extend: 'copyHtml5', text: '<s:text name="btn.copy" />',
-                        exportOptions: {columns: ':visible'}},
-                    {extend: 'copyHtml5', text: '<s:text name="btn.copySelected" />',
-                        exportOptions: {columns: ':visible', modifier: {selected: true}}},
-                    {extend: 'excelHtml5', text: 'EXCEL',
-                        exportOptions: {columns: ':visible'}},
-                    {extend: 'csvHtml5', text: 'CSV',
-                        exportOptions: {columns: ':visible'}},
-                    {extend: 'pdfHtml5', text: 'PDF',
-                        exportOptions: {columns: ':visible'}},
-                    {extend: 'print', text: '<s:text name="btn.print" />',
-                        exportOptions: {columns: ':visible'}},
-                    {extend: 'print', text: '<s:text name="btn.printSelected" />',
-                        exportOptions: {columns: ':visible', modifier: {selected: true}}}],
-                select: true,
-                "pagingType": "full_numbers",
-                language: {
-                    processing: "<s:text name="dt.sProcessing" />",
-                    search: "<s:text name="dt.sSearch" />",
-                    lengthMenu: "<s:text name="dt.sLengthMenu" />",
-                    info: "<s:text name="dt.sInfo" />",
-                    infoEmpty: "<s:text name="dt.sInfoEmpty" />",
-                    infoFiltered: "<s:text name="dt.sInfoFiltered" />",
-                    loadingRecords: "<s:text name="dt.sLoandingRecords" />",
-                    zeroRecords: "<s:text name="dt.sZeroRecords" />",
-                    emptyTable: "<s:text name="dt.sEmptyTable" />",
-                    paginate: {
-                        first: "<s:text name="dt.sFirst" />",
-                        previous: "<s:text name="dt.sPrevious" />",
-                        next: "<s:text name="dt.sNext" />",
-                        last: "<s:text name="dt.sLast" />"
-                    },
-                    aria: {
-                        sortAscending: "<s:text name="dt.sSortAscending" />",
-                        sortDescending: "<s:text name="dt.sSortDescending" />"
-                    },
-                    buttons: {
-                        copyTitle: "<s:text name="dt.copyTitle" />",
-                        copySuccess: {
-                            _: "<s:text name="dt.copyFiles" />",
-                            1: "<s:text name="dt.copyOneFile" />"
-                        }
-                    },
-                    select: {
-                        rows: {
-                            _: "<s:text name="dt.selectFile" />",
-                            0: "<s:text name="dt.selectClickFile" />",
-                            1: "<s:text name="dt.selectOneFile" />"
+        <div class="container myContainer twoContainer">
+            <tiles:insertAttribute name="body" />
+        </div>
+        <!--modal confirm delete-->
+        <div class="navbar-inverse footer navbar-fixed-bottom">
+            © Copyright Restaurantes La Pampa, 2016 Derechos reservados / All Rights Reserved
+        </div>
+        <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        !Advertencia!
+                    </div>
+                    <div class="modal-body">
+                        ¿Eliminar el registro?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        <a class="btn btn-danger btn-ok">Eliminar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--boostrap--> 
+        <script src="./r/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="./r/bootstrap/js/moment-with-locales.js" type="text/javascript"></script>
+        <script src="./r/bootstrap/js/bootstrap-datetimepicker.js" type="text/javascript"></script>
+        <script src="./r/bootstrap/js/bootstrap-colorpicker.min.js" type="text/javascript"></script>
+        <script src="./r/bootstrap/js/jquery.dataTables.min.js" type="text/javascript"></script>
+        <script src="./r/bootstrap/js/dataTables.select.min.js" type="text/javascript"></script>
+        <script src="./r/bootstrap/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
+        <script src="./r/bootstrap/js/dataTables.responsive.min.js" type="text/javascript"></script>
+        <script src="./r/bootstrap/js/responsive.bootstrap.min.js" type="text/javascript"></script>
+        <script src="./r/bootstrap/js/dataTables.buttons.min.js" type="text/javascript"></script>
+        <script src="./r/bootstrap/js/buttons.print.min.js" type="text/javascript"></script>
+        <script src="./r/bootstrap/js/jszip.min.js" type="text/javascript"></script>
+        <script src="./r/bootstrap/js/pdfmake.min.js" type="text/javascript"></script>
+        <script src="./r/bootstrap/js/vfs_fonts.js" type="text/javascript"></script>
+        <script src="./r/bootstrap/js/buttons.html5.min.js" type="text/javascript"></script>
+        <script src="./r/bootstrap/js/buttons.colVis.min.js" type="text/javascript"></script>
+        <script src="./r/bootstrap/js/select2.full.min.js" type="text/javascript"></script>
+        <!--jQuery-->
+        <script src="./r/js/jquery.validate.min.js" type="text/javascript"></script>
+        <script src="./r/js/messages_es.js" type="text/javascript"></script>
+        <script src="./r/js/jquery.maskedinput.min.js" type="text/javascript"></script>
+        <!--particles-->
+        <script src="./r/js/particles.min.js" type="text/javascript"></script>
+        <script src="./r/js/particles-conf.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $(".select2").select2({
+                    theme: "bootstrap"
+                });
+                if ($('#toast-container').length == 0) {
+            <s:if test="%{msg != null && msg != ''}">
+                    msg("success", "<s:property escape="false" value="msg" />");
+            </s:if>
+            <s:if test="%{errorMsg != null && errorMsg != ''}">
+                    msg("error", "<s:property escape="false" value="errorMsg" />");
+            </s:if>
+                }
+                $('#dataTable').DataTable({
+                    dom: 'lBfrtip',
+                    buttons: [
+                        {extend: 'colvis', text: '<s:text name="btn.colVis" />'},
+                        {extend: 'copyHtml5', text: '<s:text name="btn.copy" />',
+                            exportOptions: {columns: ':visible'}},
+                        {extend: 'copyHtml5', text: '<s:text name="btn.copySelected" />',
+                            exportOptions: {columns: ':visible', modifier: {selected: true}}},
+                        {extend: 'excelHtml5', text: 'EXCEL',
+                            exportOptions: {columns: ':visible'}},
+                        {extend: 'csvHtml5', text: 'CSV',
+                            exportOptions: {columns: ':visible'}},
+                        {extend: 'pdfHtml5', text: 'PDF',
+                            exportOptions: {columns: ':visible'}},
+                        {extend: 'print', text: '<s:text name="btn.print" />',
+                            exportOptions: {columns: ':visible'}},
+                        {extend: 'print', text: '<s:text name="btn.printSelected" />',
+                            exportOptions: {columns: ':visible', modifier: {selected: true}}}],
+                    select: true,
+                    "pagingType": "full_numbers",
+                    language: {
+                        processing: "<s:text name="dt.sProcessing" />",
+                        search: "<s:text name="dt.sSearch" />",
+                        lengthMenu: "<s:text name="dt.sLengthMenu" />",
+                        info: "<s:text name="dt.sInfo" />",
+                        infoEmpty: "<s:text name="dt.sInfoEmpty" />",
+                        infoFiltered: "<s:text name="dt.sInfoFiltered" />",
+                        loadingRecords: "<s:text name="dt.sLoandingRecords" />",
+                        zeroRecords: "<s:text name="dt.sZeroRecords" />",
+                        emptyTable: "<s:text name="dt.sEmptyTable" />",
+                        paginate: {
+                            first: "<s:text name="dt.sFirst" />",
+                            previous: "<s:text name="dt.sPrevious" />",
+                            next: "<s:text name="dt.sNext" />",
+                            last: "<s:text name="dt.sLast" />"
+                        },
+                        aria: {
+                            sortAscending: "<s:text name="dt.sSortAscending" />",
+                            sortDescending: "<s:text name="dt.sSortDescending" />"
+                        },
+                        buttons: {
+                            copyTitle: "<s:text name="dt.copyTitle" />",
+                            copySuccess: {
+                                _: "<s:text name="dt.copyFiles" />",
+                                1: "<s:text name="dt.copyOneFile" />"
+                            }
+                        },
+                        select: {
+                            rows: {
+                                _: "<s:text name="dt.selectFile" />",
+                                0: "<s:text name="dt.selectClickFile" />",
+                                1: "<s:text name="dt.selectOneFile" />"
+                            }
                         }
                     }
                 }
