@@ -14,7 +14,7 @@
                     <legend><s:text name="dm.legend" /></legend>
                     <s:form action="DetalleMenu">
                         <s:hidden name="dm.id" />
-                        <s:select name="dm.reservaciones.id" listKey="id" listValue="clientes.nombre" headerKey="" cssClass="select2 required"
+                        <s:select name="dm.reservaciones.id" listKey="id" listValue="%{clientes.nombre + ' ' + clientes.apellido}" headerKey="" cssClass="select2 required"
                                   headerValue="%{getText('lbl.seleccione')}" list="listReservaciones" key="dm.reserva" required="true" />
                         <s:select name="dm.menus.id" listKey="id" listValue="menu" headerKey="" cssClass="select2 required"
                                   headerValue="%{getText('lbl.seleccione')}" list="listMenus" key="dm.menu" required="true" />
@@ -45,7 +45,7 @@
         <tbody>
             <c:forEach var="l" items="${listDetallesMenus}">
                 <tr obj="${l.id}, ${l.reservaciones.id}, ${l.menus.id}, ${l.cantidad}, ${l.precio}, ${l.comentarios}">
-                    <td><c:out value="${l.reservaciones.clientes.nombre}"/></td>
+                    <td><c:out value="${l.reservaciones.clientes.nombre}"/> <c:out value="${l.reservaciones.clientes.apellido}"/></td>
                     <td><c:out value="${l.menus.menu}"/></td>
                     <td><c:out value="${l.cantidad}"/></td>
                     <td><c:out value="${l.precio}"/></td>
@@ -75,8 +75,8 @@
         resetForm($('#DetalleMenu'));
         var l = $(t).attr("obj").split(",");
         $("#DetalleMenu_dm_id").val($.trim(l[0]));
-        $("#DetalleMenu_dm_reservaciones_id").val($.trim(l[1]));
-        $("#DetalleMenu_dm_menus_id").val($.trim(l[2]));
+        $("#DetalleMenu_dm_reservaciones_id").val($.trim(l[1])).trigger('change');
+        $("#DetalleMenu_dm_menus_id").val($.trim(l[2])).trigger('change');
         $("#DetalleMenu_dm_cantidad").val($.trim(l[3]));
         $("#DetalleMenu_dm_precio").val($.trim(l[4]));
         $("#DetalleMenu_dm_comentarios").val($.trim(l[5]));

@@ -43,7 +43,7 @@
         </thead>
         <tbody>
             <c:forEach var="l" items="${listUsuarios}">
-                <tr obj="${l.id}, ${l.nombre}, ${l.apellido}, ${l.usuario}, ${l.clave}">
+                <tr obj="${l.id}, ${l.nombre}, ${l.apellido}, ${l.usuario}, ${l.clave}, ${l.roles.id}">
                     <td><c:out value="${l.nombre}"/></td>
                     <td><c:out value="${l.apellido}"/></td>
                     <td><c:out value="${l.usuario}"/></td>
@@ -78,7 +78,7 @@
         $("#Usuario_nu_apellido").val($.trim(l[2]));
         $("#Usuario_nu_usuario").val($.trim(l[3]));
         $("#Usuario_nu_clave").val($.trim(l[4]));
-        $("#Usuario_nu_roles_id").val(1);
+        $("#Usuario_nu_roles_id").val($.trim(l[5])).trigger('change');
         $('#myModal').modal({
             show: 'false'
         });
