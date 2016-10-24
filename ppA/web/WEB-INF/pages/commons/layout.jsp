@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
+<%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <%@taglib uri="/struts-tags" prefix="s"%>
 <html lang="es" class="body">
     <head>
-        <title></title>
+        <title>La Pampa Argentina</title>
+        <link rel="shortcut icon" type="image/x-icon" href="./r/images/favicon.ico" />
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--jQuery-->
@@ -16,6 +17,8 @@
         <link href="./r/bootstrap/css/responsive.bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="./r/bootstrap/css/bootstrap-colorpicker.min.css" rel="stylesheet" type="text/css"/>
         <link href="./r/bootstrap/css/buttons.dataTables.min.css" rel="stylesheet" type="text/css"/>
+        <link href="./r/bootstrap/css/select2.min.css" rel="stylesheet" type="text/css"/>
+        <link href="./r/bootstrap/css/select2-bootstrap.css" rel="stylesheet" type="text/css"/>
         <!--toaster-->
         <link href="./r/toastr/css/toastr.css" rel="stylesheet" type="text/css"/>
         <script src="./r/toastr/js/toastr.js" type="text/javascript"></script>
@@ -122,6 +125,7 @@
         <script src="./r/bootstrap/js/vfs_fonts.js" type="text/javascript"></script>
         <script src="./r/bootstrap/js/buttons.html5.min.js" type="text/javascript"></script>
         <script src="./r/bootstrap/js/buttons.colVis.min.js" type="text/javascript"></script>
+        <script src="./r/bootstrap/js/select2.full.min.js" type="text/javascript"></script>
         <!--jQuery-->
         <script src="./r/js/jquery.validate.min.js" type="text/javascript"></script>
         <script src="./r/js/messages_es.js" type="text/javascript"></script>
@@ -131,6 +135,9 @@
         <script src="./r/js/particles-conf.js" type="text/javascript"></script>
         <script type="text/javascript">
             $(document).ready(function () {
+                $(".select2").select2({
+                    theme: "bootstrap"
+                });
                 if ($('#toast-container').length == 0) {
             <s:if test="%{msg != null && msg != ''}">
                     msg("success", "<s:property escape="false" value="msg" />");
@@ -211,6 +218,12 @@
                 });
                 $('body').addClass('loaded');
             });
+            function resetForm(f) {
+                f[0].reset();
+                var v = f.validate({lang: 'es'});
+                v.resetForm();
+                $(".select2").val('').trigger('change');
+            }
             $('#confirm-delete').on('show.bs.modal', function (e) {
                 $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
             });

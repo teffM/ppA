@@ -30,7 +30,7 @@
             <tr>
                 <th><s:text name="cm.categoriaMenu" /></th>
                 <th><s:text name="cm.descripcion" /></th>
-                <th><s:text name="q.eliminar" /></th>
+                <th data-priority="1"><s:text name="q.acciones" /></th>
             </tr>
         </thead>
         <tbody>
@@ -39,6 +39,9 @@
                     <td><c:out value="${l.categoriaMenu}"/></td>
                     <td><c:out value="${l.descripcion}"/></td>
                     <td>
+                        <button class="btn btn-default btn-xs anotherNew">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </button>
                         <button class="btn btn-default btn-xs" data-href="./CategoriaMenu!eliminar?id=${l.id}"
                                 data-toggle="modal" data-target="#confirm-delete">
                             <span class="glyphicon glyphicon-trash"></span>
@@ -56,14 +59,20 @@
         resetForm($('#CategoriaMenu'));
         $("#CategoriaMenu_ca_categoriaMenu").focus();
     });
-    $("#dataTable > tbody > tr").dblclick(function () {
+    function edit(t) {
         resetForm($('#CategoriaMenu'));
-        var l = $(this).attr("obj").split(",");
+        var l = $(t).attr("obj").split(",");
         $("#CategoriaMenu_ca_id").val($.trim(l[0]));
         $("#CategoriaMenu_ca_categoriaMenu").val($.trim(l[1]));
         $("#CategoriaMenu_ca_descripcion").val($.trim(l[2]));
         $('#myModal').modal({
             show: 'false'
         });
+    }
+    $("#dataTable > tbody > tr").dblclick(function () {
+        edit($(this));
+    });
+    $(".anotherNew").on('click', function () {
+        edit($(this).parent().parent());
     });
 </script>

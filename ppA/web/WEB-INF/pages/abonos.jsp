@@ -14,9 +14,9 @@
                     <legend><s:text name="a.legend" /></legend>
                     <s:form action="Abono">
                         <s:hidden name="a.id" />
-                        <s:select name="a.reservaciones.id" listKey="id" listValue="clientes.nombre" headerKey="" cssClass="required"
+                        <s:select name="a.reservaciones.id" listKey="id" listValue="clientes.nombre" headerKey="" cssClass="select2 required"
                                   headerValue="%{getText('lbl.seleccione')}" list="listReservaciones" key="a.reserva" required="true" />
-                        <s:select name="a.clientes.id" listKey="id" listValue="nombre" headerKey="" cssClass="required"
+                        <s:select name="a.clientes.id" listKey="id" listValue="nombre" headerKey="" cssClass="select2 required"
                                   headerValue="%{getText('lbl.seleccione')}" list="listClientes" key="a.cliente" required="true" />
                         <s:textfield name="a.abono" key="a.abono" type="number" cssClass="form-control required" required="true" />
                         <s:date name="a.fechaAbono" id="createdDateId" format="dd/MM/yyyy hh:mm a" />
@@ -37,7 +37,7 @@
                 <th><s:text name="a.abono" /></th>
                 <th><s:text name="a.fechaAbono" /></th>
                 <th><s:text name="a.usuario" /></th>
-                <th><s:text name="q.eliminar" /></th>
+                <th data-priority="1"><s:text name="q.acciones" /></th>
             </tr>
         </thead>
         <tbody>
@@ -52,6 +52,9 @@
                     <td><c:out value="${fechaAbono}"/></td>
                     <td><c:out value="${l.usuarios.usuario}"/></td>
                     <td>
+                        <button class="btn btn-default btn-xs anotherNew">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </button>
                         <button class="btn btn-default btn-xs" data-href="./Abono!eliminar?id=${l.id}"
                                 data-toggle="modal" data-target="#confirm-delete">
                             <span class="glyphicon glyphicon-trash"></span>
@@ -69,9 +72,9 @@
         resetForm($('#Abono'));
         $("#Abono_a_id").focus();
     });
-    $("#dataTable > tbody > tr").dblclick(function () {
+    function edit(t) {
         resetForm($('#Abono'));
-        var l = $(this).attr("obj").split(",");
+        var l = $(t).attr("obj").split(",");
         $("#Abono_a_id").val($.trim(l[0]));
         $("#Abono_a_reservaciones_id").val($.trim(l[1]));
         $("#Abono_a_clientes_id").val($.trim(l[2]));
@@ -80,5 +83,11 @@
         $('#myModal').modal({
             show: 'false'
         });
+    }
+    $("#dataTable > tbody > tr").dblclick(function () {
+        edit($(this));
+    });
+    $(".anotherNew").on('click', function () {
+        edit($(this).parent().parent());
     });
 </script>

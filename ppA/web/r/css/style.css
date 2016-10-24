@@ -18,6 +18,9 @@ span.required {
 .glyphicon-trash {
     color:red;
 }
+.glyphicon-edit {
+    color:chocolate;
+}
 .footer {
     text-align: center;
     color: white;
@@ -94,8 +97,11 @@ body {
     background-color: #acbad4 !important;
 }
 .modal, .modal-content, .modal-body, .modal-dialog {
-    z-index: 30001;
+    z-index: 30001 !important;
 }
 .colorpicker, .colorpicker * {
-    z-index: 50001;
+    z-index: 50001 !important;
+}
+.select2-close-mask, .select2-dropdown{
+    z-index: 40001 !important;
 }

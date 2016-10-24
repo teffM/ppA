@@ -30,7 +30,7 @@
             <tr>
                 <th><s:text name="ro.rol" /></th>
                 <th><s:text name="ro.descripcion" /></th>
-                <th><s:text name="q.eliminar" /></th>
+                <th data-priority="1"><s:text name="q.acciones" /></th>
             </tr>
         </thead>
         <tbody>
@@ -39,6 +39,9 @@
                     <td><c:out value="${l.rol}"/></td>
                     <td><c:out value="${l.descripcion}"/></td>
                     <td>
+                        <button class="btn btn-default btn-xs anotherNew">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </button>
                         <button class="btn btn-default btn-xs" data-href="./Rol!eliminar?id=${l.id}"
                                 data-toggle="modal" data-target="#confirm-delete">
                             <span class="glyphicon glyphicon-trash"></span>
@@ -56,14 +59,20 @@
         resetForm($('#Rol'));
         $("#Rol_ro_rol").focus();
     });
-    $("#dataTable > tbody > tr").dblclick(function () {
+    function edit(t) {
         resetForm($('#Rol'));
-        var l = $(this).attr("obj").split(",");
+        var l = $(t).attr("obj").split(",");
         $("#Rol_ro_id").val($.trim(l[0]));
         $("#Rol_ro_rol").val($.trim(l[1]));
         $("#Rol_ro_descripcion").val($.trim(l[2]));
         $('#myModal').modal({
             show: 'false'
         });
+    }
+    $("#dataTable > tbody > tr").dblclick(function () {
+        edit($(this));
+    });
+    $(".anotherNew").on('click', function () {
+        edit($(this).parent().parent());
     });
 </script>

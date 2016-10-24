@@ -34,7 +34,7 @@
                 <th><s:text name="s.nacional" /></th>
                 <th><s:text name="s.direccion" /></th>
                 <th><s:text name="s.telefono" /></th>
-                <th><s:text name="q.eliminar" /></th>
+                <th data-priority="1"><s:text name="q.acciones" /></th>
             </tr>
         </thead>
         <tbody>
@@ -44,8 +44,10 @@
                     <td><c:out value="${l.nacional}"/></td>
                     <td><c:out value="${l.direccion}"/></td>
                     <td><c:out value="${l.telefono}"/></td>
-
                     <td>
+                        <button class="btn btn-default btn-xs anotherNew">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </button>
                         <button class="btn btn-default btn-xs" data-href="./Sucursal!eliminar?id=${l.id}"
                                 data-toggle="modal" data-target="#confirm-delete">
                             <span class="glyphicon glyphicon-trash" />
@@ -63,9 +65,9 @@
         resetForm($('#Sucursal'));
         $("#Sucursal_s_sucursales").focus();
     });
-    $("#dataTable > tbody > tr").dblclick(function () {
+    function edit(t) {
         resetForm($('#Sucursal'));
-        var l = $(this).attr("obj").split(",");
+        var l = $(t).attr("obj").split(",");
         $("#Sucursal_s_id").val($.trim(l[0]));
         $("#Sucursal_s_sucursal").val($.trim(l[1]));
         $("#Sucursal_s_nacional").val($.trim(l[2]));
@@ -74,6 +76,13 @@
         $('#myModal').modal({
             show: 'false'
         });
+    }
+    $("#dataTable > tbody > tr").dblclick(function () {
+        edit($(this));
     });
+    $(".anotherNew").on('click', function () {
+        edit($(this).parent().parent());
+    });
+
     $("#Sucursal_s_telefono").attr("type", "phone");
 </script>

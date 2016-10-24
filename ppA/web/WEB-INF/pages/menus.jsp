@@ -15,7 +15,7 @@
                     <legend><s:text name="m.legend" /></legend>
                     <s:form action="Menu">
                         <s:hidden name="m.id" />
-                         <s:select name="m.categoriasMenus.id" listKey="id" listValue="categoriaMenu" headerKey="" cssClass="required"
+                        <s:select name="m.categoriasMenus.id" listKey="id" listValue="categoriaMenu" headerKey="" cssClass="select2 required"
                                   headerValue="%{getText('lbl.seleccione')}" list="listCategorias" key="m.categoriaMenu" required="true" />
                         <s:textfield name="m.menu" key="m.menu" cssClass="form-control required" required="true" />
                         <s:textfield name="m.precio" key="m.precio" cssClass="form-control required" required="true" />
@@ -36,7 +36,7 @@
                 <th><s:text name="m.menu" /></th>
                 <th><s:text name="m.precio" /></th>
                 <th><s:text name="m.descripcion" /></th>
-                <th><s:text name="q.eliminar" /></th>
+                <th data-priority="1"><s:text name="q.acciones" /></th>
             </tr>
         </thead>
         <tbody>
@@ -47,6 +47,9 @@
                     <td><c:out value="${l.precio}"/></td>
                     <td><c:out value="${l.descripcion}"/></td>
                     <td>
+                        <button class="btn btn-default btn-xs anotherNew">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </button>
                         <button class="btn btn-default btn-xs" data-href="./Menu!eliminar?id=${l.id}"
                                 data-toggle="modal" data-target="#confirm-delete">
                             <span class="glyphicon glyphicon-trash"></span>
@@ -64,9 +67,9 @@
         resetForm($('#Menu'));
         $("#Menu_m_menu").focus();
     });
-    $("#dataTable > tbody > tr").dblclick(function () {
+    function edit(t) {
         resetForm($('#Menu'));
-        var l = $(this).attr("obj").split(",");
+        var l = $(t).attr("obj").split(",");
         $("#Menu_m_id").val($.trim(l[0]));
         $("#Menu_m_categoriasMenus_id").val($.trim(l[1]));
         $("#Menu_m_menu").val($.trim(l[2]));
@@ -75,5 +78,11 @@
         $('#myModal').modal({
             show: 'false'
         });
+    }
+    $("#dataTable > tbody > tr").dblclick(function () {
+        edit($(this));
+    });
+    $(".anotherNew").on('click', function () {
+        edit($(this).parent().parent());
     });
 </script>

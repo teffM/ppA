@@ -15,17 +15,16 @@
                     <legend><s:text name="r.legend" /></legend>
                     <s:form action="Reserva">
                         <s:hidden name="r.id" />
-                        <s:select name="r.clientes.id" listKey="id" listValue="nombre" headerKey="" cssClass="required"
-                                  headerValue="%{getText('lbl.seleccione')}" list="listClientes" key="r.cliente" required="true" />
-                        <%--<s:select name="r.menus.id" listKey="id" listValue="menu" headerKey="" cssClass="required"--%>
-                        <!--headerValue="%{getText('lbl.seleccione')}" list="listMenus" key="r.menu" required="true" />-->
+                        <s:select name="r.clientes.id" listKey="id" listValue="%{nombre + ' ' +  apellido}" headerKey=""
+                                  cssClass="select2 required" headerValue="%{getText('lbl.seleccione')}"
+                                  list="listClientes" key="r.cliente" required="true" />
                         <s:date name="r.fechaReservacion" id="createdDateId" format="dd/MM/yyyy hh:mm a" />
                         <s:textfield name="r.fechaReservacion" key="r.fechaReserva"
                                      value="%{createdDateId}" cssClass="form-control dateTimeMinNow required" required="true" />
                         <s:textfield name="r.numPersonas" key="r.persona" type="number" cssClass="form-control required" required="true" />
-                        <s:select name="r.sucursales.id" listKey="id" listValue="sucursal" headerKey="" cssClass="required"
+                        <s:select name="r.sucursales.id" listKey="id" listValue="sucursal" headerKey="" cssClass="select2 required"
                                   headerValue="%{getText('lbl.seleccione')}" list="listSucursales" key="r.sucursal" required="true" />
-                        <s:select name="r.estados.id" listKey="id" listValue="estado" headerKey="" cssClass="required"
+                        <s:select name="r.estados.id" listKey="id" listValue="estado" headerKey="" cssClass="select2 required"
                                   headerValue="%{getText('lbl.seleccione')}" list="listEstados" key="r.estado" required="true"/>
                         <s:textarea name="r.comentarios" key="r.comentario" />
 
@@ -36,7 +35,7 @@
         </div>
     </div>
 </div>
-                    
+
 <div id="container">
     <table id="dataTable" class="table table-striped table-bordered table-hover dt-responsive nowrap">
         <thead>
@@ -50,8 +49,7 @@
                 <th><s:text name="r.sucursal" /></th>
                 <th><s:text name="r.comentario" /></th>
                 <th>Usuario</th>
-                <th><s:text name="q.modificar" /></th>
-                <th><s:text name="q.eliminar" /></th>
+                <th data-priority="1"><s:text name="q.acciones" /></th>
             </tr>
         </thead>
         <tbody>
@@ -71,14 +69,10 @@
                     <td><c:out value="${l.sucursales.sucursal}"/></td>
                     <td><c:out value="${l.comentarios}"/></td>
                     <td><c:out value="${l.usuarios.usuario}"/></td>
-                    
                     <td>
-                        <a id="modificarReserva" href="#" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
-                            
-                            <b><s:text name="r.btnmodificar" /></b>
-                        </a>
-                    </td>
-                    <td>
+                        <button class="btn btn-default btn-xs anotherNew">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </button>
                         <button class="btn btn-default btn-xs" data-href="./Reserva!eliminar?id=${l.id}"
                                 data-toggle="modal" data-target="#confirm-delete">
                             <span class="glyphicon glyphicon-trash"></span>
@@ -96,9 +90,9 @@
         resetForm($('#Reserva'));
         $("#Reserva_r_nombres").focus();
     });
-    $("#dataTable > tbody > tr > #modificarReserva").dblclick(function () {
+    function edit(t) {
         resetForm($('#Reserva'));
-        var l = $(this).attr("obj").split(",");
+        var l = $(t).attr("obj").split(",");
         $("#Reserva_r_id").val($.trim(l[0]));
         $("#Reserva_r_clientes_id").val($.trim(l[1]));
         $("#Reserva_r_fechaReservacion").val($.trim(l[2]));
@@ -110,7 +104,14 @@
         $('#myModal').modal({
             show: 'false'
         });
+    }
+    $("#dataTable > tbody > tr").dblclick(function () {
+        edit($(this));
     });
+    $(".anotherNew").on('click', function () {
+        edit($(this).parent().parent());
+    });
+
     $("#Reserva_r_correo").attr("type", "email");
     $("#Reserva_r_telefono").attr("type", "phone");
     $("#Reserva_r_numPersonas").attr("type", "positiveNumber");

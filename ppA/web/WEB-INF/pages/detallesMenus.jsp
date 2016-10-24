@@ -14,12 +14,12 @@
                     <legend><s:text name="dm.legend" /></legend>
                     <s:form action="DetalleMenu">
                         <s:hidden name="dm.id" />
-                        <s:select name="dm.reservaciones.id" listKey="id" listValue="clientes.nombre" headerKey="" cssClass="required"
+                        <s:select name="dm.reservaciones.id" listKey="id" listValue="clientes.nombre" headerKey="" cssClass="select2 required"
                                   headerValue="%{getText('lbl.seleccione')}" list="listReservaciones" key="dm.reserva" required="true" />
-                        <s:select name="dm.menus.id" listKey="id" listValue="menu" headerKey="" cssClass="required"
+                        <s:select name="dm.menus.id" listKey="id" listValue="menu" headerKey="" cssClass="select2 required"
                                   headerValue="%{getText('lbl.seleccione')}" list="listMenus" key="dm.menu" required="true" />
                         <s:textfield name="dm.cantidad" key="dm.cantidad" type="number" cssClass="form-control required" required="true" />
-                        
+
                         <s:textfield name="dm.precio" key="dm.precio" type="number" cssClass="form-control required" required="true" />
                         <s:textfield name="dm.comentarios" key="dm.comentarios" cssClass="form-control required" required="true" />
 
@@ -39,7 +39,7 @@
                 <th><s:text name="dm.cantidad" /></th>
                 <th><s:text name="dm.precio" /></th>
                 <th><s:text name="dm.comentarios" /></th>
-                <th><s:text name="q.eliminar" /></th>
+                <th data-priority="1"><s:text name="q.acciones" /></th>
             </tr>
         </thead>
         <tbody>
@@ -51,6 +51,9 @@
                     <td><c:out value="${l.precio}"/></td>
                     <td><c:out value="${l.comentarios}"/></td>
                     <td>
+                        <button class="btn btn-default btn-xs anotherNew">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </button>
                         <button class="btn btn-default btn-xs" data-href="./DetalleMenu!eliminar?id=${l.id}"
                                 data-toggle="modal" data-target="#confirm-delete">
                             <span class="glyphicon glyphicon-trash"></span>
@@ -68,9 +71,9 @@
         resetForm($('#DetalleMenu'));
         $("#DetalleMenu_dm_menu").focus();
     });
-    $("#dataTable > tbody > tr").dblclick(function () {
+    function edit(t) {
         resetForm($('#DetalleMenu'));
-        var l = $(this).attr("obj").split(",");
+        var l = $(t).attr("obj").split(",");
         $("#DetalleMenu_dm_id").val($.trim(l[0]));
         $("#DetalleMenu_dm_reservaciones_id").val($.trim(l[1]));
         $("#DetalleMenu_dm_menus_id").val($.trim(l[2]));
@@ -80,6 +83,12 @@
         $('#myModal').modal({
             show: 'false'
         });
+    }
+    $("#dataTable > tbody > tr").dblclick(function () {
+        edit($(this));
+    });
+    $(".anotherNew").on('click', function () {
+        edit($(this).parent().parent());
     });
 </script>
 

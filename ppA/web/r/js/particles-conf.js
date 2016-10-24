@@ -23,23 +23,23 @@ particlesJS("particles-js", {
                 "enable": false, "speed": 10, "size_min": 0.1, "sync": false
             }
         }, "line_linked": {
-            "enable": true, "distance": 100, "color": "#000000", "opacity": 0.4, "width": 2
+            "enable": true, "distance": 100, "color": "#000000", "width": 2
         }, "move": {
-            "enable": true, "speed": .2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false, "attract": {
+            "enable": true, "speed": .6, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false, "attract": {
                 "enable": false, "rotateX": 600, "rotateY": 1200
             }
         }
     }, "interactivity": {
         "detect_on": "window", "events": {
             "onhover": {
-                "enable": false, "mode": "repulse"
+                "enable": true, "mode": "grab"
             }, "onclick": {
                 "enable": false, "mode": "push"
             }, "resize": true
         }, "modes": {
             "grab": {
-                "distance": 400, "line_linked": {
-                    "opacity": 1
+                "distance": 200, "line_linked": {
+                    "opacity": .5
                 }
             }, "bubble": {
                 "distance": 400, "size": 40, "duration": 2, "opacity": 8, "speed": 1

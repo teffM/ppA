@@ -18,7 +18,7 @@
                         <s:textfield name="nu.usuario" key="nu.usuario" cssClass="form-control required" required="true" />
                         <s:password name="nu.clave" key="nu.clave" cssClass="form-control required" required="true" />
                         <%--<s:password name="nu.clave" label="Confirmar Contraseña" cssClass="form-control required" required="true" />--%>
-                        <s:select name="nu.roles.id" listKey="id" listValue="rol" headerKey="" cssClass="required"
+                        <s:select name="nu.roles.id" listKey="id" listValue="rol" headerKey="" cssClass="select2 required"
                                   headerValue="%{getText('lbl.seleccione')}" list="listRoles" key="nu.roles" required="true"/>
 
                         <s:submit method="guardar" cssClass="btn-info disabled submit" value="Guardar" key="btn.guardar" />
@@ -38,7 +38,7 @@
                 <th><s:text name="nu.usuario" /></th>
                 <th><s:text name="nu.clave" /></th>
                 <th><s:text name="nu.roles" /></th>
-                <th><s:text name="q.eliminar" /></th>
+                <th data-priority="1"><s:text name="q.acciones" /></th>
             </tr>
         </thead>
         <tbody>
@@ -49,8 +49,10 @@
                     <td><c:out value="${l.usuario}"/></td>
                     <td>?????</td>
                     <td><c:out value="${l.roles.rol}"/></td>
-
                     <td>
+                        <button class="btn btn-default btn-xs anotherNew">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </button>
                         <button class="btn btn-default btn-xs" data-href="./Usuario!eliminar?id=${l.id}"
                                 data-toggle="modal" data-target="#confirm-delete">
                             <span class="glyphicon glyphicon-trash" />
@@ -68,9 +70,9 @@
         resetForm($('#Usuario'));
         $("#Usuario_nu_usuarios").focus();
     });
-    $("#dataTable > tbody > tr").dblclick(function () {
+    function edit(t) {
         resetForm($('#Usuario'));
-        var l = $(this).attr("obj").split(",");
+        var l = $(t).attr("obj").split(",");
         $("#Usuario_nu_id").val($.trim(l[0]));
         $("#Usuario_nu_nombre").val($.trim(l[1]));
         $("#Usuario_nu_apellido").val($.trim(l[2]));
@@ -80,5 +82,11 @@
         $('#myModal').modal({
             show: 'false'
         });
+    }
+    $("#dataTable > tbody > tr").dblclick(function () {
+        edit($(this));
+    });
+    $(".anotherNew").on('click', function () {
+        edit($(this).parent().parent());
     });
 </script>

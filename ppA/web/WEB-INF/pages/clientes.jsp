@@ -41,7 +41,7 @@
                 <th><s:text name="c.nit" /></th>
                 <th><s:text name="c.comprobanteIva" /></th>
                 <th><s:text name="c.descripcion" /></th>
-                <th><s:text name="q.eliminar" /></th>
+                <th data-priority="1"><s:text name="q.acciones" /></th>
             </tr>
         </thead> 
         <tbody>
@@ -56,6 +56,9 @@
                     <td><c:out value="${l.comprobanteIva}"/></td>
                     <td><c:out value="${l.descripcion}"/></td>
                     <td>
+                        <button class="btn btn-default btn-xs anotherNew">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </button>
                         <button class="btn btn-default btn-xs" data-href="./Cliente!eliminar?id=${l.id}"
                                 data-toggle="modal" data-target="#confirm-delete">
                             <span class="glyphicon glyphicon-trash" />
@@ -73,9 +76,9 @@
         resetForm($('#Cliente'));
         $("#Cliente_c_nombre").focus();
     });
-    $("#dataTable > tbody > tr").dblclick(function () {
+    function edit(t) {
         resetForm($('#Cliente'));
-        var l = $(this).attr("obj").split(",");
+        var l = $(t).attr("obj").split(",");
         $("#Cliente_c_id").val($.trim(l[0]));
         $("#Cliente_c_nombre").val($.trim(l[1]));
         $("#Cliente_c_apellido").val($.trim(l[2]));
@@ -88,7 +91,14 @@
         $('#myModal').modal({
             show: 'false'
         });
+    }
+    $("#dataTable > tbody > tr").dblclick(function () {
+        edit($(this));
     });
+    $(".anotherNew").on('click', function () {
+        edit($(this).parent().parent());
+    });
+
     $(document).ready(function () {
         $("#Cliente_c_correo").attr("type", "email");
         $("#Cliente_c_telefono").attr("type", "phone");

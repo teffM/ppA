@@ -4,8 +4,3 @@ toastr.options = {
 function msg(t, m) {
     toastr[t](m);
 }
-function resetForm(f) {
-    f[0].reset();
-    var v = f.validate({lang: 'es'});
-    v.resetForm();
-}
