@@ -73,13 +73,7 @@
                         </s:if>
                     
                 </ul>
-                <s:if test="%{#session.userRol != null && #session.userRol != null}">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="inactive">
-                            <a href="./Login!cerrarSesion">CERRAR SESIÓN</a>
-                        </li>
-                    </ul>
-                </s:if>
+                
             </div>
         </div>
     </nav>
@@ -138,9 +132,7 @@
         <script src="./r/js/jquery.validate.min.js" type="text/javascript"></script>
         <script src="./r/js/messages_es.js" type="text/javascript"></script>
         <script src="./r/js/jquery.maskedinput.min.js" type="text/javascript"></script>
-        <!--particles-->
-        <script src="./r/js/particles.min.js" type="text/javascript"></script>
-        <script src="./r/js/particles-conf.js" type="text/javascript"></script>
+       
         <script type="text/javascript">
             $(document).ready(function () {
                 if ($('#toast-container').length == 0) {

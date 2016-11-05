@@ -26,63 +26,62 @@ span.required {
     color: white;
     bottom: 0;
 }
-.bgLogin{
-    background-image: url('../images/bg_login.png');
+
+h1 a {
+    background-image: url('../images/login.png')!important;
+
+}
+
+#bgLogin{
+    margin-top: 170px;
+    width: 100%;
+    
     background-repeat: no-repeat;
     background-size: auto;
-    background-position: center;
     padding-bottom: 1%;
 }
-.bgLogin b{
+#bgLogin b{
     text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+
+#logo{
+    width: 90px;
+}
+
+
+
+.input{
+    
+  margin: 10px;
 }
 .modal-body{
     background-color: transparent;
-    background-image: url('../images/boxi3.png');
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: center;
 }
 .body {
-    background: linear-gradient(90deg, lightgrey, whitesmoke, lightgrey, whitesmoke, lightgrey);
+   background-color: white;
     background-size: 1000% 1000%;
 
-    -webkit-animation: AnimationName 30s ease infinite;
-    -moz-animation: AnimationName 30s ease infinite;
-    -o-animation: AnimationName 30s ease infinite;
-    animation: AnimationName 30s ease infinite;
+    
 }
-@-webkit-keyframes AnimationName {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-}
-@-moz-keyframes AnimationName {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-}
-@-o-keyframes AnimationName {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-}
-@keyframes AnimationName {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-}
-#particles-js {
-    position:fixed; width: 100%; height: 100%; z-index: -1;
-}
+
+
 body {
     background-color: transparent;
 }
 .navbar {
     margin-bottom: 1% !important;
 }
+
+#particles-js {
+    position:fixed; width: 100%; height: 100%; z-index: -1;
+}
+
+
 .myContainer {
-    background: url('../images/logo12.png');
+   background-color: white;
     background-repeat: no-repeat;
     background-size: 100% 100%;
     border-radius: 10px 100px;
@@ -104,4 +103,8 @@ body {
 }
 .select2-close-mask, .select2-dropdown{
     z-index: 40001 !important;
+}
+
+.navbar navbar-inverse twoRow{
+    border-radius: 0;
 }

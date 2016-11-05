@@ -1,10 +1,11 @@
 <%@taglib uri="/struts-tags" prefix="s"%>
-<center class="bgLogin">
-    <b>Ingrese usuario y contraseña</b>
-    <s:form action="Login">
-        <s:textfield name="usuario" label="Usuario"/>
-        <s:password name="clave" label="Clave"/>
-        <s:submit cssClass="btn-info disabled" key="btn.ingresar" />
+
+<center id="bgLogin">
+    <img id="logo" src="./r/images/login.png" alt=""/>
+    <s:form id="form"  action="Login">
+        <s:textfield cssClass="form-control input" name="usuario"  placeholder="Usuario" />
+        <s:password cssClass="form-control input"name="clave"  placeholder="Contraseña" />
+        <s:submit cssClass="btn btn-default" key="btn.ingresar" />
     </s:form>
 </center>
 <script>
