@@ -5,8 +5,7 @@
 <html lang="es" class="body">
     <head>
         <title>La Pampa Argentina</title>
-        <link rel="shortcut icon" type="image/x-icon" href="./r/images/favicon.ico" />
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--jQuery-->
         <script src="./r/js/jquery-2.1.1.min.js" type="text/javascript"></script>
@@ -29,48 +28,52 @@
     </head>
     <body>
         <div id="particles-js"></div>
-    <nav class="navbar navbar-inverse twoRow" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="./index">Restaurante La Pampa</a>
-            </div>
-            <div class="collapse navbar-collapse" id="collapse">
-                <ul class="nav navbar-nav">
-                    <s:if test="%{#session.userRol != null}">
-                        <li class="inactive"><a href="./Reserva">RESERVACIONES</a></li>
-                        <li class="inactive"><a href="./Cliente">CLIENTES</a></li>
-                            <s:if test="%{#session.userRol == 'administrador'}">
-                            <li class="dropdown">
-                                <a data-toggle="dropdown">
-                                    ADMINISTRACIÓN<span class="caret"></span>
-                                </a>
-                                <ul class="navbar-inverse dropdown-menu">
-                                    <li><a href="./Abono">ABONOS</a></li>
-                                    <li><a href="./CategoriaMenu">CATEGORIAS DE MENU</a></li>
-                                    <li><a href="./DetalleMenu">DETALLE DE MENU</a></li>
-                                    <li><a href="./Estado">ESTADOS</a></li>
-                                    <li><a href="./Menu">MENUS</a></li>
-                                    <li><a href="./Rol">ROLES</a></li>
-                                    <li><a href="./Sucursal">SUCURSALES</a></li>
-                                    <li><a href="./Usuario">USUARIOS</a></li>
-                                </ul>
+        <nav class="navbar navbar-inverse twoRow" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="./index">Restaurante La Pampa</a>
+                </div>
+                <div class="collapse navbar-collapse" id="collapse">
+                    <ul class="nav navbar-nav">
+                        <s:if test="%{#session.userRol != null}">
+                            <li class="inactive"><a href="./Reserva">RESERVACIONES</a></li>
+                            <li><a href="./DetalleMenu">DETALLE DE MENÚ</a></li>
+                            <li><a href="./Abono">ABONOS</a></li>
+                            <li class="inactive"><a href="./Cliente">CLIENTES</a></li>
+                                <s:if test="%{#session.userRol == 'administrador'}">
+                                <li class="dropdown">
+                                    <a data-toggle="dropdown">
+                                        ADMINISTRACIÓN<span class="caret"></span>
+                                    </a>
+                                    <ul class="navbar-inverse dropdown-menu">
+                                        <li><a href="./Usuario">USUARIOS</a></li>
+                                        <li><a href="./Sucursal">SUCURSALES</a></li>
+                                        <li><a href="./Menu">PLATILLOS</a></li>
+                                        <li><a href="./CategoriaMenu">CATEGORIAS DE PLATILLOS</a></li>
+                                        <!--
+                                        <li><a href="./Estado">ESTADOS</a></li>
+                                        <li><a href="./Rol">ROLES</a></li>
+                                        -->
+                                    </ul>
+                                </li>
+                            </s:if>
+                        </s:if>
+                    </ul>
+                    <s:if test="%{#session.userRol != null && #session.userRol != null}">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="inactive">
+                                <a href="./Login!cerrarSesion">CERRAR SESIÓN</a>
                             </li>
                         </s:if>
-                    </s:if>
+                    
                 </ul>
-                <s:if test="%{#session.userRol != null && #session.userRol != null}">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="inactive">
-                            <a href="./Login!cerrarSesion">CERRAR SESIÓN</a>
-                        </li>
-                    </ul>
-                </s:if>
+                
             </div>
         </div>
     </nav>
@@ -200,44 +203,33 @@
                             1: "<s:text name="dt.selectOneFile" />"
                         }
                     }
-                }
-            });
-            $(".dateTime").datetimepicker({locale: 'es'});
-            $(".dateTimeMinNow").datetimepicker({locale: 'es', minDate: moment()});
-            $(".dateTimeMaxNow").datetimepicker({locale: 'es', maxDate: moment()});
-            $(".colorpicker").colorpicker({format: "hex"});
+                });
+                $(".dateTime").datetimepicker({locale: 'es'});
+                $(".dateTimeMinNow").datetimepicker({locale: 'es', minDate: moment()});
+                $(".dateTimeMaxNow").datetimepicker({locale: 'es', maxDate: moment()});
+                $(".colorpicker").colorpicker({format: "hex"});
 
-            $("input[mask]").each(function () {
-                $(this).mask($(this).attr("mask"));
+                $("input[mask]").each(function () {
+                    $(this).mask($(this).attr("mask"));
+                });
+                $("form").submit(function () {
+                    $('body').removeClass('loaded');
+                });
+                $("a").click(function () {
+                    $('body').removeClass('loaded');
+                });
+                $('body').addClass('loaded');
             });
-            $("form").submit(function () {
-                $('body').removeClass('loaded');
+            $('#confirm-delete').on('show.bs.modal', function (e) {
+                $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
             });
-            $("a").click(function () {
-                $('body').removeClass('loaded');
-            });
-            $('body').addClass('loaded');
-        });
-        function resetForm(f) {
-            f[0].reset();
-            var v = f.validate({lang: 'es'});
-            v.resetForm();
-            $(".select2").val('').trigger('change');
-        }
-        $('#confirm-delete').on('show.bs.modal', function (e) {
-            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
-        });
-
-        $.validator.methods.email = function (value, element) {
-            return this.optional(element) || /[a-z]+@[a-z]+\.[a-z]+/.test(value);
-        };
-        $.validator.addMethod("phone", function (value, element) {
-            return this.optional(element) || /^[2|6|7][0-9]{7}$/.test(value);
-        }, '<s:text name="err.phone" />');
-        $.validator.addMethod('positiveNumber',
-                function (value) {
-                    return Number(value) > 0;
-                }, '<s:text name="err.mayorCero" />');
-    </script>
-</body>
+            $.validator.addMethod("phone", function (value, element) {
+                return this.optional(element) || /^[2|6|7][0-9]{7}$/.test(value);
+            }, '<s:text name="err.phone" />');
+            $.validator.addMethod('positiveNumber',
+                    function (value) {
+                        return Number(value) > 0;
+                    }, '<s:text name="err.mayorCero" />');
+        </script>
+    </body>
 </html>

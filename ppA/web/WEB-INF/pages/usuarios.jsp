@@ -1,10 +1,11 @@
 <%@taglib uri="/struts-tags" prefix="s"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<br/>
 <a id="nuevoUsuario" href="#" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
     <span class="glyphicon glyphicon-plus-sign"></span>
     <b><s:text name="nu.btnNuevo" /></b>
 </a>
+<br/>
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -28,7 +29,7 @@
         </div>
     </div>
 </div>
-
+<br/>
 <div id="container">
     <table id="dataTable" class="table table-striped table-bordered table-hover dt-responsive nowrap">
         <thead>
@@ -36,18 +37,16 @@
                 <th><s:text name="nu.nombre" /></th>
                 <th><s:text name="nu.apellido" /></th>
                 <th><s:text name="nu.usuario" /></th>
-                <th><s:text name="nu.clave" /></th>
                 <th><s:text name="nu.roles" /></th>
                 <th data-priority="1"><s:text name="q.acciones" /></th>
             </tr>
         </thead>
         <tbody>
             <c:forEach var="l" items="${listUsuarios}">
-                <tr obj="${l.id}, ${l.nombre}, ${l.apellido}, ${l.usuario}, ${l.clave}">
+                <tr obj="${l.id}, ${l.nombre}, ${l.apellido}, ${l.usuario}, ${l.clave}, ${l.roles.id}">
                     <td><c:out value="${l.nombre}"/></td>
                     <td><c:out value="${l.apellido}"/></td>
                     <td><c:out value="${l.usuario}"/></td>
-                    <td>?????</td>
                     <td><c:out value="${l.roles.rol}"/></td>
                     <td>
                         <button class="btn btn-default btn-xs anotherNew">

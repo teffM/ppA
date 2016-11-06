@@ -1,6 +1,6 @@
 <%@taglib uri="/struts-tags" prefix="s"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<br/>
 <a id="nuevoCliente" href="#" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
     <span class="glyphicon glyphicon-plus-sign"></span>
     <b><s:text name="c.btnNuevo" /></b>
@@ -28,8 +28,11 @@
         </div>
     </div>
 </div>
-
+<br/>
 <div id="container">
+    
+<br/>
+
     <table  id="dataTable" class="table table-striped table-bordered table-hover dt-responsive nowrap">
         <thead>
             <tr>
@@ -57,10 +60,10 @@
                     <td><c:out value="${l.descripcion}"/></td>
                     <td>
                         <button class="btn btn-default btn-xs anotherNew">
-                            <span class="glyphicon glyphicon-edit"></span>
+                            <span class="glyphicon glyphicon-edit" title="Modificar"></span>
                         </button>
                         <button class="btn btn-default btn-xs" data-href="./Cliente!eliminar?id=${l.id}"
-                                data-toggle="modal" data-target="#confirm-delete">
+                                data-toggle="modal" data-target="#confirm-delete" title="Eliminar">
                             <span class="glyphicon glyphicon-trash" />
                         </button>
                     </td>

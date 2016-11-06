@@ -1,11 +1,11 @@
 <%@taglib uri="/struts-tags" prefix="s"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
+<br/>
 <a id="abono" href="#" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
     <span class="glyphicon glyphicon-plus-sign"></span>
     <b><s:text name="a.btnNuevo" /></b>
-</a>
+</a><br/><br/>
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -52,11 +52,11 @@
                     <td><c:out value="${fechaAbono}"/></td>
                     <td><c:out value="${l.usuarios.usuario}"/></td>
                     <td>
-                        <button class="btn btn-default btn-xs anotherNew">
+                        <button class="btn btn-default btn-xs anotherNew" title="Modificar">
                             <span class="glyphicon glyphicon-edit"></span>
                         </button>
                         <button class="btn btn-default btn-xs" data-href="./Abono!eliminar?id=${l.id}"
-                                data-toggle="modal" data-target="#confirm-delete">
+                                data-toggle="modal" data-target="#confirm-delete" title="Eliminar">
                             <span class="glyphicon glyphicon-trash"></span>
                         </button>
                     </td>
@@ -76,8 +76,8 @@
         resetForm($('#Abono'));
         var l = $(t).attr("obj").split(",");
         $("#Abono_a_id").val($.trim(l[0]));
-        $("#Abono_a_reservaciones_id").val($.trim(l[1]));
-        $("#Abono_a_clientes_id").val($.trim(l[2]));
+        $("#Abono_a_reservaciones_id").val($.trim(l[1])).trigger('change');
+        $("#Abono_a_clientes_id").val($.trim(l[2])).trigger('change');
         $("#Abono_a_abono").val($.trim(l[3]));
         $("#Abono_a_fechaAbono").val($.trim(l[4]));
         $('#myModal').modal({
