@@ -5,7 +5,8 @@
 <html lang="es" class="body">
     <head>
         <title>La Pampa Argentina</title>
-
+        <link rel="shortcut icon" type="image/x-icon" href="./r/images/favicon.ico" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--jQuery-->
         <script src="./r/js/jquery-2.1.1.min.js" type="text/javascript"></script>
@@ -66,14 +67,12 @@
                         </s:if>
                     </ul>
                     <s:if test="%{#session.userRol != null && #session.userRol != null}">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="inactive">
-                                <a href="./Login!cerrarSesion">CERRAR SESIÓN</a>
-                            </li>
-                        </s:if>
-                    
-                </ul>
-                
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="inactive">
+                            <a href="./Login!cerrarSesion">CERRAR SESIÓN</a>
+                        </li>
+                    </ul>
+                </s:if>
             </div>
         </div>
     </nav>
@@ -134,8 +133,8 @@
     <script src="./r/js/messages_es.js" type="text/javascript"></script>
     <script src="./r/js/jquery.maskedinput.min.js" type="text/javascript"></script>
     <!--particles-->
-    <script src="./r/js/particles.min.js" type="text/javascript"></script>
-    <script src="./r/js/particles-conf.js" type="text/javascript"></script>
+<!--    <script src="./r/js/particles.min.js" type="text/javascript"></script>
+    <script src="./r/js/particles-conf.js" type="text/javascript"></script>-->
     <script type="text/javascript">
         $(document).ready(function () {
             $(".select2").select2({
@@ -176,7 +175,7 @@
                     info: "<s:text name="dt.sInfo" />",
                     infoEmpty: "<s:text name="dt.sInfoEmpty" />",
                     infoFiltered: "<s:text name="dt.sInfoFiltered" />",
-                    loadingRecords: "<s:text name="dt.sLoadingRecords" />",
+                    loadingRecords: "<s:text name="dt.sLoandingRecords" />",
                     zeroRecords: "<s:text name="dt.sZeroRecords" />",
                     emptyTable: "<s:text name="dt.sEmptyTable" />",
                     paginate: {
@@ -203,33 +202,44 @@
                             1: "<s:text name="dt.selectOneFile" />"
                         }
                     }
-                });
-                $(".dateTime").datetimepicker({locale: 'es'});
-                $(".dateTimeMinNow").datetimepicker({locale: 'es', minDate: moment()});
-                $(".dateTimeMaxNow").datetimepicker({locale: 'es', maxDate: moment()});
-                $(".colorpicker").colorpicker({format: "hex"});
+                }
+            });
+            $(".dateTime").datetimepicker({locale: 'es'});
+            $(".dateTimeMinNow").datetimepicker({locale: 'es', minDate: moment()});
+            $(".dateTimeMaxNow").datetimepicker({locale: 'es', maxDate: moment()});
+            $(".colorpicker").colorpicker({format: "hex"});
 
-                $("input[mask]").each(function () {
-                    $(this).mask($(this).attr("mask"));
-                });
-                $("form").submit(function () {
-                    $('body').removeClass('loaded');
-                });
-                $("a").click(function () {
-                    $('body').removeClass('loaded');
-                });
-                $('body').addClass('loaded');
+            $("input[mask]").each(function () {
+                $(this).mask($(this).attr("mask"));
             });
-            $('#confirm-delete').on('show.bs.modal', function (e) {
-                $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+            $("form").submit(function () {
+                $('body').removeClass('loaded');
             });
-            $.validator.addMethod("phone", function (value, element) {
-                return this.optional(element) || /^[2|6|7][0-9]{7}$/.test(value);
-            }, '<s:text name="err.phone" />');
-            $.validator.addMethod('positiveNumber',
-                    function (value) {
-                        return Number(value) > 0;
-                    }, '<s:text name="err.mayorCero" />');
-        </script>
-    </body>
+            $("a").click(function () {
+                $('body').removeClass('loaded');
+            });
+            $('body').addClass('loaded');
+        });
+        function resetForm(f) {
+            f[0].reset();
+            var v = f.validate({lang: 'es'});
+            v.resetForm();
+            $(".select2").val('').trigger('change');
+        }
+        $('#confirm-delete').on('show.bs.modal', function (e) {
+            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+        });
+
+        $.validator.methods.email = function (value, element) {
+            return this.optional(element) || /[a-z]+@[a-z]+\.[a-z]+/.test(value);
+        };
+        $.validator.addMethod("phone", function (value, element) {
+            return this.optional(element) || /^[2|6|7][0-9]{7}$/.test(value);
+        }, '<s:text name="err.phone" />');
+        $.validator.addMethod('positiveNumber',
+                function (value) {
+                    return Number(value) > 0;
+                }, '<s:text name="err.mayorCero" />');
+    </script>
+</body>
 </html>
