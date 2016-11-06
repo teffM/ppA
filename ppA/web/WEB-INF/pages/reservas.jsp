@@ -2,11 +2,50 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <br/>
+<div class="form-inline">
+    <div class="form-group">
+<a id="busqueda" href="#" class="btn btn-info btn-lg" data-toggle="modal" data-target="#mySearchOptions">
+    <b>Reservaciones de hoy</b>
+</a>
+    </div>
+    <div class="form-group">
+<a id="busqueda" href="#" class="btn btn-info btn-lg" data-toggle="modal" data-target="#mySearchOptions">
+    <b>Criterios de busqueda</b>
+</a>
+    </div>
+    <div class="form-group">
 <a id="nuevaReserva" href="#" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
     <span class="glyphicon glyphicon-plus-sign"></span>
     <b><s:text name="r.btnNuevo" /></b>
 </a>
+    </div>
+</div>
+
+
+
+
+
 <br/><br/>
+
+<div class="modal fade" id="mySearchOptions" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <fieldset>
+                    <legend>Criterios de busqueda</legend>
+                    <s:form action="Reserva">
+                         <s:select name="id" listKey="id" listValue="estado" headerKey="" cssClass="select2 required input"
+                                  headerValue="Cualquiera" list="listEstados" key="r.estado" required="true"/>
+
+                        <s:submit method="list" cssClass="btn submit" ondblclick="" key="Buscar" />
+                    </s:form>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -16,15 +55,15 @@
                     <s:form action="Reserva">
                         <s:hidden name="r.id" />
                         <s:select name="r.clientes.id" listKey="id" listValue="%{nombre + ' ' +  apellido}" headerKey=""
-                                  cssClass="select2 required form-control input" headerValue="%{getText('lbl.seleccione')}"
+                                  cssClass="select2 required input" headerValue="%{getText('lbl.seleccione')}"
                                   list="listClientes" key="r.cliente" required="true" />
                         <s:date name="r.fechaReservacion" id="createdDateId" format="dd/MM/yyyy hh:mm a" />
                         <s:textfield name="r.fechaReservacion" key="r.fechaReserva"
                                      value="%{createdDateId}" cssClass="form-control input dateTimeMinNow required" required="true" />
                         <s:textfield name="r.numPersonas" key="r.persona" type="number" cssClass="form-control input required" required="true" />
-                        <s:select name="r.sucursales.id" listKey="id" listValue="sucursal" headerKey="" cssClass="form-control input select2 required"
+                        <s:select name="r.sucursales.id" listKey="id" listValue="sucursal" headerKey="" cssClass="select2 required input"
                                   headerValue="%{getText('lbl.seleccione')}" list="listSucursales" key="r.sucursal" required="true" />
-                        <s:select name="r.estados.id" listKey="id" listValue="estado" headerKey="" cssClass="form-control input select2 required"
+                        <s:select name="r.estados.id" listKey="id" listValue="estado" headerKey="" cssClass="select2 required input"
                                   headerValue="%{getText('lbl.seleccione')}" list="listEstados" key="r.estado" required="true"/>
                         <s:textarea name="r.comentarios" cssClass="form-control input" key="r.comentario" />
 
@@ -77,6 +116,9 @@
                                 data-toggle="modal" data-target="#confirm-delete" title="Eliminar">
                             <span class="glyphicon glyphicon-trash"></span>
                         </button>
+                        <a class="btn btn-default btn-xs" href="./Detalles!obtener?id=${l.id}" title="Detalles">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                        </a>        
                     </td>
                 </tr>
             </c:forEach>

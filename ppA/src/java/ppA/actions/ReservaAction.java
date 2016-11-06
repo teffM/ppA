@@ -21,22 +21,40 @@ public class ReservaAction extends BaseAction {
 
     @Override
     public String execute() throws Exception {
-	return list();
+        return list();
     }
 
-    private String list() {
-	try {
-	    setListReservas(getList(Reservaciones.class));
-	    setListSucursales(getList(Sucursales.class));
-	    setListEstados(getList(Estados.class));
-	    setListClientes(getList(Clientes.class));
-	} catch (Exception e) {
-	    return e(e);
-	} finally {
-	    setR(new Reservaciones());
-	}
-	return SUCCESS;
+    public String list() {
+        try {
+            if (getId() == 0) {
+                setListReservas(getList(Reservaciones.class));
+            } else {
+                setListReservas(getReservaList(getId()));
+
+            }
+            setListSucursales(getList(Sucursales.class));
+            setListEstados(getList(Estados.class));
+            setListClientes(getList(Clientes.class));
+        } catch (Exception e) {
+            return e(e);
+        } finally {
+            setR(new Reservaciones());
+        }
+        return SUCCESS;
     }
+    
+    public String obtener() {
+        try {
+            r = getReserva();
+            if (r.getId() == 0) {
+               return "error";
+            }
+        } catch (Exception e) {
+            return "error";
+        }
+        return SUCCESS;
+    }
+    
 
     public String guardar() throws Exception {
 	try {

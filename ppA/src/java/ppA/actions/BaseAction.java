@@ -65,10 +65,33 @@ public class BaseAction extends ActionSupport implements SessionAware {
 	return getDb().createCriteria(c).list();
     }
 
+    protected List getReservaList(int tipo){
+       
+        List<Reservaciones> reservas  = (List<Reservaciones>) db.createQuery("from Reservaciones where estados.id = " + tipo).list();
+         
+        return reservas;
+    }
+    
+    protected List getReservaHoyList(int tipo){
+       
+        List<Reservaciones> reservas  = (List<Reservaciones>) db.createQuery("from Reservaciones where fechaReservacion = currentDate()").list();
+         
+        return reservas;
+    }
+
+    protected Reservaciones getReserva() {
+        try {
+            Reservaciones reserva = (Reservaciones) db.createQuery("from Reservaciones where id = " + getId()).list().get(0);
+            return reserva;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
     private int getId(Object o) {
-	if (o instanceof Abonos) {
-	    return ((Abonos) o).getId();
-	}
+        if (o instanceof Abonos) {
+            return ((Abonos) o).getId();
+        }
 	if (o instanceof CategoriasMenus) {
 	    return ((CategoriasMenus) o).getId();
 	}

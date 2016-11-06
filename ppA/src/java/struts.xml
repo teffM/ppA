@@ -41,6 +41,11 @@
         <action name="Reserva" class="ppA.actions.ReservaAction">
             <result name="success" type="tiles">reservas</result>
         </action>
+        
+        <action name="Detalles" class="ppA.actions.ReservaAction">
+            <result name="success" type="tiles">detalles</result>
+        </action>
+        
         <action name="Menu" class="ppA.actions.MenuAction">
             <result name="success" type="tiles">menus</result>
         </action>

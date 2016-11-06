@@ -15,6 +15,9 @@
     <definition name="reservas" extends="default">
         <put-attribute name="body" value="/WEB-INF/pages/reservas.jsp" />
     </definition>
+    <definition name="detalles" extends="default">
+        <put-attribute name="body" value="/WEB-INF/pages/detalles.jsp" />
+    </definition>
     <definition name="detallesMenus" extends="default">
         <put-attribute name="body" value="/WEB-INF/pages/detallesMenus.jsp" />
     </definition>
@@ -41,5 +44,8 @@
     </definition>
     <definition name="abonos" extends="default">
         <put-attribute name="body" value="/WEB-INF/pages/abonos.jsp" />
+    </definition>
+    <definition name="error" extends="default">
+        <put-attribute name="body" value="/WEB-INF/pages/error.jsp" />
     </definition>
 </tiles-definitions>

@@ -51,9 +51,11 @@ h1 a {
 
 
 .input{
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
     
-  margin: 10px;
 }
+
 .modal-body{
     background-color: transparent;
     background-repeat: no-repeat;
