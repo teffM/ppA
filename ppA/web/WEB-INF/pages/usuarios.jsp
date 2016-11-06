@@ -78,7 +78,7 @@
         $("#Usuario_nu_apellido").val($.trim(l[2]));
         $("#Usuario_nu_usuario").val($.trim(l[3]));
         $("#Usuario_nu_clave").val($.trim(l[4]));
-        $("#Usuario_nu_roles_id").val(1);
+        $("#Usuario_nu_roles_id").val(1).trigger("change");
         $('#myModal').modal({
             show: 'false'
         });

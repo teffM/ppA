@@ -61,7 +61,7 @@
                 <tr obj="${l.id}, ${l.clientes.id},
                     ${fechaReserva}, ${fechaCreacion}, ${l.numPersonas},
                     ${l.sucursales.id}, ${l.estados.id}, ${l.comentarios}">
-                    <td><c:out value="${l.clientes.nombre}"/></td>
+                    <td><c:out value="${l.clientes.nombre}"/> <c:out value="${l.clientes.apellido}"/></td>
                     <td><c:out value="${fechaReserva}"/></td>
                     <td style="background-color: <c:out value="${l.estados.color}"/>;"><c:out value="${l.estados.estado}"/></td>
                     <td><c:out value="${fechaCreacion}"/></td>
@@ -94,12 +94,12 @@
         resetForm($('#Reserva'));
         var l = $(t).attr("obj").split(",");
         $("#Reserva_r_id").val($.trim(l[0]));
-        $("#Reserva_r_clientes_id").val($.trim(l[1]));
+        $("#Reserva_r_clientes_id").val($.trim(l[1])).trigger("change");
         $("#Reserva_r_fechaReservacion").val($.trim(l[2]));
         $("#Reserva_r_fechaCreacion").val($.trim(l[3]));
         $("#Reserva_r_numPersonas").val($.trim(l[4]));
-        $("#Reserva_r_sucursales_id").val($.trim(l[5]));
-        $("#Reserva_r_estados_id").val($.trim(l[6]));
+        $("#Reserva_r_sucursales_id").val($.trim(l[5])).trigger("change");
+        $("#Reserva_r_estados_id").val($.trim(l[6])).trigger("change");
         $("#Reserva_r_comentarios").val($.trim(l[7]));
         $('#myModal').modal({
             show: 'false'

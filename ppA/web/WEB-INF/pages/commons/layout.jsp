@@ -173,7 +173,7 @@
                     info: "<s:text name="dt.sInfo" />",
                     infoEmpty: "<s:text name="dt.sInfoEmpty" />",
                     infoFiltered: "<s:text name="dt.sInfoFiltered" />",
-                    loadingRecords: "<s:text name="dt.sLoandingRecords" />",
+                    loadingRecords: "<s:text name="dt.sLoadingRecords" />",
                     zeroRecords: "<s:text name="dt.sZeroRecords" />",
                     emptyTable: "<s:text name="dt.sEmptyTable" />",
                     paginate: {

@@ -71,7 +71,7 @@
         resetForm($('#Menu'));
         var l = $(t).attr("obj").split(",");
         $("#Menu_m_id").val($.trim(l[0]));
-        $("#Menu_m_categoriasMenus_id").val($.trim(l[1]));
+        $("#Menu_m_categoriasMenus_id").val($.trim(l[1])).trigger("change");
         $("#Menu_m_menu").val($.trim(l[2]));
         $("#Menu_m_precio").val($.trim(l[3]));
         $("#Menu_m_descripcion").val($.trim(l[4]));

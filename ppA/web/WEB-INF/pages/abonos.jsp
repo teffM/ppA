@@ -14,7 +14,7 @@
                     <legend><s:text name="a.legend" /></legend>
                     <s:form action="Abono">
                         <s:hidden name="a.id" />
-                        <s:select name="a.reservaciones.id" listKey="id" listValue="clientes.nombre" headerKey="" cssClass="select2 required"
+                        <s:select name="a.reservaciones.id" listKey="id" listValue="%{clientes.nombre + ' ' + clientes.apellido}" headerKey="" cssClass="select2 required"
                                   headerValue="%{getText('lbl.seleccione')}" list="listReservaciones" key="a.reserva" required="true" />
                         <s:select name="a.clientes.id" listKey="id" listValue="nombre" headerKey="" cssClass="select2 required"
                                   headerValue="%{getText('lbl.seleccione')}" list="listClientes" key="a.cliente" required="true" />
@@ -46,7 +46,7 @@
                                 pattern="dd/MM/yyyy hh:mm a" />
                 <tr obj="${l.id}, ${l.reservaciones.id}, ${l.clientes.id},
                     ${l.abono}, ${fechaAbono}, ${l.usuarios.id}">
-                    <td><c:out value="${l.reservaciones.clientes.nombre}"/></td>
+                    <td><c:out value="${l.reservaciones.clientes.nombre}"/> <c:out value="${l.reservaciones.clientes.apellido}"/></td>
                     <td><c:out value="${l.clientes.nombre}"/></td>
                     <td><c:out value="${l.abono}"/></td>
                     <td><c:out value="${fechaAbono}"/></td>
