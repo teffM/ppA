@@ -13,11 +13,18 @@
                     <legend><s:text name="s.legend" /></legend>
                     <s:form action="Sucursal">
                         <s:hidden name="s.id" />
-                        <s:textfield name="s.sucursal" key="s.sucursal" cssClass="form-control required" required="true" />
-                        <s:textfield name="s.nacional" key="s.nacional" cssClass="form-control" />
-                        <s:textfield name="s.direccion" key="s.direccion" cssClass="form-control required" required="true" />
-                        <s:textfield name="s.telefono" key="s.telefono" cssClass="form-control required" required="true" />
-
+                        <div class="form-group">
+                            <s:textfield name="s.sucursal" key="s.sucursal" cssClass="form-control required" required="true" />
+                        </div>
+                        <div class="form-group">
+                            <s:textfield name="s.nacional" key="s.nacional" cssClass="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <s:textfield name="s.direccion" key="s.direccion" cssClass="form-control required" required="true" />
+                        </div>
+                        <div class="form-group">
+                            <s:textfield name="s.telefono" key="s.telefono" cssClass="form-control required" required="true" />
+                        </div>
                         <s:submit method="guardar" cssClass="btn-info disabled submit" key="btn.guardar" />
                     </s:form>
                 </fieldset>

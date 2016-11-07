@@ -14,9 +14,12 @@
                     <legend><s:text name="cm.legend" /></legend>
                     <s:form action="CategoriaMenu">
                         <s:hidden name="cm.id" />
-                        <s:textfield name="cm.categoriaMenu" key="cm.categoriaMenu" cssClass="form-control required" required="true" />
-                        <s:textfield name="cm.descripcion" key="cm.descripcion" cssClass="form-control required" required="true" />
-
+                        <div class="form-group">
+                            <s:textfield name="cm.categoriaMenu" key="cm.categoriaMenu" cssClass="form-control required" required="true" />
+                        </div>
+                        <div class="form-group">
+                            <s:textfield name="cm.descripcion" key="cm.descripcion" cssClass="form-control required" required="true" />
+                        </div>
                         <s:submit method="guardar" cssClass="btn-info disabled submit" key="btn.guardar" />
                     </s:form>
                 </fieldset>

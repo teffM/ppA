@@ -58,6 +58,19 @@ public class ReservaAction extends BaseAction {
 
     public String guardar() throws Exception {
 	try {
+            if (getR().getIdCliente() > 0){
+                Clientes c = new Clientes();
+                c.setNombre(getR().getNombre());
+                c.setApellido(getR().getApellido());
+                c.setTelefono(getR().getTelefono());
+                c.setCorreo(getR().getCorreo());
+                c.setDui(getR().getDui());
+                c.setNit(getR().getNit());
+                c.setComprobanteIva(getR().getComprobanteIva());
+                c.setDescripcion(getR().getDescripcion());
+                c.setId(save(c));
+                getR().setClientes(c);
+            }
 	    getR().setUsuarios(new Usuarios());
 	    getR().getUsuarios().setId(Integer.parseInt(getSession().get("userId").toString()));
 	    save(getR());

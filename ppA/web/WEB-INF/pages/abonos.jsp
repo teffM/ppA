@@ -14,13 +14,18 @@
                     <legend><s:text name="a.legend" /></legend>
                     <s:form action="Abono">
                         <s:hidden name="a.id" />
-                        <s:select name="a.reservaciones.id" listKey="id" listValue="%{clientes.nombre + ' ' + clientes.apellido}" headerKey="" cssClass="select2 required"
-                                  headerValue="%{getText('lbl.seleccione')}" list="listReservaciones" key="a.reserva" required="true" />
-                        <s:select name="a.clientes.id" listKey="id" listValue="nombre" headerKey="" cssClass="select2 required"
-                                  headerValue="%{getText('lbl.seleccione')}" list="listClientes" key="a.cliente" required="true" />
-                        <s:textfield name="a.abono" key="a.abono" type="number" cssClass="form-control required" required="true" />
-                        <s:date name="a.fechaAbono" id="createdDateId" format="dd/MM/yyyy hh:mm a" />
-
+                        <div class="form-group">
+                            <s:select name="a.reservaciones.id" listKey="id" listValue="%{clientes.nombre + ' ' + clientes.apellido}" headerKey="" cssClass="select2 required"
+                                      headerValue="%{getText('lbl.seleccione')}" list="listReservaciones" key="a.reserva" required="true" />
+                        </div>
+                        <div class="form-group">
+                            <s:select name="a.clientes.id" listKey="id" listValue="nombre" headerKey="" cssClass="select2 required"
+                                      headerValue="%{getText('lbl.seleccione')}" list="listClientes" key="a.cliente" required="true" />
+                        </div>
+                        <div class="form-group">
+                            <s:textfield name="a.abono" key="a.abono" type="number" cssClass="form-control required" required="true" />
+                            <s:date name="a.fechaAbono" id="createdDateId" format="dd/MM/yyyy hh:mm a" />
+                        </div>
                         <s:submit method="guardar" cssClass="btn-info disabled submit" ondblclick="" key="btn.guardar" />
                     </s:form>
                 </fieldset>

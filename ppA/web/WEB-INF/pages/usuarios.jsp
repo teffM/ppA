@@ -14,14 +14,23 @@
                     <legend><s:text name="nu.legend" /></legend>
                     <s:form action="Usuario">
                         <s:hidden name="nu.id" />
-                        <s:textfield name="nu.nombre" key="nu.nombre" cssClass="form-control required" required="true" />
-                        <s:textfield name="nu.apellido" key="nu.apellido" cssClass="form-control required" required="true" />
-                        <s:textfield name="nu.usuario" key="nu.usuario" cssClass="form-control required" required="true" />
-                        <s:password name="nu.clave" key="nu.clave" cssClass="form-control required" required="true" />
-                        <%--<s:password name="nu.clave" label="Confirmar Contraseña" cssClass="form-control required" required="true" />--%>
-                        <s:select name="nu.roles.id" listKey="id" listValue="rol" headerKey="" cssClass="select2 required"
-                                  headerValue="%{getText('lbl.seleccione')}" list="listRoles" key="nu.roles" required="true"/>
-
+                        <div class="form-group">
+                            <s:textfield name="nu.nombre" key="nu.nombre" cssClass="form-control required" required="true" />
+                        </div>
+                        <div class="form-group">
+                            <s:textfield name="nu.apellido" key="nu.apellido" cssClass="form-control required" required="true" />
+                        </div>
+                        <div class="form-group">
+                            <s:textfield name="nu.usuario" key="nu.usuario" cssClass="form-control required" required="true" />
+                        </div>
+                        <div class="form-group">
+                            <s:password name="nu.clave" key="nu.clave" cssClass="form-control required" required="true" />
+                            <%--<s:password name="nu.clave" label="Confirmar Contraseña" cssClass="form-control required" required="true" />--%>
+                        </div>
+                        <div class="form-group">
+                            <s:select name="nu.roles.id" listKey="id" listValue="rol" headerKey="" cssClass="select2 required"
+                                      headerValue="%{getText('lbl.seleccione')}" list="listRoles" key="nu.roles" required="true"/>
+                        </div>
                         <s:submit method="guardar" cssClass="btn-info disabled submit" value="Guardar" key="btn.guardar" />
                     </s:form>
                 </fieldset>

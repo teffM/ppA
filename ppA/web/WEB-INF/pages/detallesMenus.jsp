@@ -14,15 +14,23 @@
                     <legend><s:text name="dm.legend" /></legend>
                     <s:form action="DetalleMenu">
                         <s:hidden name="dm.id" />
-                        <s:select name="dm.reservaciones.id" listKey="id" listValue="%{clientes.nombre + ' ' + clientes.apellido}" headerKey="" cssClass="select2 required"
-                                  headerValue="%{getText('lbl.seleccione')}" list="listReservaciones" key="dm.reserva" required="true" />
-                        <s:select name="dm.menus.id" listKey="id" listValue="menu" headerKey="" cssClass="select2 required"
-                                  headerValue="%{getText('lbl.seleccione')}" list="listMenus" key="dm.menu" required="true" />
-                        <s:textfield name="dm.cantidad" key="dm.cantidad" type="number" cssClass="form-control required" required="true" />
-
-                        <s:textfield name="dm.precio" key="dm.precio" type="number" cssClass="form-control required" required="true" />
-                        <s:textfield name="dm.comentarios" key="dm.comentarios" cssClass="form-control required" required="true" />
-
+                        <div class="form-group">
+                            <s:select name="dm.reservaciones.id" listKey="id" listValue="%{clientes.nombre + ' ' + clientes.apellido}" headerKey="" cssClass="select2 required"
+                                      headerValue="%{getText('lbl.seleccione')}" list="listReservaciones" key="dm.reserva" required="true" />
+                        </div>
+                        <div class="form-group">
+                            <s:select name="dm.menus.id" listKey="id" listValue="menu" headerKey="" cssClass="select2 required"
+                                      headerValue="%{getText('lbl.seleccione')}" list="listMenus" key="dm.menu" required="true" />
+                        </div>
+                        <div class="form-group">
+                            <s:textfield name="dm.cantidad" key="dm.cantidad" type="number" cssClass="form-control required" required="true" />
+                        </div>
+                        <div class="form-group">
+                            <s:textfield name="dm.precio" key="dm.precio" type="number" cssClass="form-control required" required="true" />
+                        </div>
+                        <div class="form-group">
+                            <s:textfield name="dm.comentarios" key="dm.comentarios" cssClass="form-control required" required="true" />
+                        </div>
                         <s:submit method="guardar" cssClass="btn-info disabled submit" key="btn.guardar" />
                     </s:form>
                 </fieldset>

@@ -13,14 +13,30 @@
                     <legend><s:text name="c.legend" /></legend>
                     <s:form action="Cliente">
                         <s:hidden name="c.id" />
-                        <s:textfield name="c.nombre" key="c.nombre" cssClass="form-control" />
-                        <s:textfield name="c.apellido" key="c.apellido" cssClass="form-control" />
-                        <s:textfield name="c.telefono" key="c.telefono" cssClass="form-control required" placeholder="00000000" required="true" type="number" />
-                        <s:textfield name="c.correo" key="c.correo" cssClass="form-control required" placeholder="user@domain.com" required="true" type="email" />
-                        <s:textfield name="c.dui" key="c.dui" cssClass="form-control required" required="true" placeholder="00000000-0" mask="99999999-9" />
-                        <s:textfield name="c.nit" key="c.nit" cssClass="form-control" placeholder="0000-000000-000-0" mask="9999-99999-999-9" />
-                        <s:textfield name="c.comprobanteIva" key="c.comprobanteIva" cssClass="form-control" />
-                        <s:textarea name="c.descripcion" key="c.descripcion" />
+                        <div class="form-group">
+                            <s:textfield name="c.nombre" key="c.nombre" cssClass="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <s:textfield name="c.apellido" key="c.apellido" cssClass="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <s:textfield name="c.telefono" key="c.telefono" cssClass="form-control required" placeholder="00000000" required="true" type="number" />
+                        </div>
+                        <div class="form-group">
+                            <s:textfield name="c.correo" key="c.correo" cssClass="form-control required" placeholder="user@domain.com" required="true" type="email" />
+                        </div>
+                        <div class="form-group">
+                            <s:textfield name="c.dui" key="c.dui" cssClass="form-control required" required="true" placeholder="00000000-0" mask="99999999-9" />
+                        </div>
+                        <div class="form-group">
+                            <s:textfield name="c.nit" key="c.nit" cssClass="form-control" placeholder="0000-000000-000-0" mask="9999-99999-999-9" />
+                        </div>
+                        <div class="form-group">
+                            <s:textfield name="c.comprobanteIva" key="c.comprobanteIva" cssClass="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <s:textarea name="c.descripcion" key="c.descripcion" />
+                        </div>
                         <s:submit method="guardar" cssClass="btn-info disabled submit" value="Guardar" key="btn.guardar" />
                     </s:form>
                 </fieldset>
@@ -30,8 +46,8 @@
 </div>
 <br/>
 <div id="container">
-    
-<br/>
+
+    <br/>
 
     <table  id="dataTable" class="table table-striped table-bordered table-hover dt-responsive nowrap">
         <thead>
