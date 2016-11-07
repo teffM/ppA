@@ -34,7 +34,7 @@
                 <fieldset>
                     <legend>Criterios de busqueda</legend>
                     <s:form action="Reserva">
-                         <s:select name="id" listKey="id" listValue="estado" headerKey="" cssClass="select2 required input"
+                        <s:select name="id" listKey="id" listValue="estado" headerKey="" cssClass="select2 required input"
                                   headerValue="Cualquiera" list="listEstados" key="r.estado" required="true"/>
 
                         <s:submit method="list" cssClass="btn submit" ondblclick="" key="Buscar" />
@@ -44,6 +44,7 @@
         </div>
     </div>
 </div>
+
 
 
 <div class="modal fade" id="myModal" role="dialog">
@@ -118,7 +119,8 @@
                         </button>
                         <a class="btn btn-default btn-xs" href="./Detalles!obtener?id=${l.id}" title="Detalles">
                             <span class="glyphicon glyphicon-eye-open"></span>
-                        </a>        
+                        </a>  
+                         
                     </td>
                 </tr>
             </c:forEach>

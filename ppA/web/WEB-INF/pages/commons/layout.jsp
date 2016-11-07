@@ -31,24 +31,23 @@
         <div id="particles-js"></div>
         <nav class="navbar navbar-inverse twoRow" role="navigation">
             <div class="container">
-                <div class="navbar-header">
+                <div class="navbar-header col-md-2">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="./index">Restaurante La Pampa</a>
+                    <a class="navbar-brand" href="./index"><img src="./r/images/logo.png" width="80px" alt=""/></a>
                 </div>
-                <div class="collapse navbar-collapse" id="collapse">
-                    <ul class="nav navbar-nav">
+                <div class="collapse navbar-collapse " id="collapse">
+                    <ul class="nav navbar navbar-nav col-md-8">
                         <s:if test="%{#session.userRol != null}">
-                            <li class="inactive"><a href="./Reserva">RESERVACIONES</a></li>
-                            <li><a href="./DetalleMenu">DETALLE DE MENÚ</a></li>
-                            <li><a href="./Abono">ABONOS</a></li>
-                            <li class="inactive"><a href="./Cliente">CLIENTES</a></li>
+                            
+                            <li class="navItem"><a href="./Reserva">RESERVACIONES</a></li>
+                            <li class="navItem"><a href="./Cliente">CLIENTES</a></li>
                                 <s:if test="%{#session.userRol == 'administrador'}">
-                                <li class="dropdown">
+                                <li class="dropdown navItem">
                                     <a data-toggle="dropdown">
                                         ADMINISTRACIÓN<span class="caret"></span>
                                     </a>
@@ -67,7 +66,7 @@
                         </s:if>
                     </ul>
                     <s:if test="%{#session.userRol != null && #session.userRol != null}">
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav navbar-right" col-md-2>
                         <li class="inactive">
                             <a href="./Login!cerrarSesion">CERRAR SESIÓN</a>
                         </li>
