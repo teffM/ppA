@@ -20,6 +20,13 @@ td.tdLabel>label, .label {
 .wwctrl {
     width: 100% !important;
 }
+
+#tablePanelBody {
+    padding: 0;
+
+}
+
+
 span.required {
     content:"*";
     color:red;
@@ -83,7 +90,16 @@ body {
     background-color: transparent;
 }
 .navbar {
+    border-radius: 0;
+    display: block;
+    height: 70px;
     margin-bottom: 1% !important;
+}
+
+.navItem{
+    margin: 0;
+    display: block;
+    height: 70px;
 }
 
 #particles-js {

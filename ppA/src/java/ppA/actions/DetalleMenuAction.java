@@ -36,13 +36,14 @@ public class DetalleMenuAction extends BaseAction {
     }
 
     public String guardar() throws Exception {
+        String ruta = "Detalles!obtener?id=" + getDm().getReservaciones().getId();
 	try {
 	    save(getDm());
 	    setMsg(getText("msg.guardadoExito"));
 	} catch (Exception e) {
 	    return e(e);
 	}
-	return list();
+	return "Detalles";
     }
 
     public String eliminar() throws Exception {

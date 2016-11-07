@@ -161,7 +161,8 @@
                         </a>
                         <a class="btn btn-default btn-xs" href="./Detalles!obtener?id=${l.id}" data-toggle="tooltip" title="Detalles">
                             <span class="glyphicon glyphicon-eye-open"></span>
-                        </a>        
+                        </a>  
+                         
                     </td>
                 </tr>
             </c:forEach>
