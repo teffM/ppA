@@ -43,6 +43,9 @@ public class Reservaciones implements java.io.Serializable {
     private String comprobanteIva;
     @Transient
     private String descripcion;
+    
+    @Transient
+    private int idReserva;
 
     public Reservaciones() {
     }
@@ -303,5 +306,19 @@ public class Reservaciones implements java.io.Serializable {
      */
     public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
+    }
+
+    /**
+     * @return the idReserva
+     */
+    public int getIdReserva() {
+        return idReserva;
+    }
+
+    /**
+     * @param idReserva the idReserva to set
+     */
+    public void setIdReserva(int idReserva) {
+        this.idReserva = idReserva;
     }
 }

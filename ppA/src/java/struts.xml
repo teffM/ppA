@@ -40,6 +40,7 @@
         </action>
         <action name="Reserva" class="ppA.actions.ReservaAction">
             <result name="success" type="tiles">reservas</result>
+            <result name="successMenu" type="redirectAction">Menu</result>
         </action>
         
         <action name="Detalles" class="ppA.actions.ReservaAction">

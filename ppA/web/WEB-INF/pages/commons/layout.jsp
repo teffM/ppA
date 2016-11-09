@@ -23,6 +23,7 @@
         <link href="./r/toastr/css/toastr.css" rel="stylesheet" type="text/css"/>
         <script src="./r/toastr/js/toastr.js" type="text/javascript"></script>
         <!--customs-->
+        <link href="./r/image-picker/image-picker.css" rel="stylesheet" type="text/css"/>
         <link href="./r/css/loading.css" rel="stylesheet" type="text/css"/>
         <link href="./r/css/style.css" rel="stylesheet" type="text/css"/>
         <script src="./r/js/functions.js" type="text/javascript"></script>
@@ -31,24 +32,22 @@
         <div id="particles-js"></div>
     <nav class="navbar navbar-inverse twoRow" role="navigation">
         <div class="container">
-            <div class="navbar-header">
+            <div class="navbar-header col-md-2">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="./index">Restaurante La Pampa</a>
+                <a class="navbar-left" href="./index"><img src="./r/images/logo.png" width="80px" alt=""/></a>
             </div>
-            <div class="collapse navbar-collapse" id="collapse">
-                <ul class="nav navbar-nav">
+            <div class="collapse navbar-collapse " id="collapse">
+                <ul class="nav navbar-nav col-md-8">
                     <s:if test="%{#session.userRol != null}">
-                        <li class="inactive"><a href="./Reserva">RESERVACIONES</a></li>
-                        <li><a href="./DetalleMenu">DETALLE DE MENÚ</a></li>
-                        <li><a href="./Abono">ABONOS</a></li>
-                        <li class="inactive"><a href="./Cliente">CLIENTES</a></li>
+                        <li class="navItem"><a href="./Reserva">RESERVACIONES</a></li>
+                        <li class="navItem"><a href="./Cliente">CLIENTES</a></li>
                         <s:if test="%{#session.userRol == 'administrador'}">
-                            <li class="dropdown">
+                            <li class="dropdown navItem">
                                 <a data-toggle="dropdown">
                                     ADMINISTRACIÓN<span class="caret"></span>
                                 </a>
@@ -67,7 +66,7 @@
                     </s:if>
                 </ul>
                 <s:if test="%{#session.userRol != null && #session.userRol != null}">
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav navbar-right" col-md-2>
                         <li class="inactive">
                             <a href="./Login!cerrarSesion">CERRAR SESIÓN</a>
                         </li>
@@ -130,22 +129,27 @@
     <script src="./r/bootstrap/js/select2.full.min.js" type="text/javascript"></script>
     <!--jQuery-->
     <script src="./r/js/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="./r/js/jquery-validate.bootstrap-tooltip.min.js" type="text/javascript"></script>
     <script src="./r/js/messages_es.js" type="text/javascript"></script>
     <script src="./r/js/jquery.maskedinput.min.js" type="text/javascript"></script>
+    <script src="./r/image-picker/image-picker.min.js" type="text/javascript"></script>
     <!--particles-->
     <!--    <script src="./r/js/particles.min.js" type="text/javascript"></script>
         <script src="./r/js/particles-conf.js" type="text/javascript"></script>-->
     <script type="text/javascript">
         $(document).ready(function () {
+        $(".select2").after("<span class='input-group-addon'>\n\
+                <li class='glyphicon glyphicon-search'></li></span>");
         $(".select2").select2({
         theme: "bootstrap"
         });
+        $(".imagePicker").imagepicker({ show_label : true });
         if ($('#toast-container').length == 0) {
         <s:if test="%{msg != null && msg != ''}">
         msg("success", "<s:property escape="false" value="msg" />");
         </s:if>
-        <s:if test="%{errorMsg != null && errorMsg != ''}">
-        msg("error", "<s:property escape="false" value="errorMsg" />");
+    <s:if test="%{errorMsg != null && errorMsg != ''}">
+    msg("error", "<s:property escape="false" value="errorMsg" />");
         </s:if>
         }
         $('#dataTable').DataTable({

@@ -16,7 +16,8 @@ import ppA.entity.Usuarios;
  * @author Java
  */
 public class ReservaAction extends BaseAction {
-        private Abonos a;
+
+    private Abonos a;
     private DetallesMenus dm;
     private Reservaciones r;
     private List<Reservaciones> listReservas;
@@ -25,7 +26,8 @@ public class ReservaAction extends BaseAction {
     private List<Clientes> listClientes;
     private List<Menus> listMenus;
     private List<CategoriasMenus> listCategoriasMenus;
-    private int idRegistro=0;
+    private int idRegistro = 0;
+
     @Override
     public String execute() throws Exception {
         return list();
@@ -49,35 +51,35 @@ public class ReservaAction extends BaseAction {
         }
         return SUCCESS;
     }
-    
-    public String obtener(){
+
+    public String obtener() {
         try {
             r = getReserva();
-             setListClientes(getList(Clientes.class));
-             setListMenus(getList(Menus.class));
-             setListCategoriasMenus(getList(CategoriasMenus.class));
+            setListClientes(getList(Clientes.class));
+            setListMenus(getList(Menus.class));
+            setListCategoriasMenus(getList(CategoriasMenus.class));
             if (r.getId() == 0) {
-               return "error";
+                return "error";
             }
         } catch (Exception e) {
-            
+
         }
         return SUCCESS;
     }
-    
-      public String guardarMenu() {
+
+    public String guardarMenu() {
         setId(getDm().getReservaciones().getId());
-	try {
-	    save(getDm());
+        try {
+            save(getDm());
             setMsg(getText("msg.guardadoExito"));
             r = getReserva();
-             setListClientes(getList(Clientes.class));
-             setListMenus(getList(Menus.class));
-             setListCategoriasMenus(getList(CategoriasMenus.class));
-	} catch (Exception e) {
-	    
-	}
-	return SUCCESS;
+            setListClientes(getList(Clientes.class));
+            setListMenus(getList(Menus.class));
+            setListCategoriasMenus(getList(CategoriasMenus.class));
+        } catch (Exception e) {
+
+        }
+        return SUCCESS;
     }
 
     public String guardarAbono() throws Exception {
@@ -98,8 +100,8 @@ public class ReservaAction extends BaseAction {
     }
 
     public String guardar() throws Exception {
-	try {
-            if (getR().getIdCliente() > 0){
+        try {
+            if (getR().getIdCliente() > 0) {
                 Clientes c = new Clientes();
                 c.setNombre(getR().getNombre());
                 c.setApellido(getR().getApellido());
@@ -112,120 +114,122 @@ public class ReservaAction extends BaseAction {
                 c.setId(save(c));
                 getR().setClientes(c);
             }
-	    getR().setUsuarios(new Usuarios());
-	    getR().getUsuarios().setId(Integer.parseInt(getSession().get("userId").toString()));
-	    save(getR());
-	    setMsg(getText("msg.guardadoExito"));
-	} catch (Exception e) {
-	    return e(e);
-	}
-	return list();
+            getR().setUsuarios(new Usuarios());
+            getR().getUsuarios().setId(Integer.parseInt(getSession().get("userId").toString()));
+            getSession().put("idReserva", save(getR()));
+            setMsg(getText("msg.guardadoExito"));
+        } catch (Exception e) {
+            return e(e);
+        }
+        list();
+        return "successMenu";
     }
 
     public String eliminar() throws Exception {
-	try {
-	    delete((Reservaciones) getDb().load(Reservaciones.class, getId()));
-	    setMsg(getText("msg.eliminadoExito"));
-	} catch (Exception e) {
-	    return e(e);
-	}
-	return list();
+        try {
+            delete((Reservaciones) getDb().load(Reservaciones.class, getId()));
+            setMsg(getText("msg.eliminadoExito"));
+        } catch (Exception e) {
+            return e(e);
+        }
+        setId(0);
+        return list();
     }
 
-     public String eliminarMenu() throws Exception {
-	try {
-	    delete((DetallesMenus) getDb().load(DetallesMenus.class, getIdRegistro()));
-	    setMsg(getText("msg.eliminadoExito"));
-             r = getReserva();
+    public String eliminarMenu() throws Exception {
+        try {
+            delete((DetallesMenus) getDb().load(DetallesMenus.class, getIdRegistro()));
+            setMsg(getText("msg.eliminadoExito"));
+            r = getReserva();
             setListClientes(getList(Clientes.class));
             setListMenus(getList(Menus.class));
-	} catch (Exception e) {
-	    return e(e);
-	}
-	return SUCCESS;
+        } catch (Exception e) {
+            return e(e);
+        }
+        return SUCCESS;
     }
-     
-     public String eliminarAbono() throws Exception {
-	try {
-	    delete((Abonos) getDb().load(Abonos.class, getIdRegistro()));
-	    setMsg(getText("msg.eliminadoExito"));
-             r = getReserva();
+
+    public String eliminarAbono() throws Exception {
+        try {
+            delete((Abonos) getDb().load(Abonos.class, getIdRegistro()));
+            setMsg(getText("msg.eliminadoExito"));
+            r = getReserva();
             setListClientes(getList(Clientes.class));
             setListMenus(getList(Menus.class));
-	} catch (Exception e) {
-	    return e(e);
-	}
-	return SUCCESS;
+        } catch (Exception e) {
+            return e(e);
+        }
+        return SUCCESS;
     }
-     
+
     /**
      * @return the listReservas
      */
     public List<Reservaciones> getListReservas() {
-	return listReservas;
+        return listReservas;
     }
 
     /**
      * @param listReservas the listReservas to set
      */
     private void setListReservas(List<Reservaciones> listReservas) {
-	this.listReservas = listReservas;
+        this.listReservas = listReservas;
     }
 
     /**
      * @return the r
      */
     public Reservaciones getR() {
-	return r;
+        return r;
     }
 
     /**
      * @param r the r to set
      */
     public void setR(Reservaciones r) {
-	this.r = r;
+        this.r = r;
     }
 
     /**
      * @return the listSucursales
      */
     public List<Sucursales> getListSucursales() {
-	return listSucursales;
+        return listSucursales;
     }
 
     /**
      * @param listSucursales the listSucursales to set
      */
     private void setListSucursales(List<Sucursales> listSucursales) {
-	this.listSucursales = listSucursales;
+        this.listSucursales = listSucursales;
     }
 
     /**
      * @return the listClientes
      */
     public List<Clientes> getListClientes() {
-	return listClientes;
+        return listClientes;
     }
 
     /**
      * @param listClientes the listClientes to set
      */
     public void setListClientes(List<Clientes> listClientes) {
-	this.listClientes = listClientes;
+        this.listClientes = listClientes;
     }
 
     /**
      * @return the listEstados
      */
     public List<Estados> getListEstados() {
-	return listEstados;
+        return listEstados;
     }
 
     /**
      * @param listEstados the listEstados to set
      */
     public void setListEstados(List<Estados> listEstados) {
-	this.listEstados = listEstados;
+        this.listEstados = listEstados;
     }
 
     public List<Menus> getListMenus() {
@@ -267,6 +271,5 @@ public class ReservaAction extends BaseAction {
     public void setIdRegistro(int idRegistro) {
         this.idRegistro = idRegistro;
     }
-    
-    
+
 }
