@@ -125,21 +125,21 @@
                     <s:form action="Reserva" class="form-horizontal">
                         <s:hidden name="idReserva" />
                         <div>
-                        <select multiple="multiple" class="imagePicker">
-                            <optgroup label="Cats">
-                                <option data-img-src="http://placekitten.com/220/200" value="1">Cute Kitten 1</option>
-                                <option data-img-src="http://placekitten.com/180/200" value="2">Cute Kitten 2</option>
-                                <option data-img-src="http://placekitten.com/130/200" value="3">Cute Kitten 3</option>
-                                <option data-img-src="http://placekitten.com/270/200" value="4">Cute Kitten 4</option>
-                            </optgroup>
-                            <optgroup label="Animals">
-                                <option data-img-src="http://lorempixel.com/220/200/animals/" value="5">Animal 1</option>
-                                <option data-img-src="http://lorempixel.com/180/200/animals/" value="6">Animal 2</option>
-                                <option data-img-src="http://lorempixel.com/130/200/animals/" value="7">Animal 3</option>
-                                <option data-img-src="http://lorempixel.com/270/200/animals/" value="8">Animal 4</option>
-                            </optgroup>
-                        </select>
-</div>
+                            <select multiple="multiple" class="imagePicker">
+                                <optgroup label="Cats">
+                                    <option data-img-src="http://placekitten.com/220/200" value="1">Cute Kitten 1</option>
+                                    <option data-img-src="http://placekitten.com/180/200" value="2">Cute Kitten 2</option>
+                                    <option data-img-src="http://placekitten.com/130/200" value="3">Cute Kitten 3</option>
+                                    <option data-img-src="http://placekitten.com/270/200" value="4">Cute Kitten 4</option>
+                                </optgroup>
+                                <optgroup label="Animals">
+                                    <option data-img-src="http://lorempixel.com/220/200/animals/" value="5">Animal 1</option>
+                                    <option data-img-src="http://lorempixel.com/180/200/animals/" value="6">Animal 2</option>
+                                    <option data-img-src="http://lorempixel.com/130/200/animals/" value="7">Animal 3</option>
+                                    <option data-img-src="http://lorempixel.com/270/200/animals/" value="8">Animal 4</option>
+                                </optgroup>
+                            </select>
+                        </div>
                         <s:submit method="list" cssClass="btn submit" ondblclick="" key="Buscar" />
                     </s:form>
                 </fieldset>
