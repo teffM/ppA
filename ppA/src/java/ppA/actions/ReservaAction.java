@@ -121,8 +121,7 @@ public class ReservaAction extends BaseAction {
         } catch (Exception e) {
             return e(e);
         }
-        list();
-        return "successMenu";
+        return list();
     }
 
     public String eliminar() throws Exception {

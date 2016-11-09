@@ -208,13 +208,13 @@
                         }
                 }
         });
-        $(".dateTime").datetimepicker({locale: 'es'});
+        $(".dateTime").datetimepicker({locale: 'es', format: 'DD/MM/YYYY hh:mm:ss a'});
         $(".dateTime").after("<span class='input-group-addon'>\n\
                 <span class='glyphicon glyphicon-calendar'></span></span>");
-        $(".dateTimeMinNow").datetimepicker({locale: 'es', minDate: moment()});
+        $(".dateTimeMinNow").datetimepicker({locale: 'es', format: 'DD/MM/YYYY hh:mm:ss a', minDate: moment()});
         $(".dateTimeMinNow").after("<span class='input-group-addon'>\n\
                 <span class='glyphicon glyphicon-calendar'></span></span>");
-        $(".dateTimeMaxNow").datetimepicker({locale: 'es', maxDate: moment()});
+        $(".dateTimeMaxNow").datetimepicker({locale: 'es', format: 'DD/MM/YYYY hh:mm:ss a', maxDate: moment()});
         $(".dateTimeMaxNow").after("<span class='input-group-addon'>\n\
                 <span class='glyphicon glyphicon-calendar'></span></span>");
         $(".colorpicker").colorpicker({format: "hex"});

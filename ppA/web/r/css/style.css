@@ -74,6 +74,9 @@ h1 a {
     background-size: 100%;
     background-position: center;
 }
+.modal-xl {
+  width: 95%;
+}
 .body {
     background-color: white;
     background-size: 1000% 1000%;

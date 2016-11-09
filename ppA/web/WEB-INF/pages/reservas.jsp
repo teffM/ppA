@@ -23,7 +23,7 @@
         <div class="modal-content">
             <div class="modal-body">
                 <fieldset>
-                    <legend>Criterios de busqueda</legend>
+                    <legend><s:text name="r.criterio" /></legend>
                     <s:form action="Reserva" id="busqueda">
                         <s:select name="id" listKey="id" listValue="estado" headerKey="" cssClass="select2 required input"
                                   headerValue="Cualquiera" list="listEstados" key="r.estado" required="true"/>
@@ -117,11 +117,11 @@
     </div>
 </div>
 <div class="modal fade" id="modalPlatillos" role="dialog">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-body">
                 <fieldset>
-                    <legend>Agregar platillos</legend>
+                    <legend><s:text name="r.agregarPlatillo" /></legend>
                     <s:form action="Reserva" class="form-horizontal">
                         <s:hidden name="idReserva" />
                         <div>
@@ -136,7 +136,7 @@
                                     <option data-img-src="http://lorempixel.com/220/200/animals/" value="5">Animal 1</option>
                                     <option data-img-src="http://lorempixel.com/180/200/animals/" value="6">Animal 2</option>
                                     <option data-img-src="http://lorempixel.com/130/200/animals/" value="7">Animal 3</option>
-                                    <option data-img-src="http://lorempixel.com/270/200/animals/" value="8">Animal 4</option>
+                                    <option data-img-src="http://lorempixel.com/270/200/animals/" title="sfdsf" value="8">Animal 4</option>
                                 </optgroup>
                             </select>
                         </div>
@@ -148,18 +148,17 @@
     </div>
 </div>
 <div id="container">
-    <table id="dataTable" class="table table-responsive table-hover table-bordered table-condensed  table-striped">
+    <table id="dataTable" class="table table-striped table-bordered table-hover dt-responsive nowrap">
         <thead>
             <tr>
-                <th><s:text name="r.cliente" /></th>
-                <!--<th><s:text name="r.menu" /></th>-->
+                <th data-priority="1"><s:text name="r.cliente" /></th>
                 <th><s:text name="r.fechaReserva" /></th>
                 <th><s:text name="r.estado" /></th>
                 <th><s:text name="r.fechaCreacion" /></th>
                 <th><s:text name="r.persona" /></th>
                 <th><s:text name="r.sucursal" /></th>
                 <th><s:text name="r.comentario" /></th>
-                <th>Usuario</th>
+                <th><s:text name="r.usuario" /></th>
                 <th data-priority="1"><s:text name="q.acciones" /></th>
             </tr>
         </thead>
