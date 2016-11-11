@@ -72,9 +72,9 @@ public class BaseAction extends ActionSupport implements SessionAware {
         return reservas;
     }
     
-    protected List getReservaHoyList(int tipo){
+    protected List getReserva(String consulta){
        
-        List<Reservaciones> reservas  = (List<Reservaciones>) db.createQuery("from Reservaciones where fechaReservacion = currentDate()").list();
+        List<Reservaciones> reservas  = (List<Reservaciones>) db.createQuery(consulta).list();
          
         return reservas;
     }

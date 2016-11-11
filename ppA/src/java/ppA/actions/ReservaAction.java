@@ -1,5 +1,6 @@
 package ppA.actions;
 
+import java.sql.Date;
 import java.util.List;
 import ppA.entity.Abonos;
 import ppA.entity.CategoriasMenus;
@@ -27,20 +28,52 @@ public class ReservaAction extends BaseAction {
     private List<Menus> listMenus;
     private List<CategoriasMenus> listCategoriasMenus;
     private int idRegistro = 0;
-
+    //Auxiliares para filtrar reservas
+    private int sucId;
+    private Date fecha;
+    private Date fMenor;
+    private Date fMayor;
+    private int cliId;
+    private int numPersonas;
+    
     @Override
     public String execute() throws Exception {
-        return list();
+        return listNew();
     }
 
     public String list() {
         try {
-            if (getId() == 0) {
-                setListReservas(getList(Reservaciones.class));
-            } else {
-                setListReservas(getReservaList(getId()));
-
+            String consulta  = "from Reservaciones where id > 0";
+            
+               
+            if (cliId != 0) {
+                consulta += " and clientes.id = " + cliId;
             }
+            
+            if (sucId != 0) {
+                consulta += " and sucursales.id = " + getSucId();
+            }
+            
+            if (numPersonas != 0) {
+                consulta += " and numPersonas = " + numPersonas;
+            }
+               
+            if (getId() != 0) {
+                consulta += " and estados.id = " + getId();
+            } 
+            
+            if (fMenor != null) {
+                consulta += " and fechaCreacion >= " + fMenor.getYear() + "-" + fMenor.getMonth() + "-" + fMenor.getDay();
+            }
+            
+            if (fMayor != null) {
+                consulta += " and fechaCreacion <= " + fMayor.getYear() + "-" + fMayor.getMonth() + "-" + fMayor.getDay();
+            }
+            
+            
+            consulta+=" order by fechaReservacion";
+            
+            setListReservas(getReserva(consulta));
             setListSucursales(getList(Sucursales.class));
             setListEstados(getList(Estados.class));
             setListClientes(getList(Clientes.class));
@@ -52,6 +85,26 @@ public class ReservaAction extends BaseAction {
         return SUCCESS;
     }
 
+        public String listNew() {
+        try {
+            setId(0);
+            numPersonas=0;
+            sucId=0;
+            cliId=0;
+            
+            setListReservas(getReserva("from Reservaciones where fechaReservacion >= current_date()  order by fechaReservacion "));
+            setListSucursales(getList(Sucursales.class));
+            setListEstados(getList(Estados.class));
+            setListClientes(getList(Clientes.class));
+        } catch (Exception e) {
+            return e(e);
+        } finally {
+            setR(new Reservaciones());
+        }
+        return SUCCESS;
+    }
+
+    
     public String obtener() {
         try {
             r = getReserva();
@@ -271,4 +324,53 @@ public class ReservaAction extends BaseAction {
         this.idRegistro = idRegistro;
     }
 
+    public Integer getSucId() {
+        return sucId;
+    }
+
+    public void setSucId(Integer sucId) {
+        this.sucId = sucId;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public Date getfMenor() {
+        return fMenor;
+    }
+
+    public void setfMenor(Date fMenor) {
+        this.fMenor = fMenor;
+    }
+
+    public Date getfMayor() {
+        return fMayor;
+    }
+
+    public void setfMayor(Date fMayor) {
+        this.fMayor = fMayor;
+    }
+
+    public int getCliId() {
+        return cliId;
+    }
+
+    public void setCliId(int cliId) {
+        this.cliId = cliId;
+    }
+
+    public int getNumPersonas() {
+        return numPersonas;
+    }
+
+    public void setNumPersonas(int numPersonas) {
+        this.numPersonas = numPersonas;
+    }
+
+    
 }

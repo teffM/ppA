@@ -1,7 +1,8 @@
 <%@taglib uri="/struts-tags" prefix="s"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<br/>
+<h2>Reservaciones</h2>
+<hr>
 <div class="form-inline">
 
     <div class="form-group">
@@ -17,25 +18,35 @@
         </a>
     </div>
 </div>
-<br/><br/>
-<div class="modal fade" id="mySearchOptions" role="dialog">
+<br/>
+<div class="modal fade" id="mySearchOptions" data-backdrop="static" data-keyboard="false" href="#" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
                 <fieldset>
-                    <legend><s:text name="r.criterio" /></legend>
+                    <legend><s:text name="r.criterio" /><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button></legend>
                     <s:form action="Reserva" id="busqueda">
-                        <s:select name="id" listKey="id" listValue="estado" headerKey="" cssClass="select2 required input"
+                        <s:select id="criEst" name="id" listKey="id" listValue="estado" headerKey="" cssClass="select2 required input"
                                   headerValue="Cualquiera" list="listEstados" key="r.estado" required="true"/>
-
+                        <s:select id="criCli" name="cliId" listKey="id" listValue="%{nombre + ' ' +  apellido}" headerKey=""
+                                                  cssClass="select2 required" headerValue="%{getText('lbl.seleccione')}"
+                                                  list="listClientes" key="r.cliente" required="true" />
+                         <s:select id="criSuc" name="sucId" listKey="id" listValue="sucursal" headerKey="" cssClass="select2 required"
+                                              headerValue="%{getText('lbl.seleccione')}" list="listSucursales" key="r.sucursal" required="true" />
+                         <s:textfield name="numPersonas" key="r.persona" type="number" cssClass="form-control input required" required="true" />
+                          
+                                    
+                         <div class="form-horizontal">             
+                        <s:submit method="listNew" cssClass="btn submit" ondblclick="" key="Reiniciar busqueda" />
                         <s:submit method="list" cssClass="btn submit" ondblclick="" key="Buscar" />
+                        </div>
                     </s:form>
                 </fieldset>
             </div>
         </div>
     </div>
 </div>
-<div class="modal fade" id="myModal" role="dialog">
+<div class="modal fade" id="myModal" role="dialog" data-backdrop="static" data-keyboard="false" href="#">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-body">
@@ -43,7 +54,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <fieldset>
-                                <legend><s:text name="r.legend" /></legend>
+                                <legend><s:text name="r.legend" /><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button></legend>
                                 <s:hidden name="r.id" />
                                 <div class="row form-group">
                                     <div class="col-md-10">
@@ -228,6 +239,8 @@
     $("#dataTable > tbody > tr").dblclick(function () {
         edit($(this));
     });
+    
+   
     $(".anotherNew").on('click', function () {
         edit($(this).parent().parent());
     });
