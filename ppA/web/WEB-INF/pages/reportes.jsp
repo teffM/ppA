@@ -13,7 +13,7 @@
         <title>JSP Page</title>
     </head>
     <fieldset>
-                    <legend><s:text name="s.legend" /></legend>
+                    <legend><s:text name="re.legend" /></legend>
                     
               
     <s:form action="Reportes">

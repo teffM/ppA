@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteWeb" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e3139e2c-005e-4256-8a00-534c5cc83407">
 	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="234"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
@@ -127,35 +127,35 @@ FROM
 			</line>
 			<staticText>
 				<reportElement style="Column header" x="0" y="0" width="100" height="15" forecolor="#736343" uuid="35518db7-f18e-4984-b4ac-2c749bdfa470"/>
-				<text><![CDATA[clientes_nombre]]></text>
+				<text><![CDATA[Nombre]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="100" y="0" width="100" height="15" forecolor="#736343" uuid="2017750d-6d15-4183-b209-114bd18d9e9d"/>
-				<text><![CDATA[clientes_apellido]]></text>
+				<text><![CDATA[Apellidos]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="200" y="0" width="100" height="15" forecolor="#736343" uuid="ffef1ef7-f846-447b-83b6-443d2d0ca4b0"/>
-				<text><![CDATA[clientes_dui]]></text>
+				<text><![CDATA[DUI]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="300" y="0" width="100" height="15" forecolor="#736343" uuid="5fae0b6f-d72e-4fa0-885b-566f17fa1e7a"/>
-				<text><![CDATA[clientes_nit]]></text>
+				<text><![CDATA[NIT]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="400" y="0" width="100" height="15" forecolor="#736343" uuid="f6609a4a-ead6-4451-88d6-27c65736e695"/>
-				<text><![CDATA[clientes_comprobanteIva]]></text>
+				<text><![CDATA[Comprobante-IVA]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="500" y="0" width="100" height="15" forecolor="#736343" uuid="45da6ffe-ab92-4494-bddb-781f6094cd07"/>
-				<text><![CDATA[reservaciones_fechaReservacion]]></text>
+				<text><![CDATA[FechaReservacion]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="600" y="0" width="100" height="15" forecolor="#736343" uuid="37b26f39-12b7-4dec-8e82-31be7acfa5de"/>
-				<text><![CDATA[reservaciones_numPersonas]]></text>
+				<text><![CDATA[#Personas]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="700" y="0" width="100" height="15" forecolor="#736343" uuid="51b06038-71e0-4544-874d-202c4dcc54f5"/>
-				<text><![CDATA[reservaciones_fechaCreacion]]></text>
+				<text><![CDATA[FechaCreacion]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
