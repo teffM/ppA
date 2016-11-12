@@ -113,15 +113,19 @@ public class ReservaAction extends BaseAction {
     public String cliente(){
         
         try{
+            open();
             cli = (Clientes) getDb().createQuery("select cli from Clientes cli where id = " + getId()).uniqueResult();
-             if (cli.getId() == 0) {
-                return "error";
+             if (cli != null) {
+                return "detalles";
+            }else{
+                 return "error";
             }
         }catch(Exception e){
             setMsg(e.getMessage());
+            return "detalles";
         }
         
-        return "detalles";
+        
     }
         
     public String obtener() {
@@ -237,6 +241,7 @@ public class ReservaAction extends BaseAction {
 
     public String eliminarMenu() throws Exception {
         try {
+            open();
             delete((DetallesMenus) getDb().load(DetallesMenus.class, getIdRegistro()));
             setMsg(getText("msg.eliminadoExito"));
             r = getReserva();
@@ -254,6 +259,7 @@ public class ReservaAction extends BaseAction {
 
     public String eliminarAbono() throws Exception {
         try {
+            open();
             delete((Abonos) getDb().load(Abonos.class, getIdRegistro()));
             setMsg(getText("msg.eliminadoExito"));
             r = getReserva();
