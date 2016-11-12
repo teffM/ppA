@@ -39,6 +39,11 @@
     <definition name="clientes" extends="default">
         <put-attribute name="body" value="/WEB-INF/pages/clientes.jsp" />
     </definition>
+    
+    <definition name="detalles_cliente" extends="default">
+        <put-attribute name="body" value="/WEB-INF/pages/detalles_cliente.jsp" />
+    </definition>
+    
     <definition name="categoriasMenus" extends="default">
         <put-attribute name="body" value="/WEB-INF/pages/categoriasMenus.jsp" />
     </definition>

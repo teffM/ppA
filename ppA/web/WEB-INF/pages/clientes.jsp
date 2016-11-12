@@ -6,7 +6,11 @@
         <div class="button-group  pull-right">
             <a id="nuevoCliente" href="#" class="btn btn-success" data-toggle="modal" data-target="#myModal">
                 <span class="glyphicon glyphicon-plus-sign"></span>
-                <b><s:text name="c.btnNuevo" /></b>
+                <b><s:text name="c.btnNuevoEmpresa" /></b>
+            </a>
+            <a id="nuevoEmpresa" href="#" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                <span class="glyphicon glyphicon-plus-sign"></span>
+                <b><s:text name="c.btnNuevoCliente" /></b>
             </a>
         </div>
     </h1>

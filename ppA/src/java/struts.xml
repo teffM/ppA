@@ -48,6 +48,8 @@
         
         <action name="Detalles" class="ppA.actions.ReservaAction">
             <result name="success" type="tiles">detalles</result>
+            <result name="detalles" type="tiles">detalles_cliente</result>
+            
         </action>
         
         <action name="Menu" class="ppA.actions.MenuAction">
@@ -70,6 +72,7 @@
         </action>
         <action name="Cliente" class="ppA.actions.ClienteAction">
             <result name="success" type="tiles">clientes</result>
+            
         </action>
         <action name="CategoriaMenu" class="ppA.actions.CategoriaMenuAction">
             <result name="success" type="tiles">categoriasMenus</result>

@@ -9,14 +9,17 @@ and open the template in the editor.
 */
 
 *{
-    margin:0;
+    margin:0 ;
     padding: 0;
 }
 
 td.tdLabel>label, .label {
     color: black;
     text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+
 }
+
+
 .wwgrp br {
     display: none;
 }
@@ -133,4 +136,7 @@ body {
 }
 .navbar navbar-inverse twoRow{
     border-radius: 0;
+}
+.dataTable2{
+    margin: 0 !important;
 }

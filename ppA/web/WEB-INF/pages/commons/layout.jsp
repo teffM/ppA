@@ -1,6 +1,8 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib prefix="sx" uri="/struts-dojo-tags"%>
+
 <%@taglib uri="/struts-tags" prefix="s"%>
 <html lang="es" class="body">
     <head>
@@ -27,6 +29,7 @@
         <link href="./r/css/loading.css" rel="stylesheet" type="text/css"/>
         <link href="./r/css/style.css" rel="stylesheet" type="text/css"/>
         <script src="./r/js/functions.js" type="text/javascript"></script>
+        <sx:head />
     </head>
     <body>
         <div id="particles-js"></div>
@@ -209,6 +212,52 @@
                         }
                 }
         });
+        
+        $('.dataTable2').DataTable({
+        dom: 'lBfrtip',
+                buttons: [],
+                select: false,
+                info: false,
+                lengthChange: false,
+                pageLength: 5,
+                filter: false,
+                "pagingType": "full_numbers",
+                language: {
+                processing: "<s:text name="dt.sProcessing" />",
+                        search: "<s:text name="dt.sSearch" />",
+                        lengthMenu: "<s:text name="dt.sLengthMenu" />",
+                        info: "<s:text name="dt.sInfo" />",
+                        infoEmpty: "<s:text name="dt.sInfoEmpty" />",
+                        infoFiltered: "<s:text name="dt.sInfoFiltered" />",
+                        loadingRecords: "<s:text name="dt.sLoadingRecords" />",
+                        zeroRecords: "<s:text name="dt.sZeroRecords" />",
+                        emptyTable: "<s:text name="dt.sEmptyTable" />",
+                        paginate: {
+                        first: "<s:text name="dt.sFirst" />",
+                                previous: "<s:text name="dt.sPrevious" />",
+                                next: "<s:text name="dt.sNext" />",
+                                last: "<s:text name="dt.sLast" />"
+                        },
+                        aria: {
+                        sortAscending: "<s:text name="dt.sSortAscending" />",
+                                sortDescending: "<s:text name="dt.sSortDescending" />"
+                        },
+                        buttons: {
+                        copyTitle: "<s:text name="dt.copyTitle" />",
+                                copySuccess: {
+                                _: "<s:text name="dt.copyFiles" />",
+                                        1: "<s:text name="dt.copyOneFile" />"
+                                }
+                        },
+                        select: {
+                        rows: {
+                        _: "<s:text name="dt.selectFile" />",
+                                0: "<s:text name="dt.selectClickFile" />",
+                                1: "<s:text name="dt.selectOneFile" />"
+                        }
+                        }
+                }
+        });
         $(".dateTime").datetimepicker({locale: 'es', format: 'DD/MM/YYYY hh:mm:ss a'});
         $(".dateTime").after("<span class='input-group-addon'>\n\
                 <span class='glyphicon glyphicon-calendar'></span></span>");
@@ -253,5 +302,6 @@
                 return Number(value) > 0;
                 }, '<s:text name="err.mayorCero" />');
     </script>
+    
 </body>
 </html>

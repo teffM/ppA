@@ -22,6 +22,7 @@ import ppA.entity.Usuarios;
 public class ReservaAction extends BaseAction {
 
     private Abonos a;
+    private Clientes cli;
     public BigDecimal totAbono;
     public BigDecimal totPlatillo;
     private DetallesMenus dm;
@@ -109,7 +110,20 @@ public class ReservaAction extends BaseAction {
         return SUCCESS;
     }
 
-    
+    public String cliente(){
+        
+        try{
+            cli = (Clientes) getDb().createQuery("select cli from Clientes cli where id = " + getId()).uniqueResult();
+             if (cli.getId() == 0) {
+                return "error";
+            }
+        }catch(Exception e){
+            setMsg(e.getMessage());
+        }
+        
+        return "detalles";
+    }
+        
     public String obtener() {
         try {
             
@@ -137,7 +151,7 @@ public class ReservaAction extends BaseAction {
         try {
             r = getReserva();
             if (r.getEstados().getId() != 1) {//Cuando el estado no sea registrado
-                setMsg(getText(""));
+                setMsg(getText("No es posible agregar más platillos"));
             }
             else{
                 save(getDm());
@@ -163,9 +177,7 @@ public class ReservaAction extends BaseAction {
             totAbono= (BigDecimal) getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
             totPlatillo= new BigDecimal((double) getDb().createQuery("select sum(cantidad*precio) from DetallesMenus where reservaciones.id = " + r.getId()).uniqueResult(), MathContext.DECIMAL64);
            
-            if (r.getEstados().getId() != 1) {//Cuando el estado no sea registrado
-                setMsg(getText(""));
-            }else if(totAbono.doubleValue() + getA().getAbono().doubleValue() > totPlatillo.doubleValue()){
+            if(totAbono.doubleValue() + getA().getAbono().doubleValue() > totPlatillo.doubleValue()){
                 setMsg(getText("No se puede guardar"));
             }else{
                  getA().setUsuarios(new Usuarios());
@@ -413,6 +425,14 @@ public class ReservaAction extends BaseAction {
 
     public void setNumPersonas(int numPersonas) {
         this.numPersonas = numPersonas;
+    }
+
+    public Clientes getCli() {
+        return cli;
+    }
+
+    public void setCli(Clientes cli) {
+        this.cli = cli;
     }
 
     

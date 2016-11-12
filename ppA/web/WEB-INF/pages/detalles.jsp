@@ -23,17 +23,18 @@
     <div class="col-md-6">
         <div class="panel panel-default">
             <!-- Default panel contents -->
-            <div class="panel-heading"><h3>Cliente</h3></div>
+            <div class="panel-heading"><h3>Cliente <small>Datos generales</small></h3></div>
             <!-- List group -->
             <ul class="list-group">
                  
-                <li class="list-group-item"><b>DUI:</b> <c:out value="${r.clientes.dui}"/></li>
-                <li class="list-group-item"><b>Nombre:</b> <c:out value="${r.clientes.nombre}"/> </li>
-                <li class="list-group-item"><b>Apellido:</b> <c:out value="${r.clientes.apellido}"/></li>
-                <li class="list-group-item"><b>NIT:</b> <c:out value="${r.clientes.nit}"/></li>
-                <li class="list-group-item"><b>Telefono:</b> <c:out value="${r.clientes.telefono}"/></li>
-                <li class="list-group-item"><b>Correo:</b> <c:out value="${r.clientes.correo}"/></li>
-                <li class="list-group-item"><a href="Cliente!obtener=<c:out value="${r.clientes.id}"/>">Más infomación</a></li>
+                <li class="list-group-item"><b><s:text name="c.dui" /></b> <c:out value="${r.clientes.dui}"/></li>
+                <li class="list-group-item"><b><s:text name="c.nit" /></b> <c:out value="${r.clientes.nit}"/></li>
+               
+                <li class="list-group-item"><b><s:text name="c.nombre" /></b> <c:out value="${r.clientes.nombre}"/> </li>
+                <li class="list-group-item"><b><s:text name="c.apellido" /></b> <c:out value="${r.clientes.apellido}"/></li>
+                 <li class="list-group-item"><b><s:text name="c.telefono" /></b> <c:out value="${r.clientes.telefono}"/></li>
+                <li class="list-group-item"><b><s:text name="c.correo" /></b> <c:out value="${r.clientes.correo}"/></li>
+                <a  class="list-group-item" target="_blank" href="Detalles!cliente?id=<c:out value="${r.clientes.id}"/>"><center><b>Más infomación</b></center></a>
             </ul>
         </div>
     </div>
@@ -41,23 +42,23 @@
      <div class="col-md-6">
         <div class="panel panel-default">
             <!-- Default panel contents -->
-            <div class="panel-heading panel-collapse"><h3>Reserva</h3></div>
+            <div class="panel-heading panel-collapse"><h3>Reserva <small>Datos generales</small></h3></div>
             <!-- List group -->
             <ul class="list-group">
                 <fmt:formatDate value="${r.fechaReservacion}" var="fechaReserva"
                                     pattern="dd/MM/yyyy hh:mm a" />
                     <fmt:formatDate value="${r.fechaCreacion}" var="fechaCreacion"
                                     pattern="dd/MM/yyyy hh:mm a" />
-                <li class="list-group-item"><b>Estado:</b> <c:out value="${r.estados.estado}"/></li>
-                <li class="list-group-item"><b>Numero de personas:</b> <c:out value="${r.numPersonas}"/> </li>
-                <li class="list-group-item"><b>Fecha programada:</b> <c:out value="${fechaReserva}"/> </li>
-                <li class="list-group-item"><b>Fecha creacion:</b> <c:out value="${fechaCreacion}"/> </li>
-                <li class="list-group-item"><b>Sucursal:</b> <c:out value="${r.sucursales.sucursal}"/></li>
+                <li class="list-group-item"><b><s:text name="r.estado" /></b> <c:out value="${r.estados.estado}"/></li>
+                <li class="list-group-item"><b><s:text name="r.persona" /></b> <c:out value="${r.numPersonas}"/> </li>
+                <li class="list-group-item"><b><s:text name="r.fechaReserva" /></b> <c:out value="${fechaReserva}"/> </li>
+                <li class="list-group-item"><b><s:text name="r.fechaCreacion" /></b> <c:out value="${fechaCreacion}"/> </li>
+                <li class="list-group-item"><b><s:text name="r.sucursal" /></b> <c:out value="${r.sucursales.sucursal}"/></li>
                 <li class="list-group-item" title="Empleado que registro la reserva"><b>Empleado:</b> <c:out value="${r.usuarios.nombre}"/> <c:out value="${r.usuarios.apellido}"/> </li>
 
             </ul>
             <div class="panel-body">
-                <b>Comentarios:</b> <c:out value="${r.comentarios}"/>
+                <b><s:text name="r.comentario" /></b> <c:out value="${r.comentarios}"/>
             </div>
         </div>
     </div>
@@ -71,7 +72,7 @@
         <div class="panel-heading">
             
             
-                <h3>Platillos
+                <h3>Platillos <small>Agregados a la reserva</small>
                     <div class="button-group  pull-right">
                 <a href="#" data-toggle="modal" class="btn btn-success" data-target="#myModalMenu">Agregar platillo</a>
                 </div>
@@ -80,12 +81,12 @@
         </div>
 
 
-        <table class="table table-responsive table-hover table-bordered table-condensed  table-striped">
+        <table class="table table-responsive table-hover table-bordered table-condensed  table-striped dataTable2">
             <thead>
                 <tr>
-                    <th>Menu</th>
+                     <th>#</th>
+                    <th><s:text name="dm.menu" /></th>
                     <th>Platillo</th>
-                   
                     <th>Cantidad</th>
                     <th>Comentarios</th>
                      <th>Precio individual</th>
@@ -93,10 +94,11 @@
                 </tr>
             </thead>
             <tbody>
-
+                <s:set var="counter" value="0"/>
                 <c:forEach var="l" items="${r.detallesMenuses}">
                     <tr>
-                        
+                        <s:set var="counter" value="%{#counter+1}"/> 
+                        <td><s:property value="#counter"/></td>   
                         <td><c:out value="${l.menus.categoriasMenus.categoriaMenu}"/></td>
                         <td><c:out value="${l.menus.menu}"/></td>
                        
@@ -116,10 +118,10 @@
                    
             </tbody>
             <tfoot>
-                 <tr>
-                  
-                 <td colspan="4">Total</td>
-                 <td colspan="2">$${totPlatillo}</td>
+                 <tr> 
+                    <td colspan="4"></td>
+                    <td colspan="1"><b>Total</b></td>
+                    <td colspan="2">$${totPlatillo}</td>
                 </tr>
             </tfoot>
         </table>
@@ -131,7 +133,7 @@
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3>Abonos
+        <h3>Abonos <small>Hechos a esta reserva</small>
                     <div class="button-group  pull-right">
                 <a href="#" class="btn btn-success right" data-toggle="modal" data-target="#myModalAbono">Agregar abono</a>
                     </div>
@@ -140,10 +142,11 @@
        
     </div>
 
-    <table class="table table-responsive table-hover table-bordered table-condensed  table-striped">
+    <table class="table table-responsive table-hover table-bordered table-condensed  table-striped dataTable2">
 
         <thead>
             <tr>
+                <th>#</th>
                 <th>Cliente</th>
                 <th>Fecha</th>
                 <th>Monto</th>
@@ -152,16 +155,18 @@
             </tr>
         </thead>
         <tbody>
-           
+           <s:set var="counter" value="0"/>
             <c:forEach var="l" items="${r.abonoses}">
                 <tr>
                    
-                       
+                      <s:set var="counter" value="%{#counter+1}"/> 
+                        <td><s:property value="#counter"/></td>     
                
                    
                     <fmt:formatDate value="${l.fechaAbono}" var="fechaAbono"
                                     pattern="dd/MM/yyyy hh:mm a" />
-                    <td><a href="Cliente!obtener=<c:out value="${l.clientes.id}"/>"><c:out value="${l.clientes.nombre}"/>  <c:out value="${l.clientes.apellido}"/></a></td>
+                     <td><a target="_blank" href="Detalles!cliente?id=<c:out value="${l.clientes.id}"/>"><c:out value="${l.clientes.nombre}"/>  <c:out value="${l.clientes.apellido}"/></a></td>
+                    
                     
                     <td><c:out value="${fechaAbono}"/></td>
                     <td>$<c:out value="${l.abono}"/></td>
@@ -180,8 +185,8 @@
         </tbody>
         <tfoot>
               <tr>
-                  
-                 <td colspan="2">Total</td>
+                 <td colspan="2"></td>
+                 <td><b>Total</b></td>
                  <td colspan="2">$${totAbono}</td>
                 </tr> 
         </tfoot>
