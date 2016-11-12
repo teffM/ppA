@@ -6,18 +6,26 @@ import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.apache.struts2.StrutsStatics;
+import org.hibernate.cfg.Configuration;
 
 public class SessionInterceptor extends AbstractInterceptor implements StrutsStatics {
 
     @Override
-    public String intercept(ActionInvocation invocation) throws Exception {
-	ActionContext context = invocation.getInvocationContext();
-	HttpServletRequest request = (HttpServletRequest) context.get(HTTP_REQUEST);
-	HttpSession session = request.getSession(false);
-
-	if (!ActionContext.getContext().getName().equalsIgnoreCase("Login") && session.getAttribute("userId") == null) {
-	    return "errorSession";
-	}
-	return invocation.invoke();
+    public String intercept(ActionInvocation invocation) {
+        try {
+            ActionContext context = invocation.getInvocationContext();
+            HttpServletRequest request = (HttpServletRequest) context.get(HTTP_REQUEST);
+            HttpSession session = request.getSession(false);
+            if (!ActionContext.getContext().getName().equalsIgnoreCase("Login") && session.getAttribute("userId") == null) {
+                return "errorSession";
+            }
+            if (session.getAttribute("d_b") == null) {
+                session.setAttribute("d_b", new Configuration().configure().buildSessionFactory());
+            }
+            return invocation.invoke();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return "error";
     }
 }

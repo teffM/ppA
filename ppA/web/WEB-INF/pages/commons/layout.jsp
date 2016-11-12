@@ -42,7 +42,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-left" href="./index"><img src="./r/images/logo.png" width="80px" alt=""/></a>
+                <a class="navbar-left" href="./index"><img src="./r/images/logo.png" width="150px" height="50px" /></a>
             </div>
             <div class="collapse navbar-collapse " id="collapse">
                 <ul class="nav navbar-nav col-md-8">
