@@ -35,6 +35,10 @@
             <exception-mapping exception="java.lang.Exception" result="error"></exception-mapping>
         </global-exception-mappings>
         
+        <action name="Reportes" class="ppA.actions.ReporteAction">
+            <result type="tiles">reportes</result>
+             <result name="display">/reporte2PDF_2.pdf</result>
+        </action>
         <action name="index">
             <result type="tiles">index</result>
         </action>
