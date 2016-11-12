@@ -7,6 +7,12 @@ and open the template in the editor.
     Created on : 20-sep-2016, 7:10:52
     Author     : luis
 */
+
+*{
+    margin:0;
+    padding: 0;
+}
+
 td.tdLabel>label, .label {
     color: black;
     text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
@@ -44,9 +50,6 @@ span.required {
     bottom: 0;
 }
 
-h1 a {
-    background-image: url('../images/login.png') !important;
-}
 
 #bgLogin{
     margin-top: 170px;

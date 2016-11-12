@@ -1,17 +1,25 @@
 <%@taglib uri="/struts-tags" prefix="s"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<br/>
-<a id="nuevoUsuario" href="#" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
+
+<div class="page-header">
+    <h1 style="margin:0">Usuarios
+        <div class="button-group  pull-right">
+           <a id="nuevoUsuario" href="#" class="btn btn-success" data-toggle="modal" data-target="#myModal">
     <span class="glyphicon glyphicon-plus-sign"></span>
     <b><s:text name="nu.btnNuevo" /></b>
 </a>
-<br/>
-<div class="modal fade" id="myModal" role="dialog">
+        </div>
+    </h1>
+</div>
+
+
+
+<div class="modal fade" id="myModal" data-backdrop="static" data-keyboard="false" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
                 <fieldset>
-                    <legend><s:text name="nu.legend" /></legend>
+                    <legend><s:text name="nu.legend" /> <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button></legend>
                     <s:form action="Usuario">
                         <s:hidden name="nu.id" />
                         <div class="form-group">

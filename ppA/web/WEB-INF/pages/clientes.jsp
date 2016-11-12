@@ -1,16 +1,23 @@
 <%@taglib uri="/struts-tags" prefix="s"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<br/>
-<a id="nuevoCliente" href="#" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
-    <span class="glyphicon glyphicon-plus-sign"></span>
-    <b><s:text name="c.btnNuevo" /></b>
-</a>
-<div class="modal fade" id="myModal" role="dialog">
+<div class="container">
+<div class="page-header">
+    <h1 style="margin:0">Clientes
+        <div class="button-group  pull-right">
+            <a id="nuevoCliente" href="#" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                <span class="glyphicon glyphicon-plus-sign"></span>
+                <b><s:text name="c.btnNuevo" /></b>
+            </a>
+        </div>
+    </h1>
+</div>
+
+<div class="modal fade" id="myModal" data-backdrop="static" data-keyboard="false" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
                 <fieldset>
-                    <legend><s:text name="c.legend" /></legend>
+                    <legend><s:text name="c.legend" /><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button></legend>
                     <s:form action="Cliente">
                         <s:hidden name="c.id" />
                         <div class="form-group">
@@ -44,10 +51,9 @@
         </div>
     </div>
 </div>
-<br/>
+
 <div id="container">
 
-    <br/>
 
     <table  id="dataTable" class="table table-striped table-bordered table-hover dt-responsive nowrap">
         <thead>
@@ -88,7 +94,7 @@
         </tbody>
     </table>
 </div>
-
+</div>
 <script type="text/javascript">
     $('#nuevoCliente').on('click', function () {
         $("#Cliente_c_id").val(0);
