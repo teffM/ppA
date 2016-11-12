@@ -1,6 +1,9 @@
 package ppA.actions;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
 import java.sql.Date;
+import java.util.Iterator;
 import java.util.List;
 import ppA.entity.Abonos;
 import ppA.entity.CategoriasMenus;
@@ -19,6 +22,8 @@ import ppA.entity.Usuarios;
 public class ReservaAction extends BaseAction {
 
     private Abonos a;
+    public BigDecimal totAbono;
+    public BigDecimal totPlatillo;
     private DetallesMenus dm;
     private Reservaciones r;
     private List<Reservaciones> listReservas;
@@ -107,28 +112,44 @@ public class ReservaAction extends BaseAction {
     
     public String obtener() {
         try {
+            
             r = getReserva();
+            
+
             setListClientes(getList(Clientes.class));
             setListMenus(getList(Menus.class));
             setListCategoriasMenus(getList(CategoriasMenus.class));
+            totAbono= (BigDecimal) getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
+            totPlatillo= new BigDecimal((double) getDb().createQuery("select sum(cantidad*precio) from DetallesMenus where reservaciones.id = " + r.getId()).uniqueResult(), MathContext.DECIMAL64);
+           
             if (r.getId() == 0) {
                 return "error";
             }
         } catch (Exception e) {
-
+             return SUCCESS;
         }
         return SUCCESS;
     }
 
     public String guardarMenu() {
         setId(getDm().getReservaciones().getId());
+        
         try {
-            save(getDm());
-            setMsg(getText("msg.guardadoExito"));
             r = getReserva();
+            if (r.getEstados().getId() != 1) {//Cuando el estado no sea registrado
+                setMsg(getText(""));
+            }
+            else{
+                save(getDm());
+                setMsg(getText("msg.guardadoExito"));
+            }
+            
             setListClientes(getList(Clientes.class));
             setListMenus(getList(Menus.class));
             setListCategoriasMenus(getList(CategoriasMenus.class));
+             totAbono= (BigDecimal) getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
+            totPlatillo= new BigDecimal((double) getDb().createQuery("select sum(cantidad*precio) from DetallesMenus where reservaciones.id = " + r.getId()).uniqueResult(), MathContext.DECIMAL64);
+           
         } catch (Exception e) {
 
         }
@@ -138,14 +159,28 @@ public class ReservaAction extends BaseAction {
     public String guardarAbono() throws Exception {
         setId(getA().getReservaciones().getId());
         try {
-            getA().setUsuarios(new Usuarios());
-            getA().getUsuarios().setId(Integer.parseInt(getSession().get("userId").toString()));
-            save(getA());
-            setMsg(getText("msg.guardadoExito"));
             r = getReserva();
+            totAbono= (BigDecimal) getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
+            totPlatillo= new BigDecimal((double) getDb().createQuery("select sum(cantidad*precio) from DetallesMenus where reservaciones.id = " + r.getId()).uniqueResult(), MathContext.DECIMAL64);
+           
+            if (r.getEstados().getId() != 1) {//Cuando el estado no sea registrado
+                setMsg(getText(""));
+            }else if(totAbono.doubleValue() + getA().getAbono().doubleValue() > totPlatillo.doubleValue()){
+                setMsg(getText("No se puede guardar"));
+            }else{
+                 getA().setUsuarios(new Usuarios());
+                getA().getUsuarios().setId(Integer.parseInt(getSession().get("userId").toString()));
+                save(getA());
+                setMsg(getText("msg.guardadoExito"));
+            }
+            
+           
+            
             setListClientes(getList(Clientes.class));
             setListMenus(getList(Menus.class));
             setListCategoriasMenus(getList(CategoriasMenus.class));
+            totAbono= (BigDecimal) getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
+            
         } catch (Exception e) {
             return e(e);
         }
@@ -193,8 +228,12 @@ public class ReservaAction extends BaseAction {
             delete((DetallesMenus) getDb().load(DetallesMenus.class, getIdRegistro()));
             setMsg(getText("msg.eliminadoExito"));
             r = getReserva();
-            setListClientes(getList(Clientes.class));
+           setListClientes(getList(Clientes.class));
             setListMenus(getList(Menus.class));
+            setListCategoriasMenus(getList(CategoriasMenus.class));
+            totAbono= (BigDecimal) getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
+            totPlatillo= new BigDecimal((double) getDb().createQuery("select sum(cantidad*precio) from DetallesMenus where reservaciones.id = " + r.getId()).uniqueResult(), MathContext.DECIMAL64);
+           
         } catch (Exception e) {
             return e(e);
         }
@@ -208,6 +247,10 @@ public class ReservaAction extends BaseAction {
             r = getReserva();
             setListClientes(getList(Clientes.class));
             setListMenus(getList(Menus.class));
+            setListCategoriasMenus(getList(CategoriasMenus.class));
+            totAbono= (BigDecimal) getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
+            totPlatillo= new BigDecimal((double) getDb().createQuery("select sum(cantidad*precio) from DetallesMenus where reservaciones.id = " + r.getId()).uniqueResult(), MathContext.DECIMAL64);
+           
         } catch (Exception e) {
             return e(e);
         }
