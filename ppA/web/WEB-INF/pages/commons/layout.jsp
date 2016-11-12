@@ -87,11 +87,9 @@
             <div class="loader-section section-right"></div>
         </div>
     </s:if>
-    
-        <div class="container myContainer twoContainer">
-            <tiles:insertAttribute name="body" />
-        </div>
-    
+    <div class="container myContainer twoContainer">
+        <tiles:insertAttribute name="body" />
+    </div>
     <!--modal confirm delete-->
     <div class="navbar-inverse footer navbar-fixed-bottom">
         © Copyright Restaurantes La Pampa, 2016 Derechos reservados / All Rights Reserved

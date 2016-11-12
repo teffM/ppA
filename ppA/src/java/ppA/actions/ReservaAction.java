@@ -19,8 +19,6 @@ import ppA.entity.Usuarios;
 public class ReservaAction extends BaseAction {
 
     private Abonos a;
-    double totMenu;
-    double totAbono;
     private DetallesMenus dm;
     private Reservaciones r;
     private List<Reservaciones> listReservas;
@@ -110,9 +108,6 @@ public class ReservaAction extends BaseAction {
     public String obtener() {
         try {
             r = getReserva();
-            
-           
-            
             setListClientes(getList(Clientes.class));
             setListMenus(getList(Menus.class));
             setListCategoriasMenus(getList(CategoriasMenus.class));
@@ -376,8 +371,6 @@ public class ReservaAction extends BaseAction {
     public void setNumPersonas(int numPersonas) {
         this.numPersonas = numPersonas;
     }
-    
-    
 
     
 }
