@@ -5,13 +5,9 @@
     <div class="page-header">
         <h1 style="margin:0">Reservaciones
             <div class="button-group  pull-right">
-
-
                 <a id="busqueda" href="#" class="btn btn-info" data-toggle="modal" data-target="#mySearchOptions">
-
                     <b><s:text name="r.btnCriterios" /></b>
                 </a>
-
                 <a id="nuevaReserva" href="#" class="btn btn-success" data-toggle="modal" data-target="#myModal">
                     <span class="glyphicon glyphicon-plus-sign"></span>
                     <b><s:text name="r.btnNuevo" /></b>
@@ -19,9 +15,6 @@
             </div>
         </h1>
     </div>
-
-
-
     <div class="modal fade" id="mySearchOptions" data-backdrop="static" data-keyboard="false" href="#" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -37,12 +30,8 @@
                             <s:select id="criSuc" name="sucId" listKey="id" listValue="sucursal" headerKey="" cssClass="select2 required"
                                       headerValue="%{getText('lbl.seleccione')}" list="listSucursales" key="r.sucursal" required="true" />
                             <s:textfield name="numPersonas" key="r.persona" type="number" cssClass="form-control input required" required="true" />
-
-
-
                             <s:submit method="list" cssClass="btn submit" ondblclick="" key="Buscar" />
                             <s:submit method="listNew" cssClass="btn submit" ondblclick="" key="Reiniciar busqueda" />
-
                         </s:form>
                     </fieldset>
                 </div>
@@ -60,10 +49,8 @@
                                     <legend><s:text name="r.legend" />
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                     </legend>
-
                                     <div class="col-md-6">
                                         <fieldset>
-
                                             <s:hidden name="r.id" />
                                             <div class="row form-group">
                                                 <div class="col-md-10">
@@ -96,7 +83,6 @@
                                             <div class="form-group">
                                                 <s:textarea name="r.comentarios" cssClass="form-control input" key="r.comentario" />
                                             </div>
-
                                             <s:submit method="guardar" cssClass="btn-info disabled submit" value="Guardar" key="btn.guardar" />
                                         </fieldset>
                                     </div>
@@ -170,8 +156,6 @@
         </div>
     </div>
     <div id="container">
-
-
         <table id="dataTable" class="table table-striped table-bordered table-hover dt-responsive nowrap">
             <thead>
                 <tr>
