@@ -6,6 +6,8 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.text.SimpleDateFormat;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,6 +38,9 @@ public class ReporteAction extends BaseAction {
    
 private List<Estados> listEstados;
 private String estado;
+private Date fecha_inicio;
+private Date fecha_fin;
+
 
     public String getEstado() {
         return estado;
@@ -52,6 +57,22 @@ private String estado;
 
     public void setListEstados(List<Estados> listEstados) {
         this.listEstados = listEstados;
+    }
+
+    public Date getFecha_inicio() {
+        return fecha_inicio;
+    }
+
+    public void setFecha_inicio(Date fecha_inicio) {
+        this.fecha_inicio = fecha_inicio;
+    }
+
+    public Date getFecha_fin() {
+        return fecha_fin;
+    }
+
+    public void setFecha_fin(Date fecha_fin) {
+        this.fecha_fin = fecha_fin;
     }
 
 
@@ -115,6 +136,41 @@ private String estado;
       //Cargamos parametros del reporte (si tiene).
         Map parameters = new HashMap();
         parameters.put("estado", estados);
+
+        JasperPrint jasperPrint = JasperFillManager.fillReport(reporte, parameters, conexion);
+        
+        JasperExportManager.exportReportToPdfFile(jasperPrint,sb+ "/reporte2PDF_2.pdf");
+
+        return "display";
+    
+        } catch (Exception e) {
+            System.out.println("Mensaje de Error:" + e.getMessage());
+            e.printStackTrace();
+            return "";
+        }
+    }
+    public String mostrarReporte_fecha(){
+
+    
+    Date inicio=getFecha_inicio();
+    Date fin=getFecha_fin();
+  
+        
+        Connection conexion;
+        try {
+           
+            String connectionUrl = "jdbc:sqlserver://sql5025.myasp.net;databaseName=DB_A106F2_teffff;user=DB_A106F2_teffff_admin;password=pampa123;";
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            conexion = DriverManager.getConnection(connectionUrl);
+
+        String sb=ServletActionContext.getServletContext().getRealPath("");
+      
+      JasperReport reporte = (JasperReport)  JRLoader.loadObjectFromFile(getServletContext().getRealPath("/r/reportes/Reporte_fechas.jasper"));
+
+      //Cargamos parametros del reporte (si tiene).
+        Map parameters = new HashMap();
+        parameters.put("fecha_inicio", inicio);
+        parameters.put("fecha_fin", fin);
 
         JasperPrint jasperPrint = JasperFillManager.fillReport(reporte, parameters, conexion);
         

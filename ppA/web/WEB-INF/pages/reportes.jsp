@@ -26,15 +26,30 @@
                     <img id="logo" src="./r/images/login.png" alt=""/>
                 </center>
                 <br/>              
-    <s:form id="form" action="Reportes">
+<s:form id="form" action="Reportes">
            
-        <h1>Diversidad de reportes de La Pampa</h1>
-        <s:submit method="mostrarReporte" cssClass="btn-info disabled submit" key="Reporte General" />
-      <s:select id="criEst" name="estado" listKey="estado" listValue="estado" headerKey="" cssClass="select2 required input"
-                                      headerValue="%{getText('lbl.seleccione')}" list="listEstados" key="r.estado" required="true"/>
-        <s:submit method="mostrarReporte_estado" cssClass="btn-info disabled submit" key="Reporte de estados" />
+        <h1>Diversidad de reportes La Pampa</h1>
+        <label>Reporte general:</label>
+    <s:submit method="mostrarReporte" cssClass="btn btn-default" key="Mostrar" />
+         <label>Reporte por estados:</label>
+    <s:select id="criEst" name="estado" listKey="estado" listValue="estado" headerKey="" cssClass="select2 required input"
+              headerValue="%{getText('lbl.seleccione')}" list="listEstados" key="r.estado" required="true"/>
+        <br/>
+    <s:submit method="mostrarReporte_estado" cssClass="btn btn-default" key="Reporte de estados" />
+      <div class="form-group">
+    <label>Fecha inicio:</label>
+          <s:date name="fecha_inicio" id="createdDateId" format="dd/MM/yyyy" />
+    <s:textfield name="fecha_inicio" 
+                 value="%{createdDateId}" cssClass="form-control dateTime required" required="true" />
      
-        </s:form>
+        <label>Fecha fin:</label>
+    <s:date name="fecha_fin" id="createdDateId" format="dd/MM/yyyy" />
+    <s:textfield name="fecha_fin" 
+                 value="%{createdDateId}" cssClass="form-control dateTime required" required="true" />
+      </div>
+            <br/>
+    <s:submit method="mostrarReporte_fecha" cssClass="btn btn-default" key="Reporte de estados" />
+</s:form>
     
 
   </div>

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="36362a8a-6076-4649-ac7d-5784e098df1e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="fecha_inicio" class="java.lang.String">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fecha_fin" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     reservaciones."numPersonas" AS reservaciones_numPersonas,
+     reservaciones."comentarios" AS reservaciones_comentarios,
+     reservaciones."fechaCreacion" AS reservaciones_fechaCreacion,
+     sucursales."sucursal" AS sucursales_sucursal,
+     estados."estado" AS estados_estado,
+     clientes."nombre" AS clientes_nombre,
+     clientes."apellido" AS clientes_apellido,
+     reservaciones."fechaReservacion" AS reservaciones_fechaReservacion
+FROM
+     "dbo"."sucursales" sucursales INNER JOIN "dbo"."reservaciones" reservaciones ON sucursales."id" = reservaciones."idSucursal"
+     INNER JOIN "dbo"."estados" estados ON reservaciones."idEstado" = estados."id"
+     INNER JOIN "dbo"."clientes" clientes ON reservaciones."idCliente" = clientes."id"
+WHERE
+     reservaciones."fechaReservacion" BETWEEN $P{fecha_inicio} and  $P{fecha_fin}]]>
+	</queryString>
+	<field name="reservaciones_numPersonas" class="java.lang.Integer"/>
+	<field name="reservaciones_comentarios" class="java.lang.String"/>
+	<field name="reservaciones_fechaCreacion" class="java.sql.Timestamp"/>
+	<field name="sucursales_sucursal" class="java.lang.String"/>
+	<field name="estados_estado" class="java.lang.String"/>
+	<field name="clientes_nombre" class="java.lang.String"/>
+	<field name="clientes_apellido" class="java.lang.String"/>
+	<field name="reservaciones_fechaReservacion" class="java.sql.Timestamp"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="270" y="0" width="263" height="62" uuid="4ac6b283-ddaa-41aa-80f9-691f41690a48"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Coffee Title]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="303" y="62" width="196" height="22" uuid="74ba8ead-3199-4532-8822-d5c65bca15dd"/>
+				<textElement>
+					<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Coffee SubTitle]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="172" y="94" width="383" height="42" uuid="0dd66d77-fb3e-4eef-93a4-a6ce90987dbd"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor purus gravida arcu aliquam mattis. Donec et nulla libero, ut varius massa. Nulla sed turpis elit. Etiam aliquet mauris a ligula hendrerit in auctor leo lobortis.]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="87db38f0-2d61-467e-a7bd-c5fb6d40c903"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="100" height="15" forecolor="#736343" uuid="0ee0048e-72b9-4384-b989-21f7ac980625"/>
+				<text><![CDATA[reservaciones_numPersonas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="100" y="0" width="100" height="15" forecolor="#736343" uuid="5007b459-9b60-4962-b7fe-8216e32ed4a8"/>
+				<text><![CDATA[reservaciones_comentarios]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="200" y="0" width="100" height="15" forecolor="#736343" uuid="47b869ef-dda4-4969-98fc-43e60b68fa92"/>
+				<text><![CDATA[FechaCreacion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="300" y="0" width="100" height="15" forecolor="#736343" uuid="ee291299-3f6a-4e2c-a05c-c22819d51d71"/>
+				<text><![CDATA[sucursales_sucursal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="400" y="0" width="100" height="15" forecolor="#736343" uuid="cfc4917d-81d4-43e1-aa4d-32af83df2534"/>
+				<text><![CDATA[estados_estado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="500" y="0" width="100" height="15" forecolor="#736343" uuid="e4811895-715e-4088-9641-d0f15c2b9aab"/>
+				<text><![CDATA[clientes_nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="600" y="0" width="100" height="15" forecolor="#736343" uuid="d26494af-a37f-49cf-89a2-21a1b307619f"/>
+				<text><![CDATA[clientes_apellido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="700" y="0" width="100" height="15" forecolor="#736343" uuid="72a89dbf-00a1-4c92-a7eb-6195c9551ec4"/>
+				<text><![CDATA[FechaReservacion]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="15" uuid="acf6bca5-d6f1-49d5-8016-685a697722a4"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="0" y="0" width="100" height="15" uuid="1853c8af-5ac5-497f-a68d-7adf90142954"/>
+					<textFieldExpression><![CDATA[$F{reservaciones_numPersonas}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="100" y="0" width="100" height="15" uuid="f08cd5e1-60a2-4624-aa87-70be86fda6d5"/>
+					<textFieldExpression><![CDATA[$F{reservaciones_comentarios}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="200" y="0" width="100" height="15" uuid="8f089693-8275-4ade-bb48-e0acb6e6136c"/>
+					<textFieldExpression><![CDATA[$F{reservaciones_fechaCreacion}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="300" y="0" width="100" height="15" uuid="8de8e51a-5e71-40fd-92d5-bd4d2db0d6f4"/>
+					<textFieldExpression><![CDATA[$F{sucursales_sucursal}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="400" y="0" width="100" height="15" uuid="e6ce3283-900a-4752-9197-e2ae9eadf706"/>
+					<textFieldExpression><![CDATA[$F{estados_estado}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="500" y="0" width="100" height="15" uuid="703c71b6-b21d-4d2a-aa76-d0268241c16e"/>
+					<textFieldExpression><![CDATA[$F{clientes_nombre}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="600" y="0" width="100" height="15" uuid="dcd9524b-60e8-41c1-ac2e-78c211ec442c"/>
+					<textFieldExpression><![CDATA[$F{clientes_apellido}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy">
+					<reportElement style="Detail" x="700" y="0" width="100" height="15" uuid="5f5d38ba-7164-431c-a091-fc86c35fc279"/>
+					<textFieldExpression><![CDATA[$F{reservaciones_fechaReservacion}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="16220d9e-63a1-4f94-a23a-3c910a0e345a"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="26" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="7ae134d6-713a-4e79-859b-096c32641c44"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="b27a8ef5-2768-481c-963d-b72abd8f36a4"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="b94c9760-222e-4673-ac0f-04e24431c4da"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="f93bbf42-27ae-4d00-a09f-903130b8b55e"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
