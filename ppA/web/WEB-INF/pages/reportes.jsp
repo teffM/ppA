@@ -29,14 +29,17 @@
 <s:form id="form" action="Reportes">
            
         <h1>Diversidad de reportes La Pampa</h1>
+        
         <label>Reporte general:</label>
     <s:submit method="mostrarReporte" cssClass="btn btn-default" key="Mostrar" />
+    
          <label>Reporte por estados:</label>
-    <s:select id="criEst" name="estado" listKey="estado" listValue="estado" headerKey="" cssClass="select2 required input"
+         <s:select id="criEst" name="estado" listKey="estado" listValue="estado" headerKey="" cssClass="select2 required input"
               headerValue="%{getText('lbl.seleccione')}" list="listEstados" key="r.estado" required="true"/>
         <br/>
     <s:submit method="mostrarReporte_estado" cssClass="btn btn-default" key="Reporte de estados" />
-      <div class="form-group">
+     
+    <div class="form-group">
     <label>Fecha inicio:</label>
           <s:date name="fecha_inicio" id="createdDateId" format="dd/MM/yyyy" />
     <s:textfield name="fecha_inicio" 
@@ -48,7 +51,14 @@
                  value="%{createdDateId}" cssClass="form-control dateTime required" required="true" />
       </div>
             <br/>
-    <s:submit method="mostrarReporte_fecha" cssClass="btn btn-default" key="Reporte de estados" />
+    <s:submit method="mostrarReporte_fecha" cssClass="btn btn-default" key="Reporte por fechas" />
+    <label>Reporte por clientes:</label>
+    <s:select id="criCli" name="idCliente" listKey="id" listValue="%{dui+' '+nombre + ' ' +  apellido}" headerKey=""
+                                      cssClass="select2 required" headerValue="%{getText('lbl.seleccione')}"
+                                      list="listClientes" key="r.cliente" required="true" />
+        <br/>
+    <s:submit method="mostrarReporte_cliente" cssClass="btn btn-default" key="Reporte de clientes" />
+
 </s:form>
     
 

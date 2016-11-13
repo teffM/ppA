@@ -27,6 +27,7 @@ import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 import org.apache.struts2.ServletActionContext;
 import static org.apache.struts2.ServletActionContext.getServletContext;
+import ppA.entity.Clientes;
 import ppA.entity.Estados;
 
 /**
@@ -38,8 +39,27 @@ public class ReporteAction extends BaseAction {
    
 private List<Estados> listEstados;
 private String estado;
+private String idCliente;
 private Date fecha_inicio;
 private Date fecha_fin;
+ private List<Clientes> listClientes;
+
+    public String getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(String idCliente) {
+        this.idCliente = idCliente;
+    }
+
+
+    public List<Clientes> getListClientes() {
+        return listClientes;
+    }
+
+    public void setListClientes(List<Clientes> listClientes) {
+        this.listClientes = listClientes;
+    }
 
 
     public String getEstado() {
@@ -85,6 +105,8 @@ private Date fecha_fin;
     private String list() {
 	try {
 	     setListEstados(getList(Estados.class));
+	     setListClientes(getList(Clientes.class));
+             
 	} catch (Exception e) {
 	    return e(e);
 	} finally {
@@ -171,6 +193,41 @@ private Date fecha_fin;
         Map parameters = new HashMap();
         parameters.put("fecha_inicio", inicio);
         parameters.put("fecha_fin", fin);
+
+        JasperPrint jasperPrint = JasperFillManager.fillReport(reporte, parameters, conexion);
+        
+        JasperExportManager.exportReportToPdfFile(jasperPrint,sb+ "/reporte2PDF_2.pdf");
+
+        return "display";
+    
+        } catch (Exception e) {
+            System.out.println("Mensaje de Error:" + e.getMessage());
+            e.printStackTrace();
+            return "";
+        }
+    }
+    public String mostrarReporte_cliente(){
+
+    
+    String cliente=getIdCliente();
+   
+  
+        
+        Connection conexion;
+        try {
+           
+            String connectionUrl = "jdbc:sqlserver://sql5025.myasp.net;databaseName=DB_A106F2_teffff;user=DB_A106F2_teffff_admin;password=pampa123;";
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            conexion = DriverManager.getConnection(connectionUrl);
+
+        String sb=ServletActionContext.getServletContext().getRealPath("");
+      
+      JasperReport reporte = (JasperReport)  JRLoader.loadObjectFromFile(getServletContext().getRealPath("/r/reportes/Reporte_cliente.jasper"));
+
+      //Cargamos parametros del reporte (si tiene).
+        Map parameters = new HashMap();
+        parameters.put("idCliente", cliente);
+       
 
         JasperPrint jasperPrint = JasperFillManager.fillReport(reporte, parameters, conexion);
         

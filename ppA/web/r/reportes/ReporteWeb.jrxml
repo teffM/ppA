@@ -110,7 +110,7 @@ FROM
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="15" splitType="Stretch">
+		<band height="25" splitType="Stretch">
 			<frame>
 				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="15" uuid="ffd28674-80fc-4309-860e-9cb6fefd3fa7"/>
 				<textField isStretchWithOverflow="true">
