@@ -14,6 +14,7 @@ public class Menus implements java.io.Serializable {
     private CategoriasMenus categoriasMenus;
     private String menu;
     private BigDecimal precio;
+    private String fileUrl;
     private String descripcion;
     private Set detallesMenuses = new HashSet(0);
     private Set detallesMenuses_1 = new HashSet(0);
@@ -21,18 +22,20 @@ public class Menus implements java.io.Serializable {
     public Menus() {
     }
 
-    public Menus(int id, CategoriasMenus categoriasMenus, String menu, String descripcion) {
+    public Menus(int id, CategoriasMenus categoriasMenus, String menu, String fileUrl, String descripcion) {
 	this.id = id;
 	this.categoriasMenus = categoriasMenus;
 	this.menu = menu;
+	this.fileUrl = fileUrl;
 	this.descripcion = descripcion;
     }
 
-    public Menus(int id, CategoriasMenus categoriasMenus, String menu, BigDecimal precio, String descripcion, Set detallesMenuses, Set detallesMenuses_1) {
+    public Menus(int id, CategoriasMenus categoriasMenus, String menu, BigDecimal precio, String fileUrl, String descripcion, Set detallesMenuses, Set detallesMenuses_1) {
 	this.id = id;
 	this.categoriasMenus = categoriasMenus;
 	this.menu = menu;
 	this.precio = precio;
+	this.fileUrl = fileUrl;
 	this.descripcion = descripcion;
 	this.detallesMenuses = detallesMenuses;
 	this.detallesMenuses_1 = detallesMenuses_1;
@@ -68,6 +71,14 @@ public class Menus implements java.io.Serializable {
 
     public void setPrecio(BigDecimal precio) {
 	this.precio = precio;
+    }
+
+    public String getFileUrl() {
+	return this.fileUrl;
+    }
+
+    public void setFileUrl(String fileUrl) {
+	this.fileUrl = fileUrl;
     }
 
     public String getDescripcion() {

@@ -7,7 +7,6 @@ import org.apache.struts2.interceptor.SessionAware;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 import ppA.entity.*;
 
 /**
@@ -64,20 +63,8 @@ public class BaseAction extends ActionSupport implements SessionAware {
         }
         return getId(o);
     }
-
-    protected void delete(Object o) {
-        try {
-            open();
-            setTransaction(getDb().beginTransaction());
-            getDb().delete(o);
-            getTransaction().commit();
-        } catch (Exception e) {
-            e(e);
-        } finally {
-            close();
-        }
-    }
-    protected void deleteTemp(Class c) {
+    
+    protected void delete(Class c) {
         try {
             open();
             setTransaction(getDb().beginTransaction());

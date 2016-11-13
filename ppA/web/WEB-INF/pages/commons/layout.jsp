@@ -57,8 +57,8 @@
                                     <li><a href="./Sucursal">SUCURSALES</a></li>
                                     <li><a href="./Menu">PLATILLOS</a></li>
                                     <li><a href="./CategoriaMenu">CATEGORIAS DE PLATILLOS</a></li>
-                                    <!--
                                     <li><a href="./Estado">ESTADOS</a></li>
+                                    <!--
                                     <li><a href="./Rol">ROLES</a></li>
                                     -->
                                 </ul>
@@ -143,15 +143,20 @@
                 <li class='glyphicon glyphicon-search'></li></span>");
         $(".select2").select2({
         theme: "bootstrap"
+        }); $(document).on('focus', '.select2', function() {
+        $(this).siblings('select').select2('open');
+        });
+        $('.form-group').find('.input-group-addon').on('click', function(){
+        $(this).parent().find('select').trigger('focus');
         });
         $(".imagePicker").imagepicker({ show_label : true });
         if ($('#toast-container').length == 0) {
         <s:if test="%{msg != null && msg != ''}">
-        msg("success", "<s:property escape="false" value="msg" />");
-        </s:if>
-    <s:if test="%{errorMsg != null && errorMsg != ''}">
-    msg("error", "<s:property escape="false" value="errorMsg" />");
-        </s:if>
+            msg("success", "<s:property escape="false" value="msg" />");
+                </s:if>
+                <s:if test="%{errorMsg != null && errorMsg != ''}">
+                    msg("error", "<s:property escape="false" value="errorMsg" />");
+                    </s:if>
         }
         $('#dataTable').DataTable({
         dom: 'lBfrtip',
@@ -209,15 +214,18 @@
                         }
                 }
         });
-        $(".dateTime").datetimepicker({locale: 'es', format: 'DD/MM/YYYY hh:mm:ss a'});
+        $(".dateTime").datetimepicker({locale: 'es', format: 'DD/MM/YYYY hh:mm:ss A'});
         $(".dateTime").after("<span class='input-group-addon'>\n\
                 <span class='glyphicon glyphicon-calendar'></span></span>");
-        $(".dateTimeMinNow").datetimepicker({locale: 'es', format: 'DD/MM/YYYY hh:mm:ss a', minDate: moment()});
+        $(".dateTimeMinNow").datetimepicker({locale: 'es', format: 'DD/MM/YYYY hh:mm:ss A', minDate: moment()});
         $(".dateTimeMinNow").after("<span class='input-group-addon'>\n\
                 <span class='glyphicon glyphicon-calendar'></span></span>");
-        $(".dateTimeMaxNow").datetimepicker({locale: 'es', format: 'DD/MM/YYYY hh:mm:ss a', maxDate: moment()});
+        $(".dateTimeMaxNow").datetimepicker({locale: 'es', format: 'DD/MM/YYYY hh:mm:ss A', maxDate: moment()});
         $(".dateTimeMaxNow").after("<span class='input-group-addon'>\n\
                 <span class='glyphicon glyphicon-calendar'></span></span>");
+        $('.form-group').find('.input-group-addon').on('click', function(){
+        $(this).parent().find('input').trigger('focus');
+        });
         $(".colorpicker").colorpicker({format: "hex"});
         $(".wwctrl").addClass("input-group");
         $(".input").removeClass("input");
@@ -231,13 +239,14 @@
         $('body').removeClass('loaded');
         });
         $('body').addClass('loaded');
-        $(function () { $("[data-toggle='tooltip']").tooltip(); });
+        $("[data-toggle='tooltip']").tooltip();
         });
         function resetForm(f) {
         f[0].reset();
         var v = f.validate({lang: 'es'});
         v.resetForm();
         $(".select2").val('').trigger('change');
+        $("div.tooltip").remove();
         }
         $('#confirm-delete').on('show.bs.modal', function (e) {
         $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));

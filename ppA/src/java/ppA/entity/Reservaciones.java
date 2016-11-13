@@ -32,6 +32,8 @@ public class Reservaciones implements java.io.Serializable {
     @Transient
     private String apellido;
     @Transient
+    private String empresa;
+    @Transient
     private String telefono;
     @Transient
     private String correo;
@@ -208,6 +210,20 @@ public class Reservaciones implements java.io.Serializable {
      */
     public void setApellido(String apellido) {
         this.apellido = apellido;
+    }
+
+    /**
+     * @return the empresa
+     */
+    public String getEmpresa() {
+        return empresa;
+    }
+
+    /**
+     * @param empresa the empresa to set
+     */
+    public void setEmpresa(String empresa) {
+        this.empresa = empresa;
     }
 
     /**

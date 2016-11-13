@@ -48,7 +48,7 @@ public class DetalleMenuAction extends BaseAction {
 
     public String eliminar() throws Exception {
 	try {
-	    delete((DetallesMenus) getDb().load(DetallesMenus.class, getId()));
+	    delete(DetallesMenus.class);
 	    setMsg(getText("msg.eliminadoExito"));
 	} catch (Exception e) {
 	    return e(e);

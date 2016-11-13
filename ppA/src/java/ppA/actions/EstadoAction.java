@@ -43,7 +43,7 @@ public class EstadoAction extends BaseAction {
 
     public String eliminar() throws Exception {
 	try {
-	    delete((Estados) getDb().load(Estados.class, getId()));
+	    delete(Estados.class);
 	    setMsg(getText("msg.eliminadoExito"));
 	} catch (Exception ex) {
 	    return e(ex);

@@ -92,7 +92,7 @@ public class ReservaAction extends BaseAction {
             sucId=0;
             cliId=0;
             
-            setListReservas(getReserva("from Reservaciones where fechaReservacion >= current_date()  order by fechaReservacion "));
+            setListReservas(getReserva("from Reservaciones order by fechaReservacion "));
             setListSucursales(getList(Sucursales.class));
             setListEstados(getList(Estados.class));
             setListClientes(getList(Clientes.class));
@@ -158,6 +158,7 @@ public class ReservaAction extends BaseAction {
                 Clientes c = new Clientes();
                 c.setNombre(getR().getNombre());
                 c.setApellido(getR().getApellido());
+                c.setEmpresa(getR().getEmpresa());
                 c.setTelefono(getR().getTelefono());
                 c.setCorreo(getR().getCorreo());
                 c.setDui(getR().getDui());
@@ -169,7 +170,7 @@ public class ReservaAction extends BaseAction {
             }
             getR().setUsuarios(new Usuarios());
             getR().getUsuarios().setId(Integer.parseInt(getSession().get("userId").toString()));
-            getSession().put("idReserva", save(getR()));
+            save(getR());
             setMsg(getText("msg.guardadoExito"));
         } catch (Exception e) {
             return e(e);
@@ -179,7 +180,7 @@ public class ReservaAction extends BaseAction {
 
     public String eliminar() throws Exception {
         try {
-            delete((Reservaciones) getDb().load(Reservaciones.class, getId()));
+            delete(Reservaciones.class);
             setMsg(getText("msg.eliminadoExito"));
         } catch (Exception e) {
             return e(e);
@@ -190,7 +191,8 @@ public class ReservaAction extends BaseAction {
 
     public String eliminarMenu() throws Exception {
         try {
-            delete((DetallesMenus) getDb().load(DetallesMenus.class, getIdRegistro()));
+            setId(getIdRegistro());
+            delete(DetallesMenus.class);
             setMsg(getText("msg.eliminadoExito"));
             r = getReserva();
             setListClientes(getList(Clientes.class));
@@ -203,7 +205,8 @@ public class ReservaAction extends BaseAction {
 
     public String eliminarAbono() throws Exception {
         try {
-            delete((Abonos) getDb().load(Abonos.class, getIdRegistro()));
+            setId(getIdRegistro());
+            delete(Abonos.class);
             setMsg(getText("msg.eliminadoExito"));
             r = getReserva();
             setListClientes(getList(Clientes.class));

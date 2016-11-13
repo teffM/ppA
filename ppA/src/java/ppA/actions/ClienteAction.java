@@ -44,8 +44,7 @@ public class ClienteAction extends BaseAction {
 
     public String eliminar() throws Exception {
         try {
-//	    delete((Clientes) getDb().load(Clientes.class, getId()));
-            deleteTemp(Clientes.class);
+            delete(Clientes.class);
             setMsg(getText("msg.eliminadoExito"));
         } catch (Exception ex) {
             return e(ex);

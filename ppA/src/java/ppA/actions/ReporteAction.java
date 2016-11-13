@@ -72,7 +72,7 @@ public class ReporteAction extends BaseAction {
 
     public String eliminar() throws Exception {
 	try {
-	    delete((Abonos) getDb().load(Abonos.class, getId()));
+	    delete(Abonos.class);
 	    setMsg(getText("msg.eliminadoExito"));
 	} catch (Exception e) {
 	    return e(e);

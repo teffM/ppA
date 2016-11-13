@@ -12,7 +12,7 @@
             <column name="categoriaMenu" length="25" not-null="true" />
         </property>
         <property name="descripcion" type="string">
-            <column name="descripcion" length="100" not-null="true" />
+            <column name="descripcion" length="200" not-null="true" />
         </property>
         <set name="menuses" table="menus" inverse="true" lazy="true" fetch="select">
             <key>

@@ -39,7 +39,7 @@
         </div>
     </div>
     <div class="modal fade" id="myModal" role="dialog" data-backdrop="static" data-keyboard="false" href="#">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog" id="myResizingModal">
             <div class="modal-content">
                 <div class="modal-body">
                     <s:form action="Reserva" class="form-horizontal">
@@ -49,7 +49,7 @@
                                     <legend><s:text name="r.legend" />
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                     </legend>
-                                    <div class="col-md-6">
+                                    <div class="myResizingDiv">
                                         <fieldset>
                                             <s:hidden name="r.id" />
                                             <div class="row form-group">
@@ -58,7 +58,7 @@
                                                               cssClass="select2 required" headerValue="%{getText('lbl.seleccione')}"
                                                               list="listClientes" key="r.cliente" required="true" />
                                                 </div>
-                                                <div class="col-md-2">
+                                                <div class="col-md-2 toCollapse">
                                                     <a href="#" class="btn" data-toggle="collapse" data-target="#toCollapse" style="font-size: 2em;">
                                                         <i class="glyphicon glyphicon-chevron-right" data-toggle="tooltip" title="¿Nuevo cliente?"></i>
                                                     </a>
@@ -86,33 +86,50 @@
                                             <s:submit method="guardar" cssClass="btn-info disabled submit" value="Guardar" key="btn.guardar" />
                                         </fieldset>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="myResizingDiv">
                                         <fieldset id="toCollapse" class="collapse">
-                                            <s:hidden name="r.idCliente" />
-                                            <legend><s:text name="c.legend" /></legend>
-                                            <div class="form-group">
-                                                <s:textfield name="r.nombre" key="c.nombre" cssClass="form-control" />
+                                            <legend>
+                                                <s:text name="c.legend" />
+                                            </legend>
+                                            <div class="row btn-group col-md-offset-2" data-toggle="buttons">
+                                                <label class="btn btn-primary active" onclick="javascript: enaDisa(false);">
+                                                    <input type="radio" name="client" id="1">Persona natural
+                                                    <span class="glyphicon glyphicon-user"></span>
+                                                </label>
+                                                <label class="btn btn-primary" onclick="javascript: enaDisa(true);">
+                                                    <input type="radio" name="client" id="2">Persona juridica
+                                                    <span class="glyphicon glyphicon-education"></span>
+                                                </label>
                                             </div>
-                                            <div class="form-group">
-                                                <s:textfield name="r.apellido" key="c.apellido" cssClass="form-control" />
-                                            </div>
-                                            <div class="form-group">
-                                                <s:textfield name="r.telefono" key="c.telefono" cssClass="form-control required" placeholder="00000000" required="true" type="number" />
-                                            </div>
-                                            <div class="form-group">
-                                                <s:textfield name="r.correo" key="c.correo" cssClass="form-control required" placeholder="user@domain.com" required="true" type="email" />
-                                            </div>
-                                            <div class="form-group">
-                                                <s:textfield name="r.dui" key="c.dui" cssClass="form-control required" required="true" placeholder="00000000-0" mask="99999999-9" />
-                                            </div>
-                                            <div class="form-group">
-                                                <s:textfield name="r.nit" key="c.nit" cssClass="form-control" placeholder="0000-000000-000-0" mask="9999-99999-999-9" />
-                                            </div>
-                                            <div class="form-group">
-                                                <s:textfield name="r.comprobanteIva" key="c.comprobanteIva" cssClass="form-control" />
-                                            </div>
-                                            <div class="form-group">
-                                                <s:textarea name="r.descripcion" key="c.descripcion" />
+                                            <div id="formCliente">
+                                                <s:hidden name="r.idCliente" />
+                                                <div class="form-group">
+                                                    <s:textfield name="r.nombre" key="c.nombre" cssClass="form-control required" required="true" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <s:textfield name="r.apellido" key="c.apellido" cssClass="form-control required" required="true" />
+                                                </div>
+                                                <div class="form-group" style="display: none;">
+                                                    <s:textfield name="r.empresa" key="c.empresa" cssClass="form-control required" required="true" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <s:textfield name="r.telefono" key="c.telefono" cssClass="form-control required" placeholder="00000000" required="true" type="number" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <s:textfield name="r.correo" key="c.correo" cssClass="form-control required" placeholder="user@domain.com" required="true" type="email" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <s:textfield name="r.dui" key="c.dui" cssClass="form-control required" required="true" placeholder="00000000-0" mask="99999999-9" />
+                                                </div>
+                                                <div class="form-group" style="display: none;">
+                                                    <s:textfield name="r.nit" key="c.nit" cssClass="form-control required enaDisa" placeholder="0000-000000-000-0" mask="9999-99999-999-9" required="true" />
+                                                </div>
+                                                <div class="form-group" style="display: none;">
+                                                    <s:textfield name="r.comprobanteIva" key="c.comprobanteIva" cssClass="form-control required enaDisa" required="true" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <s:textarea name="r.descripcion" key="c.descripcion" cssClass="form-control" />
+                                                </div>
                                             </div>
                                         </fieldset>
                                     </div>
@@ -171,14 +188,16 @@
                 </tr>
             </thead>
             <tbody>
+                <jsp:useBean id="today" class="java.util.Date" />
+                <fmt:formatDate pattern="dd/MM/yyyy 00:00:00 a" value="${today}" var="today" />
                 <c:forEach var="l" items="${listReservas}">
                     <fmt:formatDate value="${l.fechaReservacion}" var="fechaReserva"
-                                    pattern="dd/MM/yyyy hh:mm a" />
+                                    pattern="dd/MM/yyyy hh:mm:ss a" />
                     <fmt:formatDate value="${l.fechaCreacion}" var="fechaCreacion"
-                                    pattern="dd/MM/yyyy hh:mm a" />
+                                    pattern="dd/MM/yyyy hh:mm:ss a" />
                     <tr obj="${l.id}, ${l.clientes.id},
                         ${fechaReserva}, ${fechaCreacion}, ${l.numPersonas},
-                        ${l.sucursales.id}, ${l.estados.id}, ${l.comentarios}">
+                        ${l.sucursales.id}, ${l.estados.id}, ${l.comentarios}" ${today lt fechaReserva ? "ondblclick='javascript:edit(this);'" : ""}>
                         <td><c:out value="${l.clientes.nombre}"/> <c:out value="${l.clientes.apellido}"/></td>
                         <td><c:out value="${fechaReserva}"/></td>
                         <td style="background-color: <c:out value="${l.estados.color}"/>;"><c:out value="${l.estados.estado}"/></td>
@@ -188,12 +207,12 @@
                         <td><c:out value="${l.comentarios}"/></td>
                         <td><c:out value="${l.usuarios.usuario}"/></td>
                         <td>
-                            <button class="btn btn-default btn-xs anotherNew" data-toggle="tooltip" title="Modificar">
+                            <button class="btn btn-default btn-xs anotherNew" data-toggle="tooltip" title="Modificar" ${today lt fechaReserva ? "" : "disabled"}>
                                 <span class="glyphicon glyphicon-edit"></span>
                             </button>
                             <a href="#" data-toggle="tooltip" class="aLinkNone" title="Eliminar">
                                 <button class="btn btn-default btn-xs" data-href="./Reserva!eliminar?id=${l.id}"
-                                        data-toggle="modal" data-target="#confirm-delete">
+                                        data-toggle="modal" data-target="#confirm-delete" ${today lt fechaReserva ? "" : "disabled"}>
                                     <span class="glyphicon glyphicon-trash"></span>
                                 </button>
                             </a>
@@ -215,11 +234,13 @@
         $(e.currentTarget).find('#Reserva_idReserva').val($(e.relatedTarget).data('id-reserva'));
     });
     $('#nuevaReserva').on('click', function () {
+        $(".toCollapse").show();
         $("#Reserva_r_id").val(0);
         resetForm($('#Reserva'));
         $("#Reserva_r_nombres").focus();
     });
     function edit(t) {
+        $(".toCollapse").hide();
         resetForm($('#Reserva'));
         var l = $(t).attr("obj").split(",");
         $("#Reserva_r_id").val($.trim(l[0]));
@@ -234,10 +255,6 @@
             show: 'false'
         });
     }
-    $("#dataTable > tbody > tr").dblclick(function () {
-        edit($(this));
-    });
-
 
     $(".anotherNew").on('click', function () {
         edit($(this).parent().parent());
@@ -249,16 +266,28 @@
 
         //        icon collapse
         $('#toCollapse').on('shown.bs.collapse', function () {
+            $("#myResizingModal").addClass("modal-lg");
+            $(".myResizingDiv").addClass("col-md-6");
             $('.glyphicon-chevron-right').attr('data-original-title', '¡Cancelar!').tooltip('fixTitle');
             $(".glyphicon-chevron-right").removeClass("glyphicon-chevron-right").addClass("glyphicon-chevron-left");
             $("#Reserva_r_clientes_id").removeClass("required");
             $("#Reserva_r_idCliente").val("1");
         });
         $('#toCollapse').on('hidden.bs.collapse', function () {
+            $("#myResizingModal").removeClass("modal-lg");
+            $(".myResizingDiv").removeClass("col-md-6");
             $('.glyphicon-chevron-left').attr('data-original-title', '¿Nuevo cliente?').tooltip('fixTitle');
             $(".glyphicon-chevron-left").removeClass("glyphicon-chevron-left").addClass("glyphicon-chevron-right");
             $("#Reserva_r_clientes_id").addClass("required");
             $("#Reserva_r_idCliente").val("0");
         });
     });
+    function enaDisa(v) {
+        $('#formCliente').fadeOut(0);
+        $("#Reserva_r_empresa").parent().parent().parent().toggle(v);
+        $("#Reserva_r_nit").parent().parent().parent().toggle(v);
+        $("#Reserva_r_comprobanteIva").parent().parent().parent().toggle(v);
+        $('#formCliente div.tooltip').remove();
+        $('#formCliente').fadeIn(500);
+    }
 </script>

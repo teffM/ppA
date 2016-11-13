@@ -12,7 +12,7 @@
             <column name="estado" length="20" not-null="true" />
         </property>
         <property name="descripcion" type="string">
-            <column name="descripcion" length="50" not-null="true" />
+            <column name="descripcion" length="200" not-null="true" />
         </property>
         <property name="color" type="string">
             <column name="color" length="20" not-null="true" />

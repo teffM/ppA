@@ -17,8 +17,11 @@
         <property name="precio" type="big_decimal">
             <column name="precio" precision="8" />
         </property>
+        <property name="fileUrl" type="string">
+            <column name="fileUrl" length="200" not-null="true" />
+        </property>
         <property name="descripcion" type="string">
-            <column name="descripcion" length="100" not-null="true" />
+            <column name="descripcion" length="200" not-null="true" />
         </property>
         <set name="detallesMenuses" table="detallesMenus" inverse="true" lazy="true" fetch="select">
             <key>

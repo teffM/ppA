@@ -12,6 +12,7 @@ public class Clientes implements java.io.Serializable {
     private int id;
     private String nombre;
     private String apellido;
+    private String empresa;
     private String telefono;
     private String correo;
     private String dui;
@@ -26,10 +27,11 @@ public class Clientes implements java.io.Serializable {
     public Clientes() {
     }
 
-    public Clientes(int id, String nombre, String apellido, String telefono, String correo, String dui, String nit, String comprobanteIva, String descripcion) {
+    public Clientes(int id, String nombre, String apellido, String empresa, String telefono, String correo, String dui, String nit, String comprobanteIva, String descripcion) {
 	this.id = id;
 	this.nombre = nombre;
 	this.apellido = apellido;
+	this.empresa = empresa;
 	this.telefono = telefono;
 	this.correo = correo;
 	this.dui = dui;
@@ -38,10 +40,11 @@ public class Clientes implements java.io.Serializable {
 	this.descripcion = descripcion;
     }
 
-    public Clientes(int id, String nombre, String apellido, String telefono, String correo, String dui, String nit, String comprobanteIva, String descripcion, Set abonoses, Set reservacioneses, Set reservacioneses_1, Set abonoses_1) {
+    public Clientes(int id, String nombre, String apellido, String empresa, String telefono, String correo, String dui, String nit, String comprobanteIva, String descripcion, Set abonoses, Set reservacioneses, Set reservacioneses_1, Set abonoses_1) {
 	this.id = id;
 	this.nombre = nombre;
 	this.apellido = apellido;
+	this.empresa = empresa;
 	this.telefono = telefono;
 	this.correo = correo;
 	this.dui = dui;
@@ -76,6 +79,14 @@ public class Clientes implements java.io.Serializable {
 
     public void setApellido(String apellido) {
 	this.apellido = apellido;
+    }
+
+    public String getEmpresa() {
+	return this.empresa;
+    }
+
+    public void setEmpresa(String empresa) {
+	this.empresa = empresa;
     }
 
     public String getTelefono() {

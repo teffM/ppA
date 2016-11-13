@@ -37,7 +37,7 @@ public class SucursalAction extends BaseAction {
 
     public String eliminar() throws Exception {
 	try {
-	    delete((Sucursales) getDb().load(Sucursales.class, getId()));
+	    delete(Sucursales.class);
 	    setMsg(getText("msg.eliminadoExito"));
 	} catch (Exception e) {
 	    return e(e);

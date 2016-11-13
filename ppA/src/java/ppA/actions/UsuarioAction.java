@@ -40,7 +40,7 @@ public class UsuarioAction extends BaseAction {
 
     public String eliminar() throws Exception {
 	try {
-	    delete((Usuarios) getDb().load(Usuarios.class, getId()));
+	    delete(Usuarios.class);
 	    setMsg(getText("msg.eliminadoExito"));
 	} catch (Exception e) {
 	    return e(e);

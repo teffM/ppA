@@ -44,7 +44,7 @@ public class RolAction extends BaseAction {
 
     public String eliminar() throws Exception {
 	try {
-	    delete((Roles) getDb().load(Roles.class, getId()));
+	    delete(Roles.class);
 	    setMsg(getText("msg.eliminadoExito"));
 	} catch (Exception ex) {
 	    return e(ex);
