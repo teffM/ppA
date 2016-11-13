@@ -78,7 +78,7 @@
                                             <div class="form-group">
                                                 <s:date name="r.fechaReservacion" id="createdDateId" format="dd/MM/yyyy hh:mm:ss a" />
                                                 <s:textfield name="r.fechaReservacion" key="r.fechaReserva"
-                                                             value="%{createdDateId}" cssClass="form-control dateTime required" required="true" />
+                                                             value="%{createdDateId}" cssClass="form-control dateTimeMinNow required" required="true" />
                                             </div>
                                             <div class="form-group">
                                                 <s:textfield name="r.numPersonas" key="r.persona" type="number" cssClass="form-control input required" required="true" />
