@@ -1,10 +1,13 @@
 package ppA.actions;
 
 
+import static com.opensymphony.xwork2.Action.SUCCESS;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.text.SimpleDateFormat;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,10 +27,8 @@ import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 import org.apache.struts2.ServletActionContext;
 import static org.apache.struts2.ServletActionContext.getServletContext;
-import ppA.entity.Abonos;
 import ppA.entity.Clientes;
-import ppA.entity.Reservaciones;
-import ppA.entity.Usuarios;
+import ppA.entity.Estados;
 
 /**
  *
@@ -35,109 +36,87 @@ import ppA.entity.Usuarios;
  */
 public class ReporteAction extends BaseAction {
 
-    private Abonos a;
-    private List<Abonos> listAbonos;
-    private List<Reservaciones> listReservaciones;
-    private List<Clientes> listClientes;
+   
+private List<Estados> listEstados;
+private String estado;
+private String idCliente;
+private Date fecha_inicio;
+private Date fecha_fin;
+ private List<Clientes> listClientes;
 
-    @Override
+    public String getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(String idCliente) {
+        this.idCliente = idCliente;
+    }
+
+
+    public List<Clientes> getListClientes() {
+        return listClientes;
+    }
+
+    public void setListClientes(List<Clientes> listClientes) {
+        this.listClientes = listClientes;
+    }
+
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+
+    public List<Estados> getListEstados() {
+        return listEstados;
+    }
+
+    public void setListEstados(List<Estados> listEstados) {
+        this.listEstados = listEstados;
+    }
+
+    public Date getFecha_inicio() {
+        return fecha_inicio;
+    }
+
+    public void setFecha_inicio(Date fecha_inicio) {
+        this.fecha_inicio = fecha_inicio;
+    }
+
+    public Date getFecha_fin() {
+        return fecha_fin;
+    }
+
+    public void setFecha_fin(Date fecha_fin) {
+        this.fecha_fin = fecha_fin;
+    }
+
+
+  
+  @Override
     public String execute() throws Exception {
 	return list();
     }
 
     private String list() {
 	try {
-	    setListAbonos(getList(Abonos.class));
-	    setListReservaciones(getList(Reservaciones.class));
-	    setListClientes(getList(Clientes.class));
+	     setListEstados(getList(Estados.class));
+	     setListClientes(getList(Clientes.class));
+             
 	} catch (Exception e) {
 	    return e(e);
 	} finally {
-	    setA(new Abonos());
+	 
 	}
 	return SUCCESS;
     }
 
-    public String guardar() throws Exception {
-	try {
-	    getA().setUsuarios(new Usuarios());
-	    getA().getUsuarios().setId(Integer.parseInt(getSession().get("userId").toString()));
-	    save(getA());
-	    setMsg(getText("msg.guardadoExito"));
-	} catch (Exception e) {
-	    return e(e);
-	}
-	return list();
-    }
-
-    public String eliminar() throws Exception {
-	try {
-	    delete(Abonos.class);
-	    setMsg(getText("msg.eliminadoExito"));
-	} catch (Exception e) {
-	    return e(e);
-	}
-	return list();
-    }
-
-    /**
-     * @return the listClientes
-     */
-    public List<Clientes> getListClientes() {
-	return listClientes;
-    }
-
-    /**
-     * @param listClientes the listClientes to set
-     */
-    public void setListClientes(List<Clientes> listClientes) {
-	this.listClientes = listClientes;
-    }
-
-    /**
-     * @return the a
-     */
-    public Abonos getA() {
-	return a;
-    }
-
-    /**
-     * @param a the a to set
-     */
-    public void setA(Abonos a) {
-	this.a = a;
-    }
-
-    /**
-     * @return the listAbonos
-     */
-    public List<Abonos> getListAbonos() {
-	return listAbonos;
-    }
-
-    /**
-     * @param listAbonos the listAbonos to set
-     */
-    public void setListAbonos(List<Abonos> listAbonos) {
-	this.listAbonos = listAbonos;
-    }
-
-    /**
-     * @return the listReservaciones
-     */
-    public List<Reservaciones> getListReservaciones() {
-	return listReservaciones;
-    }
-
-    /**
-     * @param listReservaciones the listReservaciones to set
-     */
-    public void setListReservaciones(List<Reservaciones> listReservaciones) {
-	this.listReservaciones = listReservaciones;
-    }
-    
     public String mostrarReporte(){
-
+   
 
         Connection conexion;
         try {
@@ -151,6 +130,106 @@ public class ReporteAction extends BaseAction {
       JasperReport reporte = (JasperReport)  JRLoader.loadObjectFromFile(getServletContext().getRealPath("/r/reportes/ReporteWeb.jasper"));
 
         JasperPrint jasperPrint = JasperFillManager.fillReport(reporte, null, conexion);
+        
+        JasperExportManager.exportReportToPdfFile(jasperPrint,sb+ "/reporte2PDF_2.pdf");
+
+        return "display";
+    
+        } catch (Exception e) {
+            System.out.println("Mensaje de Error:" + e.getMessage());
+            e.printStackTrace();
+            return "";
+        }
+    }
+    public String mostrarReporte_estado(){
+
+    String estados=getEstado();
+        Connection conexion;
+        try {
+           
+            String connectionUrl = "jdbc:sqlserver://sql5025.myasp.net;databaseName=DB_A106F2_teffff;user=DB_A106F2_teffff_admin;password=pampa123;";
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            conexion = DriverManager.getConnection(connectionUrl);
+
+        String sb=ServletActionContext.getServletContext().getRealPath("");
+      
+      JasperReport reporte = (JasperReport)  JRLoader.loadObjectFromFile(getServletContext().getRealPath("/r/reportes/Reporte_estado.jasper"));
+
+      //Cargamos parametros del reporte (si tiene).
+        Map parameters = new HashMap();
+        parameters.put("estado", estados);
+
+        JasperPrint jasperPrint = JasperFillManager.fillReport(reporte, parameters, conexion);
+        
+        JasperExportManager.exportReportToPdfFile(jasperPrint,sb+ "/reporte2PDF_2.pdf");
+
+        return "display";
+    
+        } catch (Exception e) {
+            System.out.println("Mensaje de Error:" + e.getMessage());
+            e.printStackTrace();
+            return "";
+        }
+    }
+    public String mostrarReporte_fecha(){
+
+    
+    Date inicio=getFecha_inicio();
+    Date fin=getFecha_fin();
+  
+        
+        Connection conexion;
+        try {
+           
+            String connectionUrl = "jdbc:sqlserver://sql5025.myasp.net;databaseName=DB_A106F2_teffff;user=DB_A106F2_teffff_admin;password=pampa123;";
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            conexion = DriverManager.getConnection(connectionUrl);
+
+        String sb=ServletActionContext.getServletContext().getRealPath("");
+      
+      JasperReport reporte = (JasperReport)  JRLoader.loadObjectFromFile(getServletContext().getRealPath("/r/reportes/Reporte_fechas.jasper"));
+
+      //Cargamos parametros del reporte (si tiene).
+        Map parameters = new HashMap();
+        parameters.put("fecha_inicio", inicio);
+        parameters.put("fecha_fin", fin);
+
+        JasperPrint jasperPrint = JasperFillManager.fillReport(reporte, parameters, conexion);
+        
+        JasperExportManager.exportReportToPdfFile(jasperPrint,sb+ "/reporte2PDF_2.pdf");
+
+        return "display";
+    
+        } catch (Exception e) {
+            System.out.println("Mensaje de Error:" + e.getMessage());
+            e.printStackTrace();
+            return "";
+        }
+    }
+    public String mostrarReporte_cliente(){
+
+    
+    String cliente=getIdCliente();
+   
+  
+        
+        Connection conexion;
+        try {
+           
+            String connectionUrl = "jdbc:sqlserver://sql5025.myasp.net;databaseName=DB_A106F2_teffff;user=DB_A106F2_teffff_admin;password=pampa123;";
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            conexion = DriverManager.getConnection(connectionUrl);
+
+        String sb=ServletActionContext.getServletContext().getRealPath("");
+      
+      JasperReport reporte = (JasperReport)  JRLoader.loadObjectFromFile(getServletContext().getRealPath("/r/reportes/Reporte_cliente.jasper"));
+
+      //Cargamos parametros del reporte (si tiene).
+        Map parameters = new HashMap();
+        parameters.put("idCliente", cliente);
+       
+
+        JasperPrint jasperPrint = JasperFillManager.fillReport(reporte, parameters, conexion);
         
         JasperExportManager.exportReportToPdfFile(jasperPrint,sb+ "/reporte2PDF_2.pdf");
 

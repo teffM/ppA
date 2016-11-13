@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b08000a4-3842-4bce-bcc2-cddb48ed0a82">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="36362a8a-6076-4649-ac7d-5784e098df1e">
 	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.x" value="209"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
@@ -13,7 +13,14 @@
 			<style backcolor="#E6DAC3"/>
 		</conditionalStyle>
 	</style>
-	<queryString language="SQL">
+	<parameter name="fecha_inicio" class="java.lang.String">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fecha_fin" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
 		<![CDATA[SELECT
      reservaciones."numPersonas" AS reservaciones_numPersonas,
      reservaciones."comentarios" AS reservaciones_comentarios,
@@ -26,7 +33,9 @@
 FROM
      "dbo"."sucursales" sucursales INNER JOIN "dbo"."reservaciones" reservaciones ON sucursales."id" = reservaciones."idSucursal"
      INNER JOIN "dbo"."estados" estados ON reservaciones."idEstado" = estados."id"
-     INNER JOIN "dbo"."clientes" clientes ON reservaciones."idCliente" = clientes."id"]]>
+     INNER JOIN "dbo"."clientes" clientes ON reservaciones."idCliente" = clientes."id"
+WHERE
+     reservaciones."fechaReservacion" BETWEEN $P{fecha_inicio} and  $P{fecha_fin}]]>
 	</queryString>
 	<field name="reservaciones_numPersonas" class="java.lang.Integer"/>
 	<field name="reservaciones_comentarios" class="java.lang.String"/>
@@ -42,25 +51,25 @@ FROM
 	<title>
 		<band height="136" splitType="Stretch">
 			<staticText>
-				<reportElement style="Title" x="270" y="0" width="263" height="62" uuid="fa5dfa6a-642a-474b-9927-9eafeab7a877"/>
+				<reportElement style="Title" x="270" y="0" width="263" height="62" uuid="4ac6b283-ddaa-41aa-80f9-691f41690a48"/>
 				<textElement verticalAlignment="Middle">
 					<font pdfFontName="Times-Roman"/>
 				</textElement>
 				<text><![CDATA[La Pampa]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="SubTitle" x="303" y="62" width="196" height="22" uuid="34796d8b-65cb-40fb-8c20-d2627f6640d1"/>
+				<reportElement style="SubTitle" x="303" y="62" width="196" height="22" uuid="74ba8ead-3199-4532-8822-d5c65bca15dd"/>
 				<textElement>
 					<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
 				</textElement>
-				<text><![CDATA[Reporte General]]></text>
+				<text><![CDATA[Reporte por fechas]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="172" y="94" width="383" height="42" uuid="f4f7d212-c783-4941-a2c6-5768a2f35d13"/>
+				<reportElement x="172" y="94" width="383" height="42" uuid="0dd66d77-fb3e-4eef-93a4-a6ce90987dbd"/>
 				<textElement textAlignment="Left">
 					<font size="10"/>
 				</textElement>
-				<text><![CDATA[Visualizacion de las reservaciones ]]></text>
+				<text><![CDATA[Reporte filtrados por una fecha de inicio y final]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -68,81 +77,81 @@ FROM
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="16" splitType="Stretch">
+		<band height="24" splitType="Stretch">
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="05d81549-2a96-43d5-894e-4dba2a3e8799"/>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="87db38f0-2d61-467e-a7bd-c5fb6d40c903"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineColor="#999999"/>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement style="Column header" x="0" y="0" width="100" height="15" forecolor="#736343" uuid="0d9c1df7-0783-4abe-a848-d91130004eb0"/>
+				<reportElement style="Column header" x="0" y="0" width="100" height="15" forecolor="#736343" uuid="0ee0048e-72b9-4384-b989-21f7ac980625"/>
 				<text><![CDATA[#Personas]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="100" y="0" width="100" height="15" forecolor="#736343" uuid="e074e9b2-fca4-4bef-a96f-9350fdb3b195"/>
+				<reportElement style="Column header" x="100" y="0" width="100" height="15" forecolor="#736343" uuid="5007b459-9b60-4962-b7fe-8216e32ed4a8"/>
 				<text><![CDATA[Comentarios]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="200" y="0" width="100" height="15" forecolor="#736343" uuid="b286b015-0ae7-414f-95b8-c58a721ef43b"/>
+				<reportElement style="Column header" x="200" y="0" width="100" height="15" forecolor="#736343" uuid="47b869ef-dda4-4969-98fc-43e60b68fa92"/>
 				<text><![CDATA[FechaCreacion]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="300" y="0" width="100" height="15" forecolor="#736343" uuid="c18d50db-5645-4d13-aa47-14220fa29d74"/>
+				<reportElement style="Column header" x="300" y="0" width="100" height="15" forecolor="#736343" uuid="ee291299-3f6a-4e2c-a05c-c22819d51d71"/>
 				<text><![CDATA[Sucursal]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="400" y="0" width="100" height="15" forecolor="#736343" uuid="99162c4f-5248-40af-ab27-bb4f168d65a0"/>
+				<reportElement style="Column header" x="400" y="0" width="100" height="15" forecolor="#736343" uuid="cfc4917d-81d4-43e1-aa4d-32af83df2534"/>
 				<text><![CDATA[Estado]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="500" y="0" width="100" height="15" forecolor="#736343" uuid="a0c6c450-4ce9-4173-9f0a-4b504a5892b6"/>
+				<reportElement style="Column header" x="500" y="0" width="100" height="15" forecolor="#736343" uuid="e4811895-715e-4088-9641-d0f15c2b9aab"/>
 				<text><![CDATA[NombreCliente]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="600" y="0" width="100" height="15" forecolor="#736343" uuid="2baef570-dda3-490b-84e6-cf8ad1260988"/>
+				<reportElement style="Column header" x="600" y="0" width="100" height="15" forecolor="#736343" uuid="d26494af-a37f-49cf-89a2-21a1b307619f"/>
 				<text><![CDATA[ApellidoCliente]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="700" y="0" width="100" height="15" forecolor="#736343" uuid="17bc565c-981e-412c-99a0-f74b0f4974e7"/>
+				<reportElement style="Column header" x="700" y="0" width="100" height="15" forecolor="#736343" uuid="72a89dbf-00a1-4c92-a7eb-6195c9551ec4"/>
 				<text><![CDATA[FechaReservacion]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="25" splitType="Stretch">
+		<band height="31" splitType="Stretch">
 			<frame>
-				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="15" uuid="ffd28674-80fc-4309-860e-9cb6fefd3fa7"/>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="15" uuid="acf6bca5-d6f1-49d5-8016-685a697722a4"/>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="0" y="0" width="100" height="15" uuid="a4ac6b2c-1546-4f46-8ef8-b4d429e9ac2b"/>
+					<reportElement style="Detail" x="0" y="0" width="100" height="15" uuid="1853c8af-5ac5-497f-a68d-7adf90142954"/>
 					<textFieldExpression><![CDATA[$F{reservaciones_numPersonas}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="100" y="0" width="100" height="15" uuid="a3d4cd88-16c3-4319-8c9b-682e9d2cd346"/>
+					<reportElement style="Detail" x="100" y="0" width="100" height="15" uuid="f08cd5e1-60a2-4624-aa87-70be86fda6d5"/>
 					<textFieldExpression><![CDATA[$F{reservaciones_comentarios}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="200" y="0" width="100" height="15" uuid="0482376c-1593-4351-a02e-1cf38081c870"/>
+					<reportElement style="Detail" x="200" y="0" width="100" height="15" uuid="8f089693-8275-4ade-bb48-e0acb6e6136c"/>
 					<textFieldExpression><![CDATA[$F{reservaciones_fechaCreacion}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="300" y="0" width="100" height="15" uuid="21bfb594-6751-470d-b912-93596eb063a8"/>
+					<reportElement style="Detail" x="300" y="0" width="100" height="15" uuid="8de8e51a-5e71-40fd-92d5-bd4d2db0d6f4"/>
 					<textFieldExpression><![CDATA[$F{sucursales_sucursal}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="400" y="0" width="100" height="15" uuid="c4d07fdd-6082-43b7-b566-644988e0218c"/>
+					<reportElement style="Detail" x="400" y="0" width="100" height="15" uuid="e6ce3283-900a-4752-9197-e2ae9eadf706"/>
 					<textFieldExpression><![CDATA[$F{estados_estado}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="500" y="0" width="100" height="15" uuid="757b5b6d-e535-4833-8c2d-3a13dc9afbc7"/>
+					<reportElement style="Detail" x="500" y="0" width="100" height="15" uuid="703c71b6-b21d-4d2a-aa76-d0268241c16e"/>
 					<textFieldExpression><![CDATA[$F{clientes_nombre}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="600" y="0" width="100" height="15" uuid="2f8ab690-8810-4697-baa1-78ecc442ec48"/>
+					<reportElement style="Detail" x="600" y="0" width="100" height="15" uuid="dcd9524b-60e8-41c1-ac2e-78c211ec442c"/>
 					<textFieldExpression><![CDATA[$F{clientes_apellido}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" x="700" y="0" width="100" height="15" uuid="95174e1b-d50e-4839-a0a2-e2195e54ec96"/>
+				<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy">
+					<reportElement style="Detail" x="700" y="0" width="100" height="15" uuid="5f5d38ba-7164-431c-a091-fc86c35fc279"/>
 					<textFieldExpression><![CDATA[$F{reservaciones_fechaReservacion}]]></textFieldExpression>
 				</textField>
 			</frame>
@@ -151,7 +160,7 @@ FROM
 	<columnFooter>
 		<band height="6" splitType="Stretch">
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="2510c6ff-a005-46b3-ac4f-4bf7cf64fb78"/>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="16220d9e-63a1-4f94-a23a-3c910a0e345a"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineColor="#999999"/>
 				</graphicElement>
@@ -159,25 +168,25 @@ FROM
 		</band>
 	</columnFooter>
 	<pageFooter>
-		<band height="25" splitType="Stretch">
+		<band height="26" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="879d14f5-e422-4758-b67c-c8f47f7c4b43"/>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="7ae134d6-713a-4e79-859b-096c32641c44"/>
 				<textField evaluationTime="Report">
-					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="6f1cf097-178e-4fcb-b6ef-3d555531d611"/>
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="b27a8ef5-2768-481c-963d-b72abd8f36a4"/>
 					<textElement verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="f596e630-dd57-4389-be3d-2e618d6a8528"/>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="b94c9760-222e-4673-ac0f-04e24431c4da"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
 				</textField>
 				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="f7784b80-3b68-4680-9ed2-b60324170b14"/>
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="f93bbf42-27ae-4d00-a09f-903130b8b55e"/>
 					<textElement verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>

@@ -2,27 +2,27 @@
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+        <!--        <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
         <property name="hibernate.connection.url">jdbc:sqlserver://sql5025.myasp.net;databaseName=DB_A106F2_teffff;useUnicode=true;characterEncoding=UTF-8</property>
         <property name="hibernate.connection.username">DB_A106F2_teffff_admin</property>
-        <property name="hibernate.connection.password">pampa123</property>
-        <!--<property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+        <property name="hibernate.connection.password">pampa123</property>-->
+        <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
         <property name="hibernate.connection.url">jdbc:sqlserver://localhost;databaseName=pampaDB;useUnicode=true;characterEncoding=UTF-8</property>
         <property name="hibernate.connection.username">sa</property>
-        <property name="hibernate.connection.password">123</property>-->
-        <property name="connection.useUnicode">true</property> 
+        <property name="hibernate.connection.password">123</property>
+        <property name="connection.useUnicode">true</property>
         <property name="connection.characterEncoding">UTF-8</property>
         <property name="hibernate.connection.defaultNChar">true</property>
-        <mapping resource="ppA/entity/Abonos.hbm.xml"/>
-        <mapping resource="ppA/entity/CategoriasMenus.hbm.xml"/>
-        <mapping resource="ppA/entity/Reservaciones.hbm.xml"/>
-        <mapping resource="ppA/entity/Menus.hbm.xml"/>
         <mapping resource="ppA/entity/Opciones.hbm.xml"/>
+        <mapping resource="ppA/entity/CategoriasMenus.hbm.xml"/>
         <mapping resource="ppA/entity/DetallesMenus.hbm.xml"/>
-        <mapping resource="ppA/entity/Estados.hbm.xml"/>
-        <mapping resource="ppA/entity/Sucursales.hbm.xml"/>
         <mapping resource="ppA/entity/Roles.hbm.xml"/>
         <mapping resource="ppA/entity/Clientes.hbm.xml"/>
         <mapping resource="ppA/entity/Usuarios.hbm.xml"/>
+        <mapping resource="ppA/entity/Menus.hbm.xml"/>
+        <mapping resource="ppA/entity/Sucursales.hbm.xml"/>
+        <mapping resource="ppA/entity/Reservaciones.hbm.xml"/>
+        <mapping resource="ppA/entity/Estados.hbm.xml"/>
+        <mapping resource="ppA/entity/Abonos.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

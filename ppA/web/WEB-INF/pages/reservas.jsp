@@ -5,6 +5,9 @@
     <div class="page-header">
         <h1 style="margin:0">Reservaciones
             <div class="button-group  pull-right">
+                <a id="" href="Reserva" class="btn btn-warning">
+                    <b>Reiniciar busqueda</b>
+                </a>
                 <a id="busqueda" href="#" class="btn btn-info" data-toggle="modal" data-target="#mySearchOptions">
                     <b><s:text name="r.btnCriterios" /></b>
                 </a>
@@ -13,6 +16,7 @@
                     <b><s:text name="r.btnNuevo" /></b>
                 </a>
             </div>
+
         </h1>
     </div>
     <div class="modal fade" id="mySearchOptions" data-backdrop="static" data-keyboard="false" href="#" role="dialog">
@@ -22,6 +26,13 @@
                     <fieldset>
                         <legend><s:text name="r.criterio" /><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button></legend>
                         <s:form action="Reserva" id="busqueda">
+
+                            <s:textfield name="fMenorString" key="Fecha inicio"
+                                         value="%{fMenorString}" cssClass="form-control dateTimeSearch required" required="true" />
+
+                            <s:textfield name="fMayorString" key="Fecha fin"
+                                         value="%{fMayorString}" cssClass="form-control dateTimeSearch required" required="true" />
+
                             <s:select id="criEst" name="id" listKey="id" listValue="estado" headerKey="" cssClass="select2 required input"
                                       headerValue="Cualquiera" list="listEstados" key="r.estado" required="true"/>
                             <s:select id="criCli" name="cliId" listKey="id" listValue="%{nombre + ' ' +  apellido}" headerKey=""
@@ -31,7 +42,7 @@
                                       headerValue="%{getText('lbl.seleccione')}" list="listSucursales" key="r.sucursal" required="true" />
                             <s:textfield name="numPersonas" key="r.persona" type="number" cssClass="form-control input required" required="true" />
                             <s:submit method="list" cssClass="btn submit" ondblclick="" key="Buscar" />
-                            <s:submit method="listNew" cssClass="btn submit" ondblclick="" key="Reiniciar busqueda" />
+
                         </s:form>
                     </fieldset>
                 </div>
@@ -67,7 +78,7 @@
                                             <div class="form-group">
                                                 <s:date name="r.fechaReservacion" id="createdDateId" format="dd/MM/yyyy hh:mm:ss a" />
                                                 <s:textfield name="r.fechaReservacion" key="r.fechaReserva"
-                                                             value="%{createdDateId}" cssClass="form-control dateTimeMinNow required" required="true" />
+                                                             value="%{createdDateId}" cssClass="form-control dateTime required" required="true" />
                                             </div>
                                             <div class="form-group">
                                                 <s:textfield name="r.numPersonas" key="r.persona" type="number" cssClass="form-control input required" required="true" />
@@ -93,11 +104,11 @@
                                             </legend>
                                             <div class="row btn-group col-md-offset-2" data-toggle="buttons">
                                                 <label class="btn btn-primary active" onclick="javascript: enaDisa(false);">
-                                                    <input type="radio" name="client" id="1">Persona natural
+                                                    <input type="radio" name="client" id="1"><s:text name="c.personaNatural" />
                                                     <span class="glyphicon glyphicon-user"></span>
                                                 </label>
                                                 <label class="btn btn-primary" onclick="javascript: enaDisa(true);">
-                                                    <input type="radio" name="client" id="2">Persona juridica
+                                                    <input type="radio" name="client" id="2"><s:text name="c.personaJuridica" />
                                                     <span class="glyphicon glyphicon-education"></span>
                                                 </label>
                                             </div>

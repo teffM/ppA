@@ -6,7 +6,7 @@
             <div class="button-group  pull-right">
                 <a id="nuevoCliente" href="#" class="btn btn-success" data-toggle="modal" data-target="#myModal">
                     <span class="glyphicon glyphicon-plus-sign"></span>
-                    <b><s:text name="c.btnNuevo" /></b>
+                    <b><s:text name="c.btnNuevoCliente" /></b>
                 </a>
             </div>
         </h1>
@@ -22,11 +22,11 @@
                         </legend>
                         <div class="row btn-group col-md-offset-2 rediosPersons" data-toggle="buttons">
                             <label class="btn btn-primary active" onclick="javascript: enaDisa(false, true);">
-                                <input type="radio" name="client" id="1">Persona natural
+                                <input type="radio" name="client" id="1"><s:text name="c.personaNatural" />
                                 <span class="glyphicon glyphicon-user"></span>
                             </label>
                             <label class="btn btn-primary" onclick="javascript: enaDisa(true, true);">
-                                <input type="radio" name="client" id="2">Persona juridica
+                                <input type="radio" name="client" id="2"><s:text name="c.personaJuridica" />
                                 <span class="glyphicon glyphicon-education"></span>
                             </label>
                         </div>

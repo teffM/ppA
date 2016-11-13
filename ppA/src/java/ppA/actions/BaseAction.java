@@ -22,6 +22,8 @@ public class BaseAction extends ActionSupport implements SessionAware {
     private Session db;
     private Transaction transaction;
 
+    //Auxiliares para filtrar por fecha
+    
     public void open() {
         try {
             if (getDb() == null) {
