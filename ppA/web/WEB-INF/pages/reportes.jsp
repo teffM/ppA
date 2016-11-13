@@ -20,6 +20,9 @@
            <img id="logo" src="./r/reportes/login.png" alt=""/>
         <h1>Diversidad de reportes de La Pampa</h1>
         <s:submit method="mostrarReporte" cssClass="btn-info disabled submit" key="Reporte General" />
+      <s:select id="criEst" name="estado" listKey="estado" listValue="estado" headerKey="" cssClass="select2 required input"
+                                      headerValue="%{getText('lbl.seleccione')}" list="listEstados" key="r.estado" required="true"/>
+        <s:submit method="mostrarReporte_estado" cssClass="btn-info disabled submit" key="Reporte de estados" />
      
         </s:form>
     
