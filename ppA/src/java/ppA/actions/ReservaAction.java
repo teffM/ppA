@@ -3,8 +3,13 @@ package ppA.actions;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.hibernate.Query;
 import ppA.entity.Abonos;
 import ppA.entity.CategoriasMenus;
 import ppA.entity.Clientes;
@@ -36,9 +41,10 @@ public class ReservaAction extends BaseAction {
     private int idRegistro = 0;
     //Auxiliares para filtrar reservas
     private int sucId;
-    private Date fecha;
     private Date fMenor;
     private Date fMayor;
+    private String fMenorString;
+    private String fMayorString;
     private int cliId;
     private int numPersonas;
     
@@ -49,9 +55,9 @@ public class ReservaAction extends BaseAction {
 
     public String list() {
         try {
-            String consulta  = "from Reservaciones where id > 0";
+            open();
+            String consulta  = "from Reservaciones where fechaReservacion >= :f1 and fechaReservacion <= :f2";
             
-               
             if (cliId != 0) {
                 consulta += " and clientes.id = " + cliId;
             }
@@ -67,19 +73,16 @@ public class ReservaAction extends BaseAction {
             if (getId() != 0) {
                 consulta += " and estados.id = " + getId();
             } 
-            
-            if (fMenor != null) {
-                consulta += " and fechaCreacion >= " + fMenor.getYear() + "-" + fMenor.getMonth() + "-" + fMenor.getDay();
-            }
-            
-            if (fMayor != null) {
-                consulta += " and fechaCreacion <= " + fMayor.getYear() + "-" + fMayor.getMonth() + "-" + fMayor.getDay();
-            }
-            
+         
             
             consulta+=" order by fechaReservacion";
             
-            setListReservas(getReserva(consulta));
+            Query query = getDb().createQuery(consulta);
+            query.setParameter("f1", fMenor);
+            query.setParameter("f2", fMayor);
+           
+            
+            setListReservas( query.list());
             setListSucursales(getList(Sucursales.class));
             setListEstados(getList(Estados.class));
             setListClientes(getList(Clientes.class));
@@ -393,30 +396,6 @@ public class ReservaAction extends BaseAction {
         this.sucId = sucId;
     }
 
-    public Date getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
-
-    public Date getfMenor() {
-        return fMenor;
-    }
-
-    public void setfMenor(Date fMenor) {
-        this.fMenor = fMenor;
-    }
-
-    public Date getfMayor() {
-        return fMayor;
-    }
-
-    public void setfMayor(Date fMayor) {
-        this.fMayor = fMayor;
-    }
-
     public int getCliId() {
         return cliId;
     }
@@ -439,6 +418,56 @@ public class ReservaAction extends BaseAction {
 
     public void setCli(Clientes cli) {
         this.cli = cli;
+    }
+
+    public Date getfMenor() {
+        return fMenor;
+    }
+
+    public void setfMenor(Date fMenor) {
+            this.fMenor = fMenor;
+    }
+    
+    public void setfMenorString(String date)
+    {
+        try {
+            //journeyDateString could be "2013-03-28" for example
+            Date journeyDate =  new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd").parse(date).getTime());
+            setfMenor(journeyDate);
+            fMenorString=date;
+        } catch (ParseException ex) {
+            Logger.getLogger(ReservaAction.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+    }
+    
+    public void setfMayorString(String date)
+    {
+        try {
+            //journeyDateString could be "2013-03-28" for example
+            Date journeyDate =  new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd").parse(date).getTime());
+            setfMayor(journeyDate);
+            fMayorString = date;
+        } catch (ParseException ex) {
+            Logger.getLogger(ReservaAction.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+    }
+
+    public String getfMenorString() {
+        return fMenorString;
+    }
+
+    public String getfMayorString() {
+        return fMayorString;
+    }
+    
+    public Date getfMayor() {
+        return fMayor;
+    }
+
+    public void setfMayor(Date fMayor) {
+        this.fMayor = fMayor;
     }
 
     

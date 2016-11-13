@@ -42,7 +42,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-left" href="./index"><img src="./r/images/logo.png" width="150px" height="50px" /></a>
+                <a class="navbar-left" href="./index"><img src="./r/images/logo.png" width="80px" height="50px" /></a>
             </div>
             <div class="collapse navbar-collapse " id="collapse">
                 <ul class="nav navbar-nav col-md-8">
@@ -59,7 +59,7 @@
                                     <li><a href="./Usuario">USUARIOS</a></li>
                                     <li><a href="./Sucursal">SUCURSALES</a></li>
                                     <li><a href="./Menu">PLATILLOS</a></li>
-                                    <li><a href="./CategoriaMenu">CATEGORIAS DE PLATILLOS</a></li>
+                                    <li><a href="./CategoriaMenu">CATEGORÍAS DE PLATILLOS</a></li>
                                     <!--
                                     <li><a href="./Estado">ESTADOS</a></li>
                                     <li><a href="./Rol">ROLES</a></li>
@@ -260,6 +260,9 @@
         });
         $(".dateTime").datetimepicker({locale: 'es', format: 'DD/MM/YYYY hh:mm:ss a'});
         $(".dateTime").after("<span class='input-group-addon'>\n\
+                <span class='glyphicon glyphicon-calendar'></span></span>");
+        $(".dateTimeSearch").datetimepicker({locale: 'es', format: 'YYYY-MM-DD', defaultDate: new Date()});
+       $(".dateTimeSearch").after("<span class='input-group-addon'>\n\
                 <span class='glyphicon glyphicon-calendar'></span></span>");
         $(".dateTimeMinNow").datetimepicker({locale: 'es', format: 'DD/MM/YYYY hh:mm:ss a', minDate: moment()});
         $(".dateTimeMinNow").after("<span class='input-group-addon'>\n\

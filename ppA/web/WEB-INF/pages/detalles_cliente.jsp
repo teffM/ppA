@@ -122,8 +122,9 @@
                     <th><s:text name="r.fechaReserva" /></th>
                     <th><s:text name="r.sucursal" /></th>
                     <th><s:text name="r.persona" /></th>
-                    <th><s:text name="r.estado" /></th>
+                    
                     <th data-priority="1"><s:text name="q.acciones" /></th>
+                    <th><s:text name="r.estado" /></th>
                 </tr>
                 </tr>
             </thead>
@@ -145,17 +146,17 @@
                        <td><c:out value="${fechaReserva}"/></td>
                         <td><c:out value="${l.sucursales.sucursal}"/></td>
                        <td><c:out value="${l.numPersonas}"/></td>
-                       
-                         <td style="background-color: <c:out value="${l.estados.color}"/>;"><c:out value="${l.estados.estado}"/></td>
-                        
-                       
-                        <td>
+                       <td>
                             
                             <a class="" href="Detalles!obtener?id=${l.id}">
                                     ver Detalles
                                 </a>
                             
                         </td>
+                         <td style="background-color: <c:out value="${l.estados.color}"/>;"><c:out value="${l.estados.estado}"/></td>
+                        
+                       
+                       
 
                         </td>
                     </tr>
