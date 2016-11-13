@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b08000a4-3842-4bce-bcc2-cddb48ed0a82">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b08000a4-3842-4bce-bcc2-cddb48ed0a82">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
 	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
 	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
@@ -38,35 +41,27 @@ FROM
 	</background>
 	<title>
 		<band height="136" splitType="Stretch">
-			<image>
-				<reportElement x="0" y="0" width="164" height="126" uuid="0cf33c25-2b90-45cd-b97b-a7de84c9f752"/>
-				<imageExpression><![CDATA["coffee.jpg"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement style="Title" x="270" y="0" width="263" height="62" uuid="fa5dfa6a-642a-474b-9927-9eafeab7a877"/>
 				<textElement verticalAlignment="Middle">
 					<font pdfFontName="Times-Roman"/>
 				</textElement>
-				<text><![CDATA[Coffee Title]]></text>
+				<text><![CDATA[La Pampa]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="SubTitle" x="303" y="62" width="196" height="22" uuid="34796d8b-65cb-40fb-8c20-d2627f6640d1"/>
 				<textElement>
 					<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
 				</textElement>
-				<text><![CDATA[Coffee SubTitle]]></text>
+				<text><![CDATA[Reporte General]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="172" y="94" width="383" height="42" uuid="f4f7d212-c783-4941-a2c6-5768a2f35d13"/>
-				<textElement textAlignment="Right">
+				<textElement textAlignment="Left">
 					<font size="10"/>
 				</textElement>
-				<text><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce auctor purus gravida arcu aliquam mattis. Donec et nulla libero, ut varius massa. Nulla sed turpis elit. Etiam aliquet mauris a ligula hendrerit in auctor leo lobortis.]]></text>
+				<text><![CDATA[Visualizacion de las reservaciones ]]></text>
 			</staticText>
-			<image>
-				<reportElement x="633" y="-73" width="219" height="209" uuid="8675b62a-7ef2-4160-9930-c25ce48be24f"/>
-				<imageExpression><![CDATA["coffee_stain.png"]]></imageExpression>
-			</image>
 		</band>
 	</title>
 	<pageHeader>
@@ -82,35 +77,35 @@ FROM
 			</line>
 			<staticText>
 				<reportElement style="Column header" x="0" y="0" width="100" height="15" forecolor="#736343" uuid="0d9c1df7-0783-4abe-a848-d91130004eb0"/>
-				<text><![CDATA[reservaciones_numPersonas]]></text>
+				<text><![CDATA[#Personas]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="100" y="0" width="100" height="15" forecolor="#736343" uuid="e074e9b2-fca4-4bef-a96f-9350fdb3b195"/>
-				<text><![CDATA[reservaciones_comentarios]]></text>
+				<text><![CDATA[Comentarios]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="200" y="0" width="100" height="15" forecolor="#736343" uuid="b286b015-0ae7-414f-95b8-c58a721ef43b"/>
-				<text><![CDATA[reservaciones_fechaCreacion]]></text>
+				<text><![CDATA[FechaCreacion]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="300" y="0" width="100" height="15" forecolor="#736343" uuid="c18d50db-5645-4d13-aa47-14220fa29d74"/>
-				<text><![CDATA[sucursales_sucursal]]></text>
+				<text><![CDATA[Sucursal]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="400" y="0" width="100" height="15" forecolor="#736343" uuid="99162c4f-5248-40af-ab27-bb4f168d65a0"/>
-				<text><![CDATA[estados_estado]]></text>
+				<text><![CDATA[Estado]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="500" y="0" width="100" height="15" forecolor="#736343" uuid="a0c6c450-4ce9-4173-9f0a-4b504a5892b6"/>
-				<text><![CDATA[clientes_nombre]]></text>
+				<text><![CDATA[NombreCliente]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="600" y="0" width="100" height="15" forecolor="#736343" uuid="2baef570-dda3-490b-84e6-cf8ad1260988"/>
-				<text><![CDATA[clientes_apellido]]></text>
+				<text><![CDATA[ApellidoCliente]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="700" y="0" width="100" height="15" forecolor="#736343" uuid="17bc565c-981e-412c-99a0-f74b0f4974e7"/>
-				<text><![CDATA[reservaciones_fechaReservacion]]></text>
+				<text><![CDATA[FechaReservacion]]></text>
 			</staticText>
 		</band>
 	</columnHeader>

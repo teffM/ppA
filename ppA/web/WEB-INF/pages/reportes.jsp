@@ -12,12 +12,22 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-    <fieldset>
+
                     <legend><s:text name="re.legend" /></legend>
                     
-              
-    <s:form action="Reportes">
-           <img id="logo" src="./r/reportes/login.png" alt=""/>
+<div class="container">    
+    <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+        <div class="panel panel-info" >
+            <div class="panel-heading">
+                <div class="panel-title">Reportes</div>
+            </div>     
+            <div style="padding-top:30px" class="panel-body" >
+                <center>
+                    <img id="logo" src="./r/images/login.png" alt=""/>
+                </center>
+                <br/>              
+    <s:form id="form" action="Reportes">
+           
         <h1>Diversidad de reportes de La Pampa</h1>
         <s:submit method="mostrarReporte" cssClass="btn-info disabled submit" key="Reporte General" />
       <s:select id="criEst" name="estado" listKey="estado" listValue="estado" headerKey="" cssClass="select2 required input"
@@ -26,4 +36,8 @@
      
         </s:form>
     
-  </fieldset>
+
+  </div>
+        </div>
+    </div> 
+</div> 
