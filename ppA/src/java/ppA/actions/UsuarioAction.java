@@ -30,6 +30,9 @@ public class UsuarioAction extends BaseAction {
 
     public String guardar() throws Exception {
 	try {
+            String nueva_contraseña;
+            nueva_contraseña=crearContraseña(getNu());
+            getNu().setClave(nueva_contraseña);
 	    save(getNu());
 	    setMsg(getText("msg.guardadoExito"));
 	} catch (Exception e) {
@@ -69,6 +72,17 @@ public class UsuarioAction extends BaseAction {
 	return listUsuarios;
     }
 
+    public String crearContraseña(Usuarios usu){
+    String contraseña="";
+    char primera;
+    char segunda;
+    primera=usu.getNombre().charAt(0);
+    segunda=usu.getApellido().charAt(0);
+    contraseña=String.valueOf(primera)+String.valueOf(segunda)+usu.getUsuario();
+    
+    
+    return contraseña;
+    }
     /**
      * @param listUsuarios the listUsuarios to set
      */

@@ -31,10 +31,10 @@
                         <div class="form-group">
                             <s:textfield name="nu.usuario" key="nu.usuario" cssClass="form-control required" required="true" />
                         </div>
-                        <div class="form-group">
+                         <%--<div class="form-group">
                             <s:password name="nu.clave" key="nu.clave" cssClass="form-control required" required="true" />
-                            <%--<s:password name="nu.clave" label="Confirmar Contraseña" cssClass="form-control required" required="true" />--%>
-                        </div>
+                            <%--<s:password name="nu.clave" label="Confirmar Contraseña" cssClass="form-control required" required="true" />
+                        </div>--%>
                         <div class="form-group">
                             <s:select name="nu.roles.id" listKey="id" listValue="rol" headerKey="" cssClass="select2 required"
                                       headerValue="%{getText('lbl.seleccione')}" list="listRoles" key="nu.roles" required="true"/>
