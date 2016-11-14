@@ -80,6 +80,9 @@
         <action name="Abono" class="ppA.actions.AbonoAction">
             <result name="success" type="tiles">abonos</result>
         </action>
+        <action name="Reestablecer" class="ppA.actions.UsuarioAction">
+            <result name="success" type="tiles">reestablecer</result>
+        </action>
         <action name="Login" class="ppA.actions.LoginAction">
             <result name="success" type="redirectAction">Reserva</result>
             <result name="error" type="tiles">index</result>
