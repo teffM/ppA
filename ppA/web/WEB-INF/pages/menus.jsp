@@ -52,7 +52,7 @@
                 <th><s:text name="m.menu" /></th>
                 <th><s:text name="m.precio" /></th>
                 <th><s:text name="m.descripcion" /></th>
-                <th><s:text name="q.acciones" /></th>
+                <th data-priority="1"><s:text name="q.acciones" /></th>
             </tr>
         </thead>
         <tbody>

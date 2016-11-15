@@ -164,7 +164,7 @@
                     <th><s:text name="r.sucursal" /></th>
                     <th><s:text name="r.comentario" /></th>
                     <th><s:text name="r.usuario" /></th>
-                    <th><s:text name="q.acciones" /></th>
+                    <th data-priority="1"><s:text name="q.acciones" /></th>
                 </tr>
             </thead>
             <tbody>
