@@ -42,7 +42,7 @@
                 <th><s:text name="a.abono" /></th>
                 <th><s:text name="a.fechaAbono" /></th>
                 <th><s:text name="a.usuario" /></th>
-                <th data-priority="1"><s:text name="q.acciones" /></th>
+                <th><s:text name="q.acciones" /></th>
             </tr>
         </thead>
         <tbody>

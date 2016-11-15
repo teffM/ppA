@@ -57,7 +57,7 @@
                 <th><s:text name="nu.apellido" /></th>
                 <th><s:text name="nu.usuario" /></th>
                 <th><s:text name="nu.roles" /></th>
-                <th data-priority="1"><s:text name="q.acciones" /></th>
+                <th><s:text name="q.acciones" /></th>
             </tr>
         </thead>
         <tbody>

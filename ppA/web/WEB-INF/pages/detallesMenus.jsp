@@ -47,7 +47,7 @@
                 <th><s:text name="dm.cantidad" /></th>
                 <th><s:text name="dm.precio" /></th>
                 <th><s:text name="dm.comentarios" /></th>
-                <th data-priority="1"><s:text name="q.acciones" /></th>
+                <th><s:text name="q.acciones" /></th>
             </tr>
         </thead>
         <tbody>
