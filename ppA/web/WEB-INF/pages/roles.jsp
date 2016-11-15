@@ -2,16 +2,25 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<a id="nuevoRol" href="#" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
+
+
+<div class="page-header">
+    <h1 style="margin:0">Roles
+        <div class="button-group  pull-right">
+           <a id="nuevoRol" href="#" class="btn btn-success" data-toggle="modal" data-target="#myModal">
     <span class="glyphicon glyphicon-plus-sign"></span>
-    <b><s:text name="ro.btnNuevo" /></b>
+        <b><s:text name="ro.btnNuevo" /></b>
 </a>
-<div class="modal fade" id="myModal" role="dialog">
+        </div>
+    </h1>
+</div>
+
+<div class="modal fade" id="myModal" role="dialog" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
                 <fieldset>
-                    <legend><s:text name="ro.legend" /></legend>
+                    <legend><s:text name="ro.legend" /><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button></legend>
                     <s:form action="Rol">
                         <s:hidden name="ro.id" />
                         <s:textfield name="ro.rol" key="ro.rol" cssClass="form-control required" required="true" />
