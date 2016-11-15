@@ -44,19 +44,19 @@
                 </button>
                 <a class="navbar-left" href="./index"><img src="./r/images/logo.png" width="150px" height="50px" /></a>
             </div>
-            <div class="collapse navbar-collapse " id="collapse">
-                <ul class="nav navbar-nav col-md-8">
+            <div class="collapse navbar-collapse navbar-ex1-collapse  " id="collapse">
+                <ul  class="nav navbar-nav col-md-8 active">
                     <s:if test="%{#session.userRol != null}">
-                        <li class="navItem"><a href="./Reserva">RESERVACIONES</a></li>
-                        <li class="navItem"><a href="./Cliente">CLIENTES</a></li>
-                        <li><a href="./Reportes">REPORTES</a></li>
-                        <li><a href="./dUsuario">MIS DETALLES</a></li>
+                        <li class="active"><a href="./Reserva">RESERVACIONES</a></li>
+                        <li class="active"><a href="./Cliente">CLIENTES</a></li>
+                        <li class="active"><a href="./Reportes">REPORTES</a></li>
+                        <li class="active"><a href="./dUsuario">MIS DETALLES</a></li>
                         <s:if test="%{#session.userRol == 'administrador'}">
-                            <li class="dropdown navItem">
+                            <li class="dropdown navItem active">
                                 <a data-toggle="dropdown">
                                     ADMINISTRACIÓN<span class="caret"></span>
                                 </a>
-                                <ul class="navbar-inverse dropdown-menu">
+                                <ul class="navbar-inverse dropdown-menu active">
                                     <li><a href="./Usuario">USUARIOS</a></li>
                                     <li><a href="./Sucursal">SUCURSALES</a></li>
                                     <li><a href="./Menu">PLATILLOS</a></li>
