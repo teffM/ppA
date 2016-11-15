@@ -74,14 +74,14 @@
             
                 <h3>Platillos <small>Agregados a la reserva</small>
                     <div class="button-group  pull-right">
-                <a href="#" data-toggle="modal" class="btn btn-success" data-target="#myModalMenu">Agregar platillo</a>
+                <a id="nuevoMenu" href="#" data-toggle="modal" class="btn btn-success" data-target="#myModalMenu">Agregar platillo</a>
                 </div>
                 </h3>
 
         </div>
 
 
-        <table class="table table-responsive table-hover table-bordered table-condensed  table-striped dataTable2">
+           <table class="table table-striped table-bordered table-hover dt-responsive nowrap dataTable2">
             <thead>
                 <tr>
                      <th>#</th>
@@ -135,14 +135,14 @@
     <div class="panel-heading">
         <h3>Abonos <small>Hechos a esta reserva</small>
                     <div class="button-group  pull-right">
-                <a href="#" class="btn btn-success right" data-toggle="modal" data-target="#myModalAbono">Agregar abono</a>
+                <a id="nuevoAbono" href="#" class="btn btn-success right" data-toggle="modal" data-target="#myModalAbono">Agregar abono</a>
                     </div>
                 </h3>
         
        
     </div>
 
-    <table class="table table-responsive table-hover table-bordered table-condensed  table-striped dataTable2">
+    <table class="table table-striped table-bordered table-hover dt-responsive nowrap dataTable2">
 
         <thead>
             <tr>
@@ -187,7 +187,8 @@
               <tr>
                  <td colspan="2"></td>
                  <td><b>Total</b></td>
-                 <td colspan="2">$${totAbono}</td>
+                 <td colspan="1">$${totAbono}</td>
+                 <td title="Monto no cancelado" style="color: red;">$${diferencia}</td>
                 </tr> 
         </tfoot>
     </table>
@@ -201,7 +202,7 @@
                     <legend><s:text name="a.legend" /><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button></legend>
                     <s:form action="Detalles">
                         <s:hidden name="a.reservaciones.id" value="%{r.id}"/>
-                        <s:select name="a.clientes.id" listKey="id" listValue="nombre" headerKey="" cssClass="select2 required"
+                        <s:select name="a.clientes.id" listKey="id" listValue="list" headerKey="" cssClass="select2 required"
                                   headerValue="%{getText('lbl.seleccione')}" list="listClientes" key="a.cliente" required="true" />
                         <s:textfield name="a.abono" key="a.abono" type="number" cssClass="form-control required" required="true" />
                         <s:date name="a.fechaAbono" id="createdDateId" format="dd/MM/yyyy hh:mm a" />
@@ -220,7 +221,7 @@
             <div class="modal-body">
                 <fieldset>
                     <legend><s:text name="dm.legend" /><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button></legend>
-                    <s:form action="Detalles">
+                    <s:form id="abonoForm" action="Detalles">
                         
                         <s:hidden name="dm.reservaciones.id" value="%{r.id}"/>
                         <s:select name="dm.menus.id" listKey="id" listValue="menu" headerKey="" cssClass="select2 required"
@@ -238,3 +239,6 @@
     </div>
 </div>                    
 
+                    
+
+                        
