@@ -56,7 +56,7 @@
                         <th>Fecha</th>
                         <th>Monto</th>
 
-                        <th data-priority="1"><s:text name="q.acciones" /></th>
+                        <th><s:text name="q.acciones" /></th>
                     </tr>
                 </thead>
                 <tbody>

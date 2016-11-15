@@ -39,7 +39,7 @@
             <tr>
                 <th><s:text name="ro.rol" /></th>
                 <th><s:text name="ro.descripcion" /></th>
-                <th data-priority="1"><s:text name="q.acciones" /></th>
+                <th><s:text name="q.acciones" /></th>
             </tr>
         </thead>
         <tbody>

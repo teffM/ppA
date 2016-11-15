@@ -72,7 +72,7 @@ public class UsuarioAction extends BaseAction {
               open();
                auxUsuarios = (Usuarios) getDb().createQuery("select usu from Usuarios usu where id = " + idClient).uniqueResult();
             nueva_contraseña=crearContraseña(auxUsuarios);
-            auxUsuarios.setClave(nueva_contraseña);
+            auxUsuarios.setClave(nueva_contraseña);        
 	    save(auxUsuarios);
 	    setMsg(getText("msg.modificadoExito"));
 	} catch (Exception e) {

@@ -33,7 +33,7 @@
                 <th><s:text name="e.estado" /></th>
                 <th><s:text name="e.color" /></th>
                 <th><s:text name="e.descripcion" /></th>
-                <th data-priority="1"><s:text name="q.acciones" /></th>
+                <th ><s:text name="q.acciones" /></th>
             </tr>
         </thead>
         <tbody>

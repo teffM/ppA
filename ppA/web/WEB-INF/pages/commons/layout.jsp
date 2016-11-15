@@ -25,7 +25,6 @@
         <link href="./r/toastr/css/toastr.css" rel="stylesheet" type="text/css"/>
         <script src="./r/toastr/js/toastr.js" type="text/javascript"></script>
         <!--customs-->
-        <link href="./r/image-picker/image-picker.css" rel="stylesheet" type="text/css"/>
         <link href="./r/css/loading.css" rel="stylesheet" type="text/css"/>
         <link href="./r/css/style.css" rel="stylesheet" type="text/css"/>
         <script src="./r/js/functions.js" type="text/javascript"></script>
@@ -44,19 +43,19 @@
                 </button>
                 <a class="navbar-left" href="./index"><img src="./r/images/logo.png" width="150px" height="50px" /></a>
             </div>
-            <div class="collapse navbar-collapse " id="collapse">
-                <ul class="nav navbar-nav col-md-8">
+            <div class="collapse navbar-collapse navbar-ex1-collapse  " id="collapse">
+                <ul  class="nav navbar-nav col-md-8 active">
                     <s:if test="%{#session.userRol != null}">
-                        <li class="navItem"><a href="./Reserva">RESERVACIONES</a></li>
-                        <li class="navItem"><a href="./Cliente">CLIENTES</a></li>
-                        <li><a href="./Reportes">REPORTES</a></li>
-                        <li><a href="./dUsuario">MIS DETALLES</a></li>
+                        <li class="active"><a href="./Reserva">RESERVACIONES</a></li>
+                        <li class="active"><a href="./Cliente">CLIENTES</a></li>
+                        <li class="active"><a href="./Reportes">REPORTES</a></li>
+                        <li class="active"><a href="./dUsuario">MIS DETALLES</a></li>
                         <s:if test="%{#session.userRol == 'administrador'}">
-                            <li class="dropdown navItem">
+                            <li class="dropdown navItem active">
                                 <a data-toggle="dropdown">
                                     ADMINISTRACIÓN<span class="caret"></span>
                                 </a>
-                                <ul class="navbar-inverse dropdown-menu">
+                                <ul class="navbar-inverse dropdown-menu active">
                                     <li><a href="./Usuario">USUARIOS</a></li>
                                     <li><a href="./Sucursal">SUCURSALES</a></li>
                                     <li><a href="./Menu">PLATILLOS</a></li>
@@ -137,7 +136,6 @@
     <script src="./r/js/jquery-validate.bootstrap-tooltip.min.js" type="text/javascript"></script>
     <script src="./r/js/messages_es.js" type="text/javascript"></script>
     <script src="./r/js/jquery.maskedinput.min.js" type="text/javascript"></script>
-    <script src="./r/image-picker/image-picker.min.js" type="text/javascript"></script>
     <!--particles-->
     <!--    <script src="./r/js/particles.min.js" type="text/javascript"></script>
         <script src="./r/js/particles-conf.js" type="text/javascript"></script>-->
@@ -153,7 +151,6 @@
         $('.form-group').find('.input-group-addon').on('click', function(){
         $(this).parent().find('select').trigger('focus');
         });
-        $(".imagePicker").imagepicker({ show_label : true });
         if ($('#toast-container').length == 0) {
         <s:if test="%{msg != null && msg != ''}">
             msg("success", "<s:property escape="false" value="msg" />");

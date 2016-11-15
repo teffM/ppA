@@ -49,7 +49,7 @@
                 <th><s:text name="s.nacional" /></th>
                 <th><s:text name="s.direccion" /></th>
                 <th><s:text name="s.telefono" /></th>
-                <th data-priority="1"><s:text name="q.acciones" /></th>
+                <th><s:text name="q.acciones" /></th>
             </tr>
         </thead>
         <tbody>
