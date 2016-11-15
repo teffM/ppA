@@ -59,7 +59,7 @@
                             <div class="form-group">
                                 <s:textarea name="c.descripcion" key="c.descripcion" cssClass="form-control" />
                             </div>
-                            <s:submit method="guardar" cssClass="btn-info disabled submit" value="Guardar" key="btn.guardar" />
+                            <s:submit method="guardar" cssClass="btn btn-default" value="Guardar" key="btn.guardar" />
                         </s:form>
                     </fieldset>
                 </div>

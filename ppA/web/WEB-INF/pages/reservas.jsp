@@ -41,7 +41,7 @@
                             <s:select id="criSuc" name="sucId" listKey="id" listValue="sucursal" headerKey="" cssClass="select2 required"
                                       headerValue="%{getText('lbl.seleccione')}" list="listSucursales" key="r.sucursal" required="true" />
                             <s:textfield name="numPersonas" key="r.persona" type="number" cssClass="form-control input required" required="true" />
-                            <s:submit method="list" cssClass="btn submit" ondblclick="" key="Buscar" />
+                            <s:submit method="list" cssClass="btn btn-default" ondblclick="" key="Buscar" />
 
                         </s:form>
                     </fieldset>
@@ -94,7 +94,7 @@
                                             <div class="form-group">
                                                 <s:textarea name="r.comentarios" cssClass="form-control input" key="r.comentario" />
                                             </div>
-                                            <s:submit method="guardar" cssClass="btn-info disabled submit" value="Guardar" key="btn.guardar" />
+                                            <s:submit method="guardar" cssClass="btn btn-default" value="Guardar" key="btn.guardar" />
                                         </fieldset>
                                     </div>
                                     <div class="myResizingDiv">

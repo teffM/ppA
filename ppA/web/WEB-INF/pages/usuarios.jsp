@@ -41,7 +41,7 @@
                             <s:select name="nu.roles.id" listKey="id" listValue="rol" headerKey="" cssClass="select2 required"
                                       headerValue="%{getText('lbl.seleccione')}" list="listRoles" key="nu.roles" required="true"/>
                         </div>
-                        <s:submit method="guardar" cssClass="btn-info disabled submit" value="Guardar" key="btn.guardar" />
+                        <s:submit method="guardar" cssClass="btn btn-default" value="Guardar" key="btn.guardar" />
                     </s:form>
                 </fieldset>
             </div>
