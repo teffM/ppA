@@ -285,6 +285,9 @@ function cargarPlato(id) {
 		$("#menuForm_dm_menus_id").append('<option value="'+id+'">'+value+'</option>');
                
 	    });
+            $("#menuForm_dm_precio").val("");
+              $("#menuForm_dm_cantidad").val("");
+              $("#menuForm_dm_comentarios").val("");
                           $("#loading").css("display", "none");
             },
             error: function (data) {
