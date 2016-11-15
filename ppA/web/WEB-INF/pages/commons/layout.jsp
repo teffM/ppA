@@ -41,9 +41,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-left" href="./index"><img src="./r/images/logo.png" width="150px" height="50px" /></a>
+                <a class="navbar-left" href="./index"><img src="./r/images/logo.png" width="80px" height="45px" /></a>
             </div>
-            <div class="collapse navbar-collapse navbar-ex1-collapse  " id="collapse">
+            <div class="collapse navbar-collapse navbar-ex1-collapse  " style="z-index: 999;" id="collapse">
                 <ul  class="nav navbar-nav col-md-8 active">
                     <s:if test="%{#session.userRol != null}">
                         <li class="active"><a href="./Reserva">RESERVACIONES</a></li>
