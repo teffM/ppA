@@ -41,15 +41,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-left" href="./index"><img src="./r/images/logo.png" width="150px" height="50px" /></a>
+                <a class="navbar-left" href="./index"><img src="./r/images/logo.png" width="80px" height="45px" /></a>
             </div>
-            <div class="collapse navbar-collapse navbar-ex1-collapse  " id="collapse">
+            <div class="collapse navbar-collapse navbar-ex1-collapse  " style="z-index: 999;" id="collapse">
                 <ul  class="nav navbar-nav col-md-8 active">
                     <s:if test="%{#session.userRol != null}">
                         <li class="active"><a href="./Reserva">RESERVACIONES</a></li>
                         <li class="active"><a href="./Cliente">CLIENTES</a></li>
-                        <li class="active"><a href="./Reportes">REPORTES</a></li>
                         <li class="active"><a href="./dUsuario">MIS DETALLES</a></li>
+                    <s:if test="%{#session.userRol == 'administrador' || #session.userRol == 'gerente' }">
+                        <li class="active"><a href="./Reportes">REPORTES</a></li>
                         <s:if test="%{#session.userRol == 'administrador'}">
                             <li class="dropdown navItem active">
                                 <a data-toggle="dropdown">
@@ -67,6 +68,7 @@
                                 </ul>
                             </li>
                         </s:if>
+                     </s:if>
                     </s:if>
                 </ul>
                 <s:if test="%{#session.userRol != null && #session.userRol != null}">

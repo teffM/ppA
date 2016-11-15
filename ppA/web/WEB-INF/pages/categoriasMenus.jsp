@@ -27,7 +27,7 @@
                         <div class="form-group">
                             <s:textfield name="cm.descripcion" key="cm.descripcion" cssClass="form-control required" required="true" />
                         </div>
-                        <s:submit method="guardar" cssClass="btn-info disabled submit" key="btn.guardar" />
+                        <s:submit method="guardar" cssClass="btn btn-default" key="btn.guardar" />
                     </s:form>
                 </fieldset>
             </div>

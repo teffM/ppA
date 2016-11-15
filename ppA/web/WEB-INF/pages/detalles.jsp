@@ -101,9 +101,9 @@
                     <tr>
                         <s:set var="counter" value="%{#counter+1}"/> 
                         <td><s:property value="#counter"/></td>   
-                        
-                        <td><c:out value="${l.menus.menu}"/></td>
                        
+                         <td><a data-toggle="tooltip" title="<c:out value="${l.menus.descripcion}"/>"><c:out value="${l.menus.menu}"/></a></td>
+                      
                         <td><c:out value="${l.cantidad}"/></td>
                          <td data-priority-level="1">$<c:out value="${l.precio}"/></td>
                          <td><c:out value="${l.menus.categoriasMenus.categoriaMenu}"/></td>
@@ -232,14 +232,28 @@
                         <s:select name="dm.menus.categoriasMenus.id" listKey="id" listValue="categoriaMenu" headerKey="" cssClass="select2 required"
                                   headerValue="%{getText('lbl.seleccione')}" list="listCategoriasMenus" key="dm.menu" required="true" />
                         
-                        <s:select name="dm.menus.id" listKey="id" listValue="menu" headerKey="" cssClass="select2 required"
+                        <br>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                               <s:select name="dm.menus.id" listKey="id" listValue="menu" headerKey="" cssClass="select2 required"
                                   headerValue="%{getText('lbl.seleccione')}" list="listMenus" key="dm.platillo" required="true" />
+                               </div>
+                            <div id="platDes" class="panel-body">
+                                 <b>Descripción: </b><br>
+                                 <p></p>
+                            </div>
+                            <div class="panel-footer">
+                                <b>Precio: </b> $<spam id="platPrec"></spam>
+                            </div>   
+                            
+                        </div>
+                        <s:textfield name="dm.precio" key="dm.precio" type="number" cssClass="form-control required" required="true" />
+                        
                         <s:textfield name="dm.cantidad" key="dm.cantidad" type="number" cssClass="form-control required" required="true" />
 
-                        <s:textfield name="dm.precio" key="dm.precio" type="number" cssClass="form-control required" required="true" />
-                        <s:textarea name="dm.comentarios" key="dm.comentarios" cssClass="form-control required" required="true" />
-
-                        <s:submit method="guardarMenu" cssClass="btn-info disabled submit" key="btn.guardar" />
+                        <s:textarea name="dm.comentarios" key="dm.comentarios" cssClass="form-control required" required="true" value="\n\n\n" />
+                        <br>
+                        <s:submit method="guardarMenu" cssClass="btn btn-default" key="btn.guardar" />
                     </s:form>
                 </fieldset>
             </div>
@@ -263,9 +277,10 @@ function cargarPlato(id) {
             url: "/ppA/Menu!datosMenu?id="+id,
             dataType: "JSON",
             success: function (data) {
+              $("#platPrec").text(data.precio.toString());
               $("#menuForm_dm_precio").val(data.precio.toString());
               $("#menuForm_dm_cantidad").val(1);
-              $("#menuForm_dm_comentarios").val(data.descripcion.toString());
+              $("#platDes p").text(data.descripcion.toString());
              $("#loading").css("display", "none");
             },
             error: function (data) {
@@ -285,6 +300,11 @@ function cargarPlato(id) {
 		$("#menuForm_dm_menus_id").append('<option value="'+id+'">'+value+'</option>');
                
 	    });
+           $("#platPrec").text("");
+              $("#menuForm_dm_precio").val("");
+              $("#menuForm_dm_cantidad").val("");
+              $("#platDes p").text("");
+              $("#menuForm_dm_comentarios").val("");
                           $("#loading").css("display", "none");
             },
             error: function (data) {
