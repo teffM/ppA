@@ -3,16 +3,24 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <br/>
-<a id="nuevoMenu" href="#" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
+
+
+<div class="page-header">
+    <h1 style="margin:0">Menús
+        <div class="button-group  pull-right">
+           <a id="nuevoMenu" href="#" class="btn btn-success" data-toggle="modal" data-target="#myModal">
     <span class="glyphicon glyphicon-plus-sign"></span>
-    <b><s:text name="m.btnNuevo" /></b>
-</a><br/><br/>
-<div class="modal fade" id="myModal" role="dialog">
+       <b><s:text name="m.btnNuevo" /></b>
+</a>
+        </div>
+    </h1>
+</div>
+<div class="modal fade" id="myModal" role="dialog" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
                 <fieldset>
-                    <legend><s:text name="m.legend" /></legend>
+                    <legend><s:text name="m.legend" /><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button></legend>
                     <s:form action="Menu">
                         <s:hidden name="m.id" />
                         <div class="form-group">

@@ -105,9 +105,7 @@
 
 
             <h3>Reservas
-                <div class="button-group  pull-right">
-                    <a href="#" data-toggle="modal" class="btn btn-success" data-target="#myModalMenu">Agregar platillo</a>
-                </div>
+               
             </h3>
 
         </div>
