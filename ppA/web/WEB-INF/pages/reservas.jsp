@@ -152,37 +152,6 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="modalPlatillos" role="dialog">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <fieldset>
-                        <legend><s:text name="r.agregarPlatillo" /></legend>
-                        <s:form action="Reserva" class="form-horizontal">
-                            <s:hidden name="idReserva" />
-                            <div>
-                                <select multiple="multiple" class="imagePicker">
-                                    <optgroup label="Cats">
-                                        <option data-img-src="http://placekitten.com/220/200" value="1">Cute Kitten 1</option>
-                                        <option data-img-src="http://placekitten.com/180/200" value="2">Cute Kitten 2</option>
-                                        <option data-img-src="http://placekitten.com/130/200" value="3">Cute Kitten 3</option>
-                                        <option data-img-src="http://placekitten.com/270/200" value="4">Cute Kitten 4</option>
-                                    </optgroup>
-                                    <optgroup label="Animals">
-                                        <option data-img-src="http://lorempixel.com/220/200/animals/" value="5">Animal 1</option>
-                                        <option data-img-src="http://lorempixel.com/180/200/animals/" value="6">Animal 2</option>
-                                        <option data-img-src="http://lorempixel.com/130/200/animals/" value="7">Animal 3</option>
-                                        <option data-img-src="http://lorempixel.com/270/200/animals/" title="sfdsf" value="8">Animal 4</option>
-                                    </optgroup>
-                                </select>
-                            </div>
-                            <s:submit method="list" cssClass="btn submit" ondblclick="" key="Buscar" />
-                        </s:form>
-                    </fieldset>
-                </div>
-            </div>
-        </div>
-    </div>
     <div id="container">
         <table id="dataTable" class="table table-striped table-bordered table-hover dt-responsive nowrap">
             <thead>
@@ -226,9 +195,6 @@
                                         data-toggle="modal" data-target="#confirm-delete" ${today lt fechaReserva ? "" : "disabled"}>
                                     <span class="glyphicon glyphicon-trash"></span>
                                 </button>
-                            </a>
-                            <a href="#" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modalPlatillos" data-id-reserva="${l.id}">
-                                <span class="glyphicon glyphicon-cutlery" data-toggle="tooltip" title="Platillos"></span>
                             </a>
                             <a class="btn btn-default btn-xs" href="./Detalles!obtener?id=${l.id}" data-toggle="tooltip" title="Detalles">
                                 <span class="glyphicon glyphicon-eye-open"></span>

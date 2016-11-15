@@ -25,7 +25,6 @@
         <link href="./r/toastr/css/toastr.css" rel="stylesheet" type="text/css"/>
         <script src="./r/toastr/js/toastr.js" type="text/javascript"></script>
         <!--customs-->
-        <link href="./r/image-picker/image-picker.css" rel="stylesheet" type="text/css"/>
         <link href="./r/css/loading.css" rel="stylesheet" type="text/css"/>
         <link href="./r/css/style.css" rel="stylesheet" type="text/css"/>
         <script src="./r/js/functions.js" type="text/javascript"></script>
@@ -137,7 +136,6 @@
     <script src="./r/js/jquery-validate.bootstrap-tooltip.min.js" type="text/javascript"></script>
     <script src="./r/js/messages_es.js" type="text/javascript"></script>
     <script src="./r/js/jquery.maskedinput.min.js" type="text/javascript"></script>
-    <script src="./r/image-picker/image-picker.min.js" type="text/javascript"></script>
     <!--particles-->
     <!--    <script src="./r/js/particles.min.js" type="text/javascript"></script>
         <script src="./r/js/particles-conf.js" type="text/javascript"></script>-->
@@ -153,7 +151,6 @@
         $('.form-group').find('.input-group-addon').on('click', function(){
         $(this).parent().find('select').trigger('focus');
         });
-        $(".imagePicker").imagepicker({ show_label : true });
         if ($('#toast-container').length == 0) {
         <s:if test="%{msg != null && msg != ''}">
             msg("success", "<s:property escape="false" value="msg" />");
