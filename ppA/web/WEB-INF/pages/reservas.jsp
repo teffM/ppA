@@ -178,7 +178,7 @@
                     <tr obj="${l.id}, ${l.clientes.id},
                         ${fechaReserva}, ${fechaCreacion}, ${l.numPersonas},
                         ${l.sucursales.id}, ${l.estados.id}, ${l.comentarios}" ${today lt fechaReserva ? "ondblclick='javascript:edit(this);'" : ""}>
-                        <td><c:out value="${l.clientes.nombre}"/> <c:out value="${l.clientes.apellido}"/></td>
+                        <td><c:out value="${l.clientes.list}"/></td>
                         <td><c:out value="${fechaReserva}"/></td>
                         <td style="background-color: <c:out value="${l.estados.color}"/>;"><c:out value="${l.estados.estado}"/></td>
                         <td><c:out value="${fechaCreacion}"/></td>
