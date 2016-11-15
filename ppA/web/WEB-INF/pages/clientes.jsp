@@ -79,7 +79,7 @@
                     <th><s:text name="c.nit" /></th>
                     <th><s:text name="c.comprobanteIva" /></th>
                     <th><s:text name="c.descripcion" /></th>
-                    <th><s:text name="q.acciones" /></th>
+                    <th data-priority="1"><s:text name="q.acciones" /></th>
                 </tr>
             </thead> 
             <tbody>
@@ -136,7 +136,7 @@
         $('#myModal').modal({
             show: 'false'
         });
-    }
+    } 
     $("#dataTable > tbody > tr").dblclick(function () {
         edit($(this));
     });

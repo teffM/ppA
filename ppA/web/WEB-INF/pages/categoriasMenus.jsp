@@ -40,7 +40,7 @@
             <tr>
                 <th><s:text name="cm.categoriaMenu" /></th>
                 <th><s:text name="cm.descripcion" /></th>
-                <th><s:text name="q.acciones" /></th>
+                <th data-priority="1"><s:text name="q.acciones" /></th>
             </tr>
         </thead>
         <tbody>
