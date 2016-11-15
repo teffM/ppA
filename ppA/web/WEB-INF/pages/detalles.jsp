@@ -227,7 +227,7 @@
                 <fieldset>
                     <legend><s:text name="dm.legend" /><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button></legend>
                     <s:form id="menuForm" action="Detalles">
-                        
+                        <div id="loading" class="modal modal-fullscreen" style="display: none; background-color: rgba(0,0,0,0.7);"><center><img style="margin-top: 20%;" alt="IMAGEN" src="./r/images/loading.gif"/></center></div>
                         <s:hidden name="dm.reservaciones.id" value="%{r.id}"/>
                         <s:select name="dm.menus.categoriasMenus.id" listKey="id" listValue="categoriaMenu" headerKey="" cssClass="select2 required"
                                   headerValue="%{getText('lbl.seleccione')}" list="listCategoriasMenus" key="dm.menu" required="true" />
@@ -249,9 +249,12 @@
 
 <script>          
         $("#menuForm_dm_menus_id").on('change', function () {
+        $("#loading").css("display", "block");
         cargarPlato($("#menuForm_dm_menus_id").val());
+               
     });
        $("#menuForm_dm_menus_categoriasMenus_id").on('change', function () {
+           $("#loading").css("display", "block");
         filtrarMenu($("#menuForm_dm_menus_categoriasMenus_id").val());
     });
 function cargarPlato(id) {
@@ -263,7 +266,7 @@ function cargarPlato(id) {
               $("#menuForm_dm_precio").val(data.precio.toString());
               $("#menuForm_dm_cantidad").val(1);
               $("#menuForm_dm_comentarios").val(data.descripcion.toString());
-             
+             $("#loading").css("display", "none");
             },
             error: function (data) {
         alert("request.responseText");
@@ -282,7 +285,7 @@ function cargarPlato(id) {
 		$("#menuForm_dm_menus_id").append('<option value="'+id+'">'+value+'</option>');
                
 	    });
-             
+                          $("#loading").css("display", "none");
             },
             error: function (data) {
         alert("request.responseText");
