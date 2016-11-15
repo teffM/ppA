@@ -136,9 +136,23 @@ public class ReservaAction extends BaseAction {
             setListClientes(getList(Clientes.class));
             setListMenus(getList(Menus.class));
             setListCategoriasMenus(getList(CategoriasMenus.class));
-            totAbono = (BigDecimal) getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
-            totPlatillo = new BigDecimal((double) getDb().createQuery("select sum(cantidad*precio) from DetallesMenus where reservaciones.id = " + r.getId()).uniqueResult(), MathContext.DECIMAL64);
-
+            Object aux = getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
+            if (aux == null) {
+                aux = 0.0;
+            }else{
+                aux = Double.parseDouble(aux.toString());
+            }
+            
+            totAbono= new BigDecimal((double) aux, MathContext.DECIMAL64);
+            aux = getDb().createQuery("select sum(cantidad*precio) from DetallesMenus where reservaciones.id = " + r.getId()).uniqueResult();
+            if (aux == null) {
+                aux = 0.0;
+            }else{
+                aux = Double.parseDouble(aux.toString());
+            }
+            
+            totPlatillo= new BigDecimal((double) aux, MathContext.DECIMAL64); 
+           
             if (r.getId() == 0) {
                 return "error";
             }
@@ -176,10 +190,23 @@ public class ReservaAction extends BaseAction {
         setId(getA().getReservaciones().getId());
         try {
             r = getReserva();
-            totAbono = (BigDecimal) getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
-            totPlatillo = new BigDecimal((double) getDb().createQuery("select sum(cantidad*precio) from DetallesMenus where reservaciones.id = " + r.getId()).uniqueResult(), MathContext.DECIMAL64);
-
-            if (totAbono.doubleValue() + getA().getAbono().doubleValue() > totPlatillo.doubleValue()) {
+            Object aux = getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
+             if (aux == null) {
+                aux = 0.0;
+            }else{
+                aux = Double.parseDouble(aux.toString());
+            }
+            totAbono= new BigDecimal((double) aux, MathContext.DECIMAL64);
+            
+            aux = getDb().createQuery("select sum(cantidad*precio) from DetallesMenus where reservaciones.id = " + r.getId()).uniqueResult();
+            if (aux == null) {
+                aux = 0.0;
+            }else{
+                aux = Double.parseDouble(aux.toString());
+            }
+            totPlatillo= new BigDecimal((double) aux, MathContext.DECIMAL64);
+           
+            if(totAbono.doubleValue() + getA().getAbono().doubleValue() > totPlatillo.doubleValue()){
                 setMsg(getText("No se puede guardar"));
             } else {
                 getA().setUsuarios(new Usuarios());
@@ -191,8 +218,15 @@ public class ReservaAction extends BaseAction {
             setListClientes(getList(Clientes.class));
             setListMenus(getList(Menus.class));
             setListCategoriasMenus(getList(CategoriasMenus.class));
-            totAbono = (BigDecimal) getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
-
+            
+            aux = getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
+             if (aux == null) {
+                aux = 0.0;
+            }else{
+                aux = Double.parseDouble(aux.toString());
+            }
+            totAbono= new BigDecimal((double) aux, MathContext.DECIMAL64);
+            
         } catch (Exception e) {
             return e(e);
         }
@@ -222,7 +256,7 @@ public class ReservaAction extends BaseAction {
         } catch (Exception e) {
             return e(e);
         }
-        return list();
+        return listNew();
     }
 
     public String eliminar() throws Exception {
@@ -233,7 +267,7 @@ public class ReservaAction extends BaseAction {
             return e(e);
         }
         setId(0);
-        return list();
+        return listNew();
     }
 
     public String eliminarMenu() throws Exception {

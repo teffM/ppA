@@ -21,6 +21,8 @@ public class LoginAction extends BaseAction {
 		if (getUsuario().equals(u.getUsuario()) && getClave().equals(u.getClave())) {
 		    getSession().put("userId", u.getId());
 		    getSession().put("userName", u.getUsuario());
+		    getSession().put("userNombre", u.getNombre());
+		    getSession().put("userApellidos", u.getApellido());
 		    getSession().put("userRol", u.getRoles().getRol());
 		    setErrorMsg(null);
 		    return SUCCESS;

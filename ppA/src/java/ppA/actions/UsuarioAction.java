@@ -9,8 +9,8 @@ public class UsuarioAction extends BaseAction {
 
     private Usuarios nu;
     private List<Usuarios> listUsuarios;
-    private List<Roles> listRoles;
-
+    private List<Roles> listRoles;  
+    private String idCliente;
     @Override
     public String execute() throws Exception {
 	return list();
@@ -27,9 +27,26 @@ public class UsuarioAction extends BaseAction {
 	}
 	return SUCCESS;
     }
+    public String modificar(){
+    try {
+        Usuarios auxUsuarios;
+        String id=getIdCliente();
+        open();
+        auxUsuarios = (Usuarios) getDb().createQuery("select usu from Usuarios usu where id = " + id).uniqueResult();
+	   auxUsuarios.setClave(nu.getClave());
+           save(auxUsuarios);
+	    setMsg(getText("msg.guardadoExito"));
+	} catch (Exception e) {   
+             return e(e);
+	}
+            return "dUsuarios";
+    }
 
     public String guardar() throws Exception {
 	try {
+            String nueva_contraseña;
+            nueva_contraseña=crearContraseña(getNu());
+            getNu().setClave(nueva_contraseña);
 	    save(getNu());
 	    setMsg(getText("msg.guardadoExito"));
 	} catch (Exception e) {
@@ -69,6 +86,17 @@ public class UsuarioAction extends BaseAction {
 	return listUsuarios;
     }
 
+    public String crearContraseña(Usuarios usu){
+    String contraseña="";
+    char primera;
+    char segunda;
+    primera=usu.getNombre().charAt(0);
+    segunda=usu.getApellido().charAt(0);
+    contraseña=String.valueOf(primera)+String.valueOf(segunda)+usu.getUsuario();
+    
+    
+    return contraseña;
+    }
     /**
      * @param listUsuarios the listUsuarios to set
      */
@@ -89,4 +117,13 @@ public class UsuarioAction extends BaseAction {
     public void setNu(Usuarios nu) {
 	this.nu = nu;
     }
+
+    public String getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(String idCliente) {
+        this.idCliente = idCliente;
+    }
+    
 }

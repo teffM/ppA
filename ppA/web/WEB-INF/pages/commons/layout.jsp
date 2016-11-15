@@ -50,6 +50,7 @@
                         <li class="navItem"><a href="./Reserva">RESERVACIONES</a></li>
                         <li class="navItem"><a href="./Cliente">CLIENTES</a></li>
                         <li><a href="./Reportes">REPORTES</a></li>
+                        <li><a href="./dUsuario">MIS DETALLES</a></li>
                         <s:if test="%{#session.userRol == 'administrador'}">
                             <li class="dropdown navItem">
                                 <a data-toggle="dropdown">
