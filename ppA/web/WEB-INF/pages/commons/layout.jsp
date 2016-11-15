@@ -29,7 +29,7 @@
         <link href="./r/css/loading.css" rel="stylesheet" type="text/css"/>
         <link href="./r/css/style.css" rel="stylesheet" type="text/css"/>
         <script src="./r/js/functions.js" type="text/javascript"></script>
-        <sx:head />
+
     </head>
     <body>
         <div id="particles-js"></div>

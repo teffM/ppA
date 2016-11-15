@@ -23,6 +23,7 @@
                     <legend><s:text name="m.legend" /><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button></legend>
                     <s:form action="Menu">
                         <s:hidden name="m.id" />
+                        <s:hidden name="m.fileUrl" value=""/>
                         <div class="form-group">
                             <s:select name="m.categoriasMenus.id" listKey="id" listValue="categoriaMenu" headerKey="" cssClass="select2 required"
                                       headerValue="%{getText('lbl.seleccione')}" list="listCategorias" key="m.categoriaMenu" required="true" />
@@ -34,7 +35,7 @@
                             <s:textfield name="m.precio" key="m.precio" cssClass="form-control required" required="true" />
                         </div>
                         <div class="form-group">
-                            <s:textfield name="m.descripcion" key="m.descripcion" cssClass="form-control required" required="true" />
+                            <s:textarea name="m.descripcion" key="m.descripcion" cssClass="form-control required" required="true" />
                         </div>
                         <s:submit method="guardar" cssClass="btn-info disabled submit" key="btn.guardar" />
                     </s:form>

@@ -1,9 +1,26 @@
 package ppA.actions;
 
 import static com.opensymphony.xwork2.Action.SUCCESS;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
+import java.sql.SQLException;
 import java.util.List;
+import javax.json.Json;
+import javax.json.JsonObject;
+import org.json.simple.JSONObject;
 import ppA.entity.CategoriasMenus;
 import ppA.entity.Menus;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonReader;
+import javax.json.JsonWriter;
+import org.hibernate.Query;
 
 /**
  *
@@ -96,4 +113,57 @@ public class MenuAction extends BaseAction {
     public void setListCategorias(List<CategoriaMenuAction> listCategorias) {
 	this.listCategorias = listCategorias;
     }
+    
+    public InputStream getInputStream() {
+        return inputStream;
+    }
+
+    /**
+     * @param inputStream the inputStream to set
+     */
+    public void setInputStream(InputStream inputStream) {
+        this.inputStream = inputStream;
+    }
+    
+    private InputStream inputStream;
+
+    public String datosMenu() {
+         try {
+        open();
+       
+        m = (Menus) getDb().load(Menus.class, getId());
+        JSONObject obj = new JSONObject();
+        obj.put("nombre", m.getMenu());
+        obj.put("precio", m.getPrecio());
+        obj.put("descripcion", m.getDescripcion());
+        String jason = obj.toJSONString();
+        
+        setInputStream(new ByteArrayInputStream(jason.getBytes(StandardCharsets.UTF_8)));
+        } catch (Exception e) {
+            return "ajax";
+        }
+        return "ajax";
+    }
+    
+    public String filtrarMenus() {
+         try {
+        open();
+        List<Menus> lista = getDb().createQuery("from Menus where categoriasMenus.id = " + getId()).list();
+        JSONObject obj = new JSONObject();
+        for(Menus auxL : lista) {
+            obj.put(auxL.getId(), auxL.getMenu());
+        }
+
+        String jason = obj.toJSONString();
+        
+        setInputStream(new ByteArrayInputStream(jason.getBytes(StandardCharsets.UTF_8)));
+        } catch (Exception e) {
+            return "ajax";
+        }
+        return "ajax";
+        
+        
+    }    
+   
+
 }

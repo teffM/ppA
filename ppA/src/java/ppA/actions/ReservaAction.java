@@ -448,10 +448,10 @@ public class ReservaAction extends BaseAction {
 
     private InputStream inputStream;
 
-    public String sayHello() {
+    public String sayHello(String saludo) {
         try {
             setInputStream(new ByteArrayInputStream(
-                    "Hello!".getBytes(StandardCharsets.UTF_8)));
+                    saludo.getBytes(StandardCharsets.UTF_8)));
         } catch (Exception e) {
         }
         return "ajax";

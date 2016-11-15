@@ -85,11 +85,13 @@
             <thead>
                 <tr>
                      <th>#</th>
-                    <th><s:text name="dm.menu" /></th>
-                    <th>Platillo</th>
-                    <th>Cantidad</th>
-                    <th>Comentarios</th>
+                    
+                     
+                     <th>Platillo</th>
                      <th>Precio individual</th>
+                     <th>Cantidad</th>
+                    <th><s:text name="dm.menu" /></th>
+                     <th>Comentarios</th>
                     <th data-priority="1"><s:text name="q.acciones" /></th>
                 </tr>
             </thead>
@@ -99,12 +101,14 @@
                     <tr>
                         <s:set var="counter" value="%{#counter+1}"/> 
                         <td><s:property value="#counter"/></td>   
-                        <td><c:out value="${l.menus.categoriasMenus.categoriaMenu}"/></td>
+                        
                         <td><c:out value="${l.menus.menu}"/></td>
                        
                         <td><c:out value="${l.cantidad}"/></td>
+                         <td data-priority-level="1">$<c:out value="${l.precio}"/></td>
+                         <td><c:out value="${l.menus.categoriasMenus.categoriaMenu}"/></td>
                         <td><c:out value="${l.comentarios}"/></td>
-                         <td>$<c:out value="${l.precio}"/></td>
+                        
                         <td>
 
                             <button class="btn btn-default btn-xs" data-href="./Detalles!eliminarMenu?id=${r.id}&idRegistro=${l.id}"
@@ -119,9 +123,10 @@
             </tbody>
             <tfoot>
                  <tr> 
-                    <td colspan="4"></td>
+                    <td colspan="2"></td>
                     <td colspan="1"><b>Total</b></td>
-                    <td colspan="2">$${totPlatillo}</td>
+                    <td>$${totPlatillo}</td>
+                      <td colspan="3"></td>
                 </tr>
             </tfoot>
         </table>
@@ -221,15 +226,18 @@
             <div class="modal-body">
                 <fieldset>
                     <legend><s:text name="dm.legend" /><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button></legend>
-                    <s:form id="abonoForm" action="Detalles">
+                    <s:form id="menuForm" action="Detalles">
                         
                         <s:hidden name="dm.reservaciones.id" value="%{r.id}"/>
+                        <s:select name="dm.menus.categoriasMenus.id" listKey="id" listValue="categoriaMenu" headerKey="" cssClass="select2 required"
+                                  headerValue="%{getText('lbl.seleccione')}" list="listCategoriasMenus" key="dm.menu" required="true" />
+                        
                         <s:select name="dm.menus.id" listKey="id" listValue="menu" headerKey="" cssClass="select2 required"
-                                  headerValue="%{getText('lbl.seleccione')}" list="listMenus" key="dm.menu" required="true" />
+                                  headerValue="%{getText('lbl.seleccione')}" list="listMenus" key="dm.platillo" required="true" />
                         <s:textfield name="dm.cantidad" key="dm.cantidad" type="number" cssClass="form-control required" required="true" />
 
                         <s:textfield name="dm.precio" key="dm.precio" type="number" cssClass="form-control required" required="true" />
-                        <s:textfield name="dm.comentarios" key="dm.comentarios" cssClass="form-control required" required="true" />
+                        <s:textarea name="dm.comentarios" key="dm.comentarios" cssClass="form-control required" required="true" />
 
                         <s:submit method="guardarMenu" cssClass="btn-info disabled submit" key="btn.guardar" />
                     </s:form>
@@ -239,6 +247,46 @@
     </div>
 </div>                    
 
-                    
-
-                        
+<script>          
+        $("#menuForm_dm_menus_id").on('change', function () {
+        cargarPlato($("#menuForm_dm_menus_id").val());
+    });
+       $("#menuForm_dm_menus_categoriasMenus_id").on('change', function () {
+        filtrarMenu($("#menuForm_dm_menus_categoriasMenus_id").val());
+    });
+function cargarPlato(id) {
+        $.ajax({
+            type: "GET",
+            url: "/ppA/Menu!datosMenu?id="+id,
+            dataType: "JSON",
+            success: function (data) {
+              $("#menuForm_dm_precio").val(data.precio.toString());
+              $("#menuForm_dm_cantidad").val(1);
+              $("#menuForm_dm_comentarios").val(data.descripcion.toString());
+             
+            },
+            error: function (data) {
+        alert("request.responseText");
+    }
+        });
+    }
+    function filtrarMenu(id) {
+        $.ajax({
+            type: "GET",
+            url: "/ppA/Menu!filtrarMenus?id="+id,
+            dataType: "JSON",
+            success: function (data) {
+                $("#menuForm_dm_menus_id").empty();
+                $("#menuForm_dm_menus_id").append('<option value=0>--Seleccione una opción--</option>');
+               $.each(data, function(id,value){
+		$("#menuForm_dm_menus_id").append('<option value="'+id+'">'+value+'</option>');
+               
+	    });
+             
+            },
+            error: function (data) {
+        alert("request.responseText");
+    }
+        });
+    }
+</script>                      
