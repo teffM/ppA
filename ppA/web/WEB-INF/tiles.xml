@@ -53,7 +53,7 @@
       <definition name="reportes" extends="default">
         <put-attribute name="body" value="/WEB-INF/pages/reportes.jsp" />
     </definition>
-      <definition name="reestablecer" extends="default">
-        <put-attribute name="body" value="/WEB-INF/pages/reestablecerContraseña.jsp" />
+      <definition name="dUsuarios" extends="default">
+        <put-attribute name="body" value="/WEB-INF/pages/detallesUsuario.jsp" />
     </definition>
 </tiles-definitions>
