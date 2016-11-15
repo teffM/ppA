@@ -1,7 +1,10 @@
 package ppA.actions;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.math.BigDecimal;
 import java.math.MathContext;
+import java.nio.charset.StandardCharsets;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -139,20 +142,20 @@ public class ReservaAction extends BaseAction {
             Object aux = getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
             if (aux == null) {
                 aux = 0.0;
-            }else{
+            } else {
                 aux = Double.parseDouble(aux.toString());
             }
-            
-            totAbono= new BigDecimal((double) aux, MathContext.DECIMAL64);
+
+            totAbono = new BigDecimal((double) aux, MathContext.DECIMAL64);
             aux = getDb().createQuery("select sum(cantidad*precio) from DetallesMenus where reservaciones.id = " + r.getId()).uniqueResult();
             if (aux == null) {
                 aux = 0.0;
-            }else{
+            } else {
                 aux = Double.parseDouble(aux.toString());
             }
-            
-            totPlatillo= new BigDecimal((double) aux, MathContext.DECIMAL64); 
-           
+
+            totPlatillo = new BigDecimal((double) aux, MathContext.DECIMAL64);
+
             if (r.getId() == 0) {
                 return "error";
             }
@@ -191,22 +194,22 @@ public class ReservaAction extends BaseAction {
         try {
             r = getReserva();
             Object aux = getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
-             if (aux == null) {
+            if (aux == null) {
                 aux = 0.0;
-            }else{
+            } else {
                 aux = Double.parseDouble(aux.toString());
             }
-            totAbono= new BigDecimal((double) aux, MathContext.DECIMAL64);
-            
+            totAbono = new BigDecimal((double) aux, MathContext.DECIMAL64);
+
             aux = getDb().createQuery("select sum(cantidad*precio) from DetallesMenus where reservaciones.id = " + r.getId()).uniqueResult();
             if (aux == null) {
                 aux = 0.0;
-            }else{
+            } else {
                 aux = Double.parseDouble(aux.toString());
             }
-            totPlatillo= new BigDecimal((double) aux, MathContext.DECIMAL64);
-           
-            if(totAbono.doubleValue() + getA().getAbono().doubleValue() > totPlatillo.doubleValue()){
+            totPlatillo = new BigDecimal((double) aux, MathContext.DECIMAL64);
+
+            if (totAbono.doubleValue() + getA().getAbono().doubleValue() > totPlatillo.doubleValue()) {
                 setMsg(getText("No se puede guardar"));
             } else {
                 getA().setUsuarios(new Usuarios());
@@ -218,15 +221,15 @@ public class ReservaAction extends BaseAction {
             setListClientes(getList(Clientes.class));
             setListMenus(getList(Menus.class));
             setListCategoriasMenus(getList(CategoriasMenus.class));
-            
+
             aux = getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
-             if (aux == null) {
+            if (aux == null) {
                 aux = 0.0;
-            }else{
+            } else {
                 aux = Double.parseDouble(aux.toString());
             }
-            totAbono= new BigDecimal((double) aux, MathContext.DECIMAL64);
-            
+            totAbono = new BigDecimal((double) aux, MathContext.DECIMAL64);
+
         } catch (Exception e) {
             return e(e);
         }
@@ -370,6 +373,17 @@ public class ReservaAction extends BaseAction {
         this.listClientes = list;
     }
 
+    private InputStream inputStream;
+
+    public String sayHello() {
+        try {
+            setInputStream(new ByteArrayInputStream(
+                    "Hello!".getBytes(StandardCharsets.UTF_8)));
+        } catch (Exception e) {
+        }
+        return "ajax";
+    }
+
     /**
      * @return the listEstados
      */
@@ -502,6 +516,20 @@ public class ReservaAction extends BaseAction {
 
     public void setfMayor(Date fMayor) {
         this.fMayor = fMayor;
+    }
+
+    /**
+     * @return the inputStream
+     */
+    public InputStream getInputStream() {
+        return inputStream;
+    }
+
+    /**
+     * @param inputStream the inputStream to set
+     */
+    public void setInputStream(InputStream inputStream) {
+        this.inputStream = inputStream;
     }
 
 }

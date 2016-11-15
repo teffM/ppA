@@ -301,4 +301,17 @@
         $('#formCliente div.tooltip').remove();
         $('#formCliente').fadeIn(500);
     }
+    
+    function sayHello() {
+        $.ajax({
+            type: "POST",
+            url: "/ppA/Reserva!sayHello",
+            dataType: "text",
+            success: function (data, textStatus, jqXHR) {
+                alert(data);
+            },
+            error: function (data) {
+            }
+        });
+    }
 </script>

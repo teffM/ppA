@@ -44,6 +44,9 @@
         </action>
         <action name="Reserva" class="ppA.actions.ReservaAction">
             <result name="success" type="tiles">reservas</result>
+            <result name="ajax" type="stream">
+                <param name="contentType">text/plain</param>
+            </result>
         </action>
         
         <action name="Detalles" class="ppA.actions.ReservaAction">
