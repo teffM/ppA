@@ -48,8 +48,9 @@
                     <s:if test="%{#session.userRol != null}">
                         <li class="active"><a href="./Reserva">RESERVACIONES</a></li>
                         <li class="active"><a href="./Cliente">CLIENTES</a></li>
-                        <li class="active"><a href="./Reportes">REPORTES</a></li>
                         <li class="active"><a href="./dUsuario">MIS DETALLES</a></li>
+                    <s:if test="%{#session.userRol == 'administrador' || #session.userRol == 'gerente' }">
+                        <li class="active"><a href="./Reportes">REPORTES</a></li>
                         <s:if test="%{#session.userRol == 'administrador'}">
                             <li class="dropdown navItem active">
                                 <a data-toggle="dropdown">
@@ -67,6 +68,7 @@
                                 </ul>
                             </li>
                         </s:if>
+                     </s:if>
                     </s:if>
                 </ul>
                 <s:if test="%{#session.userRol != null && #session.userRol != null}">

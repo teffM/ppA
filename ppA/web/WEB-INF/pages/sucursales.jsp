@@ -33,7 +33,7 @@
                         <div class="form-group">
                             <s:textfield name="s.telefono" key="s.telefono" cssClass="form-control required" required="true" />
                         </div>
-                        <s:submit method="guardar" cssClass="btn-info disabled submit" key="btn.guardar" />
+                        <s:submit method="guardar" cssClass="btn btn-default" key="btn.guardar" />
                     </s:form>
                 </fieldset>
             </div>

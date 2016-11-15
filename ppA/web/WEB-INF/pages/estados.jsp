@@ -2,10 +2,12 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <br/>
-<a id="estado" href="#" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
+ <div class="button-group  pull-right">
+           <a id="estado" href="#" class="btn btn-success" data-toggle="modal" data-target="#myModal">
     <span class="glyphicon glyphicon-plus-sign"></span>
-    <b><s:text name="e.btnNuevo" /></b>
+        <b><s:text name="e.btnNuevo" /></b>
 </a>
+        </div>
 <br/><br/>
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
@@ -19,7 +21,7 @@
                         <s:textfield name="e.color" key="e.color" cssClass="form-control colorpicker required" required="true" />
                         <s:textfield name="e.descripcion" key="e.descripcion" cssClass="form-control required" required="true" />
 
-                        <s:submit method="guardar" cssClass="btn-info disabled submit" key="btn.guardar" />
+                        <s:submit method="guardar" cssClass="btn btn-default" key="btn.guardar" />
                     </s:form>
                 </fieldset>
             </div>
