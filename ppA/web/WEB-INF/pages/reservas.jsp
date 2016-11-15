@@ -35,7 +35,7 @@
 
                             <s:select id="criEst" name="id" listKey="id" listValue="estado" headerKey="" cssClass="select2 required input"
                                       headerValue="Cualquiera" list="listEstados" key="r.estado" required="true"/>
-                            <s:select id="criCli" name="cliId" listKey="id" listValue="%{nombre + ' ' +  apellido}" headerKey=""
+                            <s:select id="criCli" name="cliId" listKey="id" listValue="list" headerKey=""
                                       cssClass="select2 required" headerValue="%{getText('lbl.seleccione')}"
                                       list="listClientes" key="r.cliente" required="true" />
                             <s:select id="criSuc" name="sucId" listKey="id" listValue="sucursal" headerKey="" cssClass="select2 required"
@@ -65,7 +65,7 @@
                                             <s:hidden name="r.id" />
                                             <div class="row form-group">
                                                 <div class="col-md-10">
-                                                    <s:select name="r.clientes.id" listKey="id" listValue="%{nombre + ' ' +  apellido}" headerKey=""
+                                                    <s:select name="r.clientes.id" listKey="id" listValue="list" headerKey=""
                                                               cssClass="select2 required" headerValue="%{getText('lbl.seleccione')}"
                                                               list="listClientes" key="r.cliente" required="true" />
                                                 </div>

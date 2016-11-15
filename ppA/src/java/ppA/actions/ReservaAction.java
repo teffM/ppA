@@ -5,7 +5,7 @@ import java.math.MathContext;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -47,7 +47,7 @@ public class ReservaAction extends BaseAction {
     private String fMayorString;
     private int cliId;
     private int numPersonas;
-    
+
     @Override
     public String execute() throws Exception {
         return listNew();
@@ -56,33 +56,31 @@ public class ReservaAction extends BaseAction {
     public String list() {
         try {
             open();
-            String consulta  = "from Reservaciones where fechaReservacion >= :f1 and fechaReservacion <= :f2";
-            
+            String consulta = "from Reservaciones where fechaReservacion >= :f1 and fechaReservacion <= :f2";
+
             if (cliId != 0) {
                 consulta += " and clientes.id = " + cliId;
             }
-            
+
             if (sucId != 0) {
                 consulta += " and sucursales.id = " + getSucId();
             }
-            
+
             if (numPersonas != 0) {
                 consulta += " and numPersonas = " + numPersonas;
             }
-               
+
             if (getId() != 0) {
                 consulta += " and estados.id = " + getId();
-            } 
-         
-            
-            consulta+=" order by fechaReservacion";
-            
+            }
+
+            consulta += " order by fechaReservacion";
+
             Query query = getDb().createQuery(consulta);
             query.setParameter("f1", fMenor);
             query.setParameter("f2", fMayor);
-           
-            
-            setListReservas( query.list());
+
+            setListReservas(query.list());
             setListSucursales(getList(Sucursales.class));
             setListEstados(getList(Estados.class));
             setListClientes(getList(Clientes.class));
@@ -94,13 +92,13 @@ public class ReservaAction extends BaseAction {
         return SUCCESS;
     }
 
-        public String listNew() {
+    public String listNew() {
         try {
             setId(0);
-            numPersonas=0;
-            sucId=0;
-            cliId=0;
-            
+            numPersonas = 0;
+            sucId = 0;
+            cliId = 0;
+
             setListReservas(getReserva("from Reservaciones order by fechaReservacion "));
             setListSucursales(getList(Sucursales.class));
             setListEstados(getList(Estados.class));
@@ -113,64 +111,61 @@ public class ReservaAction extends BaseAction {
         return SUCCESS;
     }
 
-    public String cliente(){
-        
-        try{
+    public String cliente() {
+
+        try {
             open();
             cli = (Clientes) getDb().createQuery("select cli from Clientes cli where id = " + getId()).uniqueResult();
-             if (cli != null) {
+            if (cli != null) {
                 return "detalles";
-            }else{
-                 return "error";
+            } else {
+                return "error";
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             setMsg(e.getMessage());
             return "detalles";
         }
-        
-        
+
     }
-        
+
     public String obtener() {
         try {
-            
+
             r = getReserva();
-            
 
             setListClientes(getList(Clientes.class));
             setListMenus(getList(Menus.class));
             setListCategoriasMenus(getList(CategoriasMenus.class));
-            totAbono= (BigDecimal) getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
-            totPlatillo= new BigDecimal((double) getDb().createQuery("select sum(cantidad*precio) from DetallesMenus where reservaciones.id = " + r.getId()).uniqueResult(), MathContext.DECIMAL64);
-           
+            totAbono = (BigDecimal) getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
+            totPlatillo = new BigDecimal((double) getDb().createQuery("select sum(cantidad*precio) from DetallesMenus where reservaciones.id = " + r.getId()).uniqueResult(), MathContext.DECIMAL64);
+
             if (r.getId() == 0) {
                 return "error";
             }
         } catch (Exception e) {
-             return SUCCESS;
+            return SUCCESS;
         }
         return SUCCESS;
     }
 
     public String guardarMenu() {
         setId(getDm().getReservaciones().getId());
-        
+
         try {
             r = getReserva();
             if (r.getEstados().getId() != 1) {//Cuando el estado no sea registrado
                 setMsg(getText("No es posible agregar más platillos"));
-            }
-            else{
+            } else {
                 save(getDm());
                 setMsg(getText("msg.guardadoExito"));
             }
-            
+
             setListClientes(getList(Clientes.class));
             setListMenus(getList(Menus.class));
             setListCategoriasMenus(getList(CategoriasMenus.class));
-             totAbono= (BigDecimal) getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
-            totPlatillo= new BigDecimal((double) getDb().createQuery("select sum(cantidad*precio) from DetallesMenus where reservaciones.id = " + r.getId()).uniqueResult(), MathContext.DECIMAL64);
-           
+            totAbono = (BigDecimal) getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
+            totPlatillo = new BigDecimal((double) getDb().createQuery("select sum(cantidad*precio) from DetallesMenus where reservaciones.id = " + r.getId()).uniqueResult(), MathContext.DECIMAL64);
+
         } catch (Exception e) {
 
         }
@@ -181,25 +176,23 @@ public class ReservaAction extends BaseAction {
         setId(getA().getReservaciones().getId());
         try {
             r = getReserva();
-            totAbono= (BigDecimal) getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
-            totPlatillo= new BigDecimal((double) getDb().createQuery("select sum(cantidad*precio) from DetallesMenus where reservaciones.id = " + r.getId()).uniqueResult(), MathContext.DECIMAL64);
-           
-            if(totAbono.doubleValue() + getA().getAbono().doubleValue() > totPlatillo.doubleValue()){
+            totAbono = (BigDecimal) getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
+            totPlatillo = new BigDecimal((double) getDb().createQuery("select sum(cantidad*precio) from DetallesMenus where reservaciones.id = " + r.getId()).uniqueResult(), MathContext.DECIMAL64);
+
+            if (totAbono.doubleValue() + getA().getAbono().doubleValue() > totPlatillo.doubleValue()) {
                 setMsg(getText("No se puede guardar"));
-            }else{
-                 getA().setUsuarios(new Usuarios());
+            } else {
+                getA().setUsuarios(new Usuarios());
                 getA().getUsuarios().setId(Integer.parseInt(getSession().get("userId").toString()));
                 save(getA());
                 setMsg(getText("msg.guardadoExito"));
             }
-            
-           
-            
+
             setListClientes(getList(Clientes.class));
             setListMenus(getList(Menus.class));
             setListCategoriasMenus(getList(CategoriasMenus.class));
-            totAbono= (BigDecimal) getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
-            
+            totAbono = (BigDecimal) getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
+
         } catch (Exception e) {
             return e(e);
         }
@@ -249,12 +242,12 @@ public class ReservaAction extends BaseAction {
             delete(DetallesMenus.class);
             setMsg(getText("msg.eliminadoExito"));
             r = getReserva();
-           setListClientes(getList(Clientes.class));
+            setListClientes(getList(Clientes.class));
             setListMenus(getList(Menus.class));
             setListCategoriasMenus(getList(CategoriasMenus.class));
-            totAbono= (BigDecimal) getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
-            totPlatillo= new BigDecimal((double) getDb().createQuery("select sum(cantidad*precio) from DetallesMenus where reservaciones.id = " + r.getId()).uniqueResult(), MathContext.DECIMAL64);
-           
+            totAbono = (BigDecimal) getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
+            totPlatillo = new BigDecimal((double) getDb().createQuery("select sum(cantidad*precio) from DetallesMenus where reservaciones.id = " + r.getId()).uniqueResult(), MathContext.DECIMAL64);
+
         } catch (Exception e) {
             return e(e);
         }
@@ -270,9 +263,9 @@ public class ReservaAction extends BaseAction {
             setListClientes(getList(Clientes.class));
             setListMenus(getList(Menus.class));
             setListCategoriasMenus(getList(CategoriasMenus.class));
-            totAbono= (BigDecimal) getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
-            totPlatillo= new BigDecimal((double) getDb().createQuery("select sum(cantidad*precio) from DetallesMenus where reservaciones.id = " + r.getId()).uniqueResult(), MathContext.DECIMAL64);
-           
+            totAbono = (BigDecimal) getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
+            totPlatillo = new BigDecimal((double) getDb().createQuery("select sum(cantidad*precio) from DetallesMenus where reservaciones.id = " + r.getId()).uniqueResult(), MathContext.DECIMAL64);
+
         } catch (Exception e) {
             return e(e);
         }
@@ -332,7 +325,15 @@ public class ReservaAction extends BaseAction {
      * @param listClientes the listClientes to set
      */
     public void setListClientes(List<Clientes> listClientes) {
-        this.listClientes = listClientes;
+        List<Clientes> list = new ArrayList<>();
+        listClientes.stream().map((c) -> {
+            c.setList((c.getEmpresa().equals("") ? "" : c.getEmpresa().concat(" - "))
+                    .concat(c.getNombre()).concat(" ").concat(c.getApellido()));
+            return c;
+        }).forEachOrdered((c) -> {
+            list.add(c);
+        });
+        this.listClientes = list;
     }
 
     /**
@@ -426,33 +427,31 @@ public class ReservaAction extends BaseAction {
     }
 
     public void setfMenor(Date fMenor) {
-            this.fMenor = fMenor;
+        this.fMenor = fMenor;
     }
-    
-    public void setfMenorString(String date)
-    {
+
+    public void setfMenorString(String date) {
         try {
             //journeyDateString could be "2013-03-28" for example
-            Date journeyDate =  new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd").parse(date).getTime());
+            Date journeyDate = new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd").parse(date).getTime());
             setfMenor(journeyDate);
-            fMenorString=date;
+            fMenorString = date;
         } catch (ParseException ex) {
             Logger.getLogger(ReservaAction.class.getName()).log(Level.SEVERE, null, ex);
         }
-         
+
     }
-    
-    public void setfMayorString(String date)
-    {
+
+    public void setfMayorString(String date) {
         try {
             //journeyDateString could be "2013-03-28" for example
-            Date journeyDate =  new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd").parse(date).getTime());
+            Date journeyDate = new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd").parse(date).getTime());
             setfMayor(journeyDate);
             fMayorString = date;
         } catch (ParseException ex) {
             Logger.getLogger(ReservaAction.class.getName()).log(Level.SEVERE, null, ex);
         }
-         
+
     }
 
     public String getfMenorString() {
@@ -462,7 +461,7 @@ public class ReservaAction extends BaseAction {
     public String getfMayorString() {
         return fMayorString;
     }
-    
+
     public Date getfMayor() {
         return fMayor;
     }
@@ -471,5 +470,4 @@ public class ReservaAction extends BaseAction {
         this.fMayor = fMayor;
     }
 
-    
 }
