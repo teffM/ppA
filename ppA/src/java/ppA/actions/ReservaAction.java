@@ -1,7 +1,10 @@
 package ppA.actions;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.math.BigDecimal;
 import java.math.MathContext;
+import java.nio.charset.StandardCharsets;
 import java.sql.Date;
 import java.text.DecimalFormat;
 import java.text.ParseException;
@@ -140,7 +143,7 @@ public class ReservaAction extends BaseAction {
             Object aux = getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
             if (aux == null) {
                 aux = 0.0;
-            }else{
+            } else {
                 aux = Double.parseDouble(aux.toString());
             }
             
@@ -150,7 +153,7 @@ public class ReservaAction extends BaseAction {
             aux = getDb().createQuery("select sum(cantidad*precio) from DetallesMenus where reservaciones.id = " + r.getId()).uniqueResult();
             if (aux == null) {
                 aux = 0.0;
-            }else{
+            } else {
                 aux = Double.parseDouble(aux.toString());
             }
             
@@ -215,7 +218,7 @@ public class ReservaAction extends BaseAction {
             Object aux = getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
             if (aux == null) {
                 aux = 0.0;
-            }else{
+            } else {
                 aux = Double.parseDouble(aux.toString());
             }
             
@@ -225,7 +228,7 @@ public class ReservaAction extends BaseAction {
             aux = getDb().createQuery("select sum(cantidad*precio) from DetallesMenus where reservaciones.id = " + r.getId()).uniqueResult();
             if (aux == null) {
                 aux = 0.0;
-            }else{
+            } else {
                 aux = Double.parseDouble(aux.toString());
             }
             
@@ -245,11 +248,11 @@ public class ReservaAction extends BaseAction {
             setListClientes(getList(Clientes.class));
             setListMenus(getList(Menus.class));
             setListCategoriasMenus(getList(CategoriasMenus.class));
-            
+
             aux = getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
             if (aux == null) {
                 aux = 0.0;
-            }else{
+            } else {
                 aux = Double.parseDouble(aux.toString());
             }
             
@@ -443,6 +446,17 @@ public class ReservaAction extends BaseAction {
         this.listClientes = list;
     }
 
+    private InputStream inputStream;
+
+    public String sayHello() {
+        try {
+            setInputStream(new ByteArrayInputStream(
+                    "Hello!".getBytes(StandardCharsets.UTF_8)));
+        } catch (Exception e) {
+        }
+        return "ajax";
+    }
+
     /**
      * @return the listEstados
      */
@@ -584,6 +598,20 @@ public class ReservaAction extends BaseAction {
         }catch(Exception e){
             return "";
         }
+    }
+
+    /**
+     * @return the inputStream
+     */
+    public InputStream getInputStream() {
+        return inputStream;
+    }
+
+    /**
+     * @param inputStream the inputStream to set
+     */
+    public void setInputStream(InputStream inputStream) {
+        this.inputStream = inputStream;
     }
 
 }

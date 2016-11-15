@@ -35,7 +35,7 @@ public class UsuarioAction extends BaseAction {
         auxUsuarios = (Usuarios) getDb().createQuery("select usu from Usuarios usu where id = " + id).uniqueResult();
 	   auxUsuarios.setClave(nu.getClave());
            save(auxUsuarios);
-	    setMsg(getText("msg.guardadoExito"));
+	    setMsg(getText("msg.modificadoExito"));
 	} catch (Exception e) {   
              return e(e);
 	}
@@ -59,6 +59,22 @@ public class UsuarioAction extends BaseAction {
 	try {
 	    delete(Usuarios.class);
 	    setMsg(getText("msg.eliminadoExito"));
+	} catch (Exception e) {
+	    return e(e);
+	}
+	return list();
+    }
+    public String reestablecerC() throws Exception {
+	try {
+            String nueva_contraseña;
+            Usuarios auxUsuarios;
+             int idClient=getId();
+              open();
+               auxUsuarios = (Usuarios) getDb().createQuery("select usu from Usuarios usu where id = " + idClient).uniqueResult();
+            nueva_contraseña=crearContraseña(auxUsuarios);
+            auxUsuarios.setClave(nueva_contraseña);
+	    save(auxUsuarios);
+	    setMsg(getText("msg.modificadoExito"));
 	} catch (Exception e) {
 	    return e(e);
 	}
