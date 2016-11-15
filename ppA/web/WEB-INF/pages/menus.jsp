@@ -23,6 +23,7 @@
                     <legend><s:text name="m.legend" /><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button></legend>
                     <s:form action="Menu">
                         <s:hidden name="m.id" />
+                        <s:hidden name="m.fileUrl" />
                         <div class="form-group">
                             <s:select name="m.categoriasMenus.id" listKey="id" listValue="categoriaMenu" headerKey="" cssClass="select2 required"
                                       headerValue="%{getText('lbl.seleccione')}" list="listCategorias" key="m.categoriaMenu" required="true" />
