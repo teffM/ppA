@@ -44,9 +44,6 @@ public class UsuarioAction extends BaseAction {
 
     public String guardar() throws Exception {
 	try {
-            String nueva_contraseña;
-            nueva_contraseña=crearContraseña(getNu());
-            getNu().setClave(nueva_contraseña);
 	    save(getNu());
 	    setMsg(getText("msg.guardadoExito"));
 	} catch (Exception e) {

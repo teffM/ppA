@@ -31,12 +31,12 @@
                         <div class="form-group">
                             <s:textfield name="nu.usuario" key="nu.usuario" cssClass="form-control required" required="true" />
                         </div>
-                         <%--
-                                Se genera de forma automatica
+                      
+                              
                             <div class="form-group">
                             <s:password name="nu.clave" key="nu.clave" cssClass="form-control required" required="true" />
-                            <%--<s:password name="nu.clave" label="Confirmar Contraseña" cssClass="form-control required" required="true" />
-                        </div>--%>
+                            <%--<s:password name="nu.clave" label="Confirmar Contraseña" cssClass="form-control required" required="true" />--%>
+                        </div>
                         <div class="form-group">
                             <s:select name="nu.roles.id" listKey="id" listValue="rol" headerKey="" cssClass="select2 required"
                                       headerValue="%{getText('lbl.seleccione')}" list="listRoles" key="nu.roles" required="true"/>
@@ -75,14 +75,17 @@
                                 data-toggle="modal" data-target="#confirm-delete" title="Eliminar">
                             <span class="glyphicon glyphicon-trash" />
                         </button>
-                        <a class="btn btn-default btn-xs" href="./Usuario!reestablecerC?id=${l.id}" data-toggle="tooltip" title="Reestablecer contraseña">
+                        <a data-target="#confirm-delete" class="btn btn-default btn-xs" href="./Usuario!reestablecerC?id=${l.id}" data-toggle="tooltip" title="Reestablecer contraseña">
                             <span class="glyphicon glyphicon-pencil"></span>
                         </a>
                     </td>
                 </tr>
             </c:forEach>
         </tbody>
+        
     </table>
+            <label>Nota: Reestablecer contraseña toma la primera letra del nombre, del apellido y todo el 
+               nombre de usuario (uniendo todo), para hacer la nueva contraseña</label>
 </div>
 
 <script type="text/javascript">

@@ -31,7 +31,7 @@
                         <div class="form-group">
                             <s:textfield name="dm.comentarios" key="dm.comentarios" cssClass="form-control required" required="true" />
                         </div>
-                        <s:submit method="guardar" cssClass="btn-info disabled submit" key="btn.guardar" />
+                        <s:submit method="guardar" cssClass="btn btn-default" key="btn.guardar" />
                     </s:form>
                 </fieldset>
             </div>
@@ -62,7 +62,7 @@
                         <button class="btn btn-default btn-xs anotherNew" title="Modificar">
                             <span class="glyphicon glyphicon-edit"></span>
                         </button>
-                        <button class="btn btn-default btn-xs" data-href="./DetalleMenu!eliminar?id=${l.id}"
+                        <button class="btn btn-default" data-href="./DetalleMenu!eliminar?id=${l.id}"
                                 data-toggle="modal" data-target="#confirm-delete" title="Eliminar">
                             <span class="glyphicon glyphicon-trash"></span>
                         </button>
