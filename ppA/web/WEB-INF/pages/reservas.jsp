@@ -268,16 +268,5 @@
         $('#formCliente').fadeIn(500);
     }
     
-    function sayHello() {
-        $.ajax({
-            type: "POST",
-            url: "/ppA/Reserva!sayHello",
-            dataType: "text",
-            success: function (data, textStatus, jqXHR) {
-                alert(data.nombre);
-            },
-            error: function (data) {
-            }
-        });
-    }
+    
 </script>

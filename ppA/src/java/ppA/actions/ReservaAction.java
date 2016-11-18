@@ -215,6 +215,8 @@ public class ReservaAction extends BaseAction {
         setId(getA().getReservaciones().getId());
         try {
             r = getReserva();
+            
+            
             Object aux = getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
             if (aux == null) {
                 aux = 0.0;
@@ -223,6 +225,20 @@ public class ReservaAction extends BaseAction {
             }
             
             BigDecimal abo = new BigDecimal((double) aux, MathContext.UNLIMITED);
+            
+            
+            if (getA().getId() != 0) {
+                aux = getDb().createQuery("select abono from Abonos where id = " + getA().getId()).uniqueResult();
+                if (aux == null) {
+                    aux = 0.0;
+                } else {
+                    aux = Double.parseDouble(aux.toString());
+                }
+
+                BigDecimal monto = new BigDecimal((double) aux, MathContext.UNLIMITED);
+                abo = new BigDecimal((double) (abo.doubleValue() - monto.doubleValue()), MathContext.UNLIMITED);
+            }
+            
             totAbono = new DecimalFormat("0.00").format(abo);
             
             aux = getDb().createQuery("select sum(cantidad*precio) from DetallesMenus where reservaciones.id = " + r.getId()).uniqueResult();
@@ -237,7 +253,7 @@ public class ReservaAction extends BaseAction {
             totPlatillo = new DecimalFormat("0.00").format(plat);
            
             if(abo.doubleValue() + getA().getAbono().doubleValue() > plat.doubleValue()){
-                setMsg(getText("No se puede guardar"));
+                return e(new Exception("No se puede guardar"));
             } else {
                 getA().setUsuarios(new Usuarios());
                 getA().getUsuarios().setId(Integer.parseInt(getSession().get("userId").toString()));
