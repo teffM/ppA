@@ -24,7 +24,7 @@ public class Reservaciones implements java.io.Serializable {
     private Set abonoses_1 = new HashSet(0);
     private Set detallesMenuses = new HashSet(0);
     private Set detallesMenuses_1 = new HashSet(0);
-    
+
     @Transient
     private int idCliente;
     @Transient
@@ -45,7 +45,7 @@ public class Reservaciones implements java.io.Serializable {
     private String comprobanteIva;
     @Transient
     private String descripcion;
-    
+
     @Transient
     private int idReserva;
 
@@ -53,135 +53,135 @@ public class Reservaciones implements java.io.Serializable {
     }
 
     public Reservaciones(int id, Clientes clientes, Estados estados, Sucursales sucursales, Usuarios usuarios, Date fechaReservacion, int numPersonas, String comentarios, Date fechaCreacion) {
-	this.id = id;
-	this.clientes = clientes;
-	this.estados = estados;
-	this.sucursales = sucursales;
-	this.usuarios = usuarios;
-	this.fechaReservacion = fechaReservacion;
-	this.numPersonas = numPersonas;
-	this.comentarios = comentarios;
-	this.fechaCreacion = fechaCreacion;
+        this.id = id;
+        this.clientes = clientes;
+        this.estados = estados;
+        this.sucursales = sucursales;
+        this.usuarios = usuarios;
+        this.fechaReservacion = fechaReservacion;
+        this.numPersonas = numPersonas;
+        this.comentarios = comentarios;
+        this.fechaCreacion = fechaCreacion;
     }
 
     public Reservaciones(int id, Clientes clientes, Estados estados, Sucursales sucursales, Usuarios usuarios, Date fechaReservacion, int numPersonas, String comentarios, Date fechaCreacion, Set abonoses, Set abonoses_1, Set detallesMenuses, Set detallesMenuses_1) {
-	this.id = id;
-	this.clientes = clientes;
-	this.estados = estados;
-	this.sucursales = sucursales;
-	this.usuarios = usuarios;
-	this.fechaReservacion = fechaReservacion;
-	this.numPersonas = numPersonas;
-	this.comentarios = comentarios;
-	this.fechaCreacion = fechaCreacion;
-	this.abonoses = abonoses;
-	this.abonoses_1 = abonoses_1;
-	this.detallesMenuses = detallesMenuses;
-	this.detallesMenuses_1 = detallesMenuses_1;
+        this.id = id;
+        this.clientes = clientes;
+        this.estados = estados;
+        this.sucursales = sucursales;
+        this.usuarios = usuarios;
+        this.fechaReservacion = fechaReservacion;
+        this.numPersonas = numPersonas;
+        this.comentarios = comentarios;
+        this.fechaCreacion = fechaCreacion;
+        this.abonoses = abonoses;
+        this.abonoses_1 = abonoses_1;
+        this.detallesMenuses = detallesMenuses;
+        this.detallesMenuses_1 = detallesMenuses_1;
     }
 
     public int getId() {
-	return this.id;
+        return this.id;
     }
 
     public void setId(int id) {
-	this.id = id;
+        this.id = id;
     }
 
     public Clientes getClientes() {
-	return this.clientes;
+        return this.clientes;
     }
 
     public void setClientes(Clientes clientes) {
-	this.clientes = clientes;
+        this.clientes = clientes;
     }
 
     public Estados getEstados() {
-	return this.estados;
+        return this.estados;
     }
 
     public void setEstados(Estados estados) {
-	this.estados = estados;
+        this.estados = estados;
     }
 
     public Sucursales getSucursales() {
-	return this.sucursales;
+        return this.sucursales;
     }
 
     public void setSucursales(Sucursales sucursales) {
-	this.sucursales = sucursales;
+        this.sucursales = sucursales;
     }
 
     public Usuarios getUsuarios() {
-	return this.usuarios;
+        return this.usuarios;
     }
 
     public void setUsuarios(Usuarios usuarios) {
-	this.usuarios = usuarios;
+        this.usuarios = usuarios;
     }
 
     public Date getFechaReservacion() {
-	return this.fechaReservacion;
+        return this.fechaReservacion;
     }
 
     public void setFechaReservacion(Date fechaReservacion) {
-	this.fechaReservacion = fechaReservacion;
+        this.fechaReservacion = fechaReservacion;
     }
 
     public int getNumPersonas() {
-	return this.numPersonas;
+        return this.numPersonas;
     }
 
     public void setNumPersonas(int numPersonas) {
-	this.numPersonas = numPersonas;
+        this.numPersonas = numPersonas;
     }
 
     public String getComentarios() {
-	return this.comentarios;
+        return this.comentarios;
     }
 
     public void setComentarios(String comentarios) {
-	this.comentarios = comentarios;
+        this.comentarios = comentarios;
     }
 
     public Date getFechaCreacion() {
-	return this.fechaCreacion == null ? new Date() : this.fechaCreacion;
+        return this.fechaCreacion == null ? new Date() : this.fechaCreacion;
     }
 
     public void setFechaCreacion(Date fechaCreacion) {
-	this.fechaCreacion = fechaCreacion;
+        this.fechaCreacion = fechaCreacion;
     }
 
     public Set getAbonoses() {
-	return this.abonoses;
+        return this.abonoses;
     }
 
     public void setAbonoses(Set abonoses) {
-	this.abonoses = abonoses;
+        this.abonoses = abonoses;
     }
 
     public Set getAbonoses_1() {
-	return this.abonoses_1;
+        return this.abonoses_1;
     }
 
     public void setAbonoses_1(Set abonoses_1) {
-	this.abonoses_1 = abonoses_1;
+        this.abonoses_1 = abonoses_1;
     }
 
     public Set getDetallesMenuses() {
-	return this.detallesMenuses;
+        return this.detallesMenuses;
     }
 
     public void setDetallesMenuses(Set detallesMenuses) {
-	this.detallesMenuses = detallesMenuses;
+        this.detallesMenuses = detallesMenuses;
     }
 
     public Set getDetallesMenuses_1() {
-	return this.detallesMenuses_1;
+        return this.detallesMenuses_1;
     }
 
     public void setDetallesMenuses_1(Set detallesMenuses_1) {
-	this.detallesMenuses_1 = detallesMenuses_1;
+        this.detallesMenuses_1 = detallesMenuses_1;
     }
 
     /**

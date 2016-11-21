@@ -11,65 +11,65 @@ public class SucursalAction extends BaseAction {
 
     @Override
     public String execute() throws Exception {
-	return list();
+        return list();
     }
 
     private String list() {
-	try {
-	    setListSucursales(getList(Sucursales.class));
-	} catch (Exception e) {
-	    return e(e);
-	} finally {
-	    setS(new Sucursales());
-	}
-	return SUCCESS;
+        try {
+            setListSucursales(getList(Sucursales.class));
+        } catch (Exception e) {
+            return e(e);
+        } finally {
+            setS(new Sucursales());
+        }
+        return SUCCESS;
     }
 
     public String guardar() throws Exception {
-	try {
-	    save(getS());
-	    setMsg(getText("msg.guardadoExito"));
-	} catch (Exception e) {
-	    return e(e);
-	}
-	return list();
+        try {
+            save(getS());
+            setMsg(getText("msg.guardadoExito"));
+        } catch (Exception e) {
+            return e(e);
+        }
+        return list();
     }
 
     public String eliminar() throws Exception {
-	try {
-	    delete(Sucursales.class);
-	    setMsg(getText("msg.eliminadoExito"));
-	} catch (Exception e) {
-	    return e(e);
-	}
-	return list();
+        try {
+            delete(Sucursales.class);
+            setMsg(getText("msg.eliminadoExito"));
+        } catch (Exception e) {
+            return e(e);
+        }
+        return list();
     }
 
     /**
      * @return the listSucursales
      */
     public List<Sucursales> getListSucursales() {
-	return listSucursales;
+        return listSucursales;
     }
 
     /**
      * @param listSucursales the listSucursales to set
      */
     private void setListSucursales(List<Sucursales> listSucursales) {
-	this.listSucursales = listSucursales;
+        this.listSucursales = listSucursales;
     }
 
     /**
      * @return the s
      */
     public Sucursales getS() {
-	return s;
+        return s;
     }
 
     /**
      * @param s the s to set
      */
     public void setS(Sucursales s) {
-	this.s = s;
+        this.s = s;
     }
 }

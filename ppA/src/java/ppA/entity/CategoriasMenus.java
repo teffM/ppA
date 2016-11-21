@@ -19,57 +19,57 @@ public class CategoriasMenus implements java.io.Serializable {
     }
 
     public CategoriasMenus(int id, String categoriaMenu, String descripcion) {
-	this.id = id;
-	this.categoriaMenu = categoriaMenu;
-	this.descripcion = descripcion;
+        this.id = id;
+        this.categoriaMenu = categoriaMenu;
+        this.descripcion = descripcion;
     }
 
     public CategoriasMenus(int id, String categoriaMenu, String descripcion, Set menuses, Set menuses_1) {
-	this.id = id;
-	this.categoriaMenu = categoriaMenu;
-	this.descripcion = descripcion;
-	this.menuses = menuses;
-	this.menuses_1 = menuses_1;
+        this.id = id;
+        this.categoriaMenu = categoriaMenu;
+        this.descripcion = descripcion;
+        this.menuses = menuses;
+        this.menuses_1 = menuses_1;
     }
 
     public int getId() {
-	return this.id;
+        return this.id;
     }
 
     public void setId(int id) {
-	this.id = id;
+        this.id = id;
     }
 
     public String getCategoriaMenu() {
-	return this.categoriaMenu;
+        return this.categoriaMenu;
     }
 
     public void setCategoriaMenu(String categoriaMenu) {
-	this.categoriaMenu = categoriaMenu;
+        this.categoriaMenu = categoriaMenu;
     }
 
     public String getDescripcion() {
-	return this.descripcion;
+        return this.descripcion;
     }
 
     public void setDescripcion(String descripcion) {
-	this.descripcion = descripcion;
+        this.descripcion = descripcion;
     }
 
     public Set getMenuses() {
-	return this.menuses;
+        return this.menuses;
     }
 
     public void setMenuses(Set menuses) {
-	this.menuses = menuses;
+        this.menuses = menuses;
     }
 
     public Set getMenuses_1() {
-	return this.menuses_1;
+        return this.menuses_1;
     }
 
     public void setMenuses_1(Set menuses_1) {
-	this.menuses_1 = menuses_1;
+        this.menuses_1 = menuses_1;
     }
 
 }

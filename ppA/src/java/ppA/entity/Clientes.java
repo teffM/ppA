@@ -24,7 +24,7 @@ public class Clientes implements java.io.Serializable {
     private Set reservacioneses = new HashSet(0);
     private Set reservacioneses_1 = new HashSet(0);
     private Set abonoses_1 = new HashSet(0);
-    
+
     @Transient
     private String list;
 
@@ -32,145 +32,145 @@ public class Clientes implements java.io.Serializable {
     }
 
     public Clientes(int id, String nombre, String apellido, String empresa, String telefono, String correo, String dui, String nit, String comprobanteIva, String descripcion) {
-	this.id = id;
-	this.nombre = nombre;
-	this.apellido = apellido;
-	this.empresa = empresa;
-	this.telefono = telefono;
-	this.correo = correo;
-	this.dui = dui;
-	this.nit = nit;
-	this.comprobanteIva = comprobanteIva;
-	this.descripcion = descripcion;
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.empresa = empresa;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.dui = dui;
+        this.nit = nit;
+        this.comprobanteIva = comprobanteIva;
+        this.descripcion = descripcion;
     }
 
     public Clientes(int id, String nombre, String apellido, String empresa, String telefono, String correo, String dui, String nit, String comprobanteIva, String descripcion, Set abonoses, Set reservacioneses, Set reservacioneses_1, Set abonoses_1) {
-	this.id = id;
-	this.nombre = nombre;
-	this.apellido = apellido;
-	this.empresa = empresa;
-	this.telefono = telefono;
-	this.correo = correo;
-	this.dui = dui;
-	this.nit = nit;
-	this.comprobanteIva = comprobanteIva;
-	this.descripcion = descripcion;
-	this.abonoses = abonoses;
-	this.reservacioneses = reservacioneses;
-	this.reservacioneses_1 = reservacioneses_1;
-	this.abonoses_1 = abonoses_1;
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.empresa = empresa;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.dui = dui;
+        this.nit = nit;
+        this.comprobanteIva = comprobanteIva;
+        this.descripcion = descripcion;
+        this.abonoses = abonoses;
+        this.reservacioneses = reservacioneses;
+        this.reservacioneses_1 = reservacioneses_1;
+        this.abonoses_1 = abonoses_1;
     }
 
     public int getId() {
-	return this.id;
+        return this.id;
     }
 
     public void setId(int id) {
-	this.id = id;
+        this.id = id;
     }
 
     public String getNombre() {
-	return this.nombre;
+        return this.nombre;
     }
 
     public void setNombre(String nombre) {
-	this.nombre = nombre;
+        this.nombre = nombre;
     }
 
     public String getApellido() {
-	return this.apellido;
+        return this.apellido;
     }
 
     public void setApellido(String apellido) {
-	this.apellido = apellido;
+        this.apellido = apellido;
     }
 
     public String getEmpresa() {
-	return this.empresa;
+        return this.empresa;
     }
 
     public void setEmpresa(String empresa) {
-	this.empresa = empresa;
+        this.empresa = empresa;
     }
 
     public String getTelefono() {
-	return this.telefono;
+        return this.telefono;
     }
 
     public void setTelefono(String telefono) {
-	this.telefono = telefono;
+        this.telefono = telefono;
     }
 
     public String getCorreo() {
-	return this.correo;
+        return this.correo;
     }
 
     public void setCorreo(String correo) {
-	this.correo = correo;
+        this.correo = correo;
     }
 
     public String getDui() {
-	return this.dui;
+        return this.dui;
     }
 
     public void setDui(String dui) {
-	this.dui = dui;
+        this.dui = dui;
     }
 
     public String getNit() {
-	return this.nit;
+        return this.nit;
     }
 
     public void setNit(String nit) {
-	this.nit = nit;
+        this.nit = nit;
     }
 
     public String getComprobanteIva() {
-	return this.comprobanteIva;
+        return this.comprobanteIva;
     }
 
     public void setComprobanteIva(String comprobanteIva) {
-	this.comprobanteIva = comprobanteIva;
+        this.comprobanteIva = comprobanteIva;
     }
 
     public String getDescripcion() {
-	return this.descripcion;
+        return this.descripcion;
     }
 
     public void setDescripcion(String descripcion) {
-	this.descripcion = descripcion;
+        this.descripcion = descripcion;
     }
 
     public Set getAbonoses() {
-	return this.abonoses;
+        return this.abonoses;
     }
 
     public void setAbonoses(Set abonoses) {
-	this.abonoses = abonoses;
+        this.abonoses = abonoses;
     }
 
     public Set getReservacioneses() {
-	return this.reservacioneses;
+        return this.reservacioneses;
     }
 
     public void setReservacioneses(Set reservacioneses) {
-	this.reservacioneses = reservacioneses;
+        this.reservacioneses = reservacioneses;
     }
 
     public Set getReservacioneses_1() {
-	return this.reservacioneses_1;
+        return this.reservacioneses_1;
     }
 
     public void setReservacioneses_1(Set reservacioneses_1) {
-	this.reservacioneses_1 = reservacioneses_1;
+        this.reservacioneses_1 = reservacioneses_1;
     }
 
     public Set getAbonoses_1() {
-	return this.abonoses_1;
+        return this.abonoses_1;
     }
 
     public void setAbonoses_1(Set abonoses_1) {
-	this.abonoses_1 = abonoses_1;
+        this.abonoses_1 = abonoses_1;
     }
 
     /**

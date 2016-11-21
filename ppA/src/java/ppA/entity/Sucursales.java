@@ -21,77 +21,77 @@ public class Sucursales implements java.io.Serializable {
     }
 
     public Sucursales(int id, String sucursal, int nacional, String direccion, String telefono) {
-	this.id = id;
-	this.sucursal = sucursal;
-	this.nacional = nacional;
-	this.direccion = direccion;
-	this.telefono = telefono;
+        this.id = id;
+        this.sucursal = sucursal;
+        this.nacional = nacional;
+        this.direccion = direccion;
+        this.telefono = telefono;
     }
 
     public Sucursales(int id, String sucursal, int nacional, String direccion, String telefono, Set reservacioneses, Set reservacioneses_1) {
-	this.id = id;
-	this.sucursal = sucursal;
-	this.nacional = nacional;
-	this.direccion = direccion;
-	this.telefono = telefono;
-	this.reservacioneses = reservacioneses;
-	this.reservacioneses_1 = reservacioneses_1;
+        this.id = id;
+        this.sucursal = sucursal;
+        this.nacional = nacional;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.reservacioneses = reservacioneses;
+        this.reservacioneses_1 = reservacioneses_1;
     }
 
     public int getId() {
-	return this.id;
+        return this.id;
     }
 
     public void setId(int id) {
-	this.id = id;
+        this.id = id;
     }
 
     public String getSucursal() {
-	return this.sucursal;
+        return this.sucursal;
     }
 
     public void setSucursal(String sucursal) {
-	this.sucursal = sucursal;
+        this.sucursal = sucursal;
     }
 
     public int getNacional() {
-	return this.nacional;
+        return this.nacional;
     }
 
     public void setNacional(int nacional) {
-	this.nacional = nacional;
+        this.nacional = nacional;
     }
 
     public String getDireccion() {
-	return this.direccion;
+        return this.direccion;
     }
 
     public void setDireccion(String direccion) {
-	this.direccion = direccion;
+        this.direccion = direccion;
     }
 
     public String getTelefono() {
-	return this.telefono;
+        return this.telefono;
     }
 
     public void setTelefono(String telefono) {
-	this.telefono = telefono;
+        this.telefono = telefono;
     }
 
     public Set getReservacioneses() {
-	return this.reservacioneses;
+        return this.reservacioneses;
     }
 
     public void setReservacioneses(Set reservacioneses) {
-	this.reservacioneses = reservacioneses;
+        this.reservacioneses = reservacioneses;
     }
 
     public Set getReservacioneses_1() {
-	return this.reservacioneses_1;
+        return this.reservacioneses_1;
     }
 
     public void setReservacioneses_1(Set reservacioneses_1) {
-	this.reservacioneses_1 = reservacioneses_1;
+        this.reservacioneses_1 = reservacioneses_1;
     }
 
 }

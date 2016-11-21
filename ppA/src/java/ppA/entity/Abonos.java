@@ -20,60 +20,60 @@ public class Abonos implements java.io.Serializable {
     }
 
     public Abonos(int id, Clientes clientes, Reservaciones reservaciones, Usuarios usuarios, BigDecimal abono, Date fechaAbono) {
-	this.id = id;
-	this.clientes = clientes;
-	this.reservaciones = reservaciones;
-	this.usuarios = usuarios;
-	this.abono = abono;
-	this.fechaAbono = fechaAbono;
+        this.id = id;
+        this.clientes = clientes;
+        this.reservaciones = reservaciones;
+        this.usuarios = usuarios;
+        this.abono = abono;
+        this.fechaAbono = fechaAbono;
     }
 
     public int getId() {
-	return this.id;
+        return this.id;
     }
 
     public void setId(int id) {
-	this.id = id;
+        this.id = id;
     }
 
     public Clientes getClientes() {
-	return this.clientes;
+        return this.clientes;
     }
 
     public void setClientes(Clientes clientes) {
-	this.clientes = clientes;
+        this.clientes = clientes;
     }
 
     public Reservaciones getReservaciones() {
-	return this.reservaciones;
+        return this.reservaciones;
     }
 
     public void setReservaciones(Reservaciones reservaciones) {
-	this.reservaciones = reservaciones;
+        this.reservaciones = reservaciones;
     }
 
     public Usuarios getUsuarios() {
-	return this.usuarios;
+        return this.usuarios;
     }
 
     public void setUsuarios(Usuarios usuarios) {
-	this.usuarios = usuarios;
+        this.usuarios = usuarios;
     }
 
     public BigDecimal getAbono() {
-	return this.abono;
+        return this.abono;
     }
 
     public void setAbono(BigDecimal abono) {
-	this.abono = abono;
+        this.abono = abono;
     }
 
     public Date getFechaAbono() {
-	return this.fechaAbono == null ? new Date() : this.fechaAbono;
+        return this.fechaAbono == null ? new Date() : this.fechaAbono;
     }
 
     public void setFechaAbono(Date fechaAbono) {
-	this.fechaAbono = fechaAbono;
+        this.fechaAbono = fechaAbono;
     }
 
 }

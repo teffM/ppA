@@ -18,9 +18,7 @@ and open the template in the editor.
 td.tdLabel>label, .label {
     color: black;
     text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
-
 }
-
 
 .wwgrp br {
     display: none;
@@ -55,7 +53,6 @@ span.required {
     bottom: 0;
 }
 
-
 #bgLogin{
     margin-top: 170px;
     width: 100%;
@@ -83,7 +80,7 @@ span.required {
     background-position: center;
 }
 .modal-xl {
-  width: 95%;
+    width: 95%;
 }
 .body {
     background-color: white;
@@ -109,8 +106,7 @@ body {
     background-repeat: no-repeat;
     background-size: 100% 100%;
     border-radius: 10px 100px;
-    padding-top: 2px;
-    margin-bottom: 2%;
+    margin: 2% 4%;
 }
 .dropdown-menu > li > a {
     color: #9d9d9d;
@@ -136,4 +132,23 @@ body {
 .dataTable2{
     margin: 0 !important;
 }
+.page-header {
+    margin: 0 !important;
+}
+table.dataTable > tbody > tr.child ul{
+    display: inline !important;
+}
 
+@media (min-width: 768px) {
+    @keyframes showNav {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
+    ul.nav li:hover > ul.dropdown-menu {
+        display: block;
+        animation: showNav 250ms ease-in-out;
+    }
+    #navbar {
+        text-align: center;
+    }
+}

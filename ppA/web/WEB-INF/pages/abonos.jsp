@@ -33,44 +33,41 @@
         </div>
     </div>
 </div>
-<div id="container">
-    <table id="dataTable" class="table table-striped table-bordered table-hover dt-responsive nowrap">
-        <thead>
-            <tr>
-                <th><s:text name="a.reserva" /></th>
-                <th><s:text name="a.cliente" /></th>
-                <th><s:text name="a.abono" /></th>
-                <th><s:text name="a.fechaAbono" /></th>
-                <th><s:text name="a.usuario" /></th>
-                <th data-priority="1"><s:text name="q.acciones" /></th>
+<table id="dataTable" class="table table-striped table-bordered table-hover dt-responsive nowrap">
+    <thead>
+        <tr>
+            <th><s:text name="a.reserva" /></th>
+            <th><s:text name="a.cliente" /></th>
+            <th><s:text name="a.abono" /></th>
+            <th><s:text name="a.fechaAbono" /></th>
+            <th><s:text name="a.usuario" /></th>
+            <th data-priority="1"><s:text name="q.acciones" /></th>
+        </tr>
+    </thead>
+    <tbody>
+        <c:forEach var="l" items="${listAbonos}">
+            <fmt:formatDate value="${l.fechaAbono}" var="fechaAbono"
+                            pattern="dd/MM/yyyy hh:mm a" />
+            <tr obj="${l.id}, ${l.reservaciones.id}, ${l.clientes.id},
+                ${l.abono}, ${fechaAbono}, ${l.usuarios.id}">
+                <td><c:out value="${l.reservaciones.clientes.nombre}"/> <c:out value="${l.reservaciones.clientes.apellido}"/></td>
+                <td><c:out value="${l.clientes.nombre}"/></td>
+                <td><c:out value="${l.abono}"/></td>
+                <td><c:out value="${fechaAbono}"/></td>
+                <td><c:out value="${l.usuarios.usuario}"/></td>
+                <td>
+                    <button class="btn btn-default btn-xs anotherNew" title="Modificar">
+                        <span class="glyphicon glyphicon-edit"></span>
+                    </button>
+                    <button class="btn btn-default btn-xs" data-href="./Abono!eliminar?id=${l.id}"
+                            data-toggle="modal" data-target="#confirm-delete" title="Eliminar">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            <c:forEach var="l" items="${listAbonos}">
-                <fmt:formatDate value="${l.fechaAbono}" var="fechaAbono"
-                                pattern="dd/MM/yyyy hh:mm a" />
-                <tr obj="${l.id}, ${l.reservaciones.id}, ${l.clientes.id},
-                    ${l.abono}, ${fechaAbono}, ${l.usuarios.id}">
-                    <td><c:out value="${l.reservaciones.clientes.nombre}"/> <c:out value="${l.reservaciones.clientes.apellido}"/></td>
-                    <td><c:out value="${l.clientes.nombre}"/></td>
-                    <td><c:out value="${l.abono}"/></td>
-                    <td><c:out value="${fechaAbono}"/></td>
-                    <td><c:out value="${l.usuarios.usuario}"/></td>
-                    <td>
-                        <button class="btn btn-default btn-xs anotherNew" title="Modificar">
-                            <span class="glyphicon glyphicon-edit"></span>
-                        </button>
-                        <button class="btn btn-default btn-xs" data-href="./Abono!eliminar?id=${l.id}"
-                                data-toggle="modal" data-target="#confirm-delete" title="Eliminar">
-                            <span class="glyphicon glyphicon-trash"></span>
-                        </button>
-                    </td>
-                </tr>
-            </c:forEach>
-        </tbody>
-    </table>
-</div>
-
+        </c:forEach>
+    </tbody>
+</table>
 <script type="text/javascript">
     $('#abono').on('click', function () {
         $("#Abono_a_id").val(0);

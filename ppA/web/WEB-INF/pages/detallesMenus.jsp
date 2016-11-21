@@ -38,41 +38,38 @@
         </div>
     </div>
 </div>
-<div id="container">
-    <table id="dataTable" class="table table-striped table-bordered table-hover dt-responsive nowrap">
-        <thead>
-            <tr>
-                <th><s:text name="dm.reserva" /></th>
-                <th><s:text name="dm.menu" /></th>
-                <th><s:text name="dm.cantidad" /></th>
-                <th><s:text name="dm.precio" /></th>
-                <th><s:text name="dm.comentarios" /></th>
-                <th data-priority="1"><s:text name="q.acciones" /></th>
+<table id="dataTable" class="table table-striped table-bordered table-hover dt-responsive nowrap">
+    <thead>
+        <tr>
+            <th><s:text name="dm.reserva" /></th>
+            <th><s:text name="dm.menu" /></th>
+            <th><s:text name="dm.cantidad" /></th>
+            <th><s:text name="dm.precio" /></th>
+            <th><s:text name="dm.comentarios" /></th>
+            <th data-priority="1"><s:text name="q.acciones" /></th>
+        </tr>
+    </thead>
+    <tbody>
+        <c:forEach var="l" items="${listDetallesMenus}">
+            <tr obj="${l.id}, ${l.reservaciones.id}, ${l.menus.id}, ${l.cantidad}, ${l.precio}, ${l.comentarios}">
+                <td><c:out value="${l.reservaciones.clientes.nombre}"/> <c:out value="${l.reservaciones.clientes.apellido}"/></td>
+                <td><c:out value="${l.menus.menu}"/></td>
+                <td><c:out value="${l.cantidad}"/></td>
+                <td><c:out value="${l.precio}"/></td>
+                <td><c:out value="${l.comentarios}"/></td>
+                <td>
+                    <button class="btn btn-default btn-xs anotherNew" title="Modificar">
+                        <span class="glyphicon glyphicon-edit"></span>
+                    </button>
+                    <button class="btn btn-default" data-href="./DetalleMenu!eliminar?id=${l.id}"
+                            data-toggle="modal" data-target="#confirm-delete" title="Eliminar">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            <c:forEach var="l" items="${listDetallesMenus}">
-                <tr obj="${l.id}, ${l.reservaciones.id}, ${l.menus.id}, ${l.cantidad}, ${l.precio}, ${l.comentarios}">
-                    <td><c:out value="${l.reservaciones.clientes.nombre}"/> <c:out value="${l.reservaciones.clientes.apellido}"/></td>
-                    <td><c:out value="${l.menus.menu}"/></td>
-                    <td><c:out value="${l.cantidad}"/></td>
-                    <td><c:out value="${l.precio}"/></td>
-                    <td><c:out value="${l.comentarios}"/></td>
-                    <td>
-                        <button class="btn btn-default btn-xs anotherNew" title="Modificar">
-                            <span class="glyphicon glyphicon-edit"></span>
-                        </button>
-                        <button class="btn btn-default" data-href="./DetalleMenu!eliminar?id=${l.id}"
-                                data-toggle="modal" data-target="#confirm-delete" title="Eliminar">
-                            <span class="glyphicon glyphicon-trash"></span>
-                        </button>
-                    </td>
-                </tr>
-            </c:forEach>
-        </tbody>
-    </table>
-</div>
-
+        </c:forEach>
+    </tbody>
+</table>
 <script type="text/javascript">
     $('#nuevaDetalleMenu').on('click', function () {
         $("#DetalleMenu_dm_id").val(0);

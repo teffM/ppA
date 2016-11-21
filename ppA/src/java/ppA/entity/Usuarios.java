@@ -24,105 +24,105 @@ public class Usuarios implements java.io.Serializable {
     }
 
     public Usuarios(int id, Roles roles, String nombre, String apellido, String usuario, String clave) {
-	this.id = id;
-	this.roles = roles;
-	this.nombre = nombre;
-	this.apellido = apellido;
-	this.usuario = usuario;
-	this.clave = clave;
+        this.id = id;
+        this.roles = roles;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.usuario = usuario;
+        this.clave = clave;
     }
 
     public Usuarios(int id, Roles roles, String nombre, String apellido, String usuario, String clave, Set reservacioneses, Set abonoses, Set abonoses_1, Set reservacioneses_1) {
-	this.id = id;
-	this.roles = roles;
-	this.nombre = nombre;
-	this.apellido = apellido;
-	this.usuario = usuario;
-	this.clave = clave;
-	this.reservacioneses = reservacioneses;
-	this.abonoses = abonoses;
-	this.abonoses_1 = abonoses_1;
-	this.reservacioneses_1 = reservacioneses_1;
+        this.id = id;
+        this.roles = roles;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.usuario = usuario;
+        this.clave = clave;
+        this.reservacioneses = reservacioneses;
+        this.abonoses = abonoses;
+        this.abonoses_1 = abonoses_1;
+        this.reservacioneses_1 = reservacioneses_1;
     }
 
     public int getId() {
-	return this.id;
+        return this.id;
     }
 
     public void setId(int id) {
-	this.id = id;
+        this.id = id;
     }
 
     public Roles getRoles() {
-	return this.roles;
+        return this.roles;
     }
 
     public void setRoles(Roles roles) {
-	this.roles = roles;
+        this.roles = roles;
     }
 
     public String getNombre() {
-	return this.nombre;
+        return this.nombre;
     }
 
     public void setNombre(String nombre) {
-	this.nombre = nombre;
+        this.nombre = nombre;
     }
 
     public String getApellido() {
-	return this.apellido;
+        return this.apellido;
     }
 
     public void setApellido(String apellido) {
-	this.apellido = apellido;
+        this.apellido = apellido;
     }
 
     public String getUsuario() {
-	return this.usuario;
+        return this.usuario;
     }
 
     public void setUsuario(String usuario) {
-	this.usuario = usuario;
+        this.usuario = usuario;
     }
 
     public String getClave() {
-	return this.clave;
+        return this.clave;
     }
 
     public void setClave(String clave) {
-	this.clave = clave;
+        this.clave = clave;
     }
 
     public Set getReservacioneses() {
-	return this.reservacioneses;
+        return this.reservacioneses;
     }
 
     public void setReservacioneses(Set reservacioneses) {
-	this.reservacioneses = reservacioneses;
+        this.reservacioneses = reservacioneses;
     }
 
     public Set getAbonoses() {
-	return this.abonoses;
+        return this.abonoses;
     }
 
     public void setAbonoses(Set abonoses) {
-	this.abonoses = abonoses;
+        this.abonoses = abonoses;
     }
 
     public Set getAbonoses_1() {
-	return this.abonoses_1;
+        return this.abonoses_1;
     }
 
     public void setAbonoses_1(Set abonoses_1) {
-	this.abonoses_1 = abonoses_1;
+        this.abonoses_1 = abonoses_1;
     }
 
     public Set getReservacioneses_1() {
-	return this.reservacioneses_1;
+        return this.reservacioneses_1;
     }
 
     public void setReservacioneses_1(Set reservacioneses_1) {
-	this.reservacioneses_1 = reservacioneses_1;
+        this.reservacioneses_1 = reservacioneses_1;
     }
 
 }

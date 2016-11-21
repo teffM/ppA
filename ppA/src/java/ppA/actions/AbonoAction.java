@@ -19,97 +19,97 @@ public class AbonoAction extends BaseAction {
 
     @Override
     public String execute() throws Exception {
-	return list();
+        return list();
     }
 
     private String list() {
-	try {
-	    setListAbonos(getList(Abonos.class));
-	    setListReservaciones(getList(Reservaciones.class));
-	    setListClientes(getList(Clientes.class));
-	} catch (Exception e) {
-	    return e(e);
-	} finally {
-	    setA(new Abonos());
-	}
-	return SUCCESS;
+        try {
+            setListAbonos(getList(Abonos.class));
+            setListReservaciones(getList(Reservaciones.class));
+            setListClientes(getList(Clientes.class));
+        } catch (Exception e) {
+            return e(e);
+        } finally {
+            setA(new Abonos());
+        }
+        return SUCCESS;
     }
 
     public String guardar() throws Exception {
-	try {
-	    getA().setUsuarios(new Usuarios());
-	    getA().getUsuarios().setId(Integer.parseInt(getSession().get("userId").toString()));
-	    save(getA());
-	    setMsg(getText("msg.guardadoExito"));
-	} catch (Exception e) {
-	    return e(e);
-	}
-	return list();
+        try {
+            getA().setUsuarios(new Usuarios());
+            getA().getUsuarios().setId(Integer.parseInt(getSession().get("userId").toString()));
+            save(getA());
+            setMsg(getText("msg.guardadoExito"));
+        } catch (Exception e) {
+            return e(e);
+        }
+        return list();
     }
 
     public String eliminar() throws Exception {
-	try {
-	    delete(Abonos.class);
-	    setMsg(getText("msg.eliminadoExito"));
-	} catch (Exception e) {
-	    return e(e);
-	}
-	return list();
+        try {
+            delete(Abonos.class);
+            setMsg(getText("msg.eliminadoExito"));
+        } catch (Exception e) {
+            return e(e);
+        }
+        return list();
     }
 
     /**
      * @return the listClientes
      */
     public List<Clientes> getListClientes() {
-	return listClientes;
+        return listClientes;
     }
 
     /**
      * @param listClientes the listClientes to set
      */
     public void setListClientes(List<Clientes> listClientes) {
-	this.listClientes = listClientes;
+        this.listClientes = listClientes;
     }
 
     /**
      * @return the a
      */
     public Abonos getA() {
-	return a;
+        return a;
     }
 
     /**
      * @param a the a to set
      */
     public void setA(Abonos a) {
-	this.a = a;
+        this.a = a;
     }
 
     /**
      * @return the listAbonos
      */
     public List<Abonos> getListAbonos() {
-	return listAbonos;
+        return listAbonos;
     }
 
     /**
      * @param listAbonos the listAbonos to set
      */
     public void setListAbonos(List<Abonos> listAbonos) {
-	this.listAbonos = listAbonos;
+        this.listAbonos = listAbonos;
     }
 
     /**
      * @return the listReservaciones
      */
     public List<Reservaciones> getListReservaciones() {
-	return listReservaciones;
+        return listReservaciones;
     }
 
     /**
      * @param listReservaciones the listReservaciones to set
      */
     public void setListReservaciones(List<Reservaciones> listReservaciones) {
-	this.listReservaciones = listReservaciones;
+        this.listReservaciones = listReservaciones;
     }
 }

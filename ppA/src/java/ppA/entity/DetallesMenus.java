@@ -17,60 +17,60 @@ public class DetallesMenus implements java.io.Serializable {
     }
 
     public DetallesMenus(int id, Menus menus, Reservaciones reservaciones, int cantidad, String comentarios, double precio) {
-	this.id = id;
-	this.menus = menus;
-	this.reservaciones = reservaciones;
-	this.cantidad = cantidad;
-	this.comentarios = comentarios;
-	this.precio = precio;
+        this.id = id;
+        this.menus = menus;
+        this.reservaciones = reservaciones;
+        this.cantidad = cantidad;
+        this.comentarios = comentarios;
+        this.precio = precio;
     }
 
     public int getId() {
-	return this.id;
+        return this.id;
     }
 
     public void setId(int id) {
-	this.id = id;
+        this.id = id;
     }
 
     public Menus getMenus() {
-	return this.menus;
+        return this.menus;
     }
 
     public void setMenus(Menus menus) {
-	this.menus = menus;
+        this.menus = menus;
     }
 
     public Reservaciones getReservaciones() {
-	return this.reservaciones;
+        return this.reservaciones;
     }
 
     public void setReservaciones(Reservaciones reservaciones) {
-	this.reservaciones = reservaciones;
+        this.reservaciones = reservaciones;
     }
 
     public int getCantidad() {
-	return this.cantidad;
+        return this.cantidad;
     }
 
     public void setCantidad(int cantidad) {
-	this.cantidad = cantidad;
+        this.cantidad = cantidad;
     }
 
     public String getComentarios() {
-	return this.comentarios;
+        return this.comentarios;
     }
 
     public void setComentarios(String comentarios) {
-	this.comentarios = comentarios;
+        this.comentarios = comentarios;
     }
 
     public double getPrecio() {
-	return this.precio;
+        return this.precio;
     }
 
     public void setPrecio(double precio) {
-	this.precio = precio;
+        this.precio = precio;
     }
 
 }

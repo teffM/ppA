@@ -17,65 +17,65 @@ public class EstadoAction extends BaseAction {
 
     @Override
     public String execute() throws Exception {
-	return list();
+        return list();
     }
 
     private String list() {
-	try {
-	    setListEstados(getList(Estados.class));
-	} catch (Exception e) {
-	    return e(e);
-	} finally {
-	    setE(new Estados());
-	}
-	return SUCCESS;
+        try {
+            setListEstados(getList(Estados.class));
+        } catch (Exception e) {
+            return e(e);
+        } finally {
+            setE(new Estados());
+        }
+        return SUCCESS;
     }
 
     public String guardar() throws Exception {
-	try {
-	    save(getE());
-	    setMsg(getText("msg.guardadoExito"));
-	} catch (Exception e) {
-	    return e(e);
-	}
-	return list();
+        try {
+            save(getE());
+            setMsg(getText("msg.guardadoExito"));
+        } catch (Exception e) {
+            return e(e);
+        }
+        return list();
     }
 
     public String eliminar() throws Exception {
-	try {
-	    delete(Estados.class);
-	    setMsg(getText("msg.eliminadoExito"));
-	} catch (Exception ex) {
-	    return e(ex);
-	}
-	return list();
+        try {
+            delete(Estados.class);
+            setMsg(getText("msg.eliminadoExito"));
+        } catch (Exception ex) {
+            return e(ex);
+        }
+        return list();
     }
 
     /**
      * @return the e
      */
     public Estados getE() {
-	return e;
+        return e;
     }
 
     /**
      * @param e the e to set
      */
     public void setE(Estados e) {
-	this.e = e;
+        this.e = e;
     }
 
     /**
      * @return the listEstados
      */
     public List<Estados> getListEstados() {
-	return listEstados;
+        return listEstados;
     }
 
     /**
      * @param listEstados the listEstados to set
      */
     public void setListEstados(List<Estados> listEstados) {
-	this.listEstados = listEstados;
+        this.listEstados = listEstados;
     }
 }

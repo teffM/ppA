@@ -146,19 +146,19 @@ public class ReservaAction extends BaseAction {
             } else {
                 aux = Double.parseDouble(aux.toString());
             }
-            
+
             BigDecimal abo = new BigDecimal((double) aux, MathContext.UNLIMITED);
             totAbono = new DecimalFormat("0.00").format(abo);
-            
+
             aux = getDb().createQuery("select sum(cantidad*precio) from DetallesMenus where reservaciones.id = " + r.getId()).uniqueResult();
             if (aux == null) {
                 aux = 0.0;
             } else {
                 aux = Double.parseDouble(aux.toString());
             }
-            
-            BigDecimal plat= new BigDecimal((double) aux, MathContext.UNLIMITED); 
-           
+
+            BigDecimal plat = new BigDecimal((double) aux, MathContext.UNLIMITED);
+
             totPlatillo = new DecimalFormat("0.00").format(plat);
             if (r.getId() == 0) {
                 return "error";
@@ -184,27 +184,27 @@ public class ReservaAction extends BaseAction {
             setListClientes(getList(Clientes.class));
             setListMenus(getList(Menus.class));
             setListCategoriasMenus(getList(CategoriasMenus.class));
-           Object aux = getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
+            Object aux = getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
             if (aux == null) {
                 aux = 0.0;
-            }else{
+            } else {
                 aux = Double.parseDouble(aux.toString());
             }
-            
+
             BigDecimal abo = new BigDecimal((double) aux, MathContext.UNLIMITED);
             totAbono = new DecimalFormat("0.00").format(abo);
-            
+
             aux = getDb().createQuery("select sum(cantidad*precio) from DetallesMenus where reservaciones.id = " + r.getId()).uniqueResult();
             if (aux == null) {
                 aux = 0.0;
-            }else{
+            } else {
                 aux = Double.parseDouble(aux.toString());
             }
-            
-            BigDecimal plat= new BigDecimal((double) aux, MathContext.UNLIMITED); 
-           
+
+            BigDecimal plat = new BigDecimal((double) aux, MathContext.UNLIMITED);
+
             totPlatillo = new DecimalFormat("0.00").format(plat);
-           
+
         } catch (Exception e) {
 
         }
@@ -215,18 +215,16 @@ public class ReservaAction extends BaseAction {
         setId(getA().getReservaciones().getId());
         try {
             r = getReserva();
-            
-            
+
             Object aux = getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
             if (aux == null) {
                 aux = 0.0;
             } else {
                 aux = Double.parseDouble(aux.toString());
             }
-            
+
             BigDecimal abo = new BigDecimal((double) aux, MathContext.UNLIMITED);
-            
-            
+
             if (getA().getId() != 0) {
                 aux = getDb().createQuery("select abono from Abonos where id = " + getA().getId()).uniqueResult();
                 if (aux == null) {
@@ -238,21 +236,21 @@ public class ReservaAction extends BaseAction {
                 BigDecimal monto = new BigDecimal((double) aux, MathContext.UNLIMITED);
                 abo = new BigDecimal((double) (abo.doubleValue() - monto.doubleValue()), MathContext.UNLIMITED);
             }
-            
+
             totAbono = new DecimalFormat("0.00").format(abo);
-            
+
             aux = getDb().createQuery("select sum(cantidad*precio) from DetallesMenus where reservaciones.id = " + r.getId()).uniqueResult();
             if (aux == null) {
                 aux = 0.0;
             } else {
                 aux = Double.parseDouble(aux.toString());
             }
-            
-            BigDecimal plat= new BigDecimal((double) aux, MathContext.UNLIMITED); 
-           
+
+            BigDecimal plat = new BigDecimal((double) aux, MathContext.UNLIMITED);
+
             totPlatillo = new DecimalFormat("0.00").format(plat);
-           
-            if(abo.doubleValue() + getA().getAbono().doubleValue() > plat.doubleValue()){
+
+            if (abo.doubleValue() + getA().getAbono().doubleValue() > plat.doubleValue()) {
                 return e(new Exception("No se puede guardar"));
             } else {
                 getA().setUsuarios(new Usuarios());
@@ -271,12 +269,10 @@ public class ReservaAction extends BaseAction {
             } else {
                 aux = Double.parseDouble(aux.toString());
             }
-            
-           abo = new BigDecimal((double) aux, MathContext.UNLIMITED);
+
+            abo = new BigDecimal((double) aux, MathContext.UNLIMITED);
             totAbono = new DecimalFormat("0.00").format(abo);
-            
-            
-            
+
         } catch (Exception e) {
             return e(e);
         }
@@ -331,27 +327,27 @@ public class ReservaAction extends BaseAction {
             setListClientes(getList(Clientes.class));
             setListMenus(getList(Menus.class));
             setListCategoriasMenus(getList(CategoriasMenus.class));
-             Object aux = getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
+            Object aux = getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
             if (aux == null) {
                 aux = 0.0;
-            }else{
+            } else {
                 aux = Double.parseDouble(aux.toString());
             }
-            
+
             BigDecimal abo = new BigDecimal((double) aux, MathContext.UNLIMITED);
             totAbono = new DecimalFormat("0.00").format(abo);
-            
+
             aux = getDb().createQuery("select sum(cantidad*precio) from DetallesMenus where reservaciones.id = " + r.getId()).uniqueResult();
             if (aux == null) {
                 aux = 0.0;
-            }else{
+            } else {
                 aux = Double.parseDouble(aux.toString());
             }
-            
-            BigDecimal plat= new BigDecimal((double) aux, MathContext.UNLIMITED); 
-           
+
+            BigDecimal plat = new BigDecimal((double) aux, MathContext.UNLIMITED);
+
             totPlatillo = new DecimalFormat("0.00").format(plat);
-           
+
         } catch (Exception e) {
             return e(e);
         }
@@ -369,29 +365,28 @@ public class ReservaAction extends BaseAction {
             setListClientes(getList(Clientes.class));
             setListMenus(getList(Menus.class));
             setListCategoriasMenus(getList(CategoriasMenus.class));
-            
-            
+
             Object aux = getDb().createQuery("select sum(abono) from Abonos where reservaciones.id = " + r.getId()).uniqueResult();
             if (aux == null) {
                 aux = 0.0;
-            }else{
+            } else {
                 aux = Double.parseDouble(aux.toString());
             }
-            
+
             BigDecimal abo = new BigDecimal((double) aux, MathContext.UNLIMITED);
             totAbono = new DecimalFormat("0.00").format(abo);
-            
+
             aux = getDb().createQuery("select sum(cantidad*precio) from DetallesMenus where reservaciones.id = " + r.getId()).uniqueResult();
             if (aux == null) {
                 aux = 0.0;
-            }else{
+            } else {
                 aux = Double.parseDouble(aux.toString());
             }
-            
-            BigDecimal plat= new BigDecimal((double) aux, MathContext.UNLIMITED); 
-           
+
+            BigDecimal plat = new BigDecimal((double) aux, MathContext.UNLIMITED);
+
             totPlatillo = new DecimalFormat("0.00").format(plat);
-           
+
         } catch (Exception e) {
             return e(e);
         }
@@ -606,12 +601,12 @@ public class ReservaAction extends BaseAction {
     public void setfMayor(Date fMayor) {
         this.fMayor = fMayor;
     }
-    
-    public String getDiferencia(){
-        try{
+
+    public String getDiferencia() {
+        try {
             String monto = new DecimalFormat("0.00").format(Double.parseDouble(totPlatillo) - Double.parseDouble(totAbono));
             return monto;
-        }catch(Exception e){
+        } catch (Exception e) {
             return "";
         }
     }

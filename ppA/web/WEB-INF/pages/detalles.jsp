@@ -82,16 +82,16 @@
 
 
         <table class="table table-striped table-bordered table-hover dt-responsive nowrap dataTable2">
-                        
+
             <thead>
                 <tr>
                     <th>#</th>
 
                     <th><s:text name="dm.menu" /></th>
                     <th>Platillo</th>
-                   
+
                     <th>Cantidad</th>
-                     <th>Precio individual</th>
+                    <th>Precio individual</th>
                     <th>Comentarios</th>
                     <th data-priority="1"><s:text name="q.acciones" /></th>
                 </tr>
@@ -107,7 +107,7 @@
 
                         <td><c:out value="${l.cantidad}"/></td>
                         <td data-priority-level="1">$<c:out value="${l.precio}"/></td>
-                        
+
                         <td><c:out value="${l.comentarios}"/></td>
 
                         <td>
@@ -151,8 +151,8 @@
     </div>
 
     <table class="table table-striped table-bordered table-hover dt-responsive nowrap dataTable2">
-    <div id="LoadingMenu" class="modal modal-fullscreen" style="display: none; background-color: rgba(0,0,0,0.7);"><center><img style="margin-top: 20%;" alt="IMAGEN" src="./r/images/loading.gif"/></center></div>
-                        
+        <div id="LoadingMenu" class="modal modal-fullscreen" style="display: none; background-color: rgba(0,0,0,0.7);"><center><img style="margin-top: 20%;" alt="IMAGEN" src="./r/images/loading.gif"/></center></div>
+
         <thead>
             <tr>
                 <th>#</th>
@@ -236,13 +236,13 @@
                     <legend><s:text name="dm.legend" /><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button></legend>
                     <s:form id="menuForm" action="Detalles">
                         <div id="loading" class="modal modal-fullscreen" style="display: none; background-color: rgba(0,0,0,0.7);"><center><img style="margin-top: 20%;" alt="IMAGEN" src="./r/images/loading.gif"/></center></div>
-                        <s:hidden name="dm.id" value="%{r.id}"/>
-                        <s:hidden name="dm.reservaciones.id" value="%{r.id}"/>
-                        
-                                <s:select name="dm.menus.categoriasMenus.id" listKey="id" listValue="categoriaMenu" headerKey="" cssClass="select2 required"
-                                          headerValue="%{getText('lbl.seleccione')}" list="listCategoriasMenus" key="dm.menu" required="true" />
-                                
-                                
+                                <s:hidden name="dm.id" value="%{r.id}"/>
+                                <s:hidden name="dm.reservaciones.id" value="%{r.id}"/>
+
+                        <s:select name="dm.menus.categoriasMenus.id" listKey="id" listValue="categoriaMenu" headerKey="" cssClass="select2 required"
+                                  headerValue="%{getText('lbl.seleccione')}" list="listCategoriasMenus" key="dm.menu" required="true" />
+
+
                         <br>
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -277,37 +277,37 @@
         $("#menuForm_dm_id").val(0);
         $("#menuForm_dm_menus_categoriasMenus_id").val("").trigger("change");
     });
-    
-     $("#nuevoAbono").on("click", function () {
+
+    $("#nuevoAbono").on("click", function () {
         $("#abonoForm_a_id").val(0);
         $("#abonoForm_a_clientes_id").val("").trigger("change");
         $("#abonoForm_a_abono").val(0);
     });
-    
+
     function editMenu(t) {
-       $(".toCollapse").hide();
-       
+        $(".toCollapse").hide();
+
         var l = $(t).attr("obj").split(",");
-        
+
         $("#menuForm_dm_id").val($.trim(l[0]));
         $("#menuForm_dm_reservaciones_id").val($.trim(l[1]));
-        
+
         $("#menuForm_dm_menus_categoriasMenus_id").val($.trim(l[2])).trigger("change");
-        
+
         $("#menuForm_dm_menus_id").val($.trim(l[3])).trigger("change");
-        
+
         $("#menuForm_dm_precio").val($.trim(l[4]));
         $("#menuForm_dm_cantidad").val($.trim(l[5]));
         $("#menuForm_dm_comentarios").val($.trim(l[6]));
-       
+
         $('#myModalMenu').modal({
             show: 'false'
         });
     }
 
     $(".modMenu").on('click', function () {
-         $("#LoadingMenu").css("display", "block");
-         editMenu($(this).parent().parent());
+        $("#LoadingMenu").css("display", "block");
+        editMenu($(this).parent().parent());
     });
 
     function editAbono(t) {
@@ -336,14 +336,14 @@
     });
 
     $("#menuForm_dm_menus_categoriasMenus_id").on('change', function () {
-        
+
         filtrarMenu($("#menuForm_dm_menus_categoriasMenus_id").val());
     });
     function cargarPlato(id) {
-       
+
         $.ajax({
             cache: false,
-            async:false,
+            async: false,
             type: "GET",
             url: "/ppA/Menu!datosMenu?id=" + id,
             dataType: "JSON",
@@ -352,7 +352,7 @@
                 $("#menuForm_dm_precio").val(data.precio.toString());
                 $("#menuForm_dm_cantidad").val(1);
                 $("#platDes p").text(data.descripcion.toString());
-                
+
             },
             error: function (data) {
                 alert("Error al platillo");
@@ -362,10 +362,10 @@
         $("#LoadingMenu").css("display", "none");
     }
     function filtrarMenu(id) {
-        
+
         $.ajax({
             cache: false,
-            async:false,
+            async: false,
             type: "GET",
             url: "/ppA/Menu!filtrarMenus?id=" + id,
             dataType: "JSON",
@@ -376,19 +376,19 @@
                     $("#menuForm_dm_menus_id").append('<option value="' + id + '">' + value + '</option>');
 
                 });
-                
-                
+
+
             },
             error: function (data) {
                 alert("Error al cargar los menús");
             }
-            
+
         });
         $("#loading").css("display", "none");
         $("#platPrec").text("");
-                $("#menuForm_dm_precio").val("");
-                $("#menuForm_dm_cantidad").val("");
-                $("#platDes p").text("");
-                $("#menuForm_dm_comentarios").val("");
+        $("#menuForm_dm_precio").val("");
+        $("#menuForm_dm_cantidad").val("");
+        $("#platDes p").text("");
+        $("#menuForm_dm_comentarios").val("");
     }
 </script>                      

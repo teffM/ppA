@@ -18,65 +18,65 @@ public class CategoriaMenuAction extends BaseAction {
 
     @Override
     public String execute() throws Exception {
-	return list();
+        return list();
     }
 
     private String list() {
-	try {
-	    setListCategoriasMenus(getList(CategoriasMenus.class));
-	} catch (Exception e) {
-	    return e(e);
-	} finally {
-	    setCm(new CategoriasMenus());
-	}
-	return SUCCESS;
+        try {
+            setListCategoriasMenus(getList(CategoriasMenus.class));
+        } catch (Exception e) {
+            return e(e);
+        } finally {
+            setCm(new CategoriasMenus());
+        }
+        return SUCCESS;
     }
 
     public String guardar() throws Exception {
-	try {
-	    save(getCm());
-	    setMsg(getText("msg.guardadoExito"));
-	} catch (Exception e) {
-	    return e(e);
-	}
-	return list();
+        try {
+            save(getCm());
+            setMsg(getText("msg.guardadoExito"));
+        } catch (Exception e) {
+            return e(e);
+        }
+        return list();
     }
 
     public String eliminar() throws Exception {
-	try {
-	    delete(CategoriasMenus.class);
-	    setMsg(getText("msg.eliminadoExito"));
-	} catch (Exception ex) {
-	    return e(ex);
-	}
-	return list();
+        try {
+            delete(CategoriasMenus.class);
+            setMsg(getText("msg.eliminadoExito"));
+        } catch (Exception ex) {
+            return e(ex);
+        }
+        return list();
     }
 
     /**
      * @return the listCategoriasMenus
      */
     public List<CategoriasMenus> getListCategoriasMenus() {
-	return listCategoriasMenus;
+        return listCategoriasMenus;
     }
 
     /**
      * @param listCategoriasMenus the listCategoriasMenus to set
      */
     public void setListCategoriasMenus(List<CategoriasMenus> listCategoriasMenus) {
-	this.listCategoriasMenus = listCategoriasMenus;
+        this.listCategoriasMenus = listCategoriasMenus;
     }
 
     /**
      * @return the cm
      */
     public CategoriasMenus getCm() {
-	return cm;
+        return cm;
     }
 
     /**
      * @param cm the cm to set
      */
     public void setCm(CategoriasMenus cm) {
-	this.cm = cm;
+        this.cm = cm;
     }
 }

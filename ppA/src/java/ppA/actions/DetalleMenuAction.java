@@ -19,96 +19,96 @@ public class DetalleMenuAction extends BaseAction {
 
     @Override
     public String execute() throws Exception {
-	return list();
+        return list();
     }
 
     private String list() {
-	try {
-	    setListDetallesMenus(getList(DetallesMenus.class));
-	    setListReservaciones(getList(Reservaciones.class));
-	    setListMenus(getList(Menus.class));
-	} catch (Exception e) {
-	    return e(e);
-	} finally {
-	    setDm(new DetallesMenus());
-	}
-	return SUCCESS;
+        try {
+            setListDetallesMenus(getList(DetallesMenus.class));
+            setListReservaciones(getList(Reservaciones.class));
+            setListMenus(getList(Menus.class));
+        } catch (Exception e) {
+            return e(e);
+        } finally {
+            setDm(new DetallesMenus());
+        }
+        return SUCCESS;
     }
 
     public String guardar() throws Exception {
         String ruta = "Detalles!obtener?id=" + getDm().getReservaciones().getId();
-	try {
-	    save(getDm());
-	    setMsg(getText("msg.guardadoExito"));
-	} catch (Exception e) {
-	    return e(e);
-	}
-	return "Detalles";
+        try {
+            save(getDm());
+            setMsg(getText("msg.guardadoExito"));
+        } catch (Exception e) {
+            return e(e);
+        }
+        return "Detalles";
     }
 
     public String eliminar() throws Exception {
-	try {
-	    delete(DetallesMenus.class);
-	    setMsg(getText("msg.eliminadoExito"));
-	} catch (Exception e) {
-	    return e(e);
-	}
-	return list();
+        try {
+            delete(DetallesMenus.class);
+            setMsg(getText("msg.eliminadoExito"));
+        } catch (Exception e) {
+            return e(e);
+        }
+        return list();
     }
 
     /**
      * @return the listMenus
      */
     public List<Menus> getListMenus() {
-	return listMenus;
+        return listMenus;
     }
 
     /**
      * @param listMenus the listMenus to set
      */
     public void setListMenus(List<Menus> listMenus) {
-	this.listMenus = listMenus;
+        this.listMenus = listMenus;
     }
 
     /**
      * @return the dm
      */
     public DetallesMenus getDm() {
-	return dm;
+        return dm;
     }
 
     /**
      * @param dm the a to set
      */
     public void setDm(DetallesMenus dm) {
-	this.dm = dm;
+        this.dm = dm;
     }
 
     /**
      * @return the listDetallesMenus
      */
     public List<DetallesMenus> getListDetallesMenus() {
-	return listDetallesMenus;
+        return listDetallesMenus;
     }
 
     /**
      * @param listDetallesMenus the listDetallesMenus to set
      */
     public void setListDetallesMenus(List<DetallesMenus> listDetallesMenus) {
-	this.listDetallesMenus = listDetallesMenus;
+        this.listDetallesMenus = listDetallesMenus;
     }
 
     /**
      * @return the listReservaciones
      */
     public List<Reservaciones> getListReservaciones() {
-	return listReservaciones;
+        return listReservaciones;
     }
 
     /**
      * @param listReservaciones the listReservaciones to set
      */
     public void setListReservaciones(List<Reservaciones> listReservaciones) {
-	this.listReservaciones = listReservaciones;
+        this.listReservaciones = listReservaciones;
     }
 }

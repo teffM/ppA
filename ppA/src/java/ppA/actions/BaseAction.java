@@ -23,7 +23,6 @@ public class BaseAction extends ActionSupport implements SessionAware {
     private Transaction transaction;
 
     //Auxiliares para filtrar por fecha
-    
     public void open() {
         try {
             if (getDb() == null) {
@@ -65,7 +64,7 @@ public class BaseAction extends ActionSupport implements SessionAware {
         }
         return getId(o);
     }
-    
+
     protected void delete(Class c) {
         try {
             open();

@@ -23,86 +23,86 @@ public class Menus implements java.io.Serializable {
     }
 
     public Menus(int id, CategoriasMenus categoriasMenus, String menu, String fileUrl, String descripcion) {
-	this.id = id;
-	this.categoriasMenus = categoriasMenus;
-	this.menu = menu;
-	this.fileUrl = fileUrl;
-	this.descripcion = descripcion;
+        this.id = id;
+        this.categoriasMenus = categoriasMenus;
+        this.menu = menu;
+        this.fileUrl = fileUrl;
+        this.descripcion = descripcion;
     }
 
     public Menus(int id, CategoriasMenus categoriasMenus, String menu, BigDecimal precio, String fileUrl, String descripcion, Set detallesMenuses, Set detallesMenuses_1) {
-	this.id = id;
-	this.categoriasMenus = categoriasMenus;
-	this.menu = menu;
-	this.precio = precio;
-	this.fileUrl = fileUrl;
-	this.descripcion = descripcion;
-	this.detallesMenuses = detallesMenuses;
-	this.detallesMenuses_1 = detallesMenuses_1;
+        this.id = id;
+        this.categoriasMenus = categoriasMenus;
+        this.menu = menu;
+        this.precio = precio;
+        this.fileUrl = fileUrl;
+        this.descripcion = descripcion;
+        this.detallesMenuses = detallesMenuses;
+        this.detallesMenuses_1 = detallesMenuses_1;
     }
 
     public int getId() {
-	return this.id;
+        return this.id;
     }
 
     public void setId(int id) {
-	this.id = id;
+        this.id = id;
     }
 
     public CategoriasMenus getCategoriasMenus() {
-	return this.categoriasMenus;
+        return this.categoriasMenus;
     }
 
     public void setCategoriasMenus(CategoriasMenus categoriasMenus) {
-	this.categoriasMenus = categoriasMenus;
+        this.categoriasMenus = categoriasMenus;
     }
 
     public String getMenu() {
-	return this.menu;
+        return this.menu;
     }
 
     public void setMenu(String menu) {
-	this.menu = menu;
+        this.menu = menu;
     }
 
     public BigDecimal getPrecio() {
-	return this.precio;
+        return this.precio;
     }
 
     public void setPrecio(BigDecimal precio) {
-	this.precio = precio;
+        this.precio = precio;
     }
 
     public String getFileUrl() {
-	return this.fileUrl;
+        return this.fileUrl;
     }
 
     public void setFileUrl(String fileUrl) {
-	this.fileUrl = fileUrl;
+        this.fileUrl = fileUrl;
     }
 
     public String getDescripcion() {
-	return this.descripcion;
+        return this.descripcion;
     }
 
     public void setDescripcion(String descripcion) {
-	this.descripcion = descripcion;
+        this.descripcion = descripcion;
     }
 
     public Set getDetallesMenuses() {
-	return this.detallesMenuses;
+        return this.detallesMenuses;
     }
 
     public void setDetallesMenuses(Set detallesMenuses) {
-	this.detallesMenuses = detallesMenuses;
+        this.detallesMenuses = detallesMenuses;
     }
 
     public Set getDetallesMenuses_1() {
-	return this.detallesMenuses_1;
+        return this.detallesMenuses_1;
     }
 
     public void setDetallesMenuses_1(Set detallesMenuses_1) {
-	this.detallesMenuses_1 = detallesMenuses_1;
+        this.detallesMenuses_1 = detallesMenuses_1;
     }
 
 }

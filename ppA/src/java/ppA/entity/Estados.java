@@ -20,67 +20,67 @@ public class Estados implements java.io.Serializable {
     }
 
     public Estados(int id, String estado, String descripcion, String color) {
-	this.id = id;
-	this.estado = estado;
-	this.descripcion = descripcion;
-	this.color = color;
+        this.id = id;
+        this.estado = estado;
+        this.descripcion = descripcion;
+        this.color = color;
     }
 
     public Estados(int id, String estado, String descripcion, String color, Set reservacioneses, Set reservacioneses_1) {
-	this.id = id;
-	this.estado = estado;
-	this.descripcion = descripcion;
-	this.color = color;
-	this.reservacioneses = reservacioneses;
-	this.reservacioneses_1 = reservacioneses_1;
+        this.id = id;
+        this.estado = estado;
+        this.descripcion = descripcion;
+        this.color = color;
+        this.reservacioneses = reservacioneses;
+        this.reservacioneses_1 = reservacioneses_1;
     }
 
     public int getId() {
-	return this.id;
+        return this.id;
     }
 
     public void setId(int id) {
-	this.id = id;
+        this.id = id;
     }
 
     public String getEstado() {
-	return this.estado;
+        return this.estado;
     }
 
     public void setEstado(String estado) {
-	this.estado = estado;
+        this.estado = estado;
     }
 
     public String getDescripcion() {
-	return this.descripcion;
+        return this.descripcion;
     }
 
     public void setDescripcion(String descripcion) {
-	this.descripcion = descripcion;
+        this.descripcion = descripcion;
     }
 
     public String getColor() {
-	return this.color;
+        return this.color;
     }
 
     public void setColor(String color) {
-	this.color = color;
+        this.color = color;
     }
 
     public Set getReservacioneses() {
-	return this.reservacioneses;
+        return this.reservacioneses;
     }
 
     public void setReservacioneses(Set reservacioneses) {
-	this.reservacioneses = reservacioneses;
+        this.reservacioneses = reservacioneses;
     }
 
     public Set getReservacioneses_1() {
-	return this.reservacioneses_1;
+        return this.reservacioneses_1;
     }
 
     public void setReservacioneses_1(Set reservacioneses_1) {
-	this.reservacioneses_1 = reservacioneses_1;
+        this.reservacioneses_1 = reservacioneses_1;
     }
 
 }

@@ -37,7 +37,7 @@
         
         <action name="Reportes" class="ppA.actions.ReporteAction">
             <result type="tiles">reportes</result>
-             <result name="display">/reporte2PDF_2.pdf</result>
+            <result name="display">/reporte2PDF_2.pdf</result>
         </action>
         <action name="index">
             <result type="tiles">index</result>
@@ -54,7 +54,7 @@
             <result name="ajax" type="stream">
                 <param name="contentType">text/html</param>
                 <param name="inputName">stream</param>
-              </result>
+            </result>
             <result name="detalles" type="tiles">detalles_cliente</result>
             
         </action>
@@ -64,7 +64,7 @@
             <result name="ajax" type="stream">
                 <param name="contentType">text/html</param>
                 <param name="inputName">inputStream</param>
-              </result>
+            </result>
         </action>
         <action name="Rol" class="ppA.actions.RolAction">
             <result name="success" type="tiles">roles</result>

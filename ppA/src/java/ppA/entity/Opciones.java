@@ -19,67 +19,67 @@ public class Opciones implements java.io.Serializable {
     }
 
     public Opciones(int id, String opcion, String accion, String descripcion) {
-	this.id = id;
-	this.opcion = opcion;
-	this.accion = accion;
-	this.descripcion = descripcion;
+        this.id = id;
+        this.opcion = opcion;
+        this.accion = accion;
+        this.descripcion = descripcion;
     }
 
     public Opciones(int id, String opcion, BigDecimal orden, Integer padre, String accion, String descripcion) {
-	this.id = id;
-	this.opcion = opcion;
-	this.orden = orden;
-	this.padre = padre;
-	this.accion = accion;
-	this.descripcion = descripcion;
+        this.id = id;
+        this.opcion = opcion;
+        this.orden = orden;
+        this.padre = padre;
+        this.accion = accion;
+        this.descripcion = descripcion;
     }
 
     public int getId() {
-	return this.id;
+        return this.id;
     }
 
     public void setId(int id) {
-	this.id = id;
+        this.id = id;
     }
 
     public String getOpcion() {
-	return this.opcion;
+        return this.opcion;
     }
 
     public void setOpcion(String opcion) {
-	this.opcion = opcion;
+        this.opcion = opcion;
     }
 
     public BigDecimal getOrden() {
-	return this.orden;
+        return this.orden;
     }
 
     public void setOrden(BigDecimal orden) {
-	this.orden = orden;
+        this.orden = orden;
     }
 
     public Integer getPadre() {
-	return this.padre;
+        return this.padre;
     }
 
     public void setPadre(Integer padre) {
-	this.padre = padre;
+        this.padre = padre;
     }
 
     public String getAccion() {
-	return this.accion;
+        return this.accion;
     }
 
     public void setAccion(String accion) {
-	this.accion = accion;
+        this.accion = accion;
     }
 
     public String getDescripcion() {
-	return this.descripcion;
+        return this.descripcion;
     }
 
     public void setDescripcion(String descripcion) {
-	this.descripcion = descripcion;
+        this.descripcion = descripcion;
     }
 
 }

@@ -4,16 +4,13 @@
 <div class="page-header">
     <h1 style="margin:0">Usuarios
         <div class="button-group  pull-right">
-           <a id="nuevoUsuario" href="#" class="btn btn-success" data-toggle="modal" data-target="#myModal">
-    <span class="glyphicon glyphicon-plus-sign"></span>
-    <b><s:text name="nu.btnNuevo" /></b>
-</a>
+            <a id="nuevoUsuario" href="#" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                <span class="glyphicon glyphicon-plus-sign"></span>
+                <b><s:text name="nu.btnNuevo" /></b>
+            </a>
         </div>
     </h1>
 </div>
-
-
-
 <div class="modal fade" id="myModal" data-backdrop="static" data-keyboard="false" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -31,9 +28,9 @@
                         <div class="form-group">
                             <s:textfield name="nu.usuario" key="nu.usuario" cssClass="form-control required" required="true" />
                         </div>
-                      
-                              
-                            <div class="form-group">
+
+
+                        <div class="form-group">
                             <s:password name="nu.clave" key="nu.clave" cssClass="form-control required" required="true" />
                             <%--<s:password name="nu.clave" label="Confirmar Contraseña" cssClass="form-control required" required="true" />--%>
                         </div>
@@ -49,44 +46,42 @@
     </div>
 </div>
 <br/>
-<div id="container">
-    <table id="dataTable" class="table table-striped table-bordered table-hover dt-responsive nowrap">
-        <thead>
-            <tr>
-                <th><s:text name="nu.nombre" /></th>
-                <th><s:text name="nu.apellido" /></th>
-                <th><s:text name="nu.usuario" /></th>
-                <th><s:text name="nu.roles" /></th>
-                <th data-priority="1"><s:text name="q.acciones" /></th>
+<table id="dataTable" class="table table-striped table-bordered table-hover dt-responsive nowrap">
+    <thead>
+        <tr>
+            <th><s:text name="nu.nombre" /></th>
+            <th><s:text name="nu.apellido" /></th>
+            <th><s:text name="nu.usuario" /></th>
+            <th><s:text name="nu.roles" /></th>
+            <th data-priority="1"><s:text name="q.acciones" /></th>
+        </tr>
+    </thead>
+    <tbody>
+        <c:forEach var="l" items="${listUsuarios}">
+            <tr obj="${l.id}, ${l.nombre}, ${l.apellido}, ${l.usuario}, ${l.clave}, ${l.roles.id}">
+                <td><c:out value="${l.nombre}"/></td>
+                <td><c:out value="${l.apellido}"/></td>
+                <td><c:out value="${l.usuario}"/></td>
+                <td><c:out value="${l.roles.rol}"/></td>
+                <td>
+                    <button class="btn btn-default btn-xs anotherNew" title="Modificar">
+                        <span class="glyphicon glyphicon-edit"></span>
+                    </button>
+                    <button class="btn btn-default btn-xs" data-href="./Usuario!eliminar?id=${l.id}"
+                            data-toggle="modal" data-target="#confirm-delete" title="Eliminar">
+                        <span class="glyphicon glyphicon-trash" />
+                    </button>
+                    <a data-target="#confirm-delete" class="btn btn-default btn-xs" href="./Usuario!reestablecerC?id=${l.id}" data-toggle="tooltip" title="Reestablecer contraseña">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </a>
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            <c:forEach var="l" items="${listUsuarios}">
-                <tr obj="${l.id}, ${l.nombre}, ${l.apellido}, ${l.usuario}, ${l.clave}, ${l.roles.id}">
-                    <td><c:out value="${l.nombre}"/></td>
-                    <td><c:out value="${l.apellido}"/></td>
-                    <td><c:out value="${l.usuario}"/></td>
-                    <td><c:out value="${l.roles.rol}"/></td>
-                    <td>
-                        <button class="btn btn-default btn-xs anotherNew" title="Modificar">
-                            <span class="glyphicon glyphicon-edit"></span>
-                        </button>
-                        <button class="btn btn-default btn-xs" data-href="./Usuario!eliminar?id=${l.id}"
-                                data-toggle="modal" data-target="#confirm-delete" title="Eliminar">
-                            <span class="glyphicon glyphicon-trash" />
-                        </button>
-                        <a data-target="#confirm-delete" class="btn btn-default btn-xs" href="./Usuario!reestablecerC?id=${l.id}" data-toggle="tooltip" title="Reestablecer contraseña">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                        </a>
-                    </td>
-                </tr>
-            </c:forEach>
-        </tbody>
-        
-    </table>
-            <label>Nota: Reestablecer contraseña toma la primera letra del nombre, del apellido y todo el 
-               nombre de usuario (uniendo todo), para hacer la nueva contraseña</label>
-</div>
+        </c:forEach>
+    </tbody>
+
+</table>
+<label>Nota: Reestablecer contraseña toma la primera letra del nombre, del apellido y todo el 
+    nombre de usuario (uniendo todo), para hacer la nueva contraseña</label>
 
 <script type="text/javascript">
     $('#nuevoUsuario').on('click', function () {

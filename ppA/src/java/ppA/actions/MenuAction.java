@@ -37,83 +37,83 @@ public class MenuAction extends BaseAction {
 
     @Override
     public String execute() throws Exception {
-	return list();
+        return list();
     }
 
     private String list() {
-	try {
-	    setListMenus(getList(Menus.class));
-	    setListCategorias(getList(CategoriasMenus.class));
-	} catch (Exception e) {
-	    return e(e);
-	} finally {
-	    setM(new Menus());
-	}
-	return SUCCESS;
+        try {
+            setListMenus(getList(Menus.class));
+            setListCategorias(getList(CategoriasMenus.class));
+        } catch (Exception e) {
+            return e(e);
+        } finally {
+            setM(new Menus());
+        }
+        return SUCCESS;
     }
 
     public String guardar() throws Exception {
-	try {
-	    save(getM());
-	    setMsg(getText("msg.guardadoExito"));
-	} catch (Exception e) {
-	    return e(e);
-	}
-	return list();
+        try {
+            save(getM());
+            setMsg(getText("msg.guardadoExito"));
+        } catch (Exception e) {
+            return e(e);
+        }
+        return list();
     }
 
     public String eliminar() throws Exception {
-	try {
-	    delete(Menus.class);
-	    setMsg(getText("msg.eliminadoExito"));
-	} catch (Exception ex) {
-	    return e(ex);
-	}
-	return list();
+        try {
+            delete(Menus.class);
+            setMsg(getText("msg.eliminadoExito"));
+        } catch (Exception ex) {
+            return e(ex);
+        }
+        return list();
     }
 
     /**
      * @return the m
      */
     public Menus getM() {
-	return m;
+        return m;
     }
 
     /**
      * @param m the m to set
      */
     public void setM(Menus m) {
-	this.m = m;
+        this.m = m;
     }
 
     /**
      * @return the listMenus
      */
     public List<Menus> getListMenus() {
-	return listMenus;
+        return listMenus;
     }
 
     /**
      * @param listMenus the listMenus to set
      */
     public void setListMenus(List<Menus> listMenus) {
-	this.listMenus = listMenus;
+        this.listMenus = listMenus;
     }
 
     /**
      * @return the listCategorias
      */
     public List<CategoriaMenuAction> getListCategorias() {
-	return listCategorias;
+        return listCategorias;
     }
 
     /**
      * @param listCategorias the listCategorias to set
      */
     public void setListCategorias(List<CategoriaMenuAction> listCategorias) {
-	this.listCategorias = listCategorias;
+        this.listCategorias = listCategorias;
     }
-    
+
     public InputStream getInputStream() {
         return inputStream;
     }
@@ -124,46 +124,44 @@ public class MenuAction extends BaseAction {
     public void setInputStream(InputStream inputStream) {
         this.inputStream = inputStream;
     }
-    
+
     private InputStream inputStream;
 
     public String datosMenu() {
-         try {
-        open();
-       
-        m = (Menus) getDb().load(Menus.class, getId());
-        JSONObject obj = new JSONObject();
-        obj.put("nombre", m.getMenu());
-        obj.put("precio", m.getPrecio());
-        obj.put("descripcion", m.getDescripcion());
-        String jason = obj.toJSONString();
-        
-        setInputStream(new ByteArrayInputStream(jason.getBytes(StandardCharsets.UTF_8)));
+        try {
+            open();
+
+            m = (Menus) getDb().load(Menus.class, getId());
+            JSONObject obj = new JSONObject();
+            obj.put("nombre", m.getMenu());
+            obj.put("precio", m.getPrecio());
+            obj.put("descripcion", m.getDescripcion());
+            String jason = obj.toJSONString();
+
+            setInputStream(new ByteArrayInputStream(jason.getBytes(StandardCharsets.UTF_8)));
         } catch (Exception e) {
             return "ajax";
         }
         return "ajax";
     }
-    
-    public String filtrarMenus() {
-         try {
-        open();
-        List<Menus> lista = getDb().createQuery("from Menus where categoriasMenus.id = " + getId()).list();
-        JSONObject obj = new JSONObject();
-        for(Menus auxL : lista) {
-            obj.put(auxL.getId(), auxL.getMenu());
-        }
 
-        String jason = obj.toJSONString();
-        
-        setInputStream(new ByteArrayInputStream(jason.getBytes(StandardCharsets.UTF_8)));
+    public String filtrarMenus() {
+        try {
+            open();
+            List<Menus> lista = getDb().createQuery("from Menus where categoriasMenus.id = " + getId()).list();
+            JSONObject obj = new JSONObject();
+            for (Menus auxL : lista) {
+                obj.put(auxL.getId(), auxL.getMenu());
+            }
+
+            String jason = obj.toJSONString();
+
+            setInputStream(new ByteArrayInputStream(jason.getBytes(StandardCharsets.UTF_8)));
         } catch (Exception e) {
             return "ajax";
         }
         return "ajax";
-        
-        
-    }    
-   
+
+    }
 
 }

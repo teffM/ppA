@@ -41,40 +41,51 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-left" href="./index"><img src="./r/images/logo.png" width="80px" height="45px" /></a>
+                <a class="navbar-left" href="./index"><img src="./r/images/logo.png" width="150px" height="50px" /></a>
             </div>
-            <div class="collapse navbar-collapse navbar-ex1-collapse  " style="z-index: 999;" id="collapse">
-                <ul  class="nav navbar-nav col-md-8 active">
+            <div class="collapse navbar-collapse" id="collapse">
+                <ul class="nav navbar-nav">
                     <s:if test="%{#session.userRol != null}">
-                        <li class="active"><a href="./Reserva">RESERVACIONES</a></li>
-                        <li class="active"><a href="./Cliente">CLIENTES</a></li>
-                        <li class="active"><a href="./dUsuario">MIS DETALLES</a></li>
-                    <s:if test="%{#session.userRol == 'administrador' || #session.userRol == 'gerente' }">
-                        <li class="active"><a href="./Reportes">REPORTES</a></li>
+                        <li><a href="./Reserva">RESERVACIONES</a></li>
+                        <li><a href="./Cliente">CLIENTES</a></li>
                         <s:if test="%{#session.userRol == 'administrador'}">
-                            <li class="dropdown navItem active">
-                                <a data-toggle="dropdown">
+                            <li><a href="./Reportes">REPORTES</a></li>
+                            <li class="dropdown navItem">
+                                <a href="#">
                                     ADMINISTRACIÓN<span class="caret"></span>
                                 </a>
-                                <ul class="navbar-inverse dropdown-menu active">
+                                <ul class="navbar-inverse dropdown-menu">
                                     <li><a href="./Usuario">USUARIOS</a></li>
                                     <li><a href="./Sucursal">SUCURSALES</a></li>
                                     <li><a href="./Menu">PLATILLOS</a></li>
                                     <li><a href="./CategoriaMenu">CATEGORIAS DE PLATILLOS</a></li>
                                     <li><a href="./Estado">ESTADOS</a></li>
-                                    <!--
                                     <li><a href="./Rol">ROLES</a></li>
-                                    -->
                                 </ul>
                             </li>
                         </s:if>
-                     </s:if>
                     </s:if>
                 </ul>
                 <s:if test="%{#session.userRol != null && #session.userRol != null}">
                     <ul class="nav navbar-nav navbar-right" col-md-2>
-                        <li class="inactive">
-                            <a href="./Login!cerrarSesion">CERRAR SESIÓN</a>
+                        <li class="dropdown navItem">
+                            <a href="#">
+                                <i class="glyphicon glyphicon-user"></i> 
+                                ${session.userNombre}
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="navbar-inverse dropdown-menu">
+                                <li>
+                                    <a href="./dUsuario">
+                                        <i class="glyphicon glyphicon-cog"></i> CONFIGURACIÓN
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="./Login!cerrarSesion">
+                                        <i class="glyphicon glyphicon-off"></i> CERRAR SESIÓN
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </s:if>
@@ -92,7 +103,7 @@
             <div class="loader-section section-right"></div>
         </div>
     </s:if>
-    <div class="container myContainer twoContainer">
+    <div class="myContainer twoContainer">
         <tiles:insertAttribute name="body" />
     </div>
     <!--modal confirm delete-->
@@ -155,10 +166,10 @@
         });
         if ($('#toast-container').length == 0) {
         <s:if test="%{msg != null && msg != ''}">
-            msg("success", "<s:property escape="false" value="msg" />");
-                </s:if>
-                <s:if test="%{errorMsg != null && errorMsg != ''}">
-                    msg("error", "<s:property escape="false" value="errorMsg" />");
+    msg("success", "<s:property escape="false" value="msg" />");
+            </s:if>
+            <s:if test="%{errorMsg != null && errorMsg != ''}">
+                msg("error", "<s:property escape="false" value="errorMsg" />");
                     </s:if>
         }
         $('#dataTable').DataTable({
@@ -217,7 +228,6 @@
                         }
                 }
         });
-        
         $('.dataTable2').DataTable({
         dom: 'lBfrtip',
                 buttons: [],
@@ -267,7 +277,7 @@
         $(".dateTime").after("<span class='input-group-addon'>\n\
                 <span class='glyphicon glyphicon-calendar'></span></span>");
         $(".dateTimeSearch").datetimepicker({locale: 'es', format: 'YYYY-MM-DD', defaultDate: new Date()});
-       $(".dateTimeSearch").after("<span class='input-group-addon'>\n\
+        $(".dateTimeSearch").after("<span class='input-group-addon'>\n\
                 <span class='glyphicon glyphicon-calendar'></span></span>");
         $(".dateTimeMinNow").datetimepicker({locale: 'es', format: 'DD/MM/YYYY hh:mm:ss A', minDate: moment()});
         $(".dateTimeMinNow").after("<span class='input-group-addon'>\n\
@@ -314,6 +324,6 @@
                 return Number(value) > 0;
                 }, '<s:text name="err.mayorCero" />');
     </script>
-    
+
 </body>
 </html>
