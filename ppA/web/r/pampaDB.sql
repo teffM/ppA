@@ -78,7 +78,7 @@ CREATE TABLE [dbo].[usuarios](
         apellido nvarchar (25) not null default (''),
 	[idRol] [int] NOT NULL,
 	[usuario] [nvarchar](25) NOT NULL DEFAULT (''),
-	[clave] [nvarchar](25) NOT NULL DEFAULT ('')
+	[clave] [nvarchar](50) NOT NULL DEFAULT ('')
 )
 GO
 CREATE TABLE [dbo].[estados](

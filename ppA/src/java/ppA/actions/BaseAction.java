@@ -1,6 +1,7 @@
 package ppA.actions;
 
 import com.opensymphony.xwork2.ActionSupport;
+import java.security.MessageDigest;
 import java.util.List;
 import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
@@ -205,6 +206,22 @@ public class BaseAction extends ActionSupport implements SessionAware {
             close();
         }
         return ERROR;
+    }
+
+    protected String cryptWithMD5(String pass) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            md.reset();
+            byte[] digested = md.digest(pass.getBytes());
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < digested.length; i++) {
+                sb.append(Integer.toHexString(0xff & digested[i]));
+            }
+            return sb.toString();
+        } catch (Exception e) {
+            e(e);
+        }
+        return "";
     }
 
     /**

@@ -46,6 +46,7 @@ public class UsuarioAction extends BaseAction {
 
     public String guardar() throws Exception {
         try {
+            getNu().setClave(cryptWithMD5(getNu().getClave()));
             save(getNu());
             setMsg(getText("msg.guardadoExito"));
         } catch (Exception e) {
@@ -66,13 +67,11 @@ public class UsuarioAction extends BaseAction {
 
     public String reestablecerC() throws Exception {
         try {
-            String nueva_contraseña;
             Usuarios auxUsuarios;
             int idClient = getId();
             open();
             auxUsuarios = (Usuarios) getDb().createQuery("select usu from Usuarios usu where id = " + idClient).uniqueResult();
-            nueva_contraseña = crearContraseña(auxUsuarios);
-            auxUsuarios.setClave(nueva_contraseña);
+            auxUsuarios.setClave(cryptWithMD5(crearContraseña(auxUsuarios)));
             save(auxUsuarios);
             setMsg(getText("msg.modificadoExito"));
         } catch (Exception e) {
