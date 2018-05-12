@@ -18,7 +18,7 @@
                     </div>
                     <div style="margin-bottom: 25px" class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <s:password cssClass="form-control input"name="clave"  placeholder="Contraseña" />
+                            <s:password cssClass="form-control input" name="clave"  placeholder="Contraseña" />
                     </div>
 
                     <s:submit cssClass="btn btn-default" key="btn.ingresar" />

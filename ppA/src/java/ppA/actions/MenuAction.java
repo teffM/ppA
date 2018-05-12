@@ -1,26 +1,13 @@
 package ppA.actions;
 
 import static com.opensymphony.xwork2.Action.SUCCESS;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
-import java.sql.SQLException;
 import java.util.List;
-import javax.json.Json;
-import javax.json.JsonObject;
 import org.json.simple.JSONObject;
 import ppA.entity.CategoriasMenus;
 import ppA.entity.Menus;
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import javax.json.Json;
-import javax.json.JsonObject;
-import javax.json.JsonReader;
-import javax.json.JsonWriter;
-import org.hibernate.Query;
 
 /**
  *
