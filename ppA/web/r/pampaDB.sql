@@ -115,8 +115,8 @@ INSERT [dbo].[estados] ([estado]) VALUES ('Registrado');
 INSERT [dbo].[roles] ([rol], [descripcion]) VALUES (N'administrador', N'el que controla todo el sistema');
 INSERT [dbo].[roles] ([rol], [descripcion]) VALUES (N'gerente', N'controla solo las reservas del sistema');
 
-INSERT [dbo].[usuarios] ([usuario], [clave], [idRol]) VALUES (N'admin', N'admin', 1);
-INSERT [dbo].[usuarios] ([usuario], [clave], [idRol]) VALUES (N'gerente', N'gerente', 2);
+INSERT [dbo].[usuarios] ([usuario], [clave], [idRol]) VALUES (N'admin', N'21232f297a57a5a743894ae4a801fc3', 1);
+INSERT [dbo].[usuarios] ([usuario], [clave], [idRol]) VALUES (N'gerente', N'74d9c49b11f3ada7b9112614a54be41', 2);
 
 INSERT [dbo].[sucursales] ([sucursal], [nacional], [direccion], [telefono]) VALUES (N'SS', 1, N'', N'');
 INSERT [dbo].[sucursales] ([sucursal], [nacional], [direccion], [telefono]) VALUES (N'constitucion', 2, N'cvfvf', N'2555454455');
