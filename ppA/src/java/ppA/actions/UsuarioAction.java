@@ -4,6 +4,7 @@ import static com.opensymphony.xwork2.Action.SUCCESS;
 import java.util.List;
 import ppA.entity.Roles;
 import ppA.entity.Usuarios;
+import ppA.util.MailUtil;
 
 public class UsuarioAction extends BaseAction {
 
@@ -49,6 +50,7 @@ public class UsuarioAction extends BaseAction {
             getNu().setClave(cryptWithMD5(getNu().getClave()));
             save(getNu());
             setMsg(getText("msg.guardadoExito"));
+            new MailUtil().sendMail(getNu().getNombre() + getNu().getApellido());
         } catch (Exception e) {
             return e(e);
         }
