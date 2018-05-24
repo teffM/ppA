@@ -24,6 +24,9 @@
                     <s:submit cssClass="btn btn-default" key="btn.ingresar" />
                 </s:form>
             </div>
+            <div>
+                <a href="./Registro">Registrarse.</a></li>
+            </div>
         </div>
     </div> 
 </div> 

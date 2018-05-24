@@ -56,4 +56,7 @@
     <definition name="dUsuarios" extends="default">
         <put-attribute name="body" value="/WEB-INF/pages/detallesUsuario.jsp" />
     </definition>
+    <definition name="registro" extends="default">
+        <put-attribute name="body" value="/WEB-INF/pages/registro.jsp" />
+    </definition>
 </tiles-definitions>

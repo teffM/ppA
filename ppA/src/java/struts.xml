@@ -96,6 +96,10 @@
             <result name="success" type="tiles">dUsuarios</result>
             <result name="dUsuarios" type="tiles">dUsuarios</result>
         </action>
+        <action name="Registro" class="ppA.actions.RegistroAction">
+            <result name="success" type="tiles">registro</result>
+            <result name="error" type="tiles">index</result>
+        </action>
         <action name="Login" class="ppA.actions.LoginAction">
             <result name="success" type="redirectAction">Reserva</result>
             <result name="error" type="tiles">index</result>

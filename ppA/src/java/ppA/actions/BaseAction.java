@@ -130,7 +130,6 @@ public class BaseAction extends ActionSupport implements SessionAware {
 
     private int getId(Object o) {
         try {
-
             if (o instanceof Abonos) {
                 return ((Abonos) o).getId();
             }

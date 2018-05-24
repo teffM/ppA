@@ -1,6 +1,7 @@
 package ppA.actions;
 
 import static com.opensymphony.xwork2.Action.SUCCESS;
+import com.opensymphony.xwork2.ActionContext;
 import java.util.List;
 import ppA.entity.Roles;
 import ppA.entity.Usuarios;
@@ -20,8 +21,10 @@ public class UsuarioAction extends BaseAction {
 
     private String list() {
         try {
-            setListUsuarios(getList(Usuarios.class));
-            setListRoles(getList(Roles.class));
+            if (!ActionContext.getContext().getName().equalsIgnoreCase("Registro")) {
+                setListUsuarios(getList(Usuarios.class));
+                setListRoles(getList(Roles.class));
+            }
         } catch (Exception e) {
             return e(e);
         } finally {
@@ -50,6 +53,20 @@ public class UsuarioAction extends BaseAction {
             getNu().setClave(cryptWithMD5(getNu().getClave()));
             save(getNu());
             setMsg(getText("msg.guardadoExito"));
+            new MailUtil().sendMail(getNu().getNombre() + getNu().getApellido());
+        } catch (Exception e) {
+            return e(e);
+        }
+        return list();
+    }
+
+    public String registrar() throws Exception {
+        try {
+            getNu().setClave(cryptWithMD5(getNu().getClave()));
+            getNu().setRoles(new Roles());
+            getNu().getRoles().setId(3);
+            save(getNu());
+            setMsg(getText("msg.registradoExito"));
             new MailUtil().sendMail(getNu().getNombre() + getNu().getApellido());
         } catch (Exception e) {
             return e(e);

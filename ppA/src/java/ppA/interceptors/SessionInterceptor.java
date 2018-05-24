@@ -17,7 +17,7 @@ public class SessionInterceptor extends AbstractInterceptor implements StrutsSta
             HttpServletRequest request = (HttpServletRequest) context.get(HTTP_REQUEST);
             HttpSession session = request.getSession(false);
             if (session != null) {
-                if (!ActionContext.getContext().getName().equalsIgnoreCase("Login") && session.getAttribute("userId") == null) {
+                if (!ActionContext.getContext().getName().equalsIgnoreCase("Registro") && !ActionContext.getContext().getName().equalsIgnoreCase("Login") && session.getAttribute("userId") == null) {
                     return "errorSession";
                 }
                 if (session.getAttribute("d_b") == null) {
